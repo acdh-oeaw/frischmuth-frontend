@@ -47,9 +47,12 @@ dependencies:
   vue:
     specifier: ^3.4.21
     version: 3.4.21(typescript@5.4.2)
+  vue-i18n:
+    specifier: ^9.10.1
+    version: 9.10.1(vue@3.4.21)
   vue-i18n-routing:
     specifier: ^1.2.0
-    version: 1.2.0(vue-router@4.3.0)(vue@3.4.21)
+    version: 1.2.0(vue-i18n@9.10.1)(vue-router@4.3.0)(vue@3.4.21)
   vue-router:
     specifier: ^4.3.0
     version: 4.3.0(vue@3.4.21)
@@ -1127,7 +1130,7 @@ packages:
     engines: {node: '>= 18'}
     dev: false
 
-  /@intlify/vue-i18n-bridge@1.1.0:
+  /@intlify/vue-i18n-bridge@1.1.0(vue-i18n@9.10.1):
     resolution: {integrity: sha512-yBwGpr70Rc56pjsPdtvNRi/ju0P9h3670EkCOuxAzKKR5OH61uF9LprLUGmph/Uy2TXBO2DKqpnJBFXyXJQKeg==}
     engines: {node: '>= 12'}
     hasBin: true
@@ -1143,6 +1146,8 @@ packages:
         optional: true
       vue-i18n-bridge:
         optional: true
+    dependencies:
+      vue-i18n: 9.10.1(vue@3.4.21)
     dev: false
 
   /@intlify/vue-router-bridge@1.1.0(vue-router@4.3.0)(vue@3.4.21):
@@ -9137,7 +9142,7 @@ packages:
       - supports-color
     dev: true
 
-  /vue-i18n-routing@1.2.0(vue-router@4.3.0)(vue@3.4.21):
+  /vue-i18n-routing@1.2.0(vue-i18n@9.10.1)(vue-router@4.3.0)(vue@3.4.21):
     resolution: {integrity: sha512-pn+bIFRMX5BN1BVQJ5rn05dYVnBhU/QnkxhjEJAe9HnYtJhDubetvoY+yfgDNWwesNWfHbbvsilsgSGL6DJyeA==}
     engines: {node: '>= 14.6'}
     peerDependencies:
@@ -9159,11 +9164,12 @@ packages:
         optional: true
     dependencies:
       '@intlify/shared': 9.10.1
-      '@intlify/vue-i18n-bridge': 1.1.0
+      '@intlify/vue-i18n-bridge': 1.1.0(vue-i18n@9.10.1)
       '@intlify/vue-router-bridge': 1.1.0(vue-router@4.3.0)(vue@3.4.21)
       ufo: 1.4.0
       vue: 3.4.21(typescript@5.4.2)
       vue-demi: 0.14.7(vue@3.4.21)
+      vue-i18n: 9.10.1(vue@3.4.21)
       vue-router: 4.3.0(vue@3.4.21)
     dev: false
 
