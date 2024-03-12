@@ -1,6 +1,6 @@
-# app template
+# frischmuth frontend
 
-template repository for nuxt 3 apps.
+the frontend for the frischmuth project.
 
 ## how to run
 
