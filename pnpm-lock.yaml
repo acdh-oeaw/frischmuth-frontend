@@ -133,6 +133,9 @@ devDependencies:
   openapi-typescript:
     specifier: 7.0.0-next.8
     version: 7.0.0-next.8(typescript@5.4.2)
+  openapi-typescript-helpers:
+    specifier: ^0.0.7
+    version: 0.0.7
   postcss:
     specifier: ^8.4.35
     version: 8.4.35
@@ -6757,6 +6760,10 @@ packages:
       define-lazy-prop: 2.0.0
       is-docker: 2.2.1
       is-wsl: 2.2.0
+
+  /openapi-typescript-helpers@0.0.7:
+    resolution: {integrity: sha512-7nwlAtdA1fULipibFRBWE/rnF114q6ejRYzNvhdA/x+qTWAZhXGLc/368dlwMlyJDvCQMCnADjpzb5BS5ZmNSA==}
+    dev: true
 
   /openapi-typescript@6.7.5:
     resolution: {integrity: sha512-ZD6dgSZi0u1QCP55g8/2yS5hNJfIpgqsSGHLxxdOjvY7eIrXzj271FJEQw33VwsZ6RCtO/NOuhxa7GBWmEudyA==}
