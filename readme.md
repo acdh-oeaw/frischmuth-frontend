@@ -1,6 +1,7 @@
 # frischmuth frontend
 
-the frontend for the frischmuth project.
+the frontend for the frischmuth project. deployed at
+<https://frischmuth-frontend.acdh-ch-dev.oeaw.ac.at/>.
 
 ## how to run
 
