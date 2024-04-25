@@ -20,7 +20,7 @@
 		"lint:code:fix": "pnpm run lint:code:check --fix",
 		"lint:styles:check": "stylelint \"./**/*.@(css|vue)\" --cache --ignore-path ./.gitignore",
 		"lint:styles:fix": "pnpm run lint:styles:check --fix",
-		"postinstall": "nuxt prepare",
+		"postinstall": "nuxt prepare && pnpm run createclient",
 		"preinstall": "npx only-allow pnpm",
 		"prepare": "run-s setup",
 		"setup": "is-ci || simple-git-hooks",
@@ -31,7 +31,8 @@
 		"test:e2e:install": "playwright install --with-deps",
 		"test:e2e:ui": "playwright test --ui",
 		"types:check": "nuxt typecheck",
-		"validate": "run-p format:check lint:check types:check test test:e2e"
+		"validate": "run-p format:check lint:check types:check test test:e2e",
+		"createclient": "pnpm openapi-zod-client \"https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/swagger/schema/?format=json\" -o \"./lib/api.ts\""
 	},
 	"dependencies": {
 		"@acdh-oeaw/lib": "^0.1.7",
@@ -52,14 +53,16 @@
 		"vue-i18n": "^9.10.2",
 		"vue-i18n-routing": "^1.2.0",
 		"vue-router": "^4.3.0",
-		"zod": "^3.22.4"
+		"zod": "^3.22.4",
+		"@zodios/core": "^10.9.6",
+		"@tanstack/vue-query": "^5.32.0"
 	},
 	"devDependencies": {
 		"@acdh-oeaw/eslint-config": "^1.0.7",
 		"@acdh-oeaw/eslint-config-nuxt": "^1.0.13",
 		"@acdh-oeaw/eslint-config-playwright": "^1.0.7",
 		"@acdh-oeaw/eslint-config-vue": "^1.0.12",
-		"@acdh-oeaw/prettier-config": "^2.0.0",
+		"@acdh-oeaw/prettier-config": "^1.0.1",
 		"@acdh-oeaw/stylelint-config": "^2.0.1",
 		"@acdh-oeaw/tailwindcss-preset": "^0.0.22",
 		"@acdh-oeaw/tsconfig": "^1.0.2",
@@ -77,14 +80,15 @@
 		"lint-staged": "^15.2.2",
 		"npm-run-all2": "^6.1.2",
 		"postcss": "^8.4.36",
-		"prettier": "^3.2.5",
+		"prettier": "^2.8.8",
 		"schema-dts": "^1.1.2",
 		"simple-git-hooks": "^2.11.0",
 		"stylelint": "^16.2.1",
 		"tailwindcss": "^3.4.1",
 		"typescript": "^5.4.2",
 		"vite": "^5.1.6",
-		"vue-tsc": "^2.0.6"
+		"vue-tsc": "^2.0.6",
+		"openapi-zod-client": "^1.16.2"
 	},
 	"browserslist": {
 		"development": [
