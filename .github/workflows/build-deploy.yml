@@ -18,7 +18,7 @@ jobs:
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
             ENVIRONMENT="production"
             APP_NAME_SUFFIX=""
-          elif [ "${{ github.ref }}" = "refs/heads/develop" ]; then
+          elif [ "${{ github.ref }}" = "refs/heads/dev" ]; then
             ENVIRONMENT="development"
             APP_NAME_SUFFIX="-development"
           elif [ "${{github.event_name}}" = "pull_request"]; then
