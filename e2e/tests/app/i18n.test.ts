@@ -87,9 +87,15 @@ test.describe("i18n", () => {
 
 				expect(links).toEqual(
 					expect.arrayContaining([
-						`<link id="i18n-alt-de" rel="alternate" href="${createAbsoluteUrl(`/de${pathname}`)}" hreflang="de">`,
-						`<link id="i18n-alt-en" rel="alternate" href="${createAbsoluteUrl(`/en${pathname}`)}" hreflang="en">`,
-						`<link id="i18n-xd" rel="alternate" href="${createAbsoluteUrl(`/en${pathname}`)}" hreflang="x-default">`,
+						`<link id="i18n-alt-de" rel="alternate" href="${createAbsoluteUrl(
+							`/de${pathname}`,
+						)}" hreflang="de">`,
+						`<link id="i18n-alt-en" rel="alternate" href="${createAbsoluteUrl(
+							`/en${pathname}`,
+						)}" hreflang="en">`,
+						`<link id="i18n-xd" rel="alternate" href="${createAbsoluteUrl(
+							`/en${pathname}`,
+						)}" hreflang="x-default">`,
 					]),
 				);
 			}

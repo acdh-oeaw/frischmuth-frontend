@@ -12,7 +12,7 @@ export function usePageMetadata(params: UsePageMetadataParams): void {
 				? [
 						{ name: "description", content: params.description },
 						{ property: "og:description", content: params.description },
-					]
+				  ]
 				: []),
 		],
 	});

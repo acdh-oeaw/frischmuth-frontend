@@ -11,12 +11,12 @@ const config = isIndexable
 			Allow: "/",
 			Host: baseUrl,
 			Sitemap: String(createUrl({ baseUrl, pathname: "sitemap.xml" })),
-		}
+	  }
 	: {
 			"User-Agent": "*",
 			Disallow: "/",
 			Host: baseUrl,
-		};
+	  };
 
 const robots = Object.entries(config)
 	.map(([key, value]) => {
