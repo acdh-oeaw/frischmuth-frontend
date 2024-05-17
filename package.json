@@ -12,7 +12,6 @@
 		"analyze": "nuxt analyze",
 		"build": "nuxt build --dotenv ./.env.local",
 		"dev": "nuxt dev --dotenv ./.env.local",
-		"build": "nuxt build --dotenv ./.env.local --log-level verbose",
 		"format:check": "prettier . \"!./content/**\" --cache --check --ignore-path ./.gitignore",
 		"format:fix": "pnpm run format:check --write",
 		"lint:check": "run-p --continue-on-error \"lint:*:check\"",
