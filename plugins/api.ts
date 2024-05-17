@@ -4,7 +4,7 @@ export default defineNuxtPlugin({
 	name: "api",
 	setup() {
 		const config = useRuntimeConfig();
-		const apiBaseUrl = config.public.NUXT_PUBLIC_API_BASE_URL;
+		const apiBaseUrl = config.public.apiBaseUrl;
 		const client = createApiClient(apiBaseUrl);
 		return {
 			provide: {
