@@ -86,7 +86,7 @@ useHead({
 </script>
 
 <template>
-	<div class="grid min-h-full grid-rows-[auto_1fr_auto]">
+	<div class="grid min-h-full grid-rows-[auto_1fr_auto] font-sans">
 		<SkipLink target-id="main-content">{{ t("DefaultLayout.skip-to-main-content") }}</SkipLink>
 
 		<AppHeader />
