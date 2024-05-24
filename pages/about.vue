@@ -1,5 +1,107 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { noop } from "@acdh-oeaw/lib";
+import { useQuery } from "@tanstack/vue-query";
+
+import type { SystemPage, TeamMember } from "@/types/content";
+
+const {
+	data: team,
+	error,
+	suspense,
+} = useQuery({
+	queryKey: ["system-pages", "about-team"] as const,
+	queryFn() {
+		return queryContent<SystemPage>("system-pages", "about-team").findOne();
+	},
+});
+
+useErrorMessage(error, {
+	notFound: "Seite nicht gefunden",
+	unknown: "Interner Fehler",
+});
+
+onServerPrefetch(async () => {
+	/**
+	 * Delegate errors to the client, to avoid displaying error page with status code 500.
+	 *
+	 * @see https://github.com/TanStack/query/issues/6606
+	 * @see https://github.com/TanStack/query/issues/5976
+	 */
+	await suspense().catch(noop);
+});
+
+const { data: journey } = useQuery({
+	queryKey: ["system-pages", "about-journey"] as const,
+	queryFn() {
+		return queryContent<SystemPage>("system-pages", "about-journey").findOne();
+	},
+});
+
+const { data: memberList } = useQuery({
+	queryKey: ["team"] as const,
+	queryFn() {
+		return queryContent<TeamMember>("team").find();
+	},
+});
+</script>
 
 <template>
-	<div>Über das Projekt</div>
+	<MainContent class="container grid grid-cols-[auto_1fr] gap-8 px-40 py-8">
+		<Card class="size-64 bg-frisch-grey">
+			<CardContent class="flex size-full py-4 text-xl font-bold text-white">
+				ÜBER DAS PROJEKT
+			</CardContent>
+		</Card>
+		<div class="prose">
+			<ContentRenderer
+				v-if="team != null"
+				:value="team"
+				class="prose prose-lg max-w-3xl text-balance text-center"
+			>
+				<h3 class="font-bold text-frisch-orange">
+					{{ team.title }}
+				</h3>
+				<ContentRendererMarkdown :value="team" />
+				<template #empty></template>
+			</ContentRenderer>
+
+			<ContentRenderer
+				v-if="journey != null"
+				:value="journey"
+				class="prose prose-lg max-w-3xl text-balance text-center"
+			>
+				<ul class="list-none p-0">
+					<li
+						v-for="member of memberList"
+						:key="member._id"
+						class="grid grid-cols-[auto_1fr] gap-4 p-0"
+					>
+						<div class="not-prose relative grid size-64 place-items-center overflow-hidden">
+							<img
+								v-if="member.image != null"
+								alt=""
+								class="absolute inset-0 size-full object-cover"
+								:src="member.image"
+							/>
+						</div>
+						<div>
+							<h2 class="m-0 font-semibold text-frisch-indigo">
+								{{ member.firstName }}
+								{{ member.lastName }}
+							</h2>
+							<ContentRenderer :value="member">
+								<template #empty></template>
+							</ContentRenderer>
+						</div>
+					</li>
+				</ul>
+
+				<h3 class="font-bold text-frisch-orange">
+					{{ journey.title }}
+				</h3>
+				<ContentRendererMarkdown :value="journey" />
+				<template #empty></template>
+			</ContentRenderer>
+		</div>
+	</MainContent>
 </template>
