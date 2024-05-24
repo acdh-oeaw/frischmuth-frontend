@@ -18,8 +18,8 @@ const links = computed(() => {
 	<header class="border-b bg-frisch-marine">
 		<div class="w-full pb-4 pt-10">
 			<nav :aria-label="t('AppHeader.navigation-main')">
-				<ul class="container grid grid-cols-2 items-end text-frisch-orange" role="list">
-					<div class="text-2xl font-extrabold">
+				<ul class="container grid grid-cols-2 items-end" role="list">
+					<div class="text-2xl font-extrabold text-frisch-orange">
 						<NavLink :href="homeLink.href">
 							Digitales Archiv
 							<br />
@@ -36,7 +36,11 @@ const links = computed(() => {
 					>
 						<li v-for="(link, key, index) of links" :key="key" class="flex shrink-0 gap-x-4">
 							<Separator v-if="index > 0" class="h-5 w-0.5 bg-frisch-orange" />
-							<NavLink :href="link.href" class="hover:text-frisch-indigo">
+							<NavLink
+								:href="link.href"
+								:class="route.path === `/${key}` ? 'text-frisch-indigo' : 'text-frisch-orange'"
+								class="hover:text-frisch-indigo"
+							>
 								{{ link.label }}
 							</NavLink>
 						</li>
