@@ -45,7 +45,7 @@ const config: Config = {
 		},
 		extend: {
 			fontFamily: {
-				"font-sans": ["Inter Variable", "system-ui", "sans-serif"],
+				sans: ["Inter Variable", "system-ui", "sans-serif"],
 			},
 			colors: {
 				"frisch-indigo": "rgb(20 28 84 / <alpha-value>)",
