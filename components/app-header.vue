@@ -26,7 +26,14 @@ const links = computed(() => {
 							Barbara Frischmuth
 						</NavLink>
 					</div>
-					<div v-if="route.path !== '/'" class="ml-auto flex gap-x-4 font-semibold">
+					<div
+						:class="
+							route.path !== '/'
+								? 'opacity-100 translate-y-0'
+								: 'opacity-0 translate-y-5 pointer-events-none'
+						"
+						class="ml-auto flex gap-x-4 font-semibold transition"
+					>
 						<li v-for="(link, key, index) of links" :key="key" class="flex shrink-0 gap-x-4">
 							<Separator v-if="index > 0" class="h-5 w-0.5 bg-frisch-orange" />
 							<NavLink :href="link.href" class="hover:text-frisch-indigo">
