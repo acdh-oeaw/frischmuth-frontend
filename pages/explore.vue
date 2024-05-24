@@ -3,9 +3,9 @@ import { Card } from "../components/ui/card";
 </script>
 
 <template>
-	<MainContent class="container">
-		<div class="mx-auto flex size-full max-h-full grid-cols-3 items-center gap-4 font-semibold">
-			<div class="mx-auto grid max-h-full max-w-7xl gap-4 font-bold grid-fluid-cols-60">
+	<MainContent class="container py-8">
+		<div class="mx-auto flex size-full max-h-full items-center justify-center font-semibold">
+			<div class="mx-auto grid max-h-full w-[70%] grid-cols-5 gap-4 text-2xl font-bold">
 				<Card
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-[105%]"
 				>

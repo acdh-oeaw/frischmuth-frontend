@@ -4,19 +4,21 @@ import { Card, CardContent } from "@/components/ui/card";
 
 <template>
 	<MainContent class="container h-full py-8">
-		<div class="mx-auto flex size-full w-[850px] grid-cols-3 gap-4 text-xl font-bold">
+		<div
+			class="mx-auto grid size-full w-1/2 grid-cols-[1fr_1fr_1fr] justify-center gap-4 text-2xl font-bold"
+		>
 			<NuxtLink href="/search">
-				<Card class="h-full w-[280px] bg-frisch-orange transition hover:scale-[105%]">
+				<Card class="size-full bg-frisch-orange transition hover:scale-[105%]">
 					<CardContent class="flex size-full items-center text-white">SUCHE</CardContent>
 				</Card>
 			</NuxtLink>
 			<NuxtLink href="/explore">
-				<Card class="h-full w-[280px] bg-frisch-indigo transition hover:scale-[105%]">
+				<Card class="size-full bg-frisch-indigo transition hover:scale-[105%]">
 					<CardContent class="flex size-full items-center text-white">ENTDECKEN</CardContent>
 				</Card>
 			</NuxtLink>
 			<NuxtLink href="/about">
-				<Card class="h-full w-[280px] bg-frisch-grey transition hover:scale-[105%]">
+				<Card class="size-full bg-frisch-grey transition hover:scale-[105%]">
 					<CardContent class="flex size-full items-center text-white">ÜBER DAS PROJEKT</CardContent>
 				</Card>
 			</NuxtLink>

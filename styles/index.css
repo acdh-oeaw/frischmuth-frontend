@@ -8,3 +8,7 @@ body,
 	block-size: 100%;
 	isolation: isolate;
 }
+
+#__nuxt {
+	overflow-y: scroll;
+}
