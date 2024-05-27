@@ -33,7 +33,7 @@
 		"test:e2e:update-snapshots": "playwright test --update-snapshots",
 		"types:check": "nuxt typecheck",
 		"validate": "run-p format:check lint:check types:check test test:e2e",
-		"createclient": "pnpm openapi-zod-client \"https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/swagger/schema/?format=json\"  -o \"./lib/api.ts\""
+		"createclient": "pnpm openapi-zod-client \"https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/swagger/schema/?format=json\" -o \"./lib/api.ts\""
 	},
 	"dependencies": {
 		"@acdh-oeaw/lib": "^0.1.7",
@@ -49,8 +49,6 @@
 		"@vueuse/core": "^10.9.0",
 		"@vueuse/nuxt": "^10.9.0",
 		"@zodios/core": "^10.9.6",
-		"add": "^2.0.6",
-		"card": "^2.5.4",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"cva": "^1.0.0-beta.1",
@@ -63,7 +61,6 @@
 		"shadcn-vue": "^0.10.5",
 		"tailwind-merge": "^2.3.0",
 		"tailwindcss-animate": "^1.0.7",
-		"ui": "link:components/ui",
 		"vue": "^3.4.21",
 		"vue-i18n": "^9.10.2",
 		"vue-i18n-routing": "^1.2.0",
