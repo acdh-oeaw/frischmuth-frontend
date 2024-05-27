@@ -4,6 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 defineRouteRules({
 	prerender: true,
 });
+
+const t = useTranslations();
+
+usePageMetadata({
+	title: t("ImprintPage.meta.title"),
+});
 </script>
 
 <template>

@@ -2,6 +2,13 @@
 import { useQuery } from "@tanstack/vue-query";
 
 defineRouteRules({ prerender: true });
+
+const t = useTranslations();
+
+usePageMetadata({
+	title: t("SearchPage.meta.title"),
+});
+
 const { $api } = useNuxtApp();
 const { data, isFetching } = useQuery({
 	queryKey: ["worklist"] as const,

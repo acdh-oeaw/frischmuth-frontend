@@ -1,5 +1,11 @@
 <script lang="ts" setup>
 import { Card } from "../components/ui/card";
+
+const t = useTranslations();
+
+usePageMetadata({
+	title: t("ExplorePage.meta.title"),
+});
 </script>
 
 <template>

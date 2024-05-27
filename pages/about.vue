@@ -4,6 +4,12 @@ import { useQuery } from "@tanstack/vue-query";
 
 import type { SystemPage, TeamMember } from "@/types/content";
 
+const t = useTranslations();
+
+usePageMetadata({
+	title: t("AboutPage.meta.title"),
+});
+
 const {
 	data: team,
 	error,

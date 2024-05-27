@@ -21,6 +21,6 @@ export class IndexPage {
 	}
 
 	async goto() {
-		await this.page.goto(`/${this.locale}`);
+		await this.page.goto("/");
 	}
 }
