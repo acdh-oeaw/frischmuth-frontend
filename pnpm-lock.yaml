@@ -32,6 +32,9 @@ dependencies:
   '@tanstack/vue-query':
     specifier: ^5.32.0
     version: 5.32.0(vue@3.4.25)
+  '@tanstack/vue-table':
+    specifier: ^8.17.3
+    version: 8.17.3(vue@3.4.25)
   '@vueuse/core':
     specifier: ^10.9.0
     version: 10.9.0(vue@3.4.25)
@@ -2318,6 +2321,11 @@ packages:
     resolution: {integrity: sha512-Z3flEgCat55DRXU5UMwYU1U+DgFZKA3iufyOKs+II7iRAo0uXkeU7PH5e6sOH1CGEag0IpKmZxlUFpCg6roSKw==}
     dev: false
 
+  /@tanstack/table-core@8.17.3:
+    resolution: {integrity: sha512-mPBodDGVL+fl6d90wUREepHa/7lhsghg2A3vFpakEhrhtbIlgNAZiMr7ccTgak5qbHqF14Fwy+W1yFWQt+WmYQ==}
+    engines: {node: '>=12'}
+    dev: false
+
   /@tanstack/virtual-core@3.5.0:
     resolution: {integrity: sha512-KnPRCkQTyqhanNC0K63GBG3wA8I+D1fQuVnAvcBF8f13akOKeQp1gSbu6f77zCxhEk727iV5oQnbHLYzHrECLg==}
     dev: false
@@ -2336,6 +2344,16 @@ packages:
       '@vue/devtools-api': 6.6.1
       vue: 3.4.25(typescript@5.4.5)
       vue-demi: 0.14.7(vue@3.4.25)
+    dev: false
+
+  /@tanstack/vue-table@8.17.3(vue@3.4.25):
+    resolution: {integrity: sha512-19amh2JJR4cFKmi3ZQERwwJg1ucoLm955Xg+RzypCMn6/dmHEzDu2TkVH/riaZFw5JbVfl17MoobMjWNE/fAEg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      vue: '>=3.2'
+    dependencies:
+      '@tanstack/table-core': 8.17.3
+      vue: 3.4.25(typescript@5.4.5)
     dev: false
 
   /@tanstack/vue-virtual@3.5.0(vue@3.4.25):

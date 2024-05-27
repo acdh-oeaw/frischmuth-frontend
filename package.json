@@ -45,6 +45,7 @@
 		"@radix-icons/vue": "^1.0.0",
 		"@tailwindcss/typography": "^0.5.13",
 		"@tanstack/vue-query": "^5.32.0",
+		"@tanstack/vue-table": "^8.17.3",
 		"@vueuse/core": "^10.9.0",
 		"@vueuse/nuxt": "^10.9.0",
 		"@zodios/core": "^10.9.6",

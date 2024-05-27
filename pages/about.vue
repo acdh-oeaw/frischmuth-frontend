@@ -72,7 +72,7 @@ const { data: memberList } = useQuery({
 				:value="journey"
 				class="prose prose-lg text-balance text-center"
 			>
-				<ul class="list-none px-0 py-8">
+				<ul class="list-none px-0 pt-8">
 					<li
 						v-for="member of memberList"
 						:key="member._id"
