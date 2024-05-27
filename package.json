@@ -33,7 +33,7 @@
 		"test:e2e:update-snapshots": "playwright test --update-snapshots",
 		"types:check": "nuxt typecheck",
 		"validate": "run-p format:check lint:check types:check test test:e2e",
-		"createclient": "pnpm openapi-zod-client \"./lib/APISgenericAPI.json\" -o \"./lib/api.ts\""
+		"createclient": "pnpm openapi-zod-client \"https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/swagger/schema/?format=json\"  -o \"./lib/api.ts\""
 	},
 	"dependencies": {
 		"@acdh-oeaw/lib": "^0.1.7",
