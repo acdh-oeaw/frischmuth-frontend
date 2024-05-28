@@ -23,6 +23,46 @@ const columns: Array<ColumnDef<SearchResults["results"][number]>> = [
 			return h("div", row.getValue("title"));
 		},
 	},
+	{
+		accessorKey: "work_type",
+		header: () => h("div", "Typ"),
+		cell: ({ row }) => {
+			const workType = row.getValue("work_type");
+			return h("div", {}, workType.map((type) => type.name).join(", "));
+		},
+	},
+	{
+		accessorKey: "expression_data",
+		header: () => h("div", "Edition"),
+		cell: ({ row }) => {
+			const edition = row.getValue("expression_data");
+			return h("div", {}, edition.map((type) => type.edition).join(", "));
+		},
+	},
+	{
+		accessorKey: "expression_data",
+		header: () => h("div", "Ort"),
+		cell: ({ row }) => {
+			const placeOfPublication = row.getValue("expression_data");
+			return h("div", {}, placeOfPublication.map((type) => type.place_of_publication).join(", "));
+		},
+	},
+	{
+		accessorKey: "expression_data",
+		header: () => h("div", "Verlag"),
+		cell: ({ row }) => {
+			const publisher = row.getValue("expression_data");
+			return h("div", {}, publisher.map((type) => type.publisher).join(", "));
+		},
+	},
+	{
+		accessorKey: "expression_data",
+		header: () => h("div", "Veröffentlichungsdatum"),
+		cell: ({ row }) => {
+			const publicationDate = row.getValue("expression_data");
+			return h("div", {}, publicationDate.map((type) => type.publication_date).join(", "));
+		},
+	},
 ];
 
 const table = useVueTable({

@@ -14,7 +14,7 @@ const { data, isFetching } = useQuery({
 	queryKey: ["worklist"] as const,
 	async queryFn() {
 		return $api.api_work_preview_list({
-			queries: { limit: 10, offset: 0 },
+			queries: { limit: 20, offset: 0 },
 		});
 	},
 });
