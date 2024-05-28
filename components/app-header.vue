@@ -22,7 +22,7 @@ const links = computed(() => {
 					<div class="text-4xl font-semibold text-frisch-orange">
 						<NavLink :href="homeLink.href">
 							Digitales Archiv
-							<br />
+							<br aria-hidden="true" />
 							Barbara Frischmuth
 						</NavLink>
 					</div>

@@ -11,7 +11,7 @@
 	"scripts": {
 		"analyze": "nuxt analyze",
 		"build": "nuxt build --dotenv ./.env.local",
-		"createclient": "pnpm openapi-zod-client \"https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/swagger/schema/?format=json\" -o \"./lib/api.ts\"",
+		"createclient": "openapi-zod-client \"https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/swagger/schema/?format=json\" -o \"./lib/api.ts\"",
 		"dev": "nuxt dev --dotenv ./.env.local",
 		"format:check": "prettier . \"!./content/**\" --cache --check --ignore-path ./.gitignore",
 		"format:fix": "pnpm run format:check --write",
