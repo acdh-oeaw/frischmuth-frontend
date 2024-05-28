@@ -9,8 +9,8 @@ import { IndexPage } from "@/e2e/lib/fixtures/index-page";
 interface Fixtures {
 	createAccessibilityScanner: () => Promise<AccessibilityScanner>;
 	createI18n: (locale: Locale) => Promise<I18n>;
-	createImprintPage: (locale: Locale) => Promise<WithI18n<{ imprintPage: ImprintPage }>>;
-	createIndexPage: (locale: Locale) => Promise<WithI18n<{ indexPage: IndexPage }>>;
+	createImprintPage: (locale?: Locale) => Promise<WithI18n<{ imprintPage: ImprintPage }>>;
+	createIndexPage: (locale?: Locale) => Promise<WithI18n<{ indexPage: IndexPage }>>;
 }
 
 export const test = base.extend<Fixtures>({

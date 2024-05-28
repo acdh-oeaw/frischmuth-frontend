@@ -1,4 +1,10 @@
 {
+	"AboutPage": {
+		"meta": {
+			"title": "Über das Projekt"
+		},
+		"title": "Über das Projekt"
+	},
 	"AppFooter": {
 		"links": {
 			"imprint": "Impressum"
@@ -10,14 +16,6 @@
 			"home": "Startseite"
 		},
 		"navigation-main": "Hauptnavigation"
-	},
-	"ColorSchemeToggle": {
-		"change-color-scheme": "Farbschema ändern",
-		"color-schemes": {
-			"dark": "Dunkel",
-			"light": "Hell",
-			"system": "System"
-		}
 	},
 	"DefaultLayout": {
 		"meta": {
@@ -36,6 +34,12 @@
 		"title": "Etwas ist schief gelaufen!",
 		"try-again": "Erneut versuchen"
 	},
+	"ExplorePage": {
+		"meta": {
+			"title": "Entdecken"
+		},
+		"title": "Entdecken"
+	},
 	"ImprintPage": {
 		"meta": {
 			"title": "Impressum"
@@ -48,10 +52,6 @@
 		},
 		"title": "Startseite"
 	},
-	"LocaleSwitcher": {
-		"current-locale": "Aktuelle Sprache: {locale}",
-		"switch-locale": "Zu {locale} wechseln"
-	},
 	"Manifest": {
 		"name": "ACDH-CH App",
 		"short-name": "ACDH-CH App",
@@ -62,5 +62,11 @@
 			"title": "Seite nicht gefunden"
 		},
 		"title": "Seite nicht gefunden"
+	},
+	"SearchPage": {
+		"meta": {
+			"title": "Suche"
+		},
+		"title": "Suche"
 	}
 }

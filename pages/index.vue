@@ -1,25 +1,7 @@
 <script lang="ts" setup>
-import { useQuery } from "@tanstack/vue-query";
-
-defineRouteRules({
-	prerender: true,
-});
+import { Card, CardContent } from "@/components/ui/card";
 
 const t = useTranslations();
-const { $api } = useNuxtApp();
-
-const { data, isFetching } = useQuery({
-	queryKey: ["worklist"] as const,
-	queryFn: async () => {
-		const response = await $api.api_work_preview_list({
-			queries: {
-				limit: 10,
-				offset: 0,
-			},
-		});
-		return response;
-	},
-});
 
 usePageMetadata({
 	title: t("IndexPage.meta.title"),
@@ -27,11 +9,25 @@ usePageMetadata({
 </script>
 
 <template>
-	<MainContent class="container py-8">
-		<h1>{{ t("IndexPage.title") }}</h1>
-		<span v-if="isFetching">Loading...</span>
-		<span v-else>
-			{{ data }}
-		</span>
+	<MainContent class="container h-full py-8">
+		<div
+			class="mx-auto grid size-full w-1/2 grid-cols-[1fr_1fr_1fr] justify-center gap-4 text-2xl font-bold"
+		>
+			<NuxtLink href="/search">
+				<Card class="size-full bg-frisch-orange transition hover:scale-[105%]">
+					<CardContent class="flex size-full items-center text-white">SUCHE</CardContent>
+				</Card>
+			</NuxtLink>
+			<NuxtLink href="/explore">
+				<Card class="size-full bg-frisch-indigo transition hover:scale-[105%]">
+					<CardContent class="flex size-full items-center text-white">ENTDECKEN</CardContent>
+				</Card>
+			</NuxtLink>
+			<NuxtLink href="/about">
+				<Card class="size-full bg-frisch-grey transition hover:scale-[105%]">
+					<CardContent class="flex size-full items-center text-white">ÜBER DAS PROJEKT</CardContent>
+				</Card>
+			</NuxtLink>
+		</div>
 	</MainContent>
 </template>

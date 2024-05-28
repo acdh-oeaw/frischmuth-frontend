@@ -23,7 +23,7 @@ export default defineNuxtConfig({
 		locales: Object.keys(localesMap),
 		markdown: {},
 	},
-	css: ["@fontsource-variable/inter/slnt.css", "tailwindcss/tailwind.css", "@/styles/index.css"],
+	css: ["@fontsource-variable/inter/slnt.css", "@/styles/shadcn-ui.css", "@/styles/index.css"],
 	devtools: {
 		enabled: process.env.NODE_ENV === "development",
 	},
@@ -54,7 +54,7 @@ export default defineNuxtConfig({
 		langDir: "./messages",
 		lazy: true,
 		locales: Object.values(localesMap),
-		strategy: "prefix",
+		strategy: "prefix_except_default",
 		vueI18n: "./i18n.config.ts",
 	},
 	imports: {

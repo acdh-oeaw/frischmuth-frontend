@@ -2,7 +2,13 @@
 	--font-body: "Inter Variable";
 }
 
+html,
+body,
 #__nuxt {
 	block-size: 100%;
 	isolation: isolate;
+}
+
+#__nuxt {
+	overflow-y: scroll;
 }

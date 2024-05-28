@@ -21,6 +21,6 @@ export class ImprintPage {
 	}
 
 	async goto() {
-		await this.page.goto(`/${this.locale}/imprint`);
+		await this.page.goto("/imprint");
 	}
 }

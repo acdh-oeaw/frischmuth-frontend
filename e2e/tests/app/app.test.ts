@@ -103,35 +103,8 @@ test.describe("app", () => {
 		expect(status).toEqual(200);
 	});
 
-	test.describe("should set color mode according to system preference", () => {
-		test.use({ colorScheme: "no-preference" });
-
-		test("with no preference", async ({ page }) => {
-			await page.goto("/en");
-			await expect(page.locator("html")).toHaveAttribute("data-ui-color-scheme", "light");
-		});
-	});
-
-	test.describe("should set color mode according to system preference", () => {
-		test.use({ colorScheme: "light" });
-
-		test("in light mode", async ({ page }) => {
-			await page.goto("/en");
-			await expect(page.locator("html")).toHaveAttribute("data-ui-color-scheme", "light");
-		});
-	});
-
-	test.describe("should set color mode according to system preference", () => {
-		test.use({ colorScheme: "dark" });
-
-		test("in dark mode", async ({ page }) => {
-			await page.goto("/en");
-			await expect(page.locator("html")).toHaveAttribute("data-ui-color-scheme", "dark");
-		});
-	});
-
 	test("should skip to main content with skip-link", async ({ createIndexPage }) => {
-		const locale = "en";
+		const locale = "de";
 
 		const { indexPage } = await createIndexPage(locale);
 		await indexPage.goto();
@@ -141,5 +114,10 @@ test.describe("app", () => {
 
 		await indexPage.skipLink.click();
 		await expect(indexPage.mainContent).toBeFocused();
+	});
+
+	test("should set `lang` attribute on `html` element", async ({ page }) => {
+		await page.goto("/");
+		await expect(page.locator("html")).toHaveAttribute("lang", "de");
 	});
 });

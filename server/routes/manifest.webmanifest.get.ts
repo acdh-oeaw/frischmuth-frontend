@@ -1,6 +1,6 @@
 import { createI18n } from "vue-i18n";
 
-import en from "@/messages/en.json";
+import en from "@/messages/de.json";
 
 const locale = "en";
 
