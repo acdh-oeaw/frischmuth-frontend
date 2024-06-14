@@ -20,7 +20,9 @@ const delegatedProps = computed(() => {
 	return delegated;
 });
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits);
+// FIXME: fix types later!
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const forwarded = useForwardPropsEmits(delegatedProps, emits) as any;
 </script>
 
 <template>

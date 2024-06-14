@@ -21,8 +21,9 @@ const columns: Array<ColumnDef<SearchResults["results"][number]>> = [
 		accessorKey: "work_type",
 		header: () => h("div", "Typ"),
 		cell: ({ row }) => {
-			const workType = row.getValue("work_type");
-			return h("div", {}, workType.map((type) => type.name).join(", "));
+			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+			const workType = row.getValue("work_type") as Array<any> | undefined;
+			return h("div", {}, workType?.map((type) => type.name).join(", "));
 		},
 	},
 	{
@@ -36,32 +37,36 @@ const columns: Array<ColumnDef<SearchResults["results"][number]>> = [
 		accessorKey: "expression_data",
 		header: () => h("div", "Edition"),
 		cell: ({ row }) => {
-			const edition = row.getValue("expression_data");
-			return h("div", {}, edition.map((type) => type.edition).join(", "));
+			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+			const edition = row.getValue("expression_data") as Array<any> | undefined;
+			return h("div", {}, edition?.map((type) => type.edition).join(", "));
 		},
 	},
 	{
 		accessorKey: "expression_data",
 		header: () => h("div", "Ort"),
 		cell: ({ row }) => {
-			const placeOfPublication = row.getValue("expression_data");
-			return h("div", {}, placeOfPublication.map((type) => type.place_of_publication).join(", "));
+			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+			const placeOfPublication = row.getValue("expression_data") as Array<any> | undefined;
+			return h("div", {}, placeOfPublication?.map((type) => type.place_of_publication).join(", "));
 		},
 	},
 	{
 		accessorKey: "expression_data",
 		header: () => h("div", "Verlag"),
 		cell: ({ row }) => {
-			const publisher = row.getValue("expression_data");
-			return h("div", {}, publisher.map((type) => type.publisher).join(", "));
+			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+			const publisher = row.getValue("expression_data") as Array<any> | undefined;
+			return h("div", {}, publisher?.map((type) => type.publisher).join(", "));
 		},
 	},
 	{
 		accessorKey: "expression_data",
 		header: () => h("div", "Veröffentlichungsdatum"),
 		cell: ({ row }) => {
-			const publicationDate = row.getValue("expression_data");
-			return h("div", {}, publicationDate.map((type) => type.publication_date).join(", "));
+			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+			const publicationDate = row.getValue("expression_data") as Array<any> | undefined;
+			return h("div", {}, publicationDate?.map((type) => type.publication_date).join(", "));
 		},
 	},
 ];

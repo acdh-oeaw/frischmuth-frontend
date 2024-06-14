@@ -9,6 +9,7 @@ const sliderValue = ref([slider.min, slider.max]);
 			<div class="pb-2 text-xl">Sortierung</div>
 			<Separator class="bg-frisch-orange"></Separator>
 		</div>
+		<!-- FIX ME: Make checkbox groups!-->
 		<div class="pb-4">
 			<div>Medium</div>
 			<div class="grid grid-cols-2 py-3 text-sm font-normal">
