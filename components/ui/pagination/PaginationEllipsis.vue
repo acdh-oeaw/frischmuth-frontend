@@ -20,7 +20,7 @@ const delegatedProps = computed(() => {
 		:class="cn('w-9 h-9 flex items-center justify-center', props.class)"
 	>
 		<slot>
-			<DotsHorizontalIcon />
+			<DotsHorizontalIcon class="size-5" />
 		</slot>
 	</PaginationEllipsis>
 </template>
