@@ -1,28 +1,82 @@
 <script setup lang="ts">
-import { useQuery } from "@tanstack/vue-query";
+import {
+	Pagination,
+	PaginationEllipsis,
+	PaginationFirst,
+	PaginationLast,
+	PaginationList,
+	PaginationListItem,
+	PaginationNext,
+	PaginationPrev,
+} from "@/components/ui/pagination";
 
 defineRouteRules({ prerender: true });
 
-const t = useTranslations();
+function onUpdatePage(newPage: number) {
+	offset.value = (newPage - 1) * limit;
+}
 
-usePageMetadata({
-	title: t("SearchPage.meta.title"),
-});
+const offset = ref(0);
+const limit = 20;
 
-const { $api } = useNuxtApp();
-const { data, isFetching } = useQuery({
-	queryKey: ["worklist"] as const,
-	async queryFn() {
-		return $api.api_work_preview_list({
-			queries: { limit: 20, offset: 0 },
-		});
-	},
-});
+const { data } = useGetSearchResults(
+	computed(() => {
+		return {
+			limit: limit,
+			offset: offset.value,
+		};
+	}),
+);
 </script>
 
 <template>
-	<MainContent class="container py-8">
-		<span v-if="isFetching">Loading...</span>
-		<DataTable v-if="data != null" :data="data.results"></DataTable>
-	</MainContent>
+	<div class="h-full bg-frisch-marine pr-20">
+		<div class="grid h-full grid-cols-[1fr_3fr]">
+			<SearchForm search=""></SearchForm>
+			<div
+				v-if="data != null"
+				class="grid w-full grid-rows-[auto_1fr_auto] items-center bg-white p-8"
+			>
+				<div class="pt-9 font-semibold text-frisch-indigo">Suchergebnisse ({{ data.count }})</div>
+				<DataTable :data="data.results" :results-total="data.count"></DataTable>
+				<div class="flex justify-center p-8">
+					<Pagination
+						v-if="data?.count != null"
+						v-slot="{ page }"
+						class="justify-self-center"
+						:sibling-count="1"
+						:show-edges="true"
+						:total="data.count"
+						:items-per-page="limit"
+						@update:page="onUpdatePage"
+					>
+						<PaginationList v-slot="{ items }" class="flex items-center gap-1">
+							<PaginationFirst />
+							<PaginationPrev />
+
+							<template v-for="(item, index) of items">
+								<PaginationListItem
+									v-if="item.type === 'page'"
+									:key="index"
+									as-child
+									:value="item.value"
+								>
+									<Button
+										class="size-10 p-0"
+										:variant="item.value === page ? 'paginationActive' : 'pagination'"
+									>
+										{{ item.value }}
+									</Button>
+								</PaginationListItem>
+								<PaginationEllipsis v-else :key="item.type" :index="index" />
+							</template>
+
+							<PaginationNext :disabled="offset >= data.count - limit" />
+							<PaginationLast :disabled="offset >= data.count - limit" />
+						</PaginationList>
+					</Pagination>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
