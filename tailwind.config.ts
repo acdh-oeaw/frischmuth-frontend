@@ -23,7 +23,7 @@ const fluidColumnsPlugin = createPlugin(({ addUtilities, matchUtilities, theme }
 	});
 });
 
-const config: Config = {
+const config = {
 	content: [
 		"./app.vue",
 		"./error.vue",
@@ -34,22 +34,21 @@ const config: Config = {
 		"./styles/**/*.css",
 	],
 	darkMode: ["selector", '[data-ui-color-scheme="dark"]'],
-	prefix: "",
 	theme: {
 		container: {
 			center: true,
-			padding: "5rem",
+			padding: "2rem",
 			screens: {
-				"2xl": "max-width",
+				"2xl": "1440px",
 			},
 		},
 		extend: {
 			fontFamily: {
-				sans: ["Inter Variable", "system-ui", "sans-serif"],
+				sans: ["var(--font-body, ui-sans-serif)", "system-ui", "sans-serif"],
 			},
 			colors: {
 				"frisch-indigo": "rgb(20 28 84 / <alpha-value>)",
-				"frisch-grey": "rgb(148 151 170 / <alpha-value>)",
+				"frisch-grey": "rgb(144 147 167 / <alpha-value>)",
 				"frisch-orange": "rgb(236 81 0 / <alpha-value>)",
 				"frisch-orange-searchform": "rgb(253 234 226 / <alpha-value>)",
 				"frisch-orange-light": "rgb(231 171 147 / <alpha-value>)",
@@ -122,6 +121,6 @@ const config: Config = {
 		},
 	},
 	plugins: [animate, typography, fluidColumnsPlugin],
-};
+} satisfies Config;
 
 export default config;

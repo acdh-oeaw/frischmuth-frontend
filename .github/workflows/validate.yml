@@ -5,6 +5,7 @@ concurrency:
   cancel-in-progress: true
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
@@ -33,7 +34,7 @@ jobs:
       # Necessary because `actions/setup-node` does not yet support `corepack`.
       # @see https://github.com/actions/setup-node/issues/531
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -78,8 +79,8 @@ jobs:
       - name: Build app
         run: pnpm run build
         env:
-          NUXT_PUBLIC_APP_BASE_URL: "http://localhost:3000"
           NUXT_PUBLIC_API_BASE_URL: "${{vars.NUXT_PUBLIC_API_BASE_URL}}"
+          NUXT_PUBLIC_APP_BASE_URL: "http://localhost:3000"
           NUXT_PUBLIC_REDMINE_ID: "${{ vars.SERVICE_ID }}"
 
       - name: Run e2e tests

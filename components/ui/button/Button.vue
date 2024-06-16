@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { Primitive, type PrimitiveProps } from "radix-vue";
 import type { HTMLAttributes } from "vue";
 

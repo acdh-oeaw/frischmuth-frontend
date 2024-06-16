@@ -1,31 +1,32 @@
 <script lang="ts" setup>
-import { Card, CardContent } from "@/components/ui/card";
+defineRouteRules({
+	prerender: true,
+});
 
 const t = useTranslations();
 
 usePageMetadata({
 	title: t("IndexPage.meta.title"),
 });
+
+const links = {
+	search: { href: { path: "/search" }, label: "Suche", color: "bg-frisch-orange" },
+	explore: { href: { path: "/explore" }, label: "Entdecken", color: "bg-frisch-indigo" },
+	about: { href: { path: "/about" }, label: "Über das Projekt", color: "bg-frisch-grey" },
+};
 </script>
 
 <template>
 	<MainContent class="container h-full py-8">
+		<h1 class="sr-only">{{ t("IndexPage.title") }}</h1>
 		<div
-			class="mx-auto grid size-full w-1/2 grid-cols-[1fr_1fr_1fr] justify-center gap-4 text-2xl font-bold"
+			class="grid h-full gap-4 text-2xl font-bold sm:grid-cols-[repeat(3,minmax(0,250px))] sm:justify-center"
 		>
-			<NuxtLink href="/search">
-				<Card class="size-full bg-frisch-orange transition hover:scale-[105%]">
-					<CardContent class="flex size-full items-center text-white">SUCHE</CardContent>
-				</Card>
-			</NuxtLink>
-			<NuxtLink href="/explore">
-				<Card class="size-full bg-frisch-indigo transition hover:scale-[105%]">
-					<CardContent class="flex size-full items-center text-white">ENTDECKEN</CardContent>
-				</Card>
-			</NuxtLink>
-			<NuxtLink href="/about">
-				<Card class="size-full bg-frisch-grey transition hover:scale-[105%]">
-					<CardContent class="flex size-full items-center text-white">ÜBER DAS PROJEKT</CardContent>
+			<NuxtLink v-for="(link, id) of links" :key="id" :href="link.href">
+				<Card class="size-full transition hover:scale-105" :class="link.color">
+					<CardContent class="flex size-full items-center uppercase text-white">
+						{{ link.label }}
+					</CardContent>
 				</Card>
 			</NuxtLink>
 		</div>

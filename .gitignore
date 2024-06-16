@@ -2,8 +2,8 @@
 node_modules/
 .pnpm-store/
 
-#generated libs
-lib/*
+# generated libs
+/lib/*
 
 # logs
 *.log

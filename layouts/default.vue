@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
+import inter from "@fontsource-variable/inter/files/inter-latin-slnt-normal.woff2?url";
 import type { WebSite, WithContext } from "schema-dts";
 
 const env = useRuntimeConfig();
 
 const locale = useLocale();
 const t = useTranslations();
+
+const router = useRouter();
 
 const i18nHead = useLocaleHead({
 	addDirAttribute: true,
@@ -20,10 +23,10 @@ useHead({
 		}),
 	},
 	titleTemplate: computed(() => {
-		return ["%s", t("DefaultLayout.meta.title")].join(" | ");
+		return ["%s", t("Metadata.title")].join(" | ");
 	}),
 	title: computed(() => {
-		return t("DefaultLayout.meta.title");
+		return t("Metadata.title");
 	}),
 	link: computed(() => {
 		return [
@@ -31,16 +34,17 @@ useHead({
 			{ href: "/icon.svg", rel: "icon", type: "image/svg+xml", sizes: "any" },
 			{ href: "/apple-icon.png", rel: "apple-touch-icon" },
 			{ href: "/manifest.webmanifest", rel: "manifest" },
+			{ href: inter, rel: "preload", as: "font", type: "font/woff2", crossorigin: true },
 			...(i18nHead.value.link ?? []),
 		];
 	}),
 	meta: computed(() => {
-		return [
-			{ name: "description", content: t("DefaultLayout.meta.description") },
+		const meta = [
+			{ name: "description", content: t("Metadata.description") },
 			{ property: "og:type", content: "website" },
-			{ property: "og:title", content: t("DefaultLayout.meta.title") },
-			{ property: "og:site_name", content: t("DefaultLayout.meta.title") },
-			{ property: "og:description", content: t("DefaultLayout.meta.description") },
+			{ property: "og:title", content: t("Metadata.title") },
+			{ property: "og:site_name", content: t("Metadata.title") },
+			{ property: "og:description", content: t("Metadata.description") },
 			{
 				property: "og:image",
 				content: String(
@@ -51,17 +55,23 @@ useHead({
 				),
 			},
 			{ name: "twitter:card", content: "summary_large_image" },
-			{ name: "twitter:creator", content: "@acdh_oeaw" },
-			{ name: "twitter:site", content: "@acdh_oeaw" },
+			{ name: "twitter:creator", content: t("Metadata.twitter") },
+			{ name: "twitter:site", content: t("Metadata.twitter") },
 			...(i18nHead.value.meta ?? []),
 		];
+
+		if (isNonEmptyString(env.public.googleSiteVerification)) {
+			meta.push({ name: "google-site-verification", content: env.public.googleSiteVerification });
+		}
+
+		return meta;
 	}),
 	script: computed(() => {
 		const jsonLd: WithContext<WebSite> = {
 			"@context": "https://schema.org",
 			"@type": "WebSite",
-			name: t("DefaultLayout.meta.title"),
-			description: t("DefaultLayout.meta.description"),
+			name: t("Metadata.title"),
+			description: t("Metadata.description"),
 		};
 
 		const scripts = [
@@ -83,10 +93,14 @@ useHead({
 		return scripts;
 	}),
 });
+
+router.afterEach((to, from) => {
+	trackPageView(to, from);
+});
 </script>
 
 <template>
-	<div class="grid min-h-full grid-rows-[auto_1fr_auto] font-sans">
+	<div class="grid min-h-full grid-rows-[auto_1fr_auto]">
 		<SkipLink target-id="main-content">{{ t("DefaultLayout.skip-to-main-content") }}</SkipLink>
 
 		<AppHeader />
@@ -95,6 +109,6 @@ useHead({
 		</ErrorBoundary>
 		<AppFooter />
 
-		<RouteAnnouncer />
+		<NuxtRouteAnnouncer />
 	</div>
 </template>

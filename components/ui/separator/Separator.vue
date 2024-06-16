@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { Separator, type SeparatorProps } from "radix-vue";
 import { computed, type HTMLAttributes } from "vue";
 

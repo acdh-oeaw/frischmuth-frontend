@@ -4,6 +4,9 @@
 node_modules/
 .pnpm-store/
 
+# generated libs
+/lib/*
+
 # logs
 *.log
 

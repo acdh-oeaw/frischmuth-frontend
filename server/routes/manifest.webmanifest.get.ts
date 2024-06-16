@@ -1,10 +1,15 @@
 import { createI18n } from "vue-i18n";
 
-import en from "@/messages/de.json";
+import de from "@/messages/de/index.json";
+import metadata from "@/messages/de/metadata.json";
 
-const locale = "en";
+const locale = "de";
 
-const { t } = createI18n({ legacy: false, locale, messages: { en } }).global;
+const { t } = createI18n({
+	legacy: false,
+	locale,
+	messages: { de: { ...de, ...metadata } },
+}).global;
 
 const manifest = {
 	name: t("Manifest.name"),

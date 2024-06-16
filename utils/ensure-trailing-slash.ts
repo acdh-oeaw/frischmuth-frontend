@@ -1,7 +1,3 @@
-export function ensureTrailingSlash(url: string): string {
-	if (url.endsWith("/")) {
-		return url;
-	}
-
-	return url + "/";
+export function ensureTrailingSlash(pathname: string): string {
+	return pathname.endsWith("/") ? pathname : pathname + "/";
 }

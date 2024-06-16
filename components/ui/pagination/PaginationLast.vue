@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { DoubleArrowRightIcon } from "@radix-icons/vue";
 import { PaginationLast, type PaginationLastProps } from "radix-vue";
 import { computed, type HTMLAttributes } from "vue";

@@ -65,7 +65,6 @@ export default defineNuxtConfig({
 		compressPublicAssets: true,
 		prerender: {
 			routes: ["/manifest.webmanifest", "/robots.txt", "/sitemap.xml"],
-			failOnError: false,
 		},
 	},
 	postcss: {
@@ -76,9 +75,10 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		NODE_ENV: process.env.NODE_ENV,
 		public: {
-			appBaseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
 			apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
+			appBaseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
 			bots: process.env.NUXT_PUBLIC_BOTS,
+			googleSiteVerification: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
 			matomoBaseUrl: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
 			matomoId: process.env.NUXT_PUBLIC_MATOMO_ID,
 			redmineId: process.env.NUXT_PUBLIC_REDMINE_ID,

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { DotsHorizontalIcon } from "@radix-icons/vue";
 import { PaginationEllipsis, type PaginationEllipsisProps } from "radix-vue";
 import { computed, type HTMLAttributes } from "vue";

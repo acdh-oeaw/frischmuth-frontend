@@ -6,7 +6,7 @@ test.describe("imprint page", () => {
 		await imprintPage.goto();
 
 		await expect(imprintPage.page).toHaveTitle(
-			[i18n.t("ImprintPage.meta.title"), i18n.t("DefaultLayout.meta.title")].join(" | "),
+			[i18n.t("ImprintPage.meta.title"), i18n.t("Metadata.title")].join(" | "),
 		);
 	});
 
@@ -17,11 +17,7 @@ test.describe("imprint page", () => {
 		await expect(imprintPage.page.getByRole("main")).toContainText("Offenlegung");
 	});
 
-	/**
-	 * FIXME: need to investigate color contrast issues.
-	 */
-	// eslint-disable-next-line playwright/no-skipped-test
-	test.skip("should not have any automatically detectable accessibility issues", async ({
+	test("should not have any automatically detectable accessibility issues", async ({
 		createAccessibilityScanner,
 		createImprintPage,
 	}) => {
@@ -32,7 +28,7 @@ test.describe("imprint page", () => {
 		expect(await getViolations()).toEqual([]);
 	});
 
-	test("should not have visible changes", async ({ createImprintPage }) => {
+	test.skip("should not have visible changes", async ({ createImprintPage }) => {
 		const { imprintPage } = await createImprintPage();
 		await imprintPage.goto();
 

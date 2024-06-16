@@ -1,7 +1,8 @@
-import type { ApiOf, ZodiosResponseByPath } from "@zodios/core";
+import type { ApiOf, ZodiosQueryParamsByPath, ZodiosResponseByPath } from "@zodios/core";
 
 import type { api } from "@/lib/api";
 
-type api = ApiOf<typeof api>;
+type Api = ApiOf<typeof api>;
 
-export type SearchResults = ZodiosResponseByPath<api, "get", "/api/work-preview/">;
+export type SearchFilters = ZodiosQueryParamsByPath<Api, "get", "/api/work-preview/">;
+export type SearchResults = ZodiosResponseByPath<Api, "get", "/api/work-preview/">;

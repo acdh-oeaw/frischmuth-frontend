@@ -5,6 +5,8 @@
 html,
 body,
 #__nuxt {
+	@apply font-sans;
+
 	block-size: 100%;
 	isolation: isolate;
 }

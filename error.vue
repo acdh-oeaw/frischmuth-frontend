@@ -1,13 +1,4 @@
 <script lang="ts" setup>
-/**
- * `error.vue` sits outside the routing structure, so we cannot define page metadata.
- *
- * @see https://github.com/nuxt/nuxt/issues/19344#issuecomment-1449685103
- */
-// definePageMeta({
-// 	title: "ErrorPage.meta.title",
-// });
-
 const props = defineProps<{
 	error:
 		| Error
@@ -31,7 +22,7 @@ const isNotFoundPage = computed(() => {
 /** `error.vue` is *not* wrapped in default layout out of the box. */
 useHead({
 	titleTemplate: computed(() => {
-		return ["%s", t("DefaultLayout.meta.title")].join(" | ");
+		return ["%s", t("Metadata.title")].join(" | ");
 	}),
 	title: computed(() => {
 		return isNotFoundPage.value ? t("NotFoundPage.meta.title") : t("ErrorPage.meta.title");

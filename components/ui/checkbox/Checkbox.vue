@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { CheckIcon } from "@radix-icons/vue";
 import {
 	CheckboxIndicator,

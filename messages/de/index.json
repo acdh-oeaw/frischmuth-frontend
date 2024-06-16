@@ -18,10 +18,6 @@
 		"navigation-main": "Hauptnavigation"
 	},
 	"DefaultLayout": {
-		"meta": {
-			"description": "ACDH-CH App",
-			"title": "ACDH-CH App"
-		},
 		"skip-to-main-content": "Zum Hauptinhalt springen"
 	},
 	"ErrorBoundary": {
@@ -51,11 +47,6 @@
 			"title": "Startseite"
 		},
 		"title": "Startseite"
-	},
-	"Manifest": {
-		"name": "ACDH-CH App",
-		"short-name": "ACDH-CH App",
-		"description": "ACDH-CH App"
 	},
 	"NotFoundPage": {
 		"meta": {

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const slider = { min: 1940, max: 2024 };
 const sliderValue = ref([slider.min, slider.max]);
 </script>

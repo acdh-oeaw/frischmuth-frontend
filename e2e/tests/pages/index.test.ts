@@ -8,16 +8,12 @@ test.describe("index page", () => {
 			await indexPage.goto();
 
 			await expect(indexPage.page).toHaveTitle(
-				[i18n.t("IndexPage.meta.title"), i18n.t("DefaultLayout.meta.title")].join(" | "),
+				[i18n.t("IndexPage.meta.title"), i18n.t("Metadata.title")].join(" | "),
 			);
 		}
 	});
 
-	/**
-	 * FIXME: need to investigate color contrast issues.
-	 */
-	// eslint-disable-next-line playwright/no-skipped-test
-	test.skip("should not have any automatically detectable accessibility issues", async ({
+	test("should not have any automatically detectable accessibility issues", async ({
 		createAccessibilityScanner,
 		createIndexPage,
 	}) => {
@@ -30,8 +26,7 @@ test.describe("index page", () => {
 		}
 	});
 
-	/**
-	test("should not have visible changes", async ({ createIndexPage }) => {
+	test.skip("should not have visible changes", async ({ createIndexPage }) => {
 		for (const locale of locales) {
 			const { indexPage } = await createIndexPage(locale);
 			await indexPage.goto();
@@ -39,5 +34,4 @@ test.describe("index page", () => {
 			await expect(indexPage.page).toHaveScreenshot();
 		}
 	});
-	**/
 });

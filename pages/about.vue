@@ -1,8 +1,11 @@
-<script setup lang="ts">
-import { noop } from "@acdh-oeaw/lib";
+<script lang="ts" setup>
 import { useQuery } from "@tanstack/vue-query";
 
 import type { SystemPage, TeamMember } from "@/types/content";
+
+defineRouteRules({
+	prerender: true,
+});
 
 const t = useTranslations();
 
@@ -10,11 +13,7 @@ usePageMetadata({
 	title: t("AboutPage.meta.title"),
 });
 
-const {
-	data: team,
-	error,
-	suspense,
-} = useQuery({
+const { data: team, error } = useQuery({
 	queryKey: ["system-pages", "about-team"] as const,
 	queryFn() {
 		return queryContent<SystemPage>("system-pages", "about-team").findOne();
@@ -24,16 +23,6 @@ const {
 useErrorMessage(error, {
 	notFound: "Seite nicht gefunden",
 	unknown: "Interner Fehler",
-});
-
-onServerPrefetch(async () => {
-	/**
-	 * Delegate errors to the client, to avoid displaying error page with status code 500.
-	 *
-	 * @see https://github.com/TanStack/query/issues/6606
-	 * @see https://github.com/TanStack/query/issues/5976
-	 */
-	await suspense().catch(noop);
 });
 
 const { data: journey } = useQuery({
@@ -56,7 +45,7 @@ const { data: memberList } = useQuery({
 		<div class="flex justify-end">
 			<Card class="size-72 bg-frisch-grey">
 				<CardContent class="flex size-full py-4 text-2xl font-bold text-white">
-					ÜBER DAS PROJEKT
+					<h1 class="uppercase">Über das Projekt</h1>
 				</CardContent>
 			</Card>
 		</div>

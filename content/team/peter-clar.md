@@ -1,7 +1,7 @@
 ---
 firstName: Peter
 lastName: Clar
-image: /assets/images/peter_clar.png
+image: /assets/content/peter_clar.png
 ---
 
 ist selbstständiger Literaturwissenschaftler und Schriftsteller in Wien. Seine

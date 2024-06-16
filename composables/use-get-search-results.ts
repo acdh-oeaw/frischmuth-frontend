@@ -1,11 +1,8 @@
 import { useQuery } from "@tanstack/vue-query";
 
-const { $api } = useNuxtApp();
+import type { SearchFilters } from "@/types/api";
 
-export interface SearchFilters {
-	limit: number;
-	offset: number;
-}
+const { $api } = useNuxtApp();
 
 export function useGetSearchResults(params: MaybeRef<SearchFilters>) {
 	return useQuery({

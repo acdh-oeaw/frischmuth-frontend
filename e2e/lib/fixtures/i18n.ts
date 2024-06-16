@@ -8,9 +8,11 @@ export type I18n = _I18n<{ [K in Locale]: Messages }, {}, {}, Locale, false>["gl
 
 export async function createI18n(_page: Page, locale = defaultLocale): Promise<I18n> {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const _messages = await import(`@/messages/${locale}.json`, { with: { type: "json" } });
+	const _messages = await import(`@/messages/${locale}/index.json`, { with: { type: "json" } });
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+	const _metadata = await import(`@/messages/${locale}/metadata.json`, { with: { type: "json" } });
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-	const messages = _messages.default as Messages;
+	const messages = { ..._messages.default, ..._metadata.default } as Messages;
 
 	return _createI18n({
 		legacy: false,

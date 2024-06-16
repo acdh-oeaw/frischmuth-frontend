@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ChevronRightIcon } from "@radix-icons/vue";
 import { PaginationNext, type PaginationNextProps } from "radix-vue";
 import { computed, type HTMLAttributes } from "vue";

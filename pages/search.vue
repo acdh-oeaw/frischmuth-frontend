@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {
 	Pagination,
 	PaginationEllipsis,
@@ -10,7 +10,15 @@ import {
 	PaginationPrev,
 } from "@/components/ui/pagination";
 
-defineRouteRules({ prerender: true });
+defineRouteRules({
+	prerender: true,
+});
+
+const t = useTranslations();
+
+usePageMetadata({
+	title: t("SearchPage.meta.title"),
+});
 
 function onUpdatePage(newPage: number) {
 	offset.value = (newPage - 1) * limit;
@@ -22,7 +30,7 @@ const limit = 20;
 const { data } = useGetSearchResults(
 	computed(() => {
 		return {
-			limit: limit,
+			limit,
 			offset: offset.value,
 		};
 	}),
@@ -30,9 +38,10 @@ const { data } = useGetSearchResults(
 </script>
 
 <template>
-	<div class="h-full bg-frisch-marine pr-20">
+	<main class="h-full bg-frisch-marine pr-20">
+		<h1 class="sr-only">{{ t("SearchPage.title") }}</h1>
 		<div class="grid h-full grid-cols-[1fr_3fr]">
-			<SearchForm search=""></SearchForm>
+			<SearchForm search="" />
 			<div
 				v-if="data != null"
 				class="grid w-full grid-rows-[auto_1fr_auto] items-center bg-white p-8"
@@ -78,5 +87,5 @@ const { data } = useGetSearchResults(
 				</div>
 			</div>
 		</div>
-	</div>
+	</main>
 </template>
