@@ -11,8 +11,8 @@ const links = computed(() => {
 </script>
 
 <template>
-	<footer class="border-t">
-		<div class="container flex items-center justify-between gap-4 py-4">
+	<footer class="border-t px-12">
+		<div class="flex items-center justify-between gap-4 py-4">
 			<nav :aria-label="t('AppFooter.navigation-secondary')">
 				<ul class="flex items-center gap-4 text-sm" role="list">
 					<li v-for="(link, key) of links" :key="key">

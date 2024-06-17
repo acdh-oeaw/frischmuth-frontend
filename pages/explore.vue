@@ -14,7 +14,7 @@ usePageMetadata({
 	<MainContent class="container py-8">
 		<h1 class="sr-only">{{ t("ExplorePage.title") }}</h1>
 		<div class="mx-auto flex size-full max-h-full items-center justify-center font-semibold">
-			<div class="mx-auto grid max-h-full gap-4 text-2xl font-bold grid-fluid-cols-60">
+			<div class="mx-auto grid max-h-full gap-4 text-2xl font-bold grid-fluid-cols-72">
 				<Card
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 				>

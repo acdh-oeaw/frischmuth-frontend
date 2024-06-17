@@ -17,10 +17,10 @@ const links = computed(() => {
 </script>
 
 <template>
-	<header class="border-b bg-frisch-marine">
+	<header class="border-b bg-frisch-marine px-12">
 		<div class="w-full pb-4 pt-12">
 			<nav :aria-label="t('AppHeader.navigation-main')">
-				<div class="container grid items-end gap-4 lg:grid-cols-2">
+				<div class="grid items-end gap-4 lg:grid-cols-2">
 					<div class="text-4xl font-semibold text-frisch-orange">
 						<NavLink :href="homeLink.href">
 							Digitales Archiv

@@ -17,10 +17,10 @@ const links = {
 </script>
 
 <template>
-	<MainContent class="container h-full py-8">
+	<MainContent class="h-full py-8">
 		<h1 class="sr-only">{{ t("IndexPage.title") }}</h1>
 		<div
-			class="grid h-full gap-4 text-2xl font-bold sm:grid-cols-[repeat(3,minmax(0,250px))] sm:justify-center"
+			class="grid h-full gap-4 text-2xl font-bold sm:grid-cols-[repeat(3,minmax(0,350px))] sm:justify-center"
 		>
 			<NuxtLink v-for="(link, id) of links" :key="id" :href="link.href">
 				<Card class="size-full transition hover:scale-105" :class="link.color">

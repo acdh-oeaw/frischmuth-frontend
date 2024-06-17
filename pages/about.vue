@@ -41,7 +41,7 @@ const { data: memberList } = useQuery({
 </script>
 
 <template>
-	<MainContent class="container grid grid-cols-[2fr_3fr] gap-8 py-8">
+	<MainContent class="grid grid-cols-[2fr_3fr] gap-8 px-12 py-8">
 		<div class="flex justify-end">
 			<Card class="size-72 bg-frisch-grey">
 				<CardContent class="flex size-full py-4 text-2xl font-bold text-white">
