@@ -26,10 +26,12 @@ function onUpdatePage(newPage: number) {
 
 const offset = ref(0);
 const limit = 20;
+const searchstring = ref("");
 
 const { data } = useGetSearchResults(
 	computed(() => {
 		return {
+			text_filter: searchstring.value,
 			limit,
 			offset: offset.value,
 		};
@@ -41,7 +43,14 @@ const { data } = useGetSearchResults(
 	<main class="h-full bg-frisch-marine pr-20">
 		<h1 class="sr-only">{{ t("SearchPage.title") }}</h1>
 		<div class="grid h-full grid-cols-[1fr_3fr]">
-			<SearchForm search="" />
+			<SearchForm
+				search=""
+				@submit="
+					(values) => {
+						searchstring = values.search;
+					}
+				"
+			/>
 			<div
 				v-if="data != null"
 				class="grid w-full grid-rows-[auto_1fr_auto] items-center bg-white p-8"
