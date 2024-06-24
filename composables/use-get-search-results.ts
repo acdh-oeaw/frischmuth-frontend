@@ -2,9 +2,8 @@ import { useQuery } from "@tanstack/vue-query";
 
 import type { SearchFilters } from "@/types/api";
 
-const { $api } = useNuxtApp();
-
 export function useGetSearchResults(params: MaybeRef<SearchFilters>) {
+	const { $api } = useNuxtApp();
 	return useQuery({
 		queryKey: ["worklist", params] as const,
 		async queryFn({ queryKey }) {
