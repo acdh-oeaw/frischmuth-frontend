@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 export interface SearchFormData {
-	search: string;
+	query: string;
 }
 
 const props = defineProps<SearchFormData>();
@@ -14,7 +14,7 @@ function onSubmit(event: Event) {
 	const formData = new FormData(element);
 
 	emit("submit", {
-		search: formData.get("q") as string,
+		query: formData.get("q") as string,
 	});
 }
 
@@ -33,7 +33,7 @@ const searchLabelId = "search-field";
 					<div>
 						<Input
 							:id="searchLabelId"
-							:default-value="props.search"
+							:default-value="props.query"
 							name="q"
 							placeholder="Suche"
 							type="search"

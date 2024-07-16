@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import * as v from "valibot";
+
+import type { SearchFormData } from "@/components/search-form.vue";
 import {
 	Pagination,
 	PaginationEllipsis,
@@ -14,6 +17,7 @@ defineRouteRules({
 	prerender: true,
 });
 
+const router = useRouter();
 const t = useTranslations();
 
 usePageMetadata({
@@ -24,9 +28,28 @@ function onUpdatePage(newPage: number) {
 	offset.value = (newPage - 1) * limit;
 }
 
+const searchFiltersSchema = v.object({
+	query: v.fallback(v.string(), ""),
+});
+
 const offset = ref(0);
 const limit = 20;
 const searchstring = ref("");
+
+type SearchFilters = v.InferOutput<typeof searchFiltersSchema>;
+
+function onChangeSearchInput(values: SearchFormData) {
+	setSearchFilters(values);
+}
+
+function setSearchFilters(query: Partial<SearchFilters>) {
+	if (query.query === "") {
+		delete query.query;
+	}
+
+	void router.push({ query });
+	document.body.scrollTo(0, 0);
+}
 
 const { data } = useGetSearchResults(
 	computed(() => {
@@ -44,10 +67,11 @@ const { data } = useGetSearchResults(
 		<h1 class="sr-only">{{ t("SearchPage.title") }}</h1>
 		<div class="grid h-full grid-cols-[1fr_3fr]">
 			<SearchForm
-				search=""
+				query=""
 				@submit="
 					(values) => {
-						searchstring = values.search;
+						onChangeSearchInput(values);
+						searchstring = values.query;
 					}
 				"
 			/>
