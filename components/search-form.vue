@@ -1,9 +1,7 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 export interface SearchFormData {
 	query: string;
 }
-
-const props = defineProps<SearchFormData>();
 
 const emit = defineEmits<{
 	(event: "submit", values: SearchFormData): void;
@@ -14,40 +12,20 @@ function onSubmit(event: Event) {
 	const formData = new FormData(element);
 
 	emit("submit", {
-		query: formData.get("q") as string,
+		query: formData.get("query") as string,
 	});
 }
-
-const searchLabelId = "search-field";
 </script>
 
 <template>
-	<div class="grid grid-cols-[1fr_auto]">
+	<div class="grid h-full grid-cols-[1fr_auto]">
 		<div class="w-full bg-frisch-orange-searchform">
 			<form
-				class="grid size-full min-w-96 grid-rows-[auto_1fr] gap-8 px-6 py-14"
+				id="search-form"
 				role="search"
 				@submit.prevent="onSubmit"
 			>
-				<div class="grid h-full grid-rows-[auto_1fr]">
-					<div>
-						<Input
-							:id="searchLabelId"
-							:default-value="props.query"
-							name="q"
-							placeholder="Suche"
-							type="search"
-						/>
-					</div>
-
-					<div class="flex justify-end">
-						<Button type="submit" variant="searchform" size="searchform">suchen</Button>
-					</div>
-				</div>
-
-				<div class="size-full bg-frisch-orange-super-light p-6">
-					<SearchFilter />
-				</div>
+				<slot />
 			</form>
 		</div>
 		<div

@@ -60,6 +60,13 @@ const { data } = useGetSearchResults(
 		};
 	}),
 );
+
+const languages = computed(() => {
+	if (data.value != null) {
+		return data.value.facets?.language;
+	}
+	return null;
+});
 </script>
 
 <template>
@@ -74,7 +81,10 @@ const { data } = useGetSearchResults(
 						searchstring = values.query;
 					}
 				"
-			/>
+			>
+				<SearchTextInput />
+				<SearchFilter :languages="languages" />
+			</SearchForm>
 			<div
 				v-if="data != null"
 				class="grid w-full grid-rows-[auto_1fr_auto] items-center bg-white p-8"
