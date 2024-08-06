@@ -14,7 +14,7 @@
 		"dev": "nuxt dev --dotenv ./.env.local",
 		"format:check": "prettier . \"!./content/**\" --cache --check --ignore-path ./.gitignore",
 		"format:fix": "pnpm run format:check --write",
-		"generate:api-client": "openapi-zod-client \"https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/swagger/schema/?format=json\" -o \"./lib/api.ts\"",
+		"generate:api-client": "openapi-zod-client \"https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/swagger/schema/?format=json\" -o \"./lib/api.ts\" --export-schemas",
 		"lint:check": "run-p --continue-on-error \"lint:*:check\"",
 		"lint:fix": "run-p --continue-on-error \"lint:*:fix\"",
 		"lint:code:check": "eslint . --cache --ext .js,.ts,.vue --ignore-path ./.gitignore",

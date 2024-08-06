@@ -5,11 +5,40 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
-import type { SearchFilters } from "@/types/api.ts";
+import type { SearchFacets } from "@/types/api";
 
 const props = defineProps<{
-	facets: SearchFilters;
+	facets: SearchFacets;
 }>();
+
+const sortedTopics = computed(() => {
+	if (props.facets?.topic != null) {
+		const temp = [...props.facets.topic];
+		return temp.sort((a, b) => {
+			return Number(b.count) - Number(a.count);
+		});
+	}
+	return null;
+});
+
+const showTopics = ref(false);
+const searchFormHeight = ref(0);
+
+function showMoreTopics() {
+	const temp = 0;
+	const searchForm = document.getElementById("search-form");
+	if (searchForm != null) {
+		[...searchForm.children].forEach((child) => {
+			temp + child.clientHeight;
+		});
+		console.log(searchFormHeight.value);
+		searchFormHeight.value = searchForm.offsetHeight - temp;
+	}
+
+	if (showTopics.value) {
+		showTopics.value = false;
+	} else showTopics.value = true;
+}
 
 const slider = { min: 1940, max: 2024 };
 const sliderValue = ref([slider.min, slider.max]);
@@ -66,20 +95,31 @@ const sliderValue = ref([slider.min, slider.max]);
 					<Separator class="bg-frisch-orange"></Separator>
 				</div>
 				<div class="pb-4">
-					<div>Erscheinungsjahr</div>
-					<div class="w-full py-3 text-sm font-normal">
-						<div class="grid w-full grid-cols-[1fr_auto] pb-4">
-							<div>{{ sliderValue[0] }}</div>
-							<div>{{ sliderValue[1] }}</div>
+					<Accordion type="single" collapsible>
+						<div class="grid grid-cols-2 py-3 text-sm font-normal">
+							<div class="flex w-full flex-col"></div>
 						</div>
-						<Slider
-							v-model="sliderValue"
-							class="pb-3"
-							:max="slider.max"
-							:min="slider.min"
-							:step="1"
-						/>
-					</div>
+						<AccordionItem value="item-1">
+							<AccordionTrigger>
+								<div class="text-lg">Erscheinungsjahr</div>
+							</AccordionTrigger>
+							<AccordionContent>
+								<div class="w-full py-3 text-sm font-normal">
+									<div class="grid w-full grid-cols-[1fr_auto] pb-4">
+										<div>{{ sliderValue[0] }}</div>
+										<div>{{ sliderValue[1] }}</div>
+									</div>
+									<Slider
+										v-model="sliderValue"
+										class="pb-3"
+										:max="slider.max"
+										:min="slider.min"
+										:step="1"
+									/>
+								</div>
+							</AccordionContent>
+						</AccordionItem>
+					</Accordion>
 					<Separator class="bg-frisch-orange"></Separator>
 				</div>
 				<div class="pb-4">
@@ -93,24 +133,15 @@ const sliderValue = ref([slider.min, slider.max]);
 							</AccordionTrigger>
 							<AccordionContent>
 								<div class="grid grid-cols-2 py-3 text-sm font-normal">
-									<div class="flex w-full flex-col">
+									<div
+										v-for="(item, index) in props.facets?.language"
+										:key="index"
+										class="flex w-full flex-col"
+									>
 										<div class="flex items-center">
-											<Checkbox id="language1" type="checkbox" />
-											<label for="language1" class="pl-2">Deutsch</label>
-										</div>
-										<div class="flex items-center">
-											<Checkbox id="language2" type="checkbox" />
-											<label for="language2" class="pl-2">Englisch</label>
-										</div>
-									</div>
-									<div class="flex w-full flex-col">
-										<div class="flex items-center">
-											<Checkbox id="language3" type="checkbox" />
-											<label for="language3" class="pl-2">Französisch</label>
-										</div>
-										<div class="flex items-center">
-											<Checkbox id="language4" type="checkbox" />
-											<label for="language4" class="pl-2">Italenisch</label>
+											<Checkbox :id="`language${index}`" type="checkbox" />
+											<label :for="`language${index}`" class="pl-2">{{ item.key }}</label>
+											<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
 										</div>
 									</div>
 								</div>
@@ -119,7 +150,7 @@ const sliderValue = ref([slider.min, slider.max]);
 					</Accordion>
 					<Separator class="bg-frisch-orange"></Separator>
 				</div>
-				<div>
+				<div class="pb-4">
 					<Accordion type="single" collapsible>
 						<div class="grid grid-cols-2 py-3 text-sm font-normal">
 							<div class="flex w-full flex-col"></div>
@@ -128,33 +159,53 @@ const sliderValue = ref([slider.min, slider.max]);
 							<AccordionTrigger>
 								<div class="text-lg">Thema</div>
 							</AccordionTrigger>
-							<AccordionContent>
+							<AccordionContent v-if="!showTopics">
 								<div class="grid grid-cols-2 py-3 text-sm font-normal">
-									<div class="flex w-full flex-col">
-										<div class="flex items-center">
-											<Checkbox id="theme1" type="checkbox" />
-											<label for="theme1" class="pl-2">Familie</label>
-										</div>
-										<div class="flex items-center">
-											<Checkbox id="theme2" type="checkbox" />
-											<label for="theme2" class="pl-2">Beziehung</label>
-										</div>
-										<div class="flex items-center">
-											<Checkbox id="theme3" type="checkbox" />
-											<label for="theme3" class="pl-2">Karriere</label>
-										</div>
-									</div>
-									<div class="flex w-full flex-col">
-										<div class="flex items-center">
-											<Checkbox id="theme4" type="checkbox" />
-											<label for="theme4" class="pl-2">Selbstermächtigung</label>
-										</div>
-										<div class="flex items-center">
-											<Checkbox id="theme5" type="checkbox" />
-											<label for="theme5" class="pl-2">Künstler*innenleben</label>
+									<div
+										v-for="(item, index) in sortedTopics?.slice(0, 10)"
+										:key="index"
+										class="flex w-full flex-col"
+									>
+										<div class="flex w-full">
+											<Checkbox :id="`topic${index}`" type="checkbox" />
+											<div class="items-center pl-2">
+												<label :for="`topic${index}`">{{ item.key }}</label>
+												<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
+											</div>
 										</div>
 									</div>
 								</div>
+								<Button
+									variant="searchform"
+									class="p-0 pb-2 text-sm font-medium"
+									@click="showMoreTopics"
+								>
+									Mehr anzeigen ...
+								</Button>
+							</AccordionContent>
+							<AccordionContent v-else>
+								<div class="grid grid-cols-2 overflow-hidden py-3 text-sm font-normal">
+									<div
+										v-for="(item, index) in sortedTopics"
+										:key="index"
+										class="flex w-full flex-col"
+									>
+										<div class="flex w-full">
+											<Checkbox :id="`topic${index}`" type="checkbox" />
+											<div class="items-center pl-2">
+												<label :for="`topic${index}`">{{ item.key }}</label>
+												<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<Button
+									variant="searchform"
+									class="p-0 pb-2 text-sm font-medium"
+									@click="showMoreTopics"
+								>
+									Weniger anzeigen ...
+								</Button>
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>

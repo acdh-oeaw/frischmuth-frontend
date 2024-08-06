@@ -18,13 +18,9 @@ function onSubmit(event: Event) {
 </script>
 
 <template>
-	<div class="grid h-full grid-cols-[1fr_auto]">
+	<div class="relative grid h-full max-h-full grid-cols-[1fr_auto]">
 		<div class="w-full bg-frisch-orange-searchform">
-			<form
-				id="search-form"
-				role="search"
-				@submit.prevent="onSubmit"
-			>
+			<form id="search-form" role="search" @submit.prevent="onSubmit">
 				<slot />
 			</form>
 		</div>

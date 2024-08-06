@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { ValueNoneIcon } from "@radix-icons/vue";
 import * as v from "valibot";
 
 import type { SearchFormData } from "@/components/search-form.vue";
@@ -61,18 +62,18 @@ const { data } = useGetSearchResults(
 	}),
 );
 
-const languages = computed(() => {
-	if (data.value != null) {
-		return data.value.facets?.language;
+const facets = computed(() => {
+	if (data.value?.facets != null) {
+		return data.value.facets;
 	}
 	return null;
 });
 </script>
 
 <template>
-	<main class="h-full bg-frisch-marine pr-20">
+	<MainContent class="bg-frisch-marine pr-20">
 		<h1 class="sr-only">{{ t("SearchPage.title") }}</h1>
-		<div class="grid h-full grid-cols-[1fr_3fr]">
+		<div class="grid h-full grid-cols-[minmax(650px,_1fr)_3fr]">
 			<SearchForm
 				query=""
 				@submit="
@@ -83,15 +84,16 @@ const languages = computed(() => {
 				"
 			>
 				<SearchTextInput />
-				<SearchFilter :languages="languages" />
+				<SearchFilter :facets="facets" />
 			</SearchForm>
-			<div
-				v-if="data != null"
-				class="grid w-full grid-rows-[auto_1fr_auto] items-center bg-white p-8"
-			>
+			<div v-if="data != null" class="w-full bg-white p-8">
 				<div class="pt-9 font-semibold text-frisch-indigo">Suchergebnisse ({{ data.count }})</div>
-				<DataTable :data="data.results" :results-total="data.count"></DataTable>
-				<div class="flex justify-center p-8">
+				<DataTable
+					class="flex align-top"
+					:data="data.results"
+					:results-total="data.count"
+				></DataTable>
+				<div class="flex justify-center p-8 align-top">
 					<Pagination
 						v-if="data?.count != null"
 						v-slot="{ page }"
@@ -130,5 +132,5 @@ const languages = computed(() => {
 				</div>
 			</div>
 		</div>
-	</main>
+	</MainContent>
 </template>
