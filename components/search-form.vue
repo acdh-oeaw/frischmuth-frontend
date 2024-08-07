@@ -1,27 +1,46 @@
 <script setup lang="ts">
 export interface SearchFormData {
 	query: string;
+	language: Array<string>;
+	topic: Array<string>;
 }
 
 const emit = defineEmits<{
 	(event: "submit", values: SearchFormData): void;
 }>();
 
-function onSubmit(event: Event) {
+function onChange(event: Event) {
+	console.log("submit");
 	const element = event.currentTarget as HTMLFormElement;
 	const formData = new FormData(element);
 
+	console.log(formData);
+
 	emit("submit", {
 		query: formData.get("query") as string,
+		language: formData.getAll("language") as Array<string>,
+		topic: formData.getAll("topic") as Array<string>,
 	});
 }
+const containerHeight = ref(0);
+
+onMounted(async () => {
+	await nextTick();
+
+	const searchForm = document.getElementById("search-container");
+	if (searchForm != null) {
+		containerHeight.value = searchForm.offsetHeight;
+	}
+});
 </script>
 
 <template>
-	<div class="relative grid h-full max-h-full grid-cols-[1fr_auto]">
-		<div class="w-full bg-frisch-orange-searchform">
-			<form id="search-form" role="search" @submit.prevent="onSubmit">
-				<slot />
+	<div class="grid max-h-full grid-cols-[1fr_auto]">
+		<div id="search-container" class="relative w-full bg-frisch-orange-searchform">
+			<form role="search" @change.stop.prevent="onChange" @submit.prevent="onChange">
+				<div :style="{ height: containerHeight + 'px' }" class="overflow-y-auto">
+					<slot />
+				</div>
 			</form>
 		</div>
 		<div

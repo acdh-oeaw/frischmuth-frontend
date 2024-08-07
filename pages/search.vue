@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ValueNoneIcon } from "@radix-icons/vue";
 import * as v from "valibot";
 
 import type { SearchFormData } from "@/components/search-form.vue";
@@ -19,6 +18,7 @@ defineRouteRules({
 });
 
 const router = useRouter();
+const route = useRoute();
 const t = useTranslations();
 
 usePageMetadata({
@@ -31,19 +31,24 @@ function onUpdatePage(newPage: number) {
 
 const searchFiltersSchema = v.object({
 	query: v.fallback(v.string(), ""),
+	language: v.fallback(v.array(v.string()), []),
+	topic: v.fallback(v.array(v.string()), []),
 });
 
 const offset = ref(0);
 const limit = 20;
-const searchstring = ref("");
 
-type SearchFilters = v.InferOutput<typeof searchFiltersSchema>;
+type SearchFilter = v.InferOutput<typeof searchFiltersSchema>;
 
-function onChangeSearchInput(values: SearchFormData) {
+const searchFilters = computed(() => {
+	return v.parse(searchFiltersSchema, route.query);
+});
+function onChange(values: SearchFormData) {
+	console.log("change");
 	setSearchFilters(values);
 }
 
-function setSearchFilters(query: Partial<SearchFilters>) {
+function setSearchFilters(query: Partial<SearchFilter>) {
 	if (query.query === "") {
 		delete query.query;
 	}
@@ -54,8 +59,11 @@ function setSearchFilters(query: Partial<SearchFilters>) {
 
 const { data } = useGetSearchResults(
 	computed(() => {
+		console.log(searchFilters);
 		return {
-			text_filter: searchstring.value,
+			facet_language: searchFilters.value.language,
+			facet_topic: searchFilters.value.topic,
+			text_filter: searchFilters.value.query,
 			limit,
 			offset: offset.value,
 		};
@@ -74,15 +82,7 @@ const facets = computed(() => {
 	<MainContent class="bg-frisch-marine pr-20">
 		<h1 class="sr-only">{{ t("SearchPage.title") }}</h1>
 		<div class="grid h-full grid-cols-[minmax(650px,_1fr)_3fr]">
-			<SearchForm
-				query=""
-				@submit="
-					(values) => {
-						onChangeSearchInput(values);
-						searchstring = values.query;
-					}
-				"
-			>
+			<SearchForm query="" @submit="onChange">
 				<SearchTextInput />
 				<SearchFilter :facets="facets" />
 			</SearchForm>

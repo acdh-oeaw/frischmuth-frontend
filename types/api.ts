@@ -9,3 +9,4 @@ export type SearchFilters = ZodiosQueryParamsByPath<Api, "get", "/api/work-previ
 export type SearchResults = ZodiosResponseByPath<Api, "get", "/api/work-preview/">;
 
 export type SearchFacets = z.infer<typeof schemas.PaginatedWorkPreviewList.shape.facets>;
+export type WorkType = z.infer<typeof schemas.WorkTypeData>;

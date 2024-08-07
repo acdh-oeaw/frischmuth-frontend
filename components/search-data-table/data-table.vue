@@ -84,7 +84,7 @@ const table = useVueTable({
 
 <template>
 	<div>
-		<div class="relative flex border">
+		<div class="w-full rounded-md border">
 			<Table>
 				<TableHeader>
 					<TableCaption class="sr-only">

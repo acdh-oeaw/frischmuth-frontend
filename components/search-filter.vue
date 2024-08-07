@@ -22,19 +22,8 @@ const sortedTopics = computed(() => {
 });
 
 const showTopics = ref(false);
-const searchFormHeight = ref(0);
 
 function showMoreTopics() {
-	const temp = 0;
-	const searchForm = document.getElementById("search-form");
-	if (searchForm != null) {
-		[...searchForm.children].forEach((child) => {
-			temp + child.clientHeight;
-		});
-		console.log(searchFormHeight.value);
-		searchFormHeight.value = searchForm.offsetHeight - temp;
-	}
-
 	if (showTopics.value) {
 		showTopics.value = false;
 	} else showTopics.value = true;
@@ -132,18 +121,29 @@ const sliderValue = ref([slider.min, slider.max]);
 								<div class="text-lg">Sprache</div>
 							</AccordionTrigger>
 							<AccordionContent>
-								<div class="grid grid-cols-2 py-3 text-sm font-normal">
+								<div
+									v-if="props.facets?.language && props.facets?.language.length > 0"
+									class="grid grid-cols-2 py-3 text-sm font-normal"
+								>
 									<div
 										v-for="(item, index) in props.facets?.language"
 										:key="index"
 										class="flex w-full flex-col"
 									>
 										<div class="flex items-center">
-											<Checkbox :id="`language${index}`" type="checkbox" />
+											<Checkbox
+												:id="`language${index}`"
+												name="language"
+												:value="item.key"
+												type="checkbox"
+											/>
 											<label :for="`language${index}`" class="pl-2">{{ item.key }}</label>
 											<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
 										</div>
 									</div>
+								</div>
+								<div v-else class="py-3 text-frisch-grey">
+									Keine weiteren Filtermöglichkeiten vorhanden.
 								</div>
 							</AccordionContent>
 						</AccordionItem>
@@ -160,14 +160,22 @@ const sliderValue = ref([slider.min, slider.max]);
 								<div class="text-lg">Thema</div>
 							</AccordionTrigger>
 							<AccordionContent v-if="!showTopics">
-								<div class="grid grid-cols-2 py-3 text-sm font-normal">
+								<div
+									v-if="sortedTopics && sortedTopics.length > 0"
+									class="grid grid-cols-2 py-3 text-sm font-normal"
+								>
 									<div
 										v-for="(item, index) in sortedTopics?.slice(0, 10)"
 										:key="index"
 										class="flex w-full flex-col"
 									>
 										<div class="flex w-full">
-											<Checkbox :id="`topic${index}`" type="checkbox" />
+											<Checkbox
+												:id="`topic${index}`"
+												:value="item.key"
+												name="topic"
+												type="checkbox"
+											/>
 											<div class="items-center pl-2">
 												<label :for="`topic${index}`">{{ item.key }}</label>
 												<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
@@ -175,7 +183,11 @@ const sliderValue = ref([slider.min, slider.max]);
 										</div>
 									</div>
 								</div>
+								<div v-else class="py-3 text-frisch-grey">
+									Keine weiteren Filtermöglichkeiten vorhanden.
+								</div>
 								<Button
+									v-if="sortedTopics && sortedTopics.length > 10"
 									variant="searchform"
 									class="p-0 pb-2 text-sm font-medium"
 									@click="showMoreTopics"
