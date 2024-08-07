@@ -13,30 +13,30 @@ usePageMetadata({
 	title: t("AboutPage.meta.title"),
 });
 
-const { data: team, error } = useQuery({
-	queryKey: ["system-pages", "about-team"] as const,
+const { data: team, error: teamError } = useQuery({
+	queryKey: ["about-team"] as const,
 	queryFn() {
 		return queryContent<SystemPage>("system-pages", "about-team").findOne();
 	},
 });
 
-useErrorMessage(error, {
-	notFound: "Seite nicht gefunden",
-	unknown: "Interner Fehler",
-});
-
-const { data: journey } = useQuery({
-	queryKey: ["system-pages", "about-journey"] as const,
+const { data: approach, error: approachError } = useQuery({
+	queryKey: ["about-approach"] as const,
 	queryFn() {
-		return queryContent<SystemPage>("system-pages", "about-journey").findOne();
+		return queryContent<SystemPage>("system-pages", "about-approach").findOne();
 	},
 });
 
-const { data: memberList } = useQuery({
+const { data: members, error: membersError } = useQuery({
 	queryKey: ["team"] as const,
 	queryFn() {
 		return queryContent<TeamMember>("team").find();
 	},
+});
+
+useErrorMessage(teamError ?? approachError ?? membersError, {
+	notFound: t("AboutPage.errors.404"),
+	unknown: t("AboutPage.errors.500"),
 });
 </script>
 
@@ -45,16 +45,13 @@ const { data: memberList } = useQuery({
 		<div class="flex justify-end">
 			<Card class="size-72 bg-frisch-grey">
 				<CardContent class="flex size-full py-4 text-2xl font-bold text-white">
-					<h1 class="uppercase">Über das Projekt</h1>
+					<h1 class="uppercase">{{ t("AboutPage.title") }}</h1>
 				</CardContent>
 			</Card>
 		</div>
+
 		<div class="prose max-w-3xl">
-			<ContentRenderer
-				v-if="team != null"
-				:value="team"
-				class="prose prose-lg max-w-3xl text-balance text-center"
-			>
+			<ContentRenderer v-if="team != null" :value="team">
 				<h2 class="font-bold text-frisch-orange">
 					{{ team.title }}
 				</h2>
@@ -62,41 +59,33 @@ const { data: memberList } = useQuery({
 				<template #empty></template>
 			</ContentRenderer>
 
-			<ContentRenderer
-				v-if="journey != null"
-				:value="journey"
-				class="prose prose-lg text-balance text-center"
-			>
-				<ul class="list-none px-0 pt-8">
-					<li
-						v-for="member of memberList"
-						:key="member._id"
-						class="grid grid-cols-[auto_1fr] gap-4 p-0"
-					>
-						<div class="not-prose relative grid size-72 place-items-center overflow-hidden">
-							<img
-								v-if="member.image != null"
-								alt=""
-								class="absolute inset-0 size-full object-cover"
-								:src="member.image"
-							/>
-						</div>
-						<div>
-							<h2 class="m-0 font-semibold text-frisch-indigo">
-								{{ member.firstName }}
-								{{ member.lastName }}
-							</h2>
-							<ContentRenderer :value="member">
-								<template #empty></template>
-							</ContentRenderer>
-						</div>
-					</li>
-				</ul>
+			<ul class="list-none px-0 pt-8">
+				<li v-for="member of members" :key="member._id" class="grid grid-cols-[auto_1fr] gap-4 p-0">
+					<div class="relative size-72 overflow-hidden">
+						<img
+							v-if="member.image != null"
+							alt=""
+							class="absolute inset-0 size-full object-cover m-0"
+							:src="member.image"
+						/>
+					</div>
+					<div>
+						<h2 class="m-0 font-semibold text-frisch-indigo">
+							{{ member.firstName }}
+							{{ member.lastName }}
+						</h2>
+						<ContentRenderer :value="member">
+							<template #empty></template>
+						</ContentRenderer>
+					</div>
+				</li>
+			</ul>
 
+			<ContentRenderer v-if="approach != null" :value="approach">
 				<h2 class="font-bold text-frisch-orange">
-					{{ journey.title }}
+					{{ approach.title }}
 				</h2>
-				<ContentRendererMarkdown :value="journey" />
+				<ContentRendererMarkdown :value="approach" />
 				<template #empty></template>
 			</ContentRenderer>
 		</div>

@@ -1,5 +1,9 @@
 {
 	"AboutPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
 		"meta": {
 			"title": "Über das Projekt"
 		},
