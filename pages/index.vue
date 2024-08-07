@@ -10,9 +10,21 @@ usePageMetadata({
 });
 
 const links = {
-	search: { href: { path: "/search" }, label: "Suche", color: "bg-frisch-orange" },
-	explore: { href: { path: "/explore" }, label: "Entdecken", color: "bg-frisch-indigo" },
-	about: { href: { path: "/about" }, label: "Über das Projekt", color: "bg-frisch-grey" },
+	search: {
+		href: { path: "/search" },
+		label: t("IndexPage.links.search"),
+		color: "bg-frisch-orange",
+	},
+	explore: {
+		href: { path: "/explore" },
+		label: t("IndexPage.links.explore"),
+		color: "bg-frisch-indigo",
+	},
+	about: {
+		href: { path: "/about" },
+		label: t("IndexPage.links.about"),
+		color: "bg-frisch-grey",
+	},
 };
 </script>
 

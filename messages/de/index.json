@@ -43,6 +43,11 @@
 		"title": "Impressum"
 	},
 	"IndexPage": {
+		"links": {
+			"about": "Über das Projekt",
+			"explore": "Entdecken",
+			"search": "Suche"
+		},
 		"meta": {
 			"title": "Startseite"
 		},
