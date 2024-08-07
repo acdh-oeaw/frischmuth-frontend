@@ -23,7 +23,12 @@ export default defineNuxtConfig({
 		locales: Object.keys(localesMap),
 		markdown: {},
 	},
-	css: ["@fontsource-variable/inter/slnt.css", "@/styles/shadcn-ui.css", "@/styles/index.css"],
+	css: [
+		"@fontsource-variable/inter/standard.css",
+		"@fontsource-variable/inter/standard-italic.css",
+		"@/styles/shadcn-ui.css",
+		"@/styles/index.css",
+	],
 	devtools: {
 		enabled: process.env.NODE_ENV === "development",
 	},

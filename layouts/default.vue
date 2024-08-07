@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
-import inter from "@fontsource-variable/inter/files/inter-latin-slnt-normal.woff2?url";
+import inter from "@fontsource-variable/inter/files/inter-latin-standard-normal.woff2?url";
 import type { WebSite, WithContext } from "schema-dts";
 
 const env = useRuntimeConfig();
@@ -108,7 +108,5 @@ router.afterEach((to, from) => {
 			<slot />
 		</ErrorBoundary>
 		<AppFooter />
-
-		<NuxtRouteAnnouncer />
 	</div>
 </template>
