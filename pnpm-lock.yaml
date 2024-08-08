@@ -36,8 +36,8 @@ importers:
         specifier: ^5.51.21
         version: 5.51.21(vue@3.4.36(typescript@5.5.4))
       '@tanstack/vue-table':
-        specifier: ^8.17.3
-        version: 8.17.3(vue@3.4.36(typescript@5.5.4))
+        specifier: ^8.20.1
+        version: 8.20.1(vue@3.4.36(typescript@5.5.4))
       '@vueuse/core':
         specifier: ^10.11.0
         version: 10.11.0(vue@3.4.36(typescript@5.5.4))
@@ -1452,8 +1452,8 @@ packages:
   '@tanstack/query-core@5.51.21':
     resolution: {integrity: sha512-POQxm42IUp6n89kKWF4IZi18v3fxQWFRolvBA6phNVmA8psdfB1MvDnGacCJdS+EOX12w/CyHM62z//rHmYmvw==}
 
-  '@tanstack/table-core@8.17.3':
-    resolution: {integrity: sha512-mPBodDGVL+fl6d90wUREepHa/7lhsghg2A3vFpakEhrhtbIlgNAZiMr7ccTgak5qbHqF14Fwy+W1yFWQt+WmYQ==}
+  '@tanstack/table-core@8.20.1':
+    resolution: {integrity: sha512-5Ly5TIRHnWH7vSDell9B/OVyV380qqIJVg7H7R7jU4fPEmOD4smqAX7VRflpYI09srWR8aj5OLD2Ccs1pI5mTg==}
     engines: {node: '>=12'}
 
   '@tanstack/virtual-core@3.8.4':
@@ -1468,8 +1468,8 @@ packages:
       '@vue/composition-api':
         optional: true
 
-  '@tanstack/vue-table@8.17.3':
-    resolution: {integrity: sha512-19amh2JJR4cFKmi3ZQERwwJg1ucoLm955Xg+RzypCMn6/dmHEzDu2TkVH/riaZFw5JbVfl17MoobMjWNE/fAEg==}
+  '@tanstack/vue-table@8.20.1':
+    resolution: {integrity: sha512-N39CtJFMlKccF7sMcxerZ//iUlKfme9+nM1msLqDpJsJBoBuc0BgIQAr9M83dlgWzCizF8/6EDzcvWbPlV1CHw==}
     engines: {node: '>=12'}
     peerDependencies:
       vue: '>=3.2'
@@ -7411,7 +7411,7 @@ snapshots:
 
   '@tanstack/query-core@5.51.21': {}
 
-  '@tanstack/table-core@8.17.3': {}
+  '@tanstack/table-core@8.20.1': {}
 
   '@tanstack/virtual-core@3.8.4': {}
 
@@ -7423,9 +7423,9 @@ snapshots:
       vue: 3.4.36(typescript@5.5.4)
       vue-demi: 0.14.10(vue@3.4.36(typescript@5.5.4))
 
-  '@tanstack/vue-table@8.17.3(vue@3.4.36(typescript@5.5.4))':
+  '@tanstack/vue-table@8.20.1(vue@3.4.36(typescript@5.5.4))':
     dependencies:
-      '@tanstack/table-core': 8.17.3
+      '@tanstack/table-core': 8.20.1
       vue: 3.4.36(typescript@5.5.4)
 
   '@tanstack/vue-virtual@3.8.5(vue@3.4.36(typescript@5.5.4))':
