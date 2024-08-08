@@ -9,7 +9,7 @@ export default defineNuxtPlugin({
 		const client = createApiClient(apiBaseUrl, {
 			axiosConfig: {
 				paramsSerializer: {
-					indexes: false,
+					indexes: null,
 				},
 			},
 		});
