@@ -44,7 +44,6 @@ const searchFilters = computed(() => {
 	return v.parse(searchFiltersSchema, route.query);
 });
 function onChange(values: SearchFormData) {
-	console.log("change");
 	setSearchFilters(values);
 }
 
@@ -57,7 +56,7 @@ function setSearchFilters(query: Partial<SearchFilter>) {
 	document.body.scrollTo(0, 0);
 }
 
-const { data } = useGetSearchResults(
+const { data, isPending } = useGetSearchResults(
 	computed(() => {
 		console.log(searchFilters);
 		return {
@@ -70,6 +69,10 @@ const { data } = useGetSearchResults(
 	}),
 );
 
+const isLoading = computed(() => {
+	return isPending.value;
+});
+
 const facets = computed(() => {
 	if (data.value?.facets != null) {
 		return data.value.facets;
@@ -81,7 +84,7 @@ const facets = computed(() => {
 <template>
 	<MainContent class="bg-frisch-marine pr-20">
 		<h1 class="sr-only">{{ t("SearchPage.title") }}</h1>
-		<div class="grid h-full grid-cols-[minmax(650px,_1fr)_3fr]">
+		<div v-if="!isLoading" class="grid h-full grid-cols-[minmax(650px,_1fr)_3fr]">
 			<SearchForm query="" @submit="onChange">
 				<SearchTextInput />
 				<SearchFilter :facets="facets" />
@@ -132,5 +135,8 @@ const facets = computed(() => {
 				</div>
 			</div>
 		</div>
+		<Centered v-else class="pointer-events-none">
+			<LoadingSpinner />
+		</Centered>
 	</MainContent>
 </template>
