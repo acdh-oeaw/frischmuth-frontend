@@ -7,6 +7,15 @@ import {
 } from "@/components/ui/accordion";
 import type { SearchFacets } from "@/types/api";
 
+const route = useRoute();
+
+const checkedFacets: {
+	language: string;
+	topic: string;
+} = computed(() => {
+	return { language: route.query.language, topic: route.query.topic };
+});
+
 const props = defineProps<{
 	facets: SearchFacets;
 }>();
@@ -43,11 +52,11 @@ const sliderValue = ref([slider.min, slider.max]);
 				</div>
 				<!-- FIX ME: Make checkbox groups!-->
 				<div class="pb-4">
-					<Accordion type="single" collapsible>
+					<Accordion type="single" collapsible default-value="medium">
 						<div class="grid grid-cols-2 py-3 text-sm font-normal">
 							<div class="flex w-full flex-col"></div>
 						</div>
-						<AccordionItem value="item-1">
+						<AccordionItem value="medium">
 							<AccordionTrigger>
 								<div class="text-lg">Medium</div>
 							</AccordionTrigger>
@@ -84,11 +93,11 @@ const sliderValue = ref([slider.min, slider.max]);
 					<Separator class="bg-frisch-orange"></Separator>
 				</div>
 				<div class="pb-4">
-					<Accordion type="single" collapsible>
+					<Accordion type="single" collapsible default-value="year">
 						<div class="grid grid-cols-2 py-3 text-sm font-normal">
 							<div class="flex w-full flex-col"></div>
 						</div>
-						<AccordionItem value="item-1">
+						<AccordionItem value="year">
 							<AccordionTrigger>
 								<div class="text-lg">Erscheinungsjahr</div>
 							</AccordionTrigger>
@@ -112,11 +121,11 @@ const sliderValue = ref([slider.min, slider.max]);
 					<Separator class="bg-frisch-orange"></Separator>
 				</div>
 				<div class="pb-4">
-					<Accordion type="single" collapsible>
+					<Accordion type="single" collapsible default-value="language">
 						<div class="grid grid-cols-2 py-3 text-sm font-normal">
 							<div class="flex w-full flex-col"></div>
 						</div>
-						<AccordionItem value="item-1">
+						<AccordionItem value="language">
 							<AccordionTrigger>
 								<div class="text-lg">Sprache</div>
 							</AccordionTrigger>
@@ -136,6 +145,9 @@ const sliderValue = ref([slider.min, slider.max]);
 												name="language"
 												:value="item.key"
 												type="checkbox"
+												:default-checked="
+													checkedFacets.language ? checkedFacets.language.includes(item.key) : false
+												"
 											/>
 											<label :for="`language${index}`" class="pl-2">{{ item.key }}</label>
 											<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
@@ -151,11 +163,11 @@ const sliderValue = ref([slider.min, slider.max]);
 					<Separator class="bg-frisch-orange"></Separator>
 				</div>
 				<div class="pb-4">
-					<Accordion type="single" collapsible>
+					<Accordion type="single" collapsible default-value="topic">
 						<div class="grid grid-cols-2 py-3 text-sm font-normal">
 							<div class="flex w-full flex-col"></div>
 						</div>
-						<AccordionItem value="item-1">
+						<AccordionItem value="topic">
 							<AccordionTrigger>
 								<div class="text-lg">Thema</div>
 							</AccordionTrigger>
@@ -166,7 +178,7 @@ const sliderValue = ref([slider.min, slider.max]);
 								>
 									<div
 										v-for="(item, index) in sortedTopics?.slice(0, 10)"
-										:key="index"
+										:key="item.key"
 										class="flex w-full flex-col"
 									>
 										<div class="flex w-full">
@@ -175,6 +187,9 @@ const sliderValue = ref([slider.min, slider.max]);
 												:value="item.key"
 												name="topic"
 												type="checkbox"
+												:default-checked="
+													checkedFacets.topic ? checkedFacets.topic.includes(item.key) : false
+												"
 											/>
 											<div class="items-center pl-2">
 												<label :for="`topic${index}`">{{ item.key }}</label>
@@ -199,11 +214,19 @@ const sliderValue = ref([slider.min, slider.max]);
 								<div class="grid grid-cols-2 overflow-hidden py-3 text-sm font-normal">
 									<div
 										v-for="(item, index) in sortedTopics"
-										:key="index"
+										:key="item.key"
 										class="flex w-full flex-col"
 									>
 										<div class="flex w-full">
-											<Checkbox :id="`topic${index}`" type="checkbox" />
+											<Checkbox
+												:id="`topic${index}`"
+												:value="item.key"
+												name="topic"
+												type="checkbox"
+												:default-checked="
+													checkedFacets.topic ? checkedFacets.topic.includes(item.key) : false
+												"
+											/>
 											<div class="items-center pl-2">
 												<label :for="`topic${index}`">{{ item.key }}</label>
 												<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
