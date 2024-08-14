@@ -22,6 +22,8 @@ function onChange(event: Event) {
 		topic: formData.getAll("topic") as Array<string>,
 	});
 }
+
+// TODO: kill me
 const containerHeight = ref(0);
 
 onMounted(async () => {

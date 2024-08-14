@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { XIcon } from "lucide-vue-next";
+
 import {
 	Accordion,
 	AccordionContent,
@@ -8,6 +10,7 @@ import {
 import type { SearchFacets } from "@/types/api";
 
 const route = useRoute();
+const router = useRouter();
 
 const checkedFacets: {
 	language: string;
@@ -20,24 +23,57 @@ const props = defineProps<{
 	facets: SearchFacets;
 }>();
 
-const sortedTopics = computed(() => {
-	if (props.facets?.topic != null) {
-		const temp = [...props.facets.topic];
-		return temp.sort((a, b) => {
-			return Number(b.count) - Number(a.count);
-		});
-	}
-	return null;
-});
+const showMore = ref(false);
 
-const showTopics = ref(false);
-
-function showMoreTopics() {
-	if (showTopics.value) {
-		showTopics.value = false;
-	} else showTopics.value = true;
+function toggleShowMore() {
+	showMore.value = !showMore.value;
 }
 
+const sortedTopics = computed(() => {
+	if (props.facets.topic == null) return null;
+
+	const sorted = props.facets.topic.toSorted((a, b) => {
+		return Number(b.count) - Number(a.count);
+	});
+
+	if (showMore.value) {
+		return sorted;
+	}
+
+	return sorted.slice(0, 10);
+});
+
+const filterCount = ref(0);
+watch(
+	checkedFacets,
+	({ language, topic }) => {
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+		filterCount.value = (language?.length || 0) + (topic?.length || 0);
+	},
+	{ immediate: true },
+);
+
+function removeFilter() {
+	const newQuery = { ...route.query };
+
+	if (newQuery.language) delete newQuery.language;
+	if (newQuery.topic) delete newQuery.topic;
+
+	void router.push({ query: newQuery });
+}
+
+const selectedCheckboxes = ref<Array<string>>([]);
+
+const isCheckBoxActive = computed(() => selectedCheckboxes.value.length > 0);
+
+function addCheckbox(value: string) {
+	const index = selectedCheckboxes.value.indexOf(value);
+	if (index > -1) {
+		selectedCheckboxes.value.splice(index, 1);
+	} else {
+		selectedCheckboxes.value.push(value);
+	}
+}
 const slider = { min: 1940, max: 2024 };
 const sliderValue = ref([slider.min, slider.max]);
 </script>
@@ -47,7 +83,21 @@ const sliderValue = ref([slider.min, slider.max]);
 		<div class="bg-frisch-orange-super-light p-6">
 			<div class="text-lg font-medium text-frisch-orange">
 				<div class="pb-4">
-					<div class="pb-2 text-xl">Filterung</div>
+					<div class="grid grid-cols-2 items-center">
+						<span class="pb-2 text-xl">Filterung</span>
+						<div class="ml-auto grid grid-cols-[1fr_auto] items-center">
+							<span class="text-sm">Aktive Filter ({{ filterCount }})</span>
+							<Button
+								v-if="filterCount > 0"
+								type="reset"
+								class="items-center p-2"
+								variant="searchform"
+								@click="removeFilter()"
+							>
+								<XIcon :size="12" />
+							</Button>
+						</div>
+					</div>
 					<Separator class="bg-frisch-orange"></Separator>
 				</div>
 				<!-- FIX ME: Make checkbox groups!-->
@@ -148,6 +198,7 @@ const sliderValue = ref([slider.min, slider.max]);
 												:default-checked="
 													checkedFacets.language ? checkedFacets.language.includes(item.key) : false
 												"
+												@update:checked="addCheckbox(item.key)"
 											/>
 											<label :for="`language${index}`" class="pl-2">{{ item.key }}</label>
 											<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
@@ -171,47 +222,11 @@ const sliderValue = ref([slider.min, slider.max]);
 							<AccordionTrigger>
 								<div class="text-lg">Thema</div>
 							</AccordionTrigger>
-							<AccordionContent v-if="!showTopics">
+							<AccordionContent>
 								<div
 									v-if="sortedTopics && sortedTopics.length > 0"
 									class="grid grid-cols-2 py-3 text-sm font-normal"
 								>
-									<div
-										v-for="(item, index) in sortedTopics?.slice(0, 10)"
-										:key="item.key"
-										class="flex w-full flex-col"
-									>
-										<div class="flex w-full">
-											<Checkbox
-												:id="`topic${index}`"
-												:value="item.key"
-												name="topic"
-												type="checkbox"
-												:default-checked="
-													checkedFacets.topic ? checkedFacets.topic.includes(item.key) : false
-												"
-											/>
-											<div class="items-center pl-2">
-												<label :for="`topic${index}`">{{ item.key }}</label>
-												<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div v-else class="py-3 text-frisch-grey">
-									Keine weiteren Filtermöglichkeiten vorhanden.
-								</div>
-								<Button
-									v-if="sortedTopics && sortedTopics.length > 10"
-									variant="searchform"
-									class="p-0 pb-2 text-sm font-medium"
-									@click="showMoreTopics"
-								>
-									Mehr anzeigen ...
-								</Button>
-							</AccordionContent>
-							<AccordionContent v-else>
-								<div class="grid grid-cols-2 overflow-hidden py-3 text-sm font-normal">
 									<div
 										v-for="(item, index) in sortedTopics"
 										:key="item.key"
@@ -226,6 +241,7 @@ const sliderValue = ref([slider.min, slider.max]);
 												:default-checked="
 													checkedFacets.topic ? checkedFacets.topic.includes(item.key) : false
 												"
+												@update:checked="addCheckbox(item.key)"
 											/>
 											<div class="items-center pl-2">
 												<label :for="`topic${index}`">{{ item.key }}</label>
@@ -234,17 +250,25 @@ const sliderValue = ref([slider.min, slider.max]);
 										</div>
 									</div>
 								</div>
+								<div v-else class="py-3 text-frisch-grey">
+									Keine weiteren Filtermöglichkeiten vorhanden.
+								</div>
 								<Button
+									v-if="sortedTopics"
 									variant="searchform"
+									type="button"
 									class="p-0 pb-2 text-sm font-medium"
-									@click="showMoreTopics"
+									@click="toggleShowMore"
 								>
-									Weniger anzeigen ...
+									{{ showMore ? `Weniger anzeigen` : `Mehr anzeigen ...` }}
 								</Button>
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>
 					<Separator class="bg-frisch-orange"></Separator>
+					<div v-if="isCheckBoxActive" class="flex w-full justify-end pt-4 text-sm">
+						<Button variant="frischMarine" type="submit">Filter anwenden</Button>
+					</div>
 				</div>
 			</div>
 		</div>
