@@ -1,5 +1,12 @@
 <script lang="ts" setup>
-import { XIcon } from "lucide-vue-next";
+import {
+	CheckboxControl,
+	CheckboxGroup,
+	CheckboxIndicator,
+	CheckboxLabel,
+	CheckboxRoot,
+} from "@ark-ui/vue";
+import { CheckIcon, XIcon } from "lucide-vue-next";
 
 import {
 	Accordion,
@@ -20,7 +27,7 @@ const checkedFacets: {
 });
 
 const props = defineProps<{
-	facets: SearchFacets;
+	facets: SearchFacets | null;
 }>();
 
 const showMore = ref(false);
@@ -30,7 +37,7 @@ function toggleShowMore() {
 }
 
 const sortedTopics = computed(() => {
-	if (props.facets.topic == null) return null;
+	if (props.facets?.topic == null) return null;
 
 	const sorted = props.facets.topic.toSorted((a, b) => {
 		return Number(b.count) - Number(a.count);
@@ -43,26 +50,18 @@ const sortedTopics = computed(() => {
 	return sorted.slice(0, 10);
 });
 
+const selectedCheckboxes = ref<Array<string>>([]);
 const filterCount = ref(0);
+
 watch(
 	checkedFacets,
 	({ language, topic }) => {
 		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		filterCount.value = (language?.length || 0) + (topic?.length || 0);
+		selectedCheckboxes.value = [];
 	},
 	{ immediate: true },
 );
-
-function removeFilter() {
-	const newQuery = { ...route.query };
-
-	if (newQuery.language) delete newQuery.language;
-	if (newQuery.topic) delete newQuery.topic;
-
-	void router.push({ query: newQuery });
-}
-
-const selectedCheckboxes = ref<Array<string>>([]);
 
 const isCheckBoxActive = computed(() => selectedCheckboxes.value.length > 0);
 
@@ -74,6 +73,17 @@ function addCheckbox(value: string) {
 		selectedCheckboxes.value.push(value);
 	}
 }
+
+function removeFilter() {
+	const newQuery = { ...route.query };
+
+	if (newQuery.language) delete newQuery.language;
+	if (newQuery.topic) delete newQuery.topic;
+
+	void router.push({ query: newQuery });
+	selectedCheckboxes.value = [];
+}
+
 const slider = { min: 1940, max: 2024 };
 const sliderValue = ref([slider.min, slider.max]);
 </script>
@@ -182,29 +192,33 @@ const sliderValue = ref([slider.min, slider.max]);
 							<AccordionContent>
 								<div
 									v-if="props.facets?.language && props.facets?.language.length > 0"
-									class="grid grid-cols-2 py-3 text-sm font-normal"
+									class="py-3 text-sm font-normal"
 								>
-									<div
-										v-for="(item, index) in props.facets?.language"
-										:key="index"
-										class="flex w-full flex-col"
-									>
-										<div class="flex items-center">
-											<Checkbox
-												:id="`language${index}`"
-												name="language"
-												:value="item.key"
-												type="checkbox"
-												:default-checked="
-													checkedFacets.language ? checkedFacets.language.includes(item.key) : false
-												"
-												@update:checked="addCheckbox(item.key)"
-											/>
-											<label :for="`language${index}`" class="pl-2">{{ item.key }}</label>
+									<fieldset class="grid grid-cols-2">
+										<legend class="sr-only">Sprachen</legend>
+										<div
+											v-for="(item, index) in props.facets?.language"
+											:key="item.key"
+											class="grid grid-cols-[auto_1fr]"
+											@value-change="addCheckbox(item.key!)"
+										>
+											<label class="grid cursor-pointer grid-cols-[auto_1fr] items-center gap-2">
+												<input
+													:id="`language${index}`"
+													name="language"
+													:value="item.key"
+													type="checkbox"
+													:checked="checkedFacets.language ? checkedFacets.language.includes(item.key!) : false"
+													class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+													@change="addCheckbox(item.key!)"
+												/>
+												<span>{{ item.key }}</span>
+											</label>
 											<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
 										</div>
-									</div>
+									</fieldset>
 								</div>
+
 								<div v-else class="py-3 text-frisch-grey">
 									Keine weiteren Filtermöglichkeiten vorhanden.
 								</div>
@@ -225,30 +239,31 @@ const sliderValue = ref([slider.min, slider.max]);
 							<AccordionContent>
 								<div
 									v-if="sortedTopics && sortedTopics.length > 0"
-									class="grid grid-cols-2 py-3 text-sm font-normal"
+									class="py-3 text-sm font-normal"
 								>
-									<div
-										v-for="(item, index) in sortedTopics"
-										:key="item.key"
-										class="flex w-full flex-col"
-									>
-										<div class="flex w-full">
-											<Checkbox
-												:id="`topic${index}`"
-												:value="item.key"
-												name="topic"
-												type="checkbox"
-												:default-checked="
-													checkedFacets.topic ? checkedFacets.topic.includes(item.key) : false
-												"
-												@update:checked="addCheckbox(item.key)"
-											/>
-											<div class="items-center pl-2">
-												<label :for="`topic${index}`">{{ item.key }}</label>
-												<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
-											</div>
+									<fieldset class="grid grid-cols-2">
+										<legend class="sr-only">Themen</legend>
+										<div
+											v-for="(item, index) in sortedTopics"
+											:key="item.key"
+											class="grid grid-cols-[auto_1fr]"
+											@value-change="addCheckbox(item.key!)"
+										>
+											<label class="grid cursor-pointer grid-cols-[auto_1fr] items-center gap-2">
+												<input
+													:id="`topic${index}`"
+													name="topic"
+													:value="item.key"
+													type="checkbox"
+													:checked="checkedFacets.topic ? checkedFacets.topic.includes(item.key!) : false"
+													class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+													@change="addCheckbox(item.key!)"
+												/>
+												<span>{{ item.key }}</span>
+											</label>
+											<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
 										</div>
-									</div>
+									</fieldset>
 								</div>
 								<div v-else class="py-3 text-frisch-grey">
 									Keine weiteren Filtermöglichkeiten vorhanden.

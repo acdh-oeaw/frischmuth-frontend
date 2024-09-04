@@ -10,11 +10,8 @@ const emit = defineEmits<{
 }>();
 
 function onChange(event: Event) {
-	console.log("submit");
 	const element = event.currentTarget as HTMLFormElement;
 	const formData = new FormData(element);
-
-	console.log(formData);
 
 	emit("submit", {
 		query: formData.get("query") as string,
@@ -39,7 +36,7 @@ onMounted(async () => {
 <template>
 	<div class="grid max-h-full grid-cols-[1fr_auto]">
 		<div id="search-container" class="relative w-full bg-frisch-orange-searchform">
-			<form role="search" @change.stop.prevent="onChange" @submit.prevent="onChange">
+			<form role="search" @submit.stop.prevent="onChange" @submit.prevent="onChange">
 				<div :style="{ height: containerHeight + 'px' }" class="overflow-y-auto">
 					<slot />
 				</div>
