@@ -34,6 +34,7 @@ const { data: members, error: membersError } = useQuery({
 	},
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 useErrorMessage(teamError ?? approachError ?? membersError, {
 	notFound: t("AboutPage.errors.404"),
 	unknown: t("AboutPage.errors.500"),
@@ -65,7 +66,7 @@ useErrorMessage(teamError ?? approachError ?? membersError, {
 						<img
 							v-if="member.image != null"
 							alt=""
-							class="absolute inset-0 size-full object-cover m-0"
+							class="absolute inset-0 m-0 size-full object-cover"
 							:src="member.image"
 						/>
 					</div>

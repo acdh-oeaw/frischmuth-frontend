@@ -1,14 +1,5 @@
 <script lang="ts" setup>
 import {
-	CheckboxControl,
-	CheckboxGroup,
-	CheckboxIndicator,
-	CheckboxLabel,
-	CheckboxRoot,
-} from "@ark-ui/vue";
-import { CheckIcon, XIcon } from "lucide-vue-next";
-
-import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
