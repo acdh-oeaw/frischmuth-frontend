@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import * as v from "valibot";
+import type { LocationQueryValue } from "vue-router";
 
 import type { SearchFormData } from "@/components/search-form.vue";
 import {
@@ -41,8 +42,26 @@ const limit = 20;
 type SearchFilter = v.InferOutput<typeof searchFiltersSchema>;
 
 const searchFilters = computed(() => {
-	return v.parse(searchFiltersSchema, route.query);
+	// when there is just one query param, it is an Object instead of an Array, so normalize it
+	const normalizedQuery = {
+		...route.query,
+		language: normalizeQueryArray(route.query.language),
+		topic: normalizeQueryArray(route.query.topic),
+	};
+
+	return v.parse(searchFiltersSchema, normalizedQuery);
 });
+
+function normalizeQueryArray(param: Array<LocationQueryValue> | LocationQueryValue | undefined) {
+	if (Array.isArray(param)) {
+		return param;
+	}
+	if (typeof param === "string") {
+		return [param];
+	}
+	return [];
+}
+
 function onChange(values: SearchFormData) {
 	setSearchFilters(values);
 }
@@ -58,7 +77,6 @@ function setSearchFilters(query: Partial<SearchFilter>) {
 
 const { data, isPending } = useGetSearchResults(
 	computed(() => {
-		console.log(searchFilters);
 		return {
 			facet_language: searchFilters.value.language,
 			facet_topic: searchFilters.value.topic,
