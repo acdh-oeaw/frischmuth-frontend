@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { type ColumnDef, FlexRender, getCoreRowModel, useVueTable } from "@tanstack/vue-table";
 
+import NavLink from "@/components/nav-link.vue";
 import {
 	Table,
 	TableBody,
@@ -30,7 +31,17 @@ const columns: Array<ColumnDef<SearchResults["results"][number]>> = [
 		accessorKey: "title",
 		header: () => h("div", "Titel"),
 		cell: ({ row }) => {
-			return h("div", row.getValue("title"));
+			return h(
+				NavLink,
+				{
+					class:
+						"underline decoration-dotted transition hover:no-underline focus-visible:no-underline",
+					href: {
+						path: row.original.id ? `/work/${row.original.id as unknown as string}` : "",
+					},
+				},
+				row.getValue("title"),
+			);
 		},
 	},
 	{
