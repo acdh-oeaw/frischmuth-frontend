@@ -60,12 +60,23 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: ["./config/"],
 	},
-	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
+	modules: [
+		"@nuxt/content",
+		"@nuxt/image",
+		"@nuxtjs/color-mode",
+		"@nuxtjs/i18n",
+		"@vueuse/nuxt",
+		"@crazydos/nuxt-msw",
+	],
 	nitro: {
 		compressPublicAssets: true,
 		prerender: {
 			routes: ["/manifest.webmanifest", "/robots.txt", "/sitemap.xml"],
 		},
+	},
+	msw: {
+		enable: true,
+		folderPath: "msw",
 	},
 	postcss: {
 		plugins: {
