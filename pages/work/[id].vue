@@ -63,6 +63,13 @@ const relatedWork = computed(() => {
 			.map((relation) => relation.title),
 	};
 });
+
+const icon = computed(() => {
+	if (work.value?.work_type?.[0]?.name != null) {
+		return getWorkIcon(work.value.work_type[0]?.name);
+	}
+	return null;
+});
 </script>
 
 <template>
@@ -73,7 +80,8 @@ const relatedWork = computed(() => {
 			/>
 			<div class="grid grid-cols-2 gap-8">
 				<div v-if="work != null" class="bg-white p-16">
-					<div v-if="work?.work_type != null" class="pb-2">
+					<div v-if="work?.work_type != null" class="flex items-center gap-2 pb-2">
+						<component :is="icon" :size="20" />
 						{{ work?.work_type[0]?.name }}
 					</div>
 					<div class="pb-2">
@@ -102,13 +110,17 @@ const relatedWork = computed(() => {
 							<GlobeIcon :size="16" class="mr-2" />
 							<div v-for="(language, index) in work?.expression_data[0]?.language" :key="language">
 								<span>{{ language }}</span>
-
 								<span v-if="index !== work?.expression_data[0]?.language.length - 1">
 									{{ ", " }}&nbsp;
 								</span>
 							</div>
 						</div>
 					</div>
+					<span v-for="topic in work?.topics" :key="topic" class="mb-2 mr-1">
+						<div class="mb-1 inline-block bg-frisch-grey px-2 py-1 text-xs text-white opacity-85">
+							{{ topic.name }}
+						</div>
+					</span>
 					<Separator class="my-4 h-[3px] bg-frisch-marine"></Separator>
 					<div class="py-2 text-lg font-semibold">Zusammenfassung</div>
 					<div v-if="work?.summary">
@@ -248,7 +260,6 @@ const relatedWork = computed(() => {
 							{{ work?.text_analysis }}
 						</div>
 						<div v-else>Keine narrotologische Analyse vorhanden.</div>
-						{{ work }}
 					</div>
 				</div>
 			</div>
