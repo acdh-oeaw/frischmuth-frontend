@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-import { type ColumnDef, FlexRender, getCoreRowModel, useVueTable } from "@tanstack/vue-table";
+import {
+	type ColumnDef as TanStackColumnDef,
+	FlexRender,
+	getCoreRowModel,
+	useVueTable,
+} from "@tanstack/vue-table";
 
 import NavLink from "@/components/nav-link.vue";
 import {
@@ -10,6 +15,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import type { SearchResults } from "@/types/api.ts";
 
 const props = defineProps<{
@@ -17,14 +23,39 @@ const props = defineProps<{
 	resultsTotal: number;
 }>();
 
-const columns: Array<ColumnDef<SearchResults["results"][number]>> = [
+type CustomColumnDef<T> = TanStackColumnDef<T> & {
+	maxWidth?: boolean;
+};
+
+const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 	{
 		accessorKey: "work_type",
 		header: () => h("div", "Typ"),
 		cell: ({ row }) => {
-			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-			const workType = row.getValue("work_type") as Array<any> | undefined;
-			return h("div", {}, workType?.map((type) => type.name).join(", "));
+			const workType = row.getValue("work_type");
+
+			if (!Array.isArray(workType) || workType.length === 0) {
+				return h("span", {}, "");
+			}
+
+			const firstWorkTypeName = workType[0]?.name;
+			const IconComponent = firstWorkTypeName ? getWorkIcon(firstWorkTypeName) : null;
+
+			const tooltipWrapper = h(TooltipProvider, {}, () => [
+				h(Tooltip, {}, () => [
+					h(TooltipTrigger, { class: "cursor-default" }, () => [
+						IconComponent
+							? h(IconComponent, { class: "size-4 shrink-0" })
+							: h("span", {}, workType.map((type) => type.name).join(", ")),
+					]),
+					h(TooltipContent, {}, () => workType.map((type) => type.name).join(", ")),
+				]),
+			]);
+
+			return h("span", {}, [
+				tooltipWrapper,
+				h("div", { class: "sr-only" }, workType.map((type) => type.name).join(", ")),
+			]);
 		},
 	},
 	{
@@ -43,6 +74,7 @@ const columns: Array<ColumnDef<SearchResults["results"][number]>> = [
 				row.getValue("title"),
 			);
 		},
+		maxWidth: true, // Custom property
 	},
 	{
 		accessorKey: "expression_data",
@@ -50,7 +82,7 @@ const columns: Array<ColumnDef<SearchResults["results"][number]>> = [
 		cell: ({ row }) => {
 			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
 			const edition = row.getValue("expression_data") as Array<any> | undefined;
-			return h("div", {}, edition?.map((type) => type.edition).join(", "));
+			return h("div", {}, edition?.map((type) => type.edition_type).join(", "));
 		},
 	},
 	{
@@ -75,9 +107,18 @@ const columns: Array<ColumnDef<SearchResults["results"][number]>> = [
 		accessorKey: "expression_data",
 		header: () => h("div", "Veröffentlichungsdatum"),
 		cell: ({ row }) => {
-			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-			const publicationDate = row.getValue("expression_data") as Array<any> | undefined;
-			return h("div", {}, publicationDate?.map((type) => type.publication_date).join(", "));
+			const publicationData = row.getValue("expression_data");
+
+			const publicationDates =
+				publicationData
+					?.map((type) => {
+						const date = type.publication_date || "";
+						const year = date.split("-")[0] || "";
+						return year;
+					})
+					.join(", ") || "";
+
+			return h("div", {}, publicationDates);
 		},
 	},
 ];
@@ -91,18 +132,31 @@ const table = useVueTable({
 	},
 	getCoreRowModel: getCoreRowModel(),
 });
+
+function getHeaderClass<T>(columnDef?: CustomColumnDef<T>): string {
+	return columnDef?.maxWidth ? "max-w-xl" : "";
+}
+
+function getCellClass<T>(columnDef?: CustomColumnDef<T>): string {
+	return columnDef?.maxWidth ? "max-w-xl" : "";
+}
 </script>
 
 <template>
 	<div>
-		<div class="rounded-md border">
+		<div class="border">
 			<Table>
-				<TableHeader>
+				<TableHeader class="table-fixed">
 					<TableCaption class="sr-only">
 						<span>Suchergebnisse</span>
 					</TableCaption>
 					<TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
-						<TableHead v-for="header in headerGroup.headers" :key="header.id">
+						<TableHead
+							v-for="header in headerGroup.headers"
+							:key="header.id"
+							:class="getHeaderClass(header.column.columnDef)"
+							class="truncate p-2 text-left"
+						>
 							<FlexRender
 								v-if="!header.isPlaceholder"
 								:render="header.column.columnDef.header"
@@ -118,7 +172,12 @@ const table = useVueTable({
 							:key="row.id"
 							:data-state="row.getIsSelected() ? 'selected' : undefined"
 						>
-							<TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+							<TableCell
+								v-for="cell in row.getVisibleCells()"
+								:key="cell.id"
+								class="truncate p-2"
+								:class="getCellClass(cell.column.columnDef)"
+							>
 								<FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
 							</TableCell>
 						</TableRow>

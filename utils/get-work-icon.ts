@@ -62,6 +62,8 @@ const icons: Record<string, Icon> = {
 	korrespondenz: NewspaperIcon,
 	dramaopernaufführung: FilesIcon,
 	nachdichtungvonbarbarafrischmuth: FilesIcon,
+	//next item is not in the hierachry:
+	übersetzung: FilesIcon,
 };
 
 export function getWorkIcon(workType: string): Icon | null {
