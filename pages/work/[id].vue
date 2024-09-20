@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { GlobeIcon } from "lucide-vue-next";
+import { GlobeIcon, UserRoundIcon, UserRoundPenIcon, VenetianMaskIcon } from "lucide-vue-next";
 
 import {
 	Accordion,
@@ -7,8 +7,17 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const route = useRoute();
+
+type Icon = typeof UserRoundIcon;
+
+const characterIcons: Record<string, Icon> = {
+	fiktivefigur: UserRoundPenIcon,
+	historischefigur: UserRoundIcon,
+	mythologischefigur: VenetianMaskIcon,
+};
 
 const id = computed(() => {
 	return Number(route.params.id as string);
@@ -32,20 +41,45 @@ const characters = computed(() => {
 	return {
 		main: work.value?.characters
 			?.filter((character) => character.relevancy === "Hauptfigur")
-			.map((character) => character.fallback_name),
+			.map((character) => ({
+				name: character.fallback_name,
+				fictionality: character.fictionality ? character.fictionality[0] : "",
+				icon: setCharacterIcon(character.fictionality ? character.fictionality[0] : ""),
+			})),
+
 		secondary: work.value?.characters
 			?.filter((character) => character.relevancy === "Nebenfigur")
-			.map((character) => character.fallback_name),
+			.map((character) => ({
+				name: character.fallback_name,
+				fictionality: character.fictionality ? character.fictionality[0] : "",
+				icon: setCharacterIcon(character.fictionality ? character.fictionality[0] : ""),
+			})),
+
 		spokenOf: work.value?.characters
 			?.filter((character) => character.relevancy === "erwähnte Figur")
-			.map((character) => character.fallback_name),
+			.map((character) => ({
+				name: character.fallback_name,
+				fictionality: character.fictionality ? character.fictionality[0] : "",
+				icon: setCharacterIcon(character.fictionality ? character.fictionality[0] : ""),
+			})),
 	};
 });
+
+function setCharacterIcon(fictionality: string): Icon | null {
+	const normalizedFictionality = fictionality
+		.toLowerCase()
+		.replace(/[-\s,]/g, "") // Removes dashes, spaces, and commas
+		.replace(/[^a-zA-Zäöüß]/g, ""); // Removes any non-alphabet characters except for umlauts and ß
+	return characterIcons[normalizedFictionality] ?? null;
+}
 
 const places = computed(() => {
 	return {
 		mentioned: work.value?.places
 			?.filter((place) => place.relation_type === "mentions")
+			.map((place) => place.name),
+		discussed: work.value?.places
+			?.filter((place) => place.relation_type === "discusses")
 			.map((place) => place.name),
 		takesPlaceIn: work.value?.places
 			?.filter((place) => place.relation_type === "takes place in")
@@ -57,11 +91,37 @@ const relatedWork = computed(() => {
 	return {
 		referencedIn: work.value?.related_works
 			?.filter((relation) => relation.relation_type === "is referenced in")
-			.map((relation) => relation.title),
+			.map((relation) => ({
+				id: relation.id,
+				title: relation.title,
+			})),
 		references: work.value?.related_works
 			?.filter((relation) => relation.relation_type === "references")
-			.map((relation) => relation.title),
+			.map((relation) => ({
+				id: relation.id,
+				title: relation.title,
+			})),
+		discussedIn: work.value?.related_works
+			?.filter((relation) => relation.relation_type === "is discussed in")
+			.map((relation) => ({
+				id: relation.id,
+				title: relation.title,
+			})),
 	};
+});
+
+const analysisTags = computed(() => {
+	return [
+		{ name: "Zeitliche Ordnung", value: work.value?.temporal_order?.[0] },
+		{ name: "Zeitliche Dauer", value: work.value?.temporal_duration?.[0] },
+		{ name: "Zeitliche Häufigkeit", value: work.value?.temporal_frequency?.[0] },
+		{ name: "Stilfigur", value: work.value?.figure_speech?.[0] },
+		{ name: "Fokalisierung", value: work.value?.focalization?.[0] },
+		{ name: "Narrative Situation", value: work.value?.narrative_situation?.[0] },
+		{ name: "Narrative Chronologie", value: work.value?.narrative_chronology?.[0] },
+		{ name: "Narrative Ebene", value: work.value?.narrative_level?.[0] },
+		{ name: "Narrative Stimme", value: work.value?.narrative_voice?.[0] },
+	].filter((item) => item.value !== undefined);
 });
 
 const icon = computed(() => {
@@ -80,6 +140,7 @@ const icon = computed(() => {
 			/>
 			<div class="grid grid-cols-2 gap-8">
 				<div v-if="work != null" class="bg-white p-16">
+					<!-- TODO: maybe display siglum here -->
 					<div v-if="work?.work_type != null" class="flex items-center gap-2 pb-2">
 						<component :is="icon" :size="20" />
 						{{ work?.work_type[0]?.name }}
@@ -123,7 +184,7 @@ const icon = computed(() => {
 					</span>
 					<Separator class="my-4 h-[3px] bg-frisch-marine"></Separator>
 					<div class="py-2 text-lg font-semibold">Zusammenfassung</div>
-					<div v-if="work?.summary">
+					<div v-if="work?.summary" class="block hyphens-auto text-justify">
 						{{ work?.summary }}
 					</div>
 					<div v-else>Keine Zusammenfassung vorhanden.</div>
@@ -133,8 +194,14 @@ const icon = computed(() => {
 								<div class="text-lg font-semibold">Kontexte</div>
 							</AccordionTrigger>
 							<AccordionContent class="text-base">
-								<div v-if="work?.context">
-									{{ work?.context }}
+								<div v-if="work?.context || work?.historical_events">
+									<div class="pb-1">
+										{{ work?.context }}
+									</div>
+									<div>
+										<span class="font-semibold">Historische Events:&nbsp;</span>
+										<span>{{ work?.historical_events }}</span>
+									</div>
 								</div>
 								<div v-else>Keine Kontexte vorhanden.</div>
 							</AccordionContent>
@@ -147,13 +214,27 @@ const icon = computed(() => {
 									<div class="text-lg font-semibold">Charaktere</div>
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
-									<!-- TODO: display fictionality -->
 									<div class="grid grid-cols-3 gap-4">
 										<div>
 											<div class="pb-2 font-semibold">Hauptfiguren</div>
 											<div v-if="characters.main.length > 0">
 												<div v-for="character in characters.main" :key="character">
-													{{ character }}
+													<TooltipProvider>
+														<Tooltip>
+															<TooltipTrigger as-child>
+																<component
+																	:is="character.icon"
+																	:size="16"
+																	class="inline text-frisch-orange"
+																/>
+															</TooltipTrigger>
+															<TooltipContent>
+																<p>{{ character.fictionality }}</p>
+															</TooltipContent>
+														</Tooltip>
+													</TooltipProvider>
+
+													{{ character.name }}
 												</div>
 											</div>
 											<div v-else>Keine Hauptfiguren vorhanden.</div>
@@ -162,7 +243,22 @@ const icon = computed(() => {
 											<div class="pb-2 font-semibold">Nebenfiguren</div>
 											<div v-if="characters.secondary.length > 0">
 												<div v-for="character in characters.secondary" :key="character">
-													{{ character }}
+													<TooltipProvider>
+														<Tooltip>
+															<TooltipTrigger as-child>
+																<component
+																	:is="character.icon"
+																	:size="16"
+																	class="inline text-frisch-orange"
+																/>
+															</TooltipTrigger>
+															<TooltipContent>
+																<p>{{ character.fictionality }}</p>
+															</TooltipContent>
+														</Tooltip>
+													</TooltipProvider>
+
+													{{ character.name }}
 												</div>
 											</div>
 											<div v-else>Keine Nebenfiguren vorhanden.</div>
@@ -171,7 +267,22 @@ const icon = computed(() => {
 											<div class="pb-2 font-semibold">Erwähnte Figuren</div>
 											<div v-if="characters.spokenOf.length > 0">
 												<div v-for="character in characters.spokenOf" :key="character">
-													{{ character }}
+													<TooltipProvider>
+														<Tooltip>
+															<TooltipTrigger as-child>
+																<component
+																	:is="character.icon"
+																	:size="16"
+																	class="inline text-frisch-orange"
+																/>
+															</TooltipTrigger>
+															<TooltipContent>
+																<p>{{ character.fictionality }}</p>
+															</TooltipContent>
+														</Tooltip>
+													</TooltipProvider>
+
+													{{ character.name }}
 												</div>
 											</div>
 											<div v-else>Keine erwähnten Figuren vorhanden.</div>
@@ -189,7 +300,7 @@ const icon = computed(() => {
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
 									<div>
-										<div class="grid grid-cols-2 gap-4">
+										<div class="grid grid-cols-3 gap-4">
 											<div>
 												<div class="pb-2 font-semibold">Schauplätze</div>
 												<div v-if="places.takesPlaceIn.length > 0">
@@ -198,6 +309,15 @@ const icon = computed(() => {
 													</div>
 												</div>
 												<div v-else>Keine Schauplätze vorhanden.</div>
+											</div>
+											<div>
+												<div class="pb-2 font-semibold">Beleuchtete Orte</div>
+												<div v-if="places.discussed.length > 0">
+													<div v-for="place in places.discussed" :key="place">
+														{{ place }}
+													</div>
+												</div>
+												<div v-else>Keine beleuchteten Orte vorhanden.</div>
 											</div>
 											<div>
 												<div class="pb-2 font-semibold">Erwähnte Orte</div>
@@ -222,12 +342,17 @@ const icon = computed(() => {
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
 									<div>
-										<div class="grid grid-cols-2 gap-4">
+										<div class="grid grid-cols-3 gap-4">
 											<div>
 												<div class="pb-2 font-semibold">Erwähnte Werke</div>
 												<div v-if="relatedWork.references.length > 0">
 													<div v-for="relation in relatedWork.references" :key="relation">
-														{{ relation }}
+														<NuxtLink
+															class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
+															:href="`/work/${relation.id}`"
+														>
+															{{ relation.title }}
+														</NuxtLink>
 													</div>
 												</div>
 												<div v-else>Keine Bezüge vorhanden.</div>
@@ -236,10 +361,52 @@ const icon = computed(() => {
 												<div class="pb-2 font-semibold">Wurde erwähnt in</div>
 												<div v-if="relatedWork.referencedIn.length > 0">
 													<div v-for="relation in relatedWork.referencedIn" :key="relation">
-														{{ relation }}
+														<NuxtLink
+															class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
+															:href="`/work/${relation.id}`"
+														>
+															{{ relation.title }}
+														</NuxtLink>
 													</div>
 												</div>
 												<div v-else>Keine Bezüge vorhanden.</div>
+											</div>
+											<div>
+												<div class="pb-2 font-semibold">Wurde diskutiert in</div>
+												<div v-if="relatedWork.discussedIn.length > 0">
+													<div v-for="relation in relatedWork.discussedIn" :key="relation">
+														<NuxtLink
+															class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
+															:href="`/work/${relation.id}`"
+														>
+															{{ relation.title }}
+														</NuxtLink>
+													</div>
+												</div>
+												<div v-else>Keine Bezüge vorhanden.</div>
+											</div>
+										</div>
+									</div>
+								</AccordionContent>
+							</AccordionItem>
+						</Accordion>
+					</div>
+					<div>
+						<Accordion type="single" collapsible>
+							<AccordionItem value="relations">
+								<AccordionTrigger>
+									<div class="text-lg font-semibold">Physikalische Objekte</div>
+								</AccordionTrigger>
+								<AccordionContent class="text-base">
+									<div>
+										<div class="grid">
+											<div>
+												<div v-if="work?.physical_objects.length > 0">
+													<div v-for="thing in work?.physical_objects" :key="thing">
+														{{ thing.name }}
+													</div>
+												</div>
+												<div v-else>Keine physikalischen Objekte vorhanden.</div>
 											</div>
 										</div>
 									</div>
@@ -255,11 +422,29 @@ const icon = computed(() => {
 						/>
 						<div class="py-2 text-lg font-semibold">Narratologische Analyse</div>
 					</div>
-					<div class="block px-16">
+					<div class="block hyphens-auto px-16 text-justify">
 						<div v-if="work?.text_analysis">
 							{{ work?.text_analysis }}
 						</div>
 						<div v-else>Keine narrotologische Analyse vorhanden.</div>
+						<div v-if="analysisTags.length > 0" class="py-4">
+							<span v-for="tag in analysisTags" :key="tag" class="mb-2 mr-1">
+								<TooltipProvider>
+									<Tooltip>
+										<TooltipTrigger as-child>
+											<span
+												class="mb-1 inline-block cursor-default bg-frisch-orange px-2 py-1 text-xs text-white opacity-85"
+											>
+												{{ tag.value }}
+											</span>
+										</TooltipTrigger>
+										<TooltipContent>
+											<p>{{ tag.name }}</p>
+										</TooltipContent>
+									</Tooltip>
+								</TooltipProvider>
+							</span>
+						</div>
 					</div>
 				</div>
 			</div>

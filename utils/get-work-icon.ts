@@ -71,6 +71,5 @@ export function getWorkIcon(workType: string): Icon | null {
 		.toLowerCase()
 		.replace(/[-\s,]/g, "") // Removes dashes, spaces, and commas
 		.replace(/[^a-zA-Zäöüß]/g, ""); // Removes any non-alphabet characters except for umlauts and ß
-	console.log(normalizedWorkType);
 	return icons[normalizedWorkType] ?? null;
 }
