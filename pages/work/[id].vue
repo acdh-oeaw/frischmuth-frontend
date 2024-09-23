@@ -77,13 +77,31 @@ const places = computed(() => {
 	return {
 		mentioned: work.value?.places
 			?.filter((place) => place.relation_type === "mentions")
-			.map((place) => place.name),
+			.map((place) => ({
+				id: place.id,
+				name: place.name,
+				longitude: place.longitude,
+				latitude: place.latitude,
+				description: place.description,
+			})),
 		discussed: work.value?.places
 			?.filter((place) => place.relation_type === "discusses")
-			.map((place) => place.name),
+			.map((place) => ({
+				id: place.id,
+				name: place.name,
+				longitude: place.longitude,
+				latitude: place.latitude,
+				description: place.description,
+			})),
 		takesPlaceIn: work.value?.places
 			?.filter((place) => place.relation_type === "takes place in")
-			.map((place) => place.name),
+			.map((place) => ({
+				id: place.id,
+				name: place.name,
+				longitude: place.longitude,
+				latitude: place.latitude,
+				description: place.description,
+			})),
 	};
 });
 
@@ -187,7 +205,7 @@ const icon = computed(() => {
 					<div v-if="work?.summary" class="block hyphens-auto text-justify">
 						{{ work?.summary }}
 					</div>
-					<div v-else>Keine Zusammenfassung vorhanden.</div>
+					<div v-else class="text-sm text-muted-foreground">Keine Zusammenfassung vorhanden.</div>
 					<Accordion type="single" class="font-normal" collapsible>
 						<AccordionItem value="context">
 							<AccordionTrigger>
@@ -198,12 +216,12 @@ const icon = computed(() => {
 									<div class="pb-1">
 										{{ work?.context }}
 									</div>
-									<div>
+									<div v-if="work?.historical_events">
 										<span class="font-semibold">Historische Events:&nbsp;</span>
 										<span>{{ work?.historical_events }}</span>
 									</div>
 								</div>
-								<div v-else>Keine Kontexte vorhanden.</div>
+								<div v-else class="text-sm text-muted-foreground">Keine Kontexte vorhanden.</div>
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>
@@ -237,7 +255,9 @@ const icon = computed(() => {
 													{{ character.name }}
 												</div>
 											</div>
-											<div v-else>Keine Hauptfiguren vorhanden.</div>
+											<div v-else class="text-sm text-muted-foreground">
+												Keine Hauptfiguren vorhanden.
+											</div>
 										</div>
 										<div>
 											<div class="pb-2 font-semibold">Nebenfiguren</div>
@@ -261,7 +281,9 @@ const icon = computed(() => {
 													{{ character.name }}
 												</div>
 											</div>
-											<div v-else>Keine Nebenfiguren vorhanden.</div>
+											<div v-else class="text-sm text-muted-foreground">
+												Keine Nebenfiguren vorhanden.
+											</div>
 										</div>
 										<div>
 											<div class="pb-2 font-semibold">Erwähnte Figuren</div>
@@ -285,7 +307,9 @@ const icon = computed(() => {
 													{{ character.name }}
 												</div>
 											</div>
-											<div v-else>Keine erwähnten Figuren vorhanden.</div>
+											<div v-else class="text-sm text-muted-foreground">
+												Keine erwähnten Figuren vorhanden.
+											</div>
 										</div>
 									</div>
 								</AccordionContent>
@@ -305,28 +329,88 @@ const icon = computed(() => {
 												<div class="pb-2 font-semibold">Schauplätze</div>
 												<div v-if="places.takesPlaceIn.length > 0">
 													<div v-for="place in places.takesPlaceIn" :key="place">
-														{{ place }}
+														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
+															<span>{{ place.name }}</span>
+															<span
+																v-if="place.id && place.latitude && place.longitude"
+																class="flex items-center"
+															>
+																<NuxtLink
+																	:href="{
+																		path: `/work/${work.id}`,
+																		query: {
+																			place: place.id,
+																		},
+																	}"
+																>
+																	<span class="sr-only">Ort anzeigen</span>
+																	<MapSidebar :place="place" relation="Schauplatz" />
+																</NuxtLink>
+															</span>
+														</span>
 													</div>
 												</div>
-												<div v-else>Keine Schauplätze vorhanden.</div>
+												<div v-else class="text-sm text-muted-foreground">
+													Keine Schauplätze vorhanden.
+												</div>
 											</div>
 											<div>
 												<div class="pb-2 font-semibold">Beleuchtete Orte</div>
 												<div v-if="places.discussed.length > 0">
 													<div v-for="place in places.discussed" :key="place">
-														{{ place }}
+														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
+															<span>{{ place.name }}</span>
+															<span
+																v-if="place.id && place.latitude && place.longitude"
+																class="flex items-center"
+															>
+																<NuxtLink
+																	:href="{
+																		path: `/work/${work.id}`,
+																		query: {
+																			place: place.id,
+																		},
+																	}"
+																>
+																	<span class="sr-only">Ort anzeigen</span>
+																	<MapSidebar :place="place" relation="Beleuchteter Ort" />
+																</NuxtLink>
+															</span>
+														</span>
 													</div>
 												</div>
-												<div v-else>Keine beleuchteten Orte vorhanden.</div>
+												<div v-else class="text-sm text-muted-foreground">
+													Keine beleuchteten Orte vorhanden.
+												</div>
 											</div>
 											<div>
 												<div class="pb-2 font-semibold">Erwähnte Orte</div>
 												<div v-if="places.mentioned.length > 0">
 													<div v-for="place in places.mentioned" :key="place">
-														{{ place }}
+														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
+															<span>{{ place.name }}</span>
+															<span
+																v-if="place.id && place.latitude && place.longitude"
+																class="flex items-center"
+															>
+																<NuxtLink
+																	:href="{
+																		path: `/work/${work.id}`,
+																		query: {
+																			place: place.id,
+																		},
+																	}"
+																>
+																	<span class="sr-only">Ort anzeigen</span>
+																	<MapSidebar :place="place" relation="Erwähnter Ort" />
+																</NuxtLink>
+															</span>
+														</span>
 													</div>
 												</div>
-												<div v-else>Keine erwähnten Orte vorhanden.</div>
+												<div v-else class="text-sm text-muted-foreground">
+													Keine erwähnten Orte vorhanden.
+												</div>
 											</div>
 										</div>
 									</div>
@@ -355,7 +439,9 @@ const icon = computed(() => {
 														</NuxtLink>
 													</div>
 												</div>
-												<div v-else>Keine Bezüge vorhanden.</div>
+												<div v-else class="text-sm text-muted-foreground">
+													Keine Bezüge vorhanden.
+												</div>
 											</div>
 											<div>
 												<div class="pb-2 font-semibold">Wurde erwähnt in</div>
@@ -369,7 +455,9 @@ const icon = computed(() => {
 														</NuxtLink>
 													</div>
 												</div>
-												<div v-else>Keine Bezüge vorhanden.</div>
+												<div v-else class="text-sm text-muted-foreground">
+													Keine Bezüge vorhanden.
+												</div>
 											</div>
 											<div>
 												<div class="pb-2 font-semibold">Wurde diskutiert in</div>
@@ -383,7 +471,9 @@ const icon = computed(() => {
 														</NuxtLink>
 													</div>
 												</div>
-												<div v-else>Keine Bezüge vorhanden.</div>
+												<div v-else class="text-sm text-muted-foreground">
+													Keine Bezüge vorhanden.
+												</div>
 											</div>
 										</div>
 									</div>
@@ -406,7 +496,9 @@ const icon = computed(() => {
 														{{ thing.name }}
 													</div>
 												</div>
-												<div v-else>Keine physikalischen Objekte vorhanden.</div>
+												<div v-else class="text-sm text-muted-foreground">
+													Keine physikalischen Objekte vorhanden.
+												</div>
 											</div>
 										</div>
 									</div>
@@ -426,7 +518,9 @@ const icon = computed(() => {
 						<div v-if="work?.text_analysis">
 							{{ work?.text_analysis }}
 						</div>
-						<div v-else>Keine narrotologische Analyse vorhanden.</div>
+						<div v-else class="text-sm text-muted-foreground">
+							Keine narrotologische Analyse vorhanden.
+						</div>
 						<div v-if="analysisTags.length > 0" class="py-4">
 							<span v-for="tag in analysisTags" :key="tag" class="mb-2 mr-1">
 								<TooltipProvider>
