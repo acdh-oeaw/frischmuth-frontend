@@ -1,3 +1,4 @@
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { createUrl, createUrlSearchParams, log, request } from "@acdh-oeaw/lib";
@@ -48,6 +49,11 @@ async function generate() {
 			withAlias: true,
 		},
 	});
+
+	const fileContent = readFileSync(outputFilePath, { encoding: "utf-8" });
+	const modifiedFileContent = "// @ts-nocheck\n" + fileContent;
+
+	writeFileSync(outputFilePath, modifiedFileContent, { encoding: "utf-8" });
 }
 
 void generate().then(() => {
