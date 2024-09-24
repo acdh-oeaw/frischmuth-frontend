@@ -489,16 +489,27 @@ const icon = computed(() => {
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
 									<div>
-										<div class="grid">
-											<div>
-												<div v-if="work?.physical_objects.length > 0">
-													<div v-for="thing in work?.physical_objects" :key="thing">
-														{{ thing.name }}
+										<div>
+											<div v-if="work?.physical_objects.length > 0">
+												<div class="grid grid-cols-[auto_1fr] gap-10">
+													<div>
+														<div class="pb-2 font-semibold">Archiv</div>
+														<div v-for="thing in work?.physical_objects" :key="thing">
+															<div>
+																{{ thing.archive?.name }}
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="pb-2 font-semibold">Objekt</div>
+														<div v-for="thing in work?.physical_objects" :key="thing">
+															<div>{{ thing.name }}</div>
+														</div>
 													</div>
 												</div>
-												<div v-else class="text-sm text-muted-foreground">
-													Keine physikalischen Objekte vorhanden.
-												</div>
+											</div>
+											<div v-else class="text-sm text-muted-foreground">
+												Keine physikalischen Objekte vorhanden.
 											</div>
 										</div>
 									</div>
