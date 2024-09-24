@@ -5,17 +5,21 @@ const router = useRouter();
 
 const props = defineProps<{
 	place: {
-		id: number;
-		name: string;
-		longitude: number;
-		latitude: number;
+		id: number | undefined;
+		name: string | undefined;
+		longitude: number | null | undefined;
+		latitude: number | null | undefined;
 		description: string | undefined;
 	};
 	relation: string;
 }>();
 
-function setPlaceQuery(id: number) {
-	void router.push({ place: id });
+function setPlaceQuery(id: number | undefined) {
+	if (id != null) {
+		void router.push({
+			query: { place: id },
+		});
+	}
 }
 </script>
 
@@ -31,7 +35,9 @@ function setPlaceQuery(id: number) {
 			</div>
 			<SheetTitle class="pb-2">{{ props.place.name }}</SheetTitle>
 			<SheetDescription>
-				<Map :longitude="props.place.longitude" :latitude="props.place.latitude" />
+				<div v-if="props.place.longitude != null && props.place.latitude != null">
+					<Map :longitude="props.place.longitude" :latitude="props.place.latitude" />
+				</div>
 				<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
 				<div v-if="props.place.description !== ''">
 					{{ props.place.description }}

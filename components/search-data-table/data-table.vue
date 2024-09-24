@@ -109,14 +109,15 @@ const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 		cell: ({ row }) => {
 			const publicationData = row.getValue("expression_data");
 
-			const publicationDates =
-				publicationData
-					?.map((type) => {
-						const date = type.publication_date || "";
-						const year = date.split("-")[0] || "";
-						return year;
-					})
-					.join(", ") || "";
+			const publicationDates = Array.isArray(publicationData)
+				? publicationData
+						.map((type) => {
+							const date = type.publication_date || "";
+							const year = date.split("-")[0] || "";
+							return year;
+						})
+						.join(", ")
+				: "";
 
 			return h("div", {}, publicationDates);
 		},
