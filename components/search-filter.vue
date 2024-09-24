@@ -1,24 +1,30 @@
 <script lang="ts" setup>
+import type { LocationQueryValue } from "vue-router";
+
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
-import type { SearchFacets } from "@/types/api";
+import type { SearchResultFacets } from "@/types/api";
 
 const route = useRoute();
 const router = useRouter();
 
-const checkedFacets: {
-	language: string;
-	topic: string;
-} = computed(() => {
-	return { language: route.query.language, topic: route.query.topic };
+const checkedFacets = computed(() => {
+	const languageValue: Array<LocationQueryValue> | LocationQueryValue | undefined =
+		route.query.language;
+	const topicValue: Array<LocationQueryValue> | LocationQueryValue | undefined = route.query.topic;
+
+	return {
+		language: Array.isArray(languageValue) ? languageValue[0] : languageValue ?? "",
+		topic: Array.isArray(topicValue) ? topicValue[0] : topicValue ?? "",
+	} as { language: string; topic: string }; // Cast to the expected type
 });
 
 const props = defineProps<{
-	facets: SearchFacets | null;
+	facets: SearchResultFacets | null;
 }>();
 
 const showMore = ref(false);

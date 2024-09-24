@@ -8,5 +8,8 @@ type Api = ApiOf<typeof api>;
 export type SearchFilters = ZodiosQueryParamsByPath<Api, "get", "/api/work-preview/">;
 export type SearchResults = ZodiosResponseByPath<Api, "get", "/api/work-preview/">;
 
-export type SearchFacets = NonNullable<SearchResults["facets"]>;
+export type SearchFacetLanguage = NonNullable<SearchFilters["facet_language"]>;
+export type SearchFacetTopic = NonNullable<SearchFilters["facet_topic"]>;
+
+export type SearchResultFacets = NonNullable<SearchResults["facets"]>;
 export type WorkType = z.infer<typeof schemas.WorkTypeData>;

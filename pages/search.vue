@@ -13,6 +13,7 @@ import {
 	PaginationNext,
 	PaginationPrev,
 } from "@/components/ui/pagination";
+import type { SearchFacetLanguage, SearchFacetTopic } from "@/types/api.ts";
 
 defineRouteRules({
 	prerender: true,
@@ -78,8 +79,8 @@ function setSearchFilters(query: Partial<SearchFilter>) {
 const { data, isPending } = useGetSearchResults(
 	computed(() => {
 		return {
-			facet_language: searchFilters.value.language,
-			facet_topic: searchFilters.value.topic,
+			facet_language: searchFilters.value.language as SearchFacetLanguage,
+			facet_topic: searchFilters.value.topic as SearchFacetTopic,
 			text_filter: searchFilters.value.query,
 			limit,
 			offset: offset.value,
