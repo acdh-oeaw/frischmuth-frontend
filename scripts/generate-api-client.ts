@@ -50,10 +50,6 @@ async function generate() {
 	});
 }
 
-generate()
-	.then(() => {
-		log.success("Successfully generated api client.");
-	})
-	.catch((error: unknown) => {
-		log.error("Failed to generate api client.\n", String(error));
-	});
+void generate().then(() => {
+	log.success("Successfully generated api client.");
+});
