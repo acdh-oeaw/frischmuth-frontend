@@ -1,5 +1,9 @@
 {
 	"AboutPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
 		"meta": {
 			"title": "Über das Projekt"
 		},
@@ -43,6 +47,11 @@
 		"title": "Impressum"
 	},
 	"IndexPage": {
+		"links": {
+			"about": "Über das Projekt",
+			"explore": "Entdecken",
+			"search": "Suche"
+		},
 		"meta": {
 			"title": "Startseite"
 		},

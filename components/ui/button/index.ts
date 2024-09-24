@@ -18,6 +18,7 @@ export const buttonVariants = cva(
 					"items-end justify-end bg-none text-lg font-bold text-frisch-orange hover:text-frisch-indigo",
 				pagination: "bg-frisch-indigo text-lg text-white hover:bg-frisch-indigo/90",
 				paginationActive: "bg-frisch-orange text-lg text-white",
+				frischMarine: "bg-frisch-indigo text-white hover:bg-frisch-indigo/90",
 			},
 			size: {
 				default: "h-9 px-4 py-2",
