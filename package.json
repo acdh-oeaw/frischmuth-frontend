@@ -54,6 +54,7 @@
 		"cva": "^1.0.0-beta.1",
 		"fast-glob": "^3.3.2",
 		"lucide-vue-next": "^0.424.0",
+		"maplibre-gl": "^4.7.1",
 		"nuxt": "^3.12.4",
 		"pino-http": "^10.2.0",
 		"radix-vue": "^1.9.3",
