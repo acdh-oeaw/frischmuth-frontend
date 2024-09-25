@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { XIcon } from "lucide-vue-next";
 import type { LocationQueryValue } from "vue-router";
 
 import {
@@ -18,9 +19,9 @@ const checkedFacets = computed(() => {
 	const topicValue: Array<LocationQueryValue> | LocationQueryValue | undefined = route.query.topic;
 
 	return {
-		language: Array.isArray(languageValue) ? languageValue[0] : languageValue ?? "",
-		topic: Array.isArray(topicValue) ? topicValue[0] : topicValue ?? "",
-	} as { language: string; topic: string }; // Cast to the expected type
+		language: Array.isArray(languageValue) ? languageValue : languageValue ? [languageValue] : [],
+		topic: Array.isArray(topicValue) ? topicValue : topicValue ? [topicValue] : [],
+	} as { language: Array<string>; topic: Array<string> };
 });
 
 const props = defineProps<{
@@ -101,7 +102,9 @@ const sliderValue = ref([slider.min, slider.max]);
 								variant="searchform"
 								@click="removeFilter()"
 							>
-								<XIcon :size="12" />
+								<div class="bg-frisch-orange">
+									<XIcon :size="12" class="font-bold text-white" />
+								</div>
 							</Button>
 						</div>
 					</div>
