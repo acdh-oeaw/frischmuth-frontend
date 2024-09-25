@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import * as v from "valibot";
+import type { LocationQueryValue } from "vue-router";
 
 import type { SearchFormData } from "@/components/search-form.vue";
 import {
@@ -12,12 +13,14 @@ import {
 	PaginationNext,
 	PaginationPrev,
 } from "@/components/ui/pagination";
+import type { SearchFacetLanguage, SearchFacetTopic } from "@/types/api.ts";
 
 defineRouteRules({
 	prerender: true,
 });
 
 const router = useRouter();
+const route = useRoute();
 const t = useTranslations();
 
 usePageMetadata({
@@ -30,19 +33,41 @@ function onUpdatePage(newPage: number) {
 
 const searchFiltersSchema = v.object({
 	query: v.fallback(v.string(), ""),
+	language: v.fallback(v.array(v.string()), []),
+	topic: v.fallback(v.array(v.string()), []),
 });
 
 const offset = ref(0);
 const limit = 20;
-const searchstring = ref("");
 
-type SearchFilters = v.InferOutput<typeof searchFiltersSchema>;
+type SearchFilter = v.InferOutput<typeof searchFiltersSchema>;
 
-function onChangeSearchInput(values: SearchFormData) {
+const searchFilters = computed(() => {
+	// when there is just one query param, it is an Object instead of an Array, so normalize it
+	const normalizedQuery = {
+		...route.query,
+		language: normalizeQueryArray(route.query.language),
+		topic: normalizeQueryArray(route.query.topic),
+	};
+
+	return v.parse(searchFiltersSchema, normalizedQuery);
+});
+
+function normalizeQueryArray(param: Array<LocationQueryValue> | LocationQueryValue | undefined) {
+	if (Array.isArray(param)) {
+		return param;
+	}
+	if (typeof param === "string") {
+		return [param];
+	}
+	return [];
+}
+
+function onChange(values: SearchFormData) {
 	setSearchFilters(values);
 }
 
-function setSearchFilters(query: Partial<SearchFilters>) {
+function setSearchFilters(query: Partial<SearchFilter>) {
 	if (query.query === "") {
 		delete query.query;
 	}
@@ -51,37 +76,46 @@ function setSearchFilters(query: Partial<SearchFilters>) {
 	document.body.scrollTo(0, 0);
 }
 
-const { data } = useGetSearchResults(
+const { data, isPending } = useGetSearchResults(
 	computed(() => {
 		return {
-			text_filter: searchstring.value,
+			facet_language: searchFilters.value.language as SearchFacetLanguage,
+			facet_topic: searchFilters.value.topic as SearchFacetTopic,
+			text_filter: searchFilters.value.query,
 			limit,
 			offset: offset.value,
 		};
 	}),
 );
+
+const isLoading = computed(() => {
+	return isPending.value;
+});
+
+const facets = computed(() => {
+	if (data.value?.facets != null) {
+		return data.value.facets;
+	}
+	return null;
+});
 </script>
 
 <template>
-	<main class="h-full bg-frisch-marine pr-20">
+	<MainContent class="bg-frisch-marine pr-20">
 		<h1 class="sr-only">{{ t("SearchPage.title") }}</h1>
-		<div class="grid h-full grid-cols-[1fr_3fr]">
-			<SearchForm
-				query=""
-				@submit="
-					(values) => {
-						onChangeSearchInput(values);
-						searchstring = values.query;
-					}
-				"
-			/>
-			<div
-				v-if="data != null"
-				class="grid w-full grid-rows-[auto_1fr_auto] items-center bg-white p-8"
-			>
+		<div v-if="!isLoading" class="grid h-full grid-cols-[minmax(650px,_1fr)_3fr]">
+			<SearchForm query="" @submit="onChange">
+				<SearchTextInput />
+				<SearchFilter :facets="facets" />
+			</SearchForm>
+			<div v-if="data != null" class="w-full bg-white p-8">
 				<div class="pt-9 font-semibold text-frisch-indigo">Suchergebnisse ({{ data.count }})</div>
-				<DataTable :data="data.results" :results-total="data.count"></DataTable>
-				<div class="flex justify-center p-8">
+				<DataTable
+					class="flex align-top"
+					:data="data.results"
+					:results-total="data.count"
+				></DataTable>
+				<div class="flex justify-center p-8 align-top">
 					<Pagination
 						v-if="data?.count != null"
 						v-slot="{ page }"
@@ -120,5 +154,8 @@ const { data } = useGetSearchResults(
 				</div>
 			</div>
 		</div>
-	</main>
+		<Centered v-else class="pointer-events-none">
+			<LoadingSpinner />
+		</Centered>
+	</MainContent>
 </template>

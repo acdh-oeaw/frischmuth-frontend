@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
-import inter from "@fontsource-variable/inter/files/inter-latin-slnt-normal.woff2?url";
+import inter from "@fontsource-variable/inter/files/inter-latin-standard-normal.woff2?url";
 import type { WebSite, WithContext } from "schema-dts";
 
 const env = useRuntimeConfig();
@@ -100,7 +100,7 @@ router.afterEach((to, from) => {
 </script>
 
 <template>
-	<div class="grid min-h-full grid-rows-[auto_1fr_auto]">
+	<div class="grid min-h-full grid-rows-[auto_1fr_auto] overflow-y-hidden">
 		<SkipLink target-id="main-content">{{ t("DefaultLayout.skip-to-main-content") }}</SkipLink>
 
 		<AppHeader />
@@ -108,7 +108,5 @@ router.afterEach((to, from) => {
 			<slot />
 		</ErrorBoundary>
 		<AppFooter />
-
-		<NuxtRouteAnnouncer />
 	</div>
 </template>

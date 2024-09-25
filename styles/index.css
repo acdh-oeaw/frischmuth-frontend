@@ -11,6 +11,29 @@ body,
 	isolation: isolate;
 }
 
+/* Width and height of the scrollbar */
+::-webkit-scrollbar {
+	width: 3px; /* Width for vertical scrollbars */
+	height: 12px; /* Height for horizontal scrollbars */
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background: #f1f1f1;
+}
+
+/* Handle of the scrollbar */
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
 #__nuxt {
 	overflow-y: scroll;
 }

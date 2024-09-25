@@ -1,52 +1,44 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 export interface SearchFormData {
 	query: string;
+	language: Array<string>;
+	topic: Array<string>;
 }
-
-const props = defineProps<SearchFormData>();
 
 const emit = defineEmits<{
 	(event: "submit", values: SearchFormData): void;
 }>();
 
-function onSubmit(event: Event) {
+function onChange(event: Event) {
 	const element = event.currentTarget as HTMLFormElement;
 	const formData = new FormData(element);
 
 	emit("submit", {
-		query: formData.get("q") as string,
+		query: formData.get("query") as string,
+		language: formData.getAll("language") as Array<string>,
+		topic: formData.getAll("topic") as Array<string>,
 	});
 }
 
-const searchLabelId = "search-field";
+// TODO: kill me
+const containerHeight = ref(0);
+
+onMounted(async () => {
+	await nextTick();
+
+	const searchForm = document.getElementById("search-container");
+	if (searchForm != null) {
+		containerHeight.value = searchForm.offsetHeight;
+	}
+});
 </script>
 
 <template>
-	<div class="grid grid-cols-[1fr_auto]">
-		<div class="w-full bg-frisch-orange-searchform">
-			<form
-				class="grid size-full min-w-96 grid-rows-[auto_1fr] gap-8 px-6 py-14"
-				role="search"
-				@submit.prevent="onSubmit"
-			>
-				<div class="grid h-full grid-rows-[auto_1fr]">
-					<div>
-						<Input
-							:id="searchLabelId"
-							:default-value="props.query"
-							name="q"
-							placeholder="Suche"
-							type="search"
-						/>
-					</div>
-
-					<div class="flex justify-end">
-						<Button type="submit" variant="searchform" size="searchform">suchen</Button>
-					</div>
-				</div>
-
-				<div class="size-full bg-frisch-orange-super-light p-6">
-					<SearchFilter />
+	<div class="grid max-h-full grid-cols-[1fr_auto]">
+		<div id="search-container" class="relative w-full bg-frisch-orange-searchform">
+			<form role="search" @submit.stop.prevent="onChange" @submit.prevent="onChange">
+				<div :style="{ height: containerHeight + 'px' }" class="overflow-y-auto">
+					<slot />
 				</div>
 			</form>
 		</div>
