@@ -204,7 +204,16 @@ const icon = computed(() => {
 					</div>
 					<span v-for="topic in work?.topics" :key="topic.id" class="mb-2 mr-1">
 						<div class="mb-1 inline-block bg-frisch-grey px-2 py-1 text-xs text-white opacity-85">
-							{{ topic.name }}
+							<NuxtLink
+								:href="{
+									path: `/search`,
+									query: {
+										topic: topic.name,
+									},
+								}"
+							>
+								{{ topic.name }}
+							</NuxtLink>
 						</div>
 					</span>
 					<Separator class="my-4 h-[3px] bg-frisch-marine"></Separator>
