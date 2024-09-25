@@ -145,7 +145,7 @@ function getCellClass<T>(columnDef?: CustomColumnDef<T>): string {
 
 <template>
 	<div>
-		<div class="border">
+		<div class="w-full border">
 			<Table>
 				<TableHeader class="table-fixed">
 					<TableCaption class="sr-only">
