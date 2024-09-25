@@ -40,7 +40,7 @@ const isLoading = computed(() => {
 const characters = computed(() => {
 	return {
 		main: work.value?.characters
-			?.filter((character) => character.relevancy === "erwähnte Figur")
+			?.filter((character) => character.relevancy === "Hauptfigur")
 			.map((character) => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
@@ -50,7 +50,7 @@ const characters = computed(() => {
 				};
 			}),
 		secondary: work.value?.characters
-			?.filter((character) => character.relevancy === "erwähnte Figur")
+			?.filter((character) => character.relevancy === "Nebenfigur")
 			.map((character) => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
