@@ -194,7 +194,7 @@ const icon = computed(() => {
 
 						<div v-if="work?.expression_data[0]?.language != null" class="flex items-center">
 							<GlobeIcon :size="16" class="mr-2" />
-							<div v-for="(language, index) in work?.expression_data[0]?.language" :key="language">
+							<div v-for="(language, index) in work?.expression_data[0]?.language" :key="index">
 								<span>{{ language }}</span>
 								<span v-if="index !== work?.expression_data[0]?.language.length - 1">
 									{{ ", " }}&nbsp;
