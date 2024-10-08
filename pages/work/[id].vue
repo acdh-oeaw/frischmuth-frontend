@@ -192,14 +192,17 @@ const icon = computed(() => {
 							</span>
 						</div>
 
-						<div v-if="work?.expression_data[0]?.language != null" class="flex items-center">
+						<div class="flex items-center">
 							<GlobeIcon :size="16" class="mr-2" />
-							<div v-for="(language, index) in work?.expression_data[0]?.language" :key="index">
-								<span>{{ language }}</span>
-								<span v-if="index !== work?.expression_data[0]?.language.length - 1">
-									{{ ", " }}&nbsp;
-								</span>
+							<div v-if="work?.expression_data[0]?.language != null">
+								<div v-for="(language, index) in work?.expression_data[0]?.language" :key="index">
+									<span>{{ language }}</span>
+									<span v-if="index !== work?.expression_data[0]?.language.length - 1">
+										{{ ", " }}&nbsp;
+									</span>
+								</div>
 							</div>
+							<div v-else>Deutsch</div>
 						</div>
 					</div>
 					<span v-for="topic in work?.topics" :key="topic.id" class="mb-2 mr-1">
@@ -371,7 +374,7 @@ const icon = computed(() => {
 												</div>
 											</div>
 											<div>
-												<div class="pb-2 font-semibold">Beleuchtete Orte</div>
+												<div class="pb-2 font-semibold">Beschriebene Orte</div>
 												<div v-if="places.discussed != null && places.discussed.length > 0">
 													<div v-for="place in places.discussed" :key="place.id">
 														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
@@ -396,7 +399,7 @@ const icon = computed(() => {
 													</div>
 												</div>
 												<div v-else class="text-sm text-muted-foreground">
-													Keine beleuchteten Orte vorhanden.
+													Keine beschriebenen Orte vorhanden.
 												</div>
 											</div>
 											<div>
@@ -476,7 +479,7 @@ const icon = computed(() => {
 												</div>
 											</div>
 											<div>
-												<div class="pb-2 font-semibold">Wurde diskutiert in</div>
+												<div class="pb-2 font-semibold">Wurde besprochen in</div>
 												<div v-if="relatedWork.discussedIn && relatedWork.discussedIn.length > 0">
 													<div v-for="relation in relatedWork.discussedIn" :key="relation.id">
 														<NuxtLink
