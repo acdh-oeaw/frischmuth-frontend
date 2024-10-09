@@ -13,6 +13,59 @@ import type { SearchResultFacets } from "@/types/api";
 const route = useRoute();
 const router = useRouter();
 
+const primaryWork = [
+	{
+		label: "Prosa",
+		subterms: [
+			"Roman",
+			"Erzählung",
+			"Literarischer Text",
+			"Poetik-Vorlesung",
+			"Kinder- und Jugendbuch",
+			"Rede",
+			"Essay",
+			"Vorlesung",
+			"Rezension",
+		],
+	},
+	{ label: "Lyrik", subterms: [] },
+	{ label: "Dramatik", subterms: ["Drama", "Hörspieldrehbuch", "Filmdrehbuch, Filmvorlage"] },
+	{
+		label: "Veröffentlichung in audiovisuellen Medien",
+		subterms: [
+			"Hörspiel",
+			"Film",
+			"Kinder- und Jugendproduktion",
+			"Hörspieübersetzung, Hörspielbearbeitung",
+			"Literatursendung",
+			"Anderweitiger Beitrag in audiovisuellen Medien",
+		],
+	},
+	{ label: "Paratext" },
+	{ label: "Abbildung" },
+];
+
+const secondaryWork = [
+	{
+		label: "Akademische Rezeption",
+		subterms: ["Monografie", "Sammelband", "Artikel", "Journalartikel", "Hochschulschrift"],
+	},
+	{
+		label: "Journalistische Rezeption",
+		subterms: [
+			"Besprechung",
+			"Bericht",
+			"Ankündigung",
+			"Porträt",
+			"Anderweitiger Beitrag in audiovisuellen Medien",
+		],
+	},
+	{
+		label: "Produktive Rezeption",
+		subterms: ["Drama-, Opernaufführung", "Nachdichtung von Barbara Frischmuth"],
+	},
+];
+
 const checkedFacets = computed(() => {
 	const languageValue: Array<LocationQueryValue> | LocationQueryValue | undefined =
 		route.query.language;
@@ -113,37 +166,66 @@ const sliderValue = ref([slider.min, slider.max]);
 				<!-- FIX ME: Make checkbox groups!-->
 				<div class="pb-4">
 					<Accordion type="single" collapsible default-value="medium">
-						<div class="grid grid-cols-2 py-3 text-sm font-normal">
-							<div class="flex w-full flex-col"></div>
-						</div>
 						<AccordionItem value="medium">
 							<AccordionTrigger>
-								<div class="text-lg">Medium</div>
+								<div class="text-lg">Werktyp | Primärliteratur</div>
 							</AccordionTrigger>
 							<AccordionContent>
-								<div class="grid grid-cols-2 py-3 text-sm font-normal">
+								<div class="flex py-3">
 									<div class="flex w-full flex-col">
-										<div class="flex items-center">
-											<Checkbox id="medium1" type="checkbox" />
-											<label for="medium1" class="pl-2">Buch</label>
-										</div>
-										<div class="flex items-center">
-											<Checkbox id="medium2" type="checkbox" />
-											<label for="medium2" class="pl-2">Buchteil</label>
-										</div>
-										<div class="flex items-center">
-											<Checkbox id="medium3" type="checkbox" />
-											<label for="medium3" class="pl-2">Sekundärliteratur</label>
+										<div v-for="work in primaryWork" :key="work.label">
+											<div class="items-center pb-2">
+												<Checkbox id="medium1" type="checkbox" />
+												<label for="medium1" class="pl-2 font-medium">{{ work.label }}</label>
+											</div>
+											<div
+												v-if="work.subterms != null && work.subterms.length > 0"
+												class="grid pb-3 pl-5"
+											>
+												<div v-for="subterm in work.subterms" :key="subterm">
+													<div>
+														<Checkbox id="medium1" type="checkbox" />
+														<label for="medium1" class="pl-2 text-sm font-normal">
+															{{ subterm }}
+														</label>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
+								</div>
+							</AccordionContent>
+						</AccordionItem>
+					</Accordion>
+					<Separator class="bg-frisch-orange"></Separator>
+				</div>
+				<div class="pb-4">
+					<Accordion type="single" collapsible default-value="medium">
+						<AccordionItem value="medium">
+							<AccordionTrigger>
+								<div class="text-lg">Werktyp | Sekundärliteratur</div>
+							</AccordionTrigger>
+							<AccordionContent>
+								<div class="flex py-3">
 									<div class="flex w-full flex-col">
-										<div class="flex items-center">
-											<Checkbox id="medium4" type="checkbox" />
-											<label for="medium4" class="pl-2">Hörspiel</label>
-										</div>
-										<div class="flex items-center">
-											<Checkbox id="medium5" type="checkbox" />
-											<label for="medium5" class="pl-2">Artikel</label>
+										<div v-for="work in secondaryWork" :key="work.label">
+											<div class="items-center pb-2">
+												<Checkbox id="medium1" type="checkbox" />
+												<label for="medium1" class="pl-2 font-medium">{{ work.label }}</label>
+											</div>
+											<div
+												v-if="work.subterms != null && work.subterms.length > 0"
+												class="grid pb-3 pl-5"
+											>
+												<div v-for="subterm in work.subterms" :key="subterm">
+													<div>
+														<Checkbox id="medium1" type="checkbox" />
+														<label for="medium1" class="pl-2 text-sm font-normal">
+															{{ subterm }}
+														</label>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
