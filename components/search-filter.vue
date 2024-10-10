@@ -90,7 +90,7 @@ function toggleShowMore() {
 const sortedTopics = computed(() => {
 	if (props.facets?.topic == null) return null;
 
-	const sorted = props.facets.topic.toSorted((a, b) => {
+	const sorted = props.facets.topic.slice().sort((a, b) => {
 		return Number(b.count) - Number(a.count);
 	});
 
@@ -236,9 +236,6 @@ const sliderValue = ref([slider.min, slider.max]);
 				</div>
 				<div class="pb-4">
 					<Accordion type="single" collapsible default-value="year">
-						<div class="grid grid-cols-2 py-3 text-sm font-normal">
-							<div class="flex w-full flex-col"></div>
-						</div>
 						<AccordionItem value="year">
 							<AccordionTrigger>
 								<div class="text-lg">Erscheinungsjahr</div>
@@ -264,9 +261,6 @@ const sliderValue = ref([slider.min, slider.max]);
 				</div>
 				<div class="pb-4">
 					<Accordion type="single" collapsible default-value="language">
-						<div class="grid grid-cols-2 py-3 text-sm font-normal">
-							<div class="flex w-full flex-col"></div>
-						</div>
 						<AccordionItem value="language">
 							<AccordionTrigger>
 								<div class="text-lg">Sprache</div>
@@ -311,9 +305,6 @@ const sliderValue = ref([slider.min, slider.max]);
 				</div>
 				<div class="pb-4">
 					<Accordion type="single" collapsible default-value="topic">
-						<div class="grid grid-cols-2 py-3 text-sm font-normal">
-							<div class="flex w-full flex-col"></div>
-						</div>
 						<AccordionItem value="topic">
 							<AccordionTrigger>
 								<div class="text-lg">Thema</div>
