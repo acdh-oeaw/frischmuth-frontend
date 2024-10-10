@@ -504,7 +504,7 @@ const icon = computed(() => {
 						<Accordion type="single" collapsible>
 							<AccordionItem value="relations">
 								<AccordionTrigger>
-									<div class="text-lg font-semibold">Physikalische Objekte</div>
+									<div class="text-lg font-semibold">Physische Objekte</div>
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
 									<div>
