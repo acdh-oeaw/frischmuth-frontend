@@ -137,6 +137,41 @@ function removeFilter() {
 
 const slider = { min: 1940, max: 2024 };
 const sliderValue = ref([slider.min, slider.max]);
+
+function toggleWork(workLabel: string, subterms: Array<string>) {
+	const isChecked = selectedCheckboxes.value.includes(workLabel);
+
+	updateSelectedCheckboxes(workLabel, !isChecked);
+
+	subterms.forEach((subterm) => {
+		updateSelectedCheckboxes(subterm, !isChecked);
+	});
+}
+
+function toggleSubterm(subtermLabel: string, workLabel: string, subterms: Array<string>) {
+	const isChecked = selectedCheckboxes.value.includes(subtermLabel);
+
+	updateSelectedCheckboxes(subtermLabel, !isChecked);
+
+	const areAllSubtermsChecked = subterms.every((subterm) =>
+		selectedCheckboxes.value.includes(subterm),
+	);
+
+	updateSelectedCheckboxes(workLabel, areAllSubtermsChecked);
+}
+
+function updateSelectedCheckboxes(label: string, isChecked: boolean) {
+	if (isChecked) {
+		if (!selectedCheckboxes.value.includes(label)) {
+			selectedCheckboxes.value.push(label);
+		}
+	} else {
+		const index = selectedCheckboxes.value.indexOf(label);
+		if (index > -1) {
+			selectedCheckboxes.value.splice(index, 1);
+		}
+	}
+}
 </script>
 
 <template>
@@ -174,8 +209,13 @@ const sliderValue = ref([slider.min, slider.max]);
 								<div class="flex py-3">
 									<div class="flex w-full flex-col">
 										<div v-for="work in primaryWork" :key="work.label">
-											<div class="items-center pb-2">
-												<Checkbox id="medium1" type="checkbox" />
+											<div class="grid grid-cols-[auto_1fr] items-center pb-1">
+												<Checkbox
+													id="medium1"
+													type="checkbox"
+													:checked="selectedCheckboxes.includes(work.label)"
+													@click="toggleWork(work.label, work.subterms ? work.subterms : [])"
+												/>
 												<label for="medium1" class="pl-2 font-medium">{{ work.label }}</label>
 											</div>
 											<div
@@ -183,8 +223,13 @@ const sliderValue = ref([slider.min, slider.max]);
 												class="grid pb-3 pl-5"
 											>
 												<div v-for="subterm in work.subterms" :key="subterm">
-													<div>
-														<Checkbox id="medium1" type="checkbox" />
+													<div class="grid grid-cols-[auto_1fr] items-center">
+														<Checkbox
+															id="medium1"
+															type="checkbox"
+															:checked="selectedCheckboxes.includes(subterm)"
+															@click="toggleSubterm(subterm, work.label, work.subterms)"
+														/>
 														<label for="medium1" class="pl-2 text-sm font-normal">
 															{{ subterm }}
 														</label>
@@ -209,8 +254,13 @@ const sliderValue = ref([slider.min, slider.max]);
 								<div class="flex py-3">
 									<div class="flex w-full flex-col">
 										<div v-for="work in secondaryWork" :key="work.label">
-											<div class="items-center pb-2">
-												<Checkbox id="medium1" type="checkbox" />
+											<div class="grid grid-cols-[auto_1fr] items-center pb-1">
+												<Checkbox
+													id="medium1"
+													type="checkbox"
+													:checked="selectedCheckboxes.includes(work.label)"
+													@click="toggleWork(work.label, work.subterms)"
+												/>
 												<label for="medium1" class="pl-2 font-medium">{{ work.label }}</label>
 											</div>
 											<div
@@ -218,8 +268,13 @@ const sliderValue = ref([slider.min, slider.max]);
 												class="grid pb-3 pl-5"
 											>
 												<div v-for="subterm in work.subterms" :key="subterm">
-													<div>
-														<Checkbox id="medium1" type="checkbox" />
+													<div class="grid grid-cols-[auto_1fr] items-center">
+														<Checkbox
+															id="medium1"
+															type="checkbox"
+															:checked="selectedCheckboxes.includes(subterm)"
+															@click="toggleSubterm(subterm, work.label, work.subterms)"
+														/>
 														<label for="medium1" class="pl-2 text-sm font-normal">
 															{{ subterm }}
 														</label>
