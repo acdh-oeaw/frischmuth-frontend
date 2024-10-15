@@ -1,8 +1,10 @@
 <script lang="ts" setup>
+import { SearchIcon } from "lucide-vue-next";
 import * as v from "valibot";
 import type { LocationQueryValue } from "vue-router";
 
 import type { SearchFormData } from "@/components/search-form.vue";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import {
 	Pagination,
 	PaginationEllipsis,
@@ -101,15 +103,38 @@ const facets = computed(() => {
 </script>
 
 <template>
-	<MainContent class="bg-frisch-marine pr-20">
+	<MainContent class="overflow-x-hidden bg-frisch-marine lg:overflow-x-auto lg:pr-20">
 		<h1 class="sr-only">{{ t("SearchPage.title") }}</h1>
-		<div v-if="!isLoading" class="grid h-full grid-cols-[minmax(650px,_1fr)_3fr]">
-			<SearchForm query="" @submit="onChange">
-				<SearchTextInput />
-				<SearchFilter :facets="facets" />
-			</SearchForm>
-			<div v-if="data != null" class="w-full bg-white p-8">
-				<div class="pt-9 font-semibold text-frisch-indigo">Suchergebnisse ({{ data.count }})</div>
+		<div v-if="!isLoading" class="grid h-full lg:grid-cols-[minmax(650px,_1fr)_auto_3fr]">
+			<div class="hidden content-start lg:block lg:content-stretch">
+				<SearchForm query="" @submit="onChange">
+					<SearchTextInput />
+					<SearchFilter :facets="facets" />
+				</SearchForm>
+			</div>
+			<div
+				class="hidden size-0 border-y-[85px] border-l-[85px] border-y-transparent border-l-frisch-orange lg:block"
+			/>
+			<div class="flex lg:hidden">
+				<Drawer>
+					<DrawerTrigger class="w-full">
+						<span class="flex w-full items-center bg-frisch-orange-searchform">
+							<SearchIcon :size="32" class="m-1.5 p-1 text-frisch-orange" />
+							<span class="font-semibold text-frisch-orange">Suche</span>
+						</span>
+					</DrawerTrigger>
+					<DrawerContent>
+						<SearchForm query="" @submit="onChange">
+							<SearchTextInput />
+							<SearchFilter :facets="facets" />
+						</SearchForm>
+					</DrawerContent>
+				</Drawer>
+			</div>
+			<div v-if="data != null" class="w-full bg-white px-3 pt-4 lg:p-8">
+				<div class="font-semibold text-frisch-indigo lg:pt-9">
+					Suchergebnisse ({{ data.count }})
+				</div>
 				<DataTable
 					class="flex align-top"
 					:data="data.results"

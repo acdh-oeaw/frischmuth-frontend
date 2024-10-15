@@ -89,6 +89,9 @@ importers:
       valibot:
         specifier: ^0.37.0
         version: 0.37.0(typescript@5.6.2)
+      vaul-vue:
+        specifier: ^0.2.0
+        version: 0.2.0(radix-vue@1.9.3(vue@3.4.36(typescript@5.6.2)))(vue@3.4.36(typescript@5.6.2))
       vue:
         specifier: ^3.4.36
         version: 3.4.36(typescript@5.6.2)
@@ -5821,6 +5824,12 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  vaul-vue@0.2.0:
+    resolution: {integrity: sha512-YV0zqxc8NiVzr1z/Awwbaty0UDDchxj5BfhFbLiYu+Uz0rCfSaDK2zwmuXZvejBJKLGbWw9I5GLHJRse14lQew==}
+    peerDependencies:
+      radix-vue: ^1.4.0
+      vue: ^3.3.0
 
   vfile-location@5.0.3:
     resolution: {integrity: sha512-5yXvWDEgqeiYiBe1lbxYF7UMAIm/IcopxMHrMQDq3nvKcjPKIhZklUKL+AE7J7uApI4kwe2snsK+eI6UTj9EHg==}
@@ -13009,6 +13018,14 @@ snapshots:
   valibot@0.37.0(typescript@5.6.2):
     optionalDependencies:
       typescript: 5.6.2
+
+  vaul-vue@0.2.0(radix-vue@1.9.3(vue@3.4.36(typescript@5.6.2)))(vue@3.4.36(typescript@5.6.2)):
+    dependencies:
+      '@vueuse/core': 10.11.0(vue@3.4.36(typescript@5.6.2))
+      radix-vue: 1.9.3(vue@3.4.36(typescript@5.6.2))
+      vue: 3.4.36(typescript@5.6.2)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
 
   vfile-location@5.0.3:
     dependencies:

@@ -19,31 +19,16 @@ function onChange(event: Event) {
 		topic: formData.getAll("topic") as Array<string>,
 	});
 }
-
-// TODO: kill me
-const containerHeight = ref(0);
-
-onMounted(async () => {
-	await nextTick();
-
-	const searchForm = document.getElementById("search-container");
-	if (searchForm != null) {
-		containerHeight.value = searchForm.offsetHeight;
-	}
-});
 </script>
 
 <template>
-	<div class="grid max-h-full grid-cols-[1fr_auto]">
-		<div id="search-container" class="relative w-full bg-frisch-orange-searchform">
+	<div class="relative flex h-full">
+		<div class="absolute inset-0 w-full overflow-auto bg-frisch-orange-searchform">
 			<form role="search" @submit.stop.prevent="onChange" @submit.prevent="onChange">
-				<div :style="{ height: containerHeight + 'px' }" class="overflow-y-auto">
+				<div class="overflow-y-auto">
 					<slot />
 				</div>
 			</form>
 		</div>
-		<div
-			class="size-0 border-y-[85px] border-l-[85px] border-y-transparent border-l-frisch-orange"
-		/>
 	</div>
 </template>

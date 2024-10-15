@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import { MenuIcon } from "lucide-vue-next";
+
 import type { NavLinkProps } from "@/components/nav-link.vue";
 import { Separator } from "@/components/ui/separator";
-
-const t = useTranslations();
 
 const route = useRoute();
 
@@ -17,40 +17,70 @@ const links = computed(() => {
 </script>
 
 <template>
-	<header class="border-b bg-frisch-marine px-12">
-		<div class="w-full pb-4 pt-12">
-			<nav :aria-label="t('AppHeader.navigation-main')">
-				<div class="grid items-end gap-4 lg:grid-cols-2">
-					<div class="text-4xl font-semibold text-frisch-orange">
+	<header class="border-b bg-frisch-marine px-6 lg:px-12">
+		<div class="w-full pb-4 pt-8 lg:pt-12">
+			<nav>
+				<div class="grid grid-cols-[1fr_auto] items-center gap-4 lg:items-end">
+					<div class="text-2xl font-semibold text-frisch-orange lg:text-4xl">
 						<NavLink :href="homeLink.href">
 							Digitales Archiv
 							<br aria-hidden="true" />
 							Barbara Frischmuth
 						</NavLink>
 					</div>
-					<ul
-						:class="
-							route.path !== '/'
-								? 'opacity-100 translate-y-0'
-								: 'opacity-0 translate-y-5 pointer-events-none'
-						"
-						class="ml-auto flex gap-x-4 font-bold transition"
-						role="list"
-					>
-						<li
-							v-for="(link, key, index) of links"
-							:key="key"
-							class="flex shrink-0 gap-x-4 text-xl"
+					<div class="hidden lg:flex">
+						<ul
+							:class="
+								route.path !== '/'
+									? 'opacity-100 translate-y-0'
+									: 'opacity-0 translate-y-5 pointer-events-none'
+							"
+							class="ml-auto flex gap-x-4 font-bold transition"
+							role="list"
 						>
-							<Separator v-if="index > 0" class="h-full w-0.5 bg-frisch-orange" />
-							<NavLink
-								:href="link.href"
-								class="text-frisch-orange transition hover:text-frisch-indigo aria-[current]:text-frisch-indigo"
+							<li
+								v-for="(link, key, index) of links"
+								:key="key"
+								class="flex shrink-0 gap-x-4 text-xl"
 							>
-								{{ link.label }}
-							</NavLink>
-						</li>
-					</ul>
+								<Separator v-if="index > 0" class="h-full w-0.5 bg-frisch-orange" />
+								<NavLink
+									:href="link.href"
+									class="text-frisch-orange transition hover:text-frisch-indigo aria-[current]:text-frisch-indigo"
+								>
+									{{ link.label }}
+								</NavLink>
+							</li>
+						</ul>
+					</div>
+					<div class="flex shrink-0 lg:hidden">
+						<Sheet>
+							<SheetTrigger
+								aria-label="Toggle navigation menu"
+								class="flex font-bold transition"
+								:class="
+									route.path !== '/'
+										? 'opacity-100 translate-y-0'
+										: 'opacity-0 translate-x-5 pointer-events-none'
+								"
+							>
+								<MenuIcon :size="32" class="bg-frisch-orange p-1 text-white" />
+							</SheetTrigger>
+							<SheetContent class="overflow-y-auto">
+								<SheetTitle class="sr-only">Navigationsmenü</SheetTitle>
+								<ul class="grid py-8" role="list">
+									<li v-for="(link, key) of links" :key="key">
+										<NavLink
+											class="flex py-2 font-medium text-frisch-orange transition-opacity hover:opacity-100 focus-visible:opacity-100 aria-[current]:text-frisch-indigo"
+											:href="link.href"
+										>
+											{{ link.label }}
+										</NavLink>
+									</li>
+								</ul>
+							</SheetContent>
+						</Sheet>
+					</div>
 				</div>
 			</nav>
 		</div>
