@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useForwardPropsEmits } from "radix-vue";
-import type { DrawerRoot, DrawerRootEmits, DrawerRootProps } from "vaul-vue";
+import { DrawerRoot, type DrawerRootEmits, type DrawerRootProps } from "vaul-vue";
 
 const props = withDefaults(defineProps<DrawerRootProps>(), {
 	shouldScaleBackground: true,
