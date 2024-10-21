@@ -20,12 +20,12 @@ const forwarded = useForwardPropsEmits(props, emits);
 			v-bind="forwarded"
 			:class="
 				cn(
-					'fixed inset-x-0 bottom-0 z-50 mt-24 flex h-full pt-1.5 flex-col border bg-background',
+					'fixed inset-x-0 bottom-0 z-50 mt-24 flex h-full pt-2 flex-col border bg-background',
 					props.class,
 				)
 			"
 		>
-			<div class="mx-auto mb-1.5 h-1 w-[100px] bg-frisch-marine" />
+			<div class="mx-auto mb-2 h-1.5 w-[100px] bg-frisch-marine" />
 			<slot />
 		</DrawerContent>
 	</DrawerPortal>

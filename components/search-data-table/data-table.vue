@@ -7,6 +7,7 @@ import {
 } from "@tanstack/vue-table";
 
 import NavLink from "@/components/nav-link.vue";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
 	Table,
 	TableBody,
@@ -21,6 +22,7 @@ import type { SearchResults } from "@/types/api.ts";
 const props = defineProps<{
 	data: SearchResults["results"];
 	resultsTotal: number;
+	isMobile: boolean;
 }>();
 
 type CustomColumnDef<T> = TanStackColumnDef<T> & {
@@ -51,6 +53,24 @@ const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 					h(TooltipContent, {}, () => workType.map((type) => type.name).join(", ")),
 				]),
 			]);
+
+			const popOverWrapper = h(TooltipProvider, {}, () => [
+				h(Popover, {}, () => [
+					h(PopoverTrigger, { class: "cursor-default" }, () => [
+						IconComponent
+							? h(IconComponent, { class: "size-4 shrink-0" })
+							: h("span", {}, workType.map((type) => type.name).join(", ")),
+					]),
+					h(PopoverContent, {}, () => workType.map((type) => type.name).join(", ")),
+				]),
+			]);
+
+			if (props.isMobile) {
+				return h("span", {}, [
+					popOverWrapper,
+					h("div", { class: "sr-only" }, workType.map((type) => type.name).join(", ")),
+				]);
+			}
 
 			return h("span", {}, [
 				tooltipWrapper,
