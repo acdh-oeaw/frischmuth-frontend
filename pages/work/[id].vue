@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { EyeIcon, EyeOffIcon, GlobeIcon } from "lucide-vue-next";
+import { EyeIcon, GlobeIcon } from "lucide-vue-next";
 
 import {
 	Accordion,
@@ -210,20 +210,21 @@ const icon = computed(() => {
 					<div v-if="isMobile">
 						<Drawer>
 							<DrawerTrigger class="w-full">
-								<span
-									v-if="work?.text_analysis"
-									class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange"
-								>
+								<span class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange">
 									<EyeIcon :size="16" />
 									<span class="flex justify-start font-semibold">Narratologische Analyse</span>
 								</span>
+								<!-- Behaviour needs review
 								<span
 									v-else
-									class="grid grid-cols-[1fr_auto] items-center gap-2 pt-2 text-muted-foreground"
+									class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-muted-foreground"
 								>
 									<EyeOffIcon :size="16" />
-									<span class="font-semibold">Keine narrotologische Analyse vorhanden.</span>
+									<span class="flex justify-start font-semibold">
+										Keine narrotologische Analyse vorhanden.
+									</span>
 								</span>
+								 -->
 							</DrawerTrigger>
 							<DrawerContent>
 								<div class="overflow-auto bg-white py-8">
