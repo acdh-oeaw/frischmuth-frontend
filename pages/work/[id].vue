@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { GlobeIcon, UserRoundIcon, UserRoundPenIcon, VenetianMaskIcon } from "lucide-vue-next";
+import { EyeIcon, EyeOffIcon, GlobeIcon } from "lucide-vue-next";
 
 import {
 	Accordion,
@@ -7,17 +7,15 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const route = useRoute();
 
-type Icon = typeof UserRoundIcon;
-
-const characterIcons: Record<string, Icon> = {
-	fiktivefigur: UserRoundPenIcon,
-	historischefigur: UserRoundIcon,
-	mythologischefigur: VenetianMaskIcon,
-};
+const isMobile = computed(() => {
+	return window.innerWidth < 1024;
+});
 
 const id = computed(() => {
 	return Number(route.params.id as string);
@@ -46,7 +44,6 @@ const characters = computed(() => {
 				return {
 					name: character.fallback_name,
 					fictionality: fictionality,
-					icon: setCharacterIcon(fictionality ?? ""),
 				};
 			}),
 		secondary: work.value?.characters
@@ -56,7 +53,6 @@ const characters = computed(() => {
 				return {
 					name: character.fallback_name,
 					fictionality: fictionality,
-					icon: setCharacterIcon(fictionality ?? ""),
 				};
 			}),
 		spokenOf: work.value?.characters
@@ -66,19 +62,10 @@ const characters = computed(() => {
 				return {
 					name: character.fallback_name,
 					fictionality: fictionality,
-					icon: setCharacterIcon(fictionality ?? ""),
 				};
 			}),
 	};
 });
-
-function setCharacterIcon(fictionality: string): Icon | null {
-	const normalizedFictionality = fictionality
-		.toLowerCase()
-		.replace(/[-\s,]/g, "") // Removes dashes, spaces, and commas
-		.replace(/[^a-zA-Zäöüß]/g, ""); // Removes any non-alphabet characters except for umlauts and ß
-	return characterIcons[normalizedFictionality] ?? null;
-}
 
 const places = computed(() => {
 	return {
@@ -158,13 +145,14 @@ const icon = computed(() => {
 </script>
 
 <template>
-	<MainContent class="relative grid h-full bg-frisch-marine pr-20">
+	<MainContent class="relative grid h-full bg-frisch-marine lg:pr-20">
 		<div v-if="!isLoading" class="grid h-full grid-cols-[auto_1fr]">
 			<div
+				v-if="!isMobile"
 				class="size-0 border-y-[85px] border-l-[85px] border-y-transparent border-l-frisch-orange"
 			/>
-			<div class="grid grid-cols-2 gap-8">
-				<div v-if="work != null" class="bg-white p-16">
+			<div class="grid lg:grid-cols-2 lg:gap-8">
+				<div v-if="work != null" class="bg-white p-8 lg:p-16">
 					<!-- TODO: maybe display siglum here -->
 					<div v-if="work?.work_type != null" class="flex items-center gap-2 pb-2">
 						<component :is="icon" :size="20" />
@@ -219,6 +207,60 @@ const icon = computed(() => {
 							</NuxtLink>
 						</div>
 					</span>
+					<div v-if="isMobile">
+						<Drawer>
+							<DrawerTrigger class="w-full">
+								<span
+									v-if="work?.text_analysis"
+									class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange"
+								>
+									<EyeIcon :size="16" />
+									<span class="flex justify-start font-semibold">Narratologische Analyse</span>
+								</span>
+								<span
+									v-else
+									class="grid grid-cols-[1fr_auto] items-center gap-2 pt-2 text-muted-foreground"
+								>
+									<EyeOffIcon :size="16" />
+									<span class="font-semibold">Keine narrotologische Analyse vorhanden.</span>
+								</span>
+							</DrawerTrigger>
+							<DrawerContent>
+								<div class="overflow-auto bg-white py-8">
+									<div class="grid grid-cols-[auto_1fr] items-center gap-4">
+										<div
+											class="size-0 border-y-[55px] border-l-[55px] border-y-transparent border-l-frisch-marine"
+										/>
+										<div class="py-2 text-lg font-semibold">Narratologische Analyse</div>
+									</div>
+									<div class="block hyphens-auto px-8 text-justify lg:px-16">
+										<div v-if="work?.text_analysis">
+											{{ work?.text_analysis }}
+										</div>
+										<div v-else class="text-sm text-muted-foreground">
+											Keine narrotologische Analyse vorhanden.
+										</div>
+										<div v-if="analysisTags.length > 0" class="py-4">
+											<span v-for="tag in analysisTags" :key="tag.name" class="mb-2 mr-1">
+												<Popover>
+													<PopoverTrigger>
+														<span
+															class="mb-1 inline-block cursor-default bg-frisch-orange px-2 py-1 text-xs text-white opacity-85"
+														>
+															{{ tag.value }}
+														</span>
+													</PopoverTrigger>
+													<PopoverContent>
+														{{ tag.name }}
+													</PopoverContent>
+												</Popover>
+											</span>
+										</div>
+									</div>
+								</div>
+							</DrawerContent>
+						</Drawer>
+					</div>
 					<Separator class="my-4 h-[3px] bg-frisch-marine"></Separator>
 					<div class="py-2 text-lg font-semibold">Zusammenfassung</div>
 					<div v-if="work?.summary" class="block hyphens-auto text-justify">
@@ -251,27 +293,19 @@ const icon = computed(() => {
 									<div class="text-lg font-semibold">Charaktere</div>
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
-									<div class="grid grid-cols-3 gap-4">
+									<div class="grid grid-rows-[auto_auto_auto] gap-4 lg:grid-cols-3">
 										<div>
 											<div class="pb-2 font-semibold">Hauptfiguren</div>
 											<div v-if="characters.main != null && characters.main.length > 0">
 												<div v-for="character in characters.main" :key="character.name">
-													<TooltipProvider>
-														<Tooltip>
-															<TooltipTrigger as-child>
-																<component
-																	:is="character.icon"
-																	:size="16"
-																	class="inline text-frisch-orange"
-																/>
-															</TooltipTrigger>
-															<TooltipContent>
-																<p>{{ character.fictionality }}</p>
-															</TooltipContent>
-														</Tooltip>
-													</TooltipProvider>
+													<span v-if="character.fictionality" class="flex items-center gap-1">
+														<CharacterFictionality
+															:fictionality="character.fictionality"
+															:is-mobile="isMobile"
+														/>
 
-													{{ character.name }}
+														{{ character.name }}
+													</span>
 												</div>
 											</div>
 											<div v-else class="text-sm text-muted-foreground">
@@ -282,22 +316,14 @@ const icon = computed(() => {
 											<div class="pb-2 font-semibold">Nebenfiguren</div>
 											<div v-if="characters.secondary != null && characters.secondary.length > 0">
 												<div v-for="character in characters.secondary" :key="character.name">
-													<TooltipProvider>
-														<Tooltip>
-															<TooltipTrigger as-child>
-																<component
-																	:is="character.icon"
-																	:size="16"
-																	class="inline text-frisch-orange"
-																/>
-															</TooltipTrigger>
-															<TooltipContent>
-																<p>{{ character.fictionality }}</p>
-															</TooltipContent>
-														</Tooltip>
-													</TooltipProvider>
+													<span v-if="character.fictionality" class="flex items-center gap-1">
+														<CharacterFictionality
+															:fictionality="character.fictionality"
+															:is-mobile="isMobile"
+														/>
 
-													{{ character.name }}
+														{{ character.name }}
+													</span>
 												</div>
 											</div>
 											<div v-else class="text-sm text-muted-foreground">
@@ -308,22 +334,14 @@ const icon = computed(() => {
 											<div class="pb-2 font-semibold">Erwähnte Figuren</div>
 											<div v-if="characters.spokenOf != null && characters.spokenOf.length > 0">
 												<div v-for="character in characters.spokenOf" :key="character.name">
-													<TooltipProvider>
-														<Tooltip>
-															<TooltipTrigger as-child>
-																<component
-																	:is="character.icon"
-																	:size="16"
-																	class="inline text-frisch-orange"
-																/>
-															</TooltipTrigger>
-															<TooltipContent>
-																<p>{{ character.fictionality }}</p>
-															</TooltipContent>
-														</Tooltip>
-													</TooltipProvider>
+													<span v-if="character.fictionality" class="flex items-center gap-1">
+														<CharacterFictionality
+															:fictionality="character.fictionality"
+															:is-mobile="isMobile"
+														/>
 
-													{{ character.name }}
+														{{ character.name }}
+													</span>
 												</div>
 											</div>
 											<div v-else class="text-sm text-muted-foreground">
@@ -343,7 +361,7 @@ const icon = computed(() => {
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
 									<div>
-										<div class="grid grid-cols-3 gap-4">
+										<div class="grid grid-rows-[auto_auto_auto] gap-4 lg:grid-cols-3">
 											<div>
 												<div class="pb-2 font-semibold">Schauplätze</div>
 												<div v-if="places.takesPlaceIn != null && places.takesPlaceIn.length > 0">
@@ -363,7 +381,11 @@ const icon = computed(() => {
 																	}"
 																>
 																	<span class="sr-only">Ort anzeigen</span>
-																	<MapSidebar :place="place" relation="Schauplatz" />
+																	<MapSidebar
+																		:is-mobile="isMobile"
+																		:place="place"
+																		relation="Schauplatz"
+																	/>
 																</NuxtLink>
 															</span>
 														</span>
@@ -392,7 +414,11 @@ const icon = computed(() => {
 																	}"
 																>
 																	<span class="sr-only">Ort anzeigen</span>
-																	<MapSidebar :place="place" relation="Beleuchteter Ort" />
+																	<MapSidebar
+																		:place="place"
+																		relation="Beleuchteter Ort"
+																		:is-mobile="isMobile"
+																	/>
 																</NuxtLink>
 															</span>
 														</span>
@@ -421,7 +447,11 @@ const icon = computed(() => {
 																	}"
 																>
 																	<span class="sr-only">Ort anzeigen</span>
-																	<MapSidebar :place="place" relation="Erwähnter Ort" />
+																	<MapSidebar
+																		:is-mobile="isMobile"
+																		:place="place"
+																		relation="Erwähnter Ort"
+																	/>
 																</NuxtLink>
 															</span>
 														</span>
@@ -445,7 +475,7 @@ const icon = computed(() => {
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
 									<div>
-										<div class="grid grid-cols-3 gap-4">
+										<div class="grid grid-rows-[auto_auto_auto] gap-4 lg:grid-cols-3">
 											<div>
 												<div class="pb-2 font-semibold">Erwähnte Werke</div>
 												<div v-if="relatedWork.references && relatedWork.references.length > 0">
@@ -510,7 +540,9 @@ const icon = computed(() => {
 									<div>
 										<div>
 											<div v-if="work?.physical_objects && work?.physical_objects.length > 0">
-												<div class="grid grid-cols-[auto_1fr] gap-10">
+												<div
+													class="grid grid-rows-[auto_auto_auto] gap-4 lg:grid-cols-[auto_1fr] lg:gap-10"
+												>
 													<div>
 														<div class="pb-2 font-semibold">Archiv</div>
 														<div v-for="thing in work?.physical_objects" :key="thing.id">
@@ -537,7 +569,7 @@ const icon = computed(() => {
 						</Accordion>
 					</div>
 				</div>
-				<div class="bg-white py-8">
+				<div v-if="!isMobile" class="bg-white py-8">
 					<div class="grid grid-cols-[auto_1fr] items-center gap-4">
 						<div
 							class="size-0 border-y-[55px] border-l-[55px] border-y-transparent border-l-frisch-marine"
