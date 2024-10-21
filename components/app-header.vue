@@ -14,6 +14,12 @@ const links = computed(() => {
 		about: { href: { path: "/about" }, label: "ÜBER DAS PROJEKT" },
 	} satisfies Record<string, { href: NavLinkProps["href"]; label: string }>;
 });
+
+const isSidepanelOpen = ref(false);
+
+function close() {
+	isSidepanelOpen.value = false;
+}
 </script>
 
 <template>
@@ -54,7 +60,7 @@ const links = computed(() => {
 						</ul>
 					</div>
 					<div class="flex shrink-0 lg:hidden">
-						<Sheet>
+						<Sheet v-model:open="isSidepanelOpen">
 							<SheetTrigger
 								aria-label="Toggle navigation menu"
 								class="flex font-bold transition"
@@ -73,6 +79,7 @@ const links = computed(() => {
 										<NavLink
 											class="flex py-2 font-medium text-frisch-orange transition-opacity hover:opacity-100 focus-visible:opacity-100 aria-[current]:text-frisch-indigo"
 											:href="link.href"
+											@click="close"
 										>
 											{{ link.label }}
 										</NavLink>
