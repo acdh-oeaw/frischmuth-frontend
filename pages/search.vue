@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SearchIcon } from "lucide-vue-next";
+import { ListFilter, SearchIcon } from "lucide-vue-next";
 import * as v from "valibot";
 import type { LocationQueryValue } from "vue-router";
 
@@ -19,6 +19,13 @@ import type { SearchFacetLanguage, SearchFacetTopic } from "@/types/api.ts";
 
 defineRouteRules({
 	prerender: true,
+});
+
+const filterCount = computed(() => {
+	const language = route.query.language;
+	const topic = route.query.topic;
+
+	return (language?.length ?? 0) + (topic?.length ?? 0);
 });
 
 const router = useRouter();
@@ -41,6 +48,10 @@ const searchFiltersSchema = v.object({
 
 const isMobile = computed(() => {
 	return window.innerWidth < 1024;
+});
+
+const searchQuery = computed(() => {
+	return route.query.query as string;
 });
 
 const offset = ref(0);
@@ -118,8 +129,8 @@ const facets = computed(() => {
 		>
 			<div class="hidden md:block">
 				<SearchForm query="" @submit="onChange">
-					<SearchTextInput />
-					<SearchFilter :facets="facets" />
+					<SearchTextInput :search-query="searchQuery ?? ''" />
+					<SearchFilter :filter-count="filterCount" :facets="facets" />
 				</SearchForm>
 			</div>
 			<div
@@ -128,23 +139,47 @@ const facets = computed(() => {
 			<div class="flex md:hidden">
 				<Drawer v-model:open="isMobileSearchOpen">
 					<DrawerTrigger class="w-full">
-						<span class="flex w-full items-center bg-frisch-orange-searchform">
-							<SearchIcon :size="32" class="m-1.5 p-1 text-frisch-orange" />
-							<span class="font-semibold text-frisch-orange">Suche</span>
+						<span
+							class="grid w-full grid-cols-2 items-center bg-frisch-orange-searchform text-frisch-orange"
+						>
+							<div class="flex items-center">
+								<SearchIcon :size="32" class="m-1.5 p-1" />
+								<span class="font-semibold">Suche</span>
+							</div>
+							<div class="flex justify-end px-4">
+								<div class="ml-auto grid grid-cols-[1fr_auto] items-center gap-1">
+									<div class="font-semibold">({{ filterCount }}) Filter</div>
+									<ListFilter />
+								</div>
+							</div>
 						</span>
 					</DrawerTrigger>
 					<DrawerContent>
 						<SearchForm query="" @submit="onChange">
-							<SearchTextInput />
-							<SearchFilter :facets="facets" />
+							<SearchTextInput :search-query="searchQuery ?? ''" />
+							<SearchFilter :facets="facets" :filter-count="filterCount" />
 						</SearchForm>
 					</DrawerContent>
 				</Drawer>
 			</div>
 			<div v-if="data != null" class="w-full !overflow-auto bg-white px-3 pt-4 lg:p-8">
-				<div class="font-semibold text-frisch-indigo lg:pt-9">
+				<div class="hidden font-semibold text-frisch-indigo md:block lg:pt-9">
 					Suchergebnisse ({{ data.count }})
 				</div>
+				<div
+					v-if="searchQuery != null"
+					class="block font-semibold text-frisch-indigo md:hidden lg:pt-9"
+				>
+					<p>
+						{{ data.count }}
+						{{ data.count === 1 ? "Suchergebnis" : "Suchergebnisse" }}
+						für "{{ searchQuery }}"
+					</p>
+				</div>
+				<div v-else class="block font-semibold text-frisch-indigo md:hidden">
+					Suchergebnisse ({{ data.count }})
+				</div>
+
 				<div class="!overflow-auto">
 					<DataTable
 						class="flex align-top"

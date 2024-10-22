@@ -7,8 +7,6 @@ const props = defineProps<{
 	isTablet: boolean;
 }>();
 
-console.log(props.isMobile, props.isTablet);
-
 type Icon = typeof UserRoundIcon;
 
 const characterIcons: Record<string, Icon> = {

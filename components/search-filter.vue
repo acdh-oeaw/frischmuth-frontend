@@ -79,6 +79,7 @@ const checkedFacets = computed(() => {
 
 const props = defineProps<{
 	facets: SearchResultFacets | null;
+	filterCount: number;
 }>();
 
 const showMore = ref(false);
@@ -102,13 +103,10 @@ const sortedTopics = computed(() => {
 });
 
 const selectedCheckboxes = ref<Array<string>>([]);
-const filterCount = ref(0);
 
 watch(
 	checkedFacets,
-	({ language, topic }) => {
-		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-		filterCount.value = (language?.length || 0) + (topic?.length || 0);
+	() => {
 		selectedCheckboxes.value = [];
 	},
 	{ immediate: true },
@@ -182,9 +180,9 @@ function updateSelectedCheckboxes(label: string, isChecked: boolean) {
 					<div class="grid grid-cols-2 items-center">
 						<span class="pb-2 text-xl">Filterung</span>
 						<div class="ml-auto grid grid-cols-[1fr_auto] items-center">
-							<span class="text-sm">Aktive Filter ({{ filterCount }})</span>
+							<span class="text-sm">Aktive Filter ({{ props.filterCount }})</span>
 							<Button
-								v-if="filterCount > 0"
+								v-if="props.filterCount > 0"
 								type="reset"
 								class="items-center p-2"
 								variant="searchform"

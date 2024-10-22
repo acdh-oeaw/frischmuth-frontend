@@ -9,6 +9,7 @@ body,
 
 	block-size: 100%;
 	isolation: isolate;
+	text-rendering: optimizeLegibility;
 }
 
 /* Width and height of the scrollbar */
