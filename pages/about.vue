@@ -42,9 +42,11 @@ useErrorMessage(teamError ?? approachError ?? membersError, {
 </script>
 
 <template>
-	<MainContent class="grid gap-8 p-4 lg:grid-cols-[2fr_3fr] lg:px-12">
-		<div class="flex lg:justify-end">
-			<Card class="aspect-square size-full bg-frisch-grey lg:size-72">
+	<MainContent
+		class="grid gap-8 p-4 md:grid-cols-[1fr_3fr] md:justify-center md:px-12 2xl:grid-cols-[2fr_3fr]"
+	>
+		<div class="flex md:justify-end">
+			<Card class="aspect-square size-full bg-frisch-grey md:size-72">
 				<CardContent class="flex size-full py-4 text-2xl font-bold text-white">
 					<h1 class="uppercase">{{ t("AboutPage.title") }}</h1>
 				</CardContent>
@@ -60,13 +62,13 @@ useErrorMessage(teamError ?? approachError ?? membersError, {
 				<template #empty></template>
 			</ContentRenderer>
 
-			<ul class="list-none px-0 pt-4 lg:pt-8">
+			<ul class="list-none px-0 pt-4 md:pt-8">
 				<li
 					v-for="member of members"
 					:key="member._id"
-					class="grid gap-4 p-0 lg:grid-cols-[auto_1fr]"
+					class="grid gap-4 p-0 md:grid-cols-[auto_1fr]"
 				>
-					<div class="relative aspect-square overflow-hidden lg:size-72">
+					<div class="relative aspect-square overflow-hidden md:size-72">
 						<img
 							v-if="member.image != null"
 							alt=""

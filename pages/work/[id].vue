@@ -14,7 +14,11 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 const route = useRoute();
 
 const isMobile = computed(() => {
-	return window.innerWidth < 1024;
+	return window.innerWidth < 820;
+});
+
+const isTablet = computed(() => {
+	return window.innerWidth < 1536;
 });
 
 const id = computed(() => {
@@ -145,13 +149,12 @@ const icon = computed(() => {
 </script>
 
 <template>
-	<MainContent class="relative grid h-full bg-frisch-marine lg:pr-20">
-		<div v-if="!isLoading" class="grid h-full grid-cols-[auto_1fr]">
+	<MainContent class="relative grid h-full bg-frisch-marine md:pr-14 2xl:pr-20">
+		<div v-if="!isLoading" class="grid h-full md:grid-cols-[auto_1fr]">
 			<div
-				v-if="!isMobile"
-				class="size-0 border-y-[85px] border-l-[85px] border-y-transparent border-l-frisch-orange"
+				class="hidden size-0 border-y-[85px] border-l-[85px] border-y-transparent border-l-frisch-orange md:block md:border-y-[65px] md:border-l-[65px]"
 			/>
-			<div class="grid lg:grid-cols-2 lg:gap-8">
+			<div class="grid md:grid-cols-2 md:gap-8">
 				<div v-if="work != null" class="bg-white p-8 lg:p-16">
 					<!-- TODO: maybe display siglum here -->
 					<div v-if="work?.work_type != null" class="flex items-center gap-2 pb-2">
@@ -182,7 +185,12 @@ const icon = computed(() => {
 
 						<div class="flex items-center">
 							<GlobeIcon :size="16" class="mr-2" />
-							<div v-if="work?.expression_data[0]?.language != null">
+							<div
+								v-if="
+									work?.expression_data[0]?.language != null &&
+									work?.expression_data[0]?.language.length > 0
+								"
+							>
 								<div v-for="(language, index) in work?.expression_data[0]?.language" :key="index">
 									<span>{{ language }}</span>
 									<span v-if="index !== work?.expression_data[0]?.language.length - 1">
@@ -207,7 +215,7 @@ const icon = computed(() => {
 							</NuxtLink>
 						</div>
 					</span>
-					<div v-if="isMobile">
+					<div class="block md:hidden">
 						<Drawer>
 							<DrawerTrigger class="w-full">
 								<span class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange">
@@ -294,7 +302,7 @@ const icon = computed(() => {
 									<div class="text-lg font-semibold">Charaktere</div>
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
-									<div class="grid grid-rows-[auto_auto_auto] gap-4 lg:grid-cols-3">
+									<div class="grid grid-rows-[auto_auto_auto] gap-4 2xl:grid-cols-3">
 										<div>
 											<div class="pb-2 font-semibold">Hauptfiguren</div>
 											<div v-if="characters.main != null && characters.main.length > 0">
@@ -303,6 +311,7 @@ const icon = computed(() => {
 														<CharacterFictionality
 															:fictionality="character.fictionality"
 															:is-mobile="isMobile"
+															:is-tablet="isTablet"
 														/>
 
 														{{ character.name }}
@@ -321,6 +330,7 @@ const icon = computed(() => {
 														<CharacterFictionality
 															:fictionality="character.fictionality"
 															:is-mobile="isMobile"
+															:is-tablet="isTablet"
 														/>
 
 														{{ character.name }}
@@ -339,6 +349,7 @@ const icon = computed(() => {
 														<CharacterFictionality
 															:fictionality="character.fictionality"
 															:is-mobile="isMobile"
+															:is-tablet="isTablet"
 														/>
 
 														{{ character.name }}
@@ -362,7 +373,7 @@ const icon = computed(() => {
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
 									<div>
-										<div class="grid grid-rows-[auto_auto_auto] gap-4 lg:grid-cols-3">
+										<div class="grid grid-rows-[auto_auto_auto] gap-4 2xl:grid-cols-3">
 											<div>
 												<div class="pb-2 font-semibold">Schauplätze</div>
 												<div v-if="places.takesPlaceIn != null && places.takesPlaceIn.length > 0">
@@ -476,7 +487,7 @@ const icon = computed(() => {
 								</AccordionTrigger>
 								<AccordionContent class="text-base">
 									<div>
-										<div class="grid grid-rows-[auto_auto_auto] gap-4 lg:grid-cols-3">
+										<div class="grid grid-rows-[auto_auto_auto] gap-4 2xl:grid-cols-3">
 											<div>
 												<div class="pb-2 font-semibold">Erwähnte Werke</div>
 												<div v-if="relatedWork.references && relatedWork.references.length > 0">
@@ -542,7 +553,7 @@ const icon = computed(() => {
 										<div>
 											<div v-if="work?.physical_objects && work?.physical_objects.length > 0">
 												<div
-													class="grid grid-rows-[auto_auto_auto] gap-4 lg:grid-cols-[auto_1fr] lg:gap-10"
+													class="grid grid-rows-[auto_auto_auto] gap-4 2xl:grid-cols-[auto_1fr] 2xl:gap-10"
 												>
 													<div>
 														<div class="pb-2 font-semibold">Archiv</div>
@@ -570,7 +581,7 @@ const icon = computed(() => {
 						</Accordion>
 					</div>
 				</div>
-				<div v-if="!isMobile" class="bg-white py-8">
+				<div class="hidden md:block md:bg-white md:py-8">
 					<div class="grid grid-cols-[auto_1fr] items-center gap-4">
 						<div
 							class="size-0 border-y-[55px] border-l-[55px] border-y-transparent border-l-frisch-marine"
@@ -586,20 +597,36 @@ const icon = computed(() => {
 						</div>
 						<div v-if="analysisTags.length > 0" class="py-4">
 							<span v-for="tag in analysisTags" :key="tag.name" class="mb-2 mr-1">
-								<TooltipProvider>
-									<Tooltip>
-										<TooltipTrigger as-child>
+								<span v-if="!isTablet">
+									<TooltipProvider>
+										<Tooltip>
+											<TooltipTrigger as-child>
+												<span
+													class="mb-1 inline-block cursor-default bg-frisch-orange px-2 py-1 text-xs text-white opacity-85"
+												>
+													{{ tag.value }}
+												</span>
+											</TooltipTrigger>
+											<TooltipContent>
+												<p>{{ tag.name }}</p>
+											</TooltipContent>
+										</Tooltip>
+									</TooltipProvider>
+								</span>
+								<span v-else>
+									<Popover>
+										<PopoverTrigger>
 											<span
 												class="mb-1 inline-block cursor-default bg-frisch-orange px-2 py-1 text-xs text-white opacity-85"
 											>
 												{{ tag.value }}
 											</span>
-										</TooltipTrigger>
-										<TooltipContent>
-											<p>{{ tag.name }}</p>
-										</TooltipContent>
-									</Tooltip>
-								</TooltipProvider>
+										</PopoverTrigger>
+										<PopoverContent>
+											{{ tag.name }}
+										</PopoverContent>
+									</Popover>
+								</span>
 							</span>
 						</div>
 					</div>

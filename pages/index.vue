@@ -35,7 +35,7 @@ const links = {
 			class="grid h-full gap-4 text-2xl font-bold sm:grid-cols-[repeat(3,minmax(0,350px))] sm:justify-center"
 		>
 			<NuxtLink v-for="(link, id) of links" :key="id" :href="link.href">
-				<Card class="size-full transition hover:scale-105" :class="link.color">
+				<Card class="size-full transition hover:scale-105 sm:items-center" :class="link.color">
 					<CardContent class="flex size-full items-center uppercase text-white">
 						{{ link.label }}
 					</CardContent>

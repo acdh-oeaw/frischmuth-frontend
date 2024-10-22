@@ -4,7 +4,10 @@ import { UserRoundIcon, UserRoundPenIcon, VenetianMaskIcon } from "lucide-vue-ne
 const props = defineProps<{
 	fictionality: string;
 	isMobile: boolean;
+	isTablet: boolean;
 }>();
+
+console.log(props.isMobile, props.isTablet);
 
 type Icon = typeof UserRoundIcon;
 
@@ -24,7 +27,7 @@ const iconComponent = computed(() => {
 </script>
 
 <template>
-	<div v-if="props.isMobile">
+	<div v-if="props.isMobile || props.isTablet">
 		<Popover>
 			<PopoverTrigger>
 				<component :is="iconComponent" :size="16" class="inline text-frisch-orange" />

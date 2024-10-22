@@ -110,22 +110,22 @@ const facets = computed(() => {
 </script>
 
 <template>
-	<MainContent class="overflow-x-hidden bg-frisch-marine lg:overflow-x-auto lg:pr-20">
+	<MainContent class="overflow-x-hidden bg-frisch-marine md:pr-0 lg:overflow-x-auto 2xl:pr-20">
 		<h1 class="sr-only">{{ t("SearchPage.title") }}</h1>
 		<div
 			v-if="!isLoading"
-			class="grid h-full grid-rows-[auto_1fr] lg:grid-cols-[minmax(650px,_1fr)_auto_3fr] lg:grid-rows-none"
+			class="grid h-full grid-rows-[auto_1fr] md:grid-cols-[1fr_auto_1fr] lg:grid-rows-none 2xl:grid-cols-[minmax(650px,_1fr)_auto_3fr]"
 		>
-			<div class="hidden lg:block">
+			<div class="hidden md:block">
 				<SearchForm query="" @submit="onChange">
 					<SearchTextInput />
 					<SearchFilter :facets="facets" />
 				</SearchForm>
 			</div>
 			<div
-				class="hidden size-0 border-y-[85px] border-l-[85px] border-y-transparent border-l-frisch-orange lg:block"
+				class="hidden size-0 border-y-[85px] border-l-[85px] border-y-transparent border-l-frisch-orange md:block md:border-y-[65px] md:border-l-[65px]"
 			/>
-			<div class="flex lg:hidden">
+			<div class="flex md:hidden">
 				<Drawer v-model:open="isMobileSearchOpen">
 					<DrawerTrigger class="w-full">
 						<span class="flex w-full items-center bg-frisch-orange-searchform">

@@ -120,6 +120,9 @@ const config = {
 				"collapsible-down": "collapsible-down 0.2s ease-in-out",
 				"collapsible-up": "collapsible-up 0.2s ease-in-out",
 			},
+			screens: {
+				md: "820px",
+			},
 		},
 	},
 	plugins: [animate, typography, fluidColumnsPlugin],
