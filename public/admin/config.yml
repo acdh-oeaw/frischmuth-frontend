@@ -51,3 +51,53 @@ collections:
             modes:
               # - raw
               - rich_text
+  - name: biography
+    label: Biografie-Einträge
+    label_singular: Biografie-Einträge
+    # description: Pages
+    folder: content/pages/biography
+    identifier_field: year
+    create: true
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: year
+        label: Year
+        widget: string
+        required: true
+
+      - name: image
+        label: Image
+        # hint: The image
+        widget: image
+        required: false
+
+      - name: imageTitle
+        label: Title
+        widget: string
+        hint: The title will be displayed next to the image
+        required: false
+
+      - name: alt
+        label: Alt
+        widget: string
+        hint:
+          The alt will not be displayed, it should describe the image. If not provided the title of
+          the image will be the alt.
+        required: false
+
+      - name: copyright
+        label: Copyright
+        widget: string
+        hint: The copyright if provided will be displayed under the title
+        required: false
+
+      - name: body
+        label: Content
+        # hint: The short biography
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text

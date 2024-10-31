@@ -13,3 +13,11 @@ export interface TeamMember extends MarkdownParsedContent {
 	lastName: string;
 	image?: string;
 }
+
+export interface BiographyEntry extends MarkdownParsedContent {
+	year: string;
+	image?: string;
+	alt?: string;
+	imageTitle?: string;
+	copyright?: string;
+}
