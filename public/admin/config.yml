@@ -1,0 +1,103 @@
+site_url: https://frischmuth-frontend-dev.acdh-ch-dev.oeaw.ac.at/
+logo_url: /icon.svg
+load_config_file: true
+local_backend: true
+backend:
+  name: github
+  repo: acdh-oeaw/frischmuth-frontend
+  branch: dev
+  base_url: https://frischmuth-frontend-dev.acdh-ch-dev.oeaw.ac.at/
+  auth_endpoint: /api/oauth/authorize
+  auth_scope: repo
+  squash_merges: true
+  commit_messages:
+    create: "content(create): {{collection}} '{{slug}}'"
+    update: "content(update): {{collection}} '{{slug}}'"
+    delete: "content(delete): {{collection}} '{{slug}}'"
+    uploadMedia: "content(upload): '{{path}}'"
+    deleteMedia: "content(delete): '{{path}}'"
+# publish_mode: editorial_workflow
+media_folder: /public/assets/images
+public_folder: /assets/images
+editor:
+  preview: false
+collections:
+  - name: about
+    label: Über das Projekt
+    label_singular: Über das Projekt
+    # description: Pages
+    folder: content/pages/about
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
+  - name: biography
+    label: Biografie-Einträge
+    label_singular: Biografie-Einträge
+    # description: Pages
+    folder: content/pages/biography
+    identifier_field: year
+    create: true
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: year
+        label: Year
+        widget: string
+        required: true
+
+      - name: image
+        label: Image
+        # hint: The image
+        widget: image
+        required: false
+
+      - name: imageTitle
+        label: Title
+        widget: string
+        hint: The title will be displayed next to the image
+        required: false
+
+      - name: alt
+        label: Alt
+        widget: string
+        hint:
+          The alt will not be displayed, it should describe the image. If not provided the title of
+          the image will be the alt.
+        required: false
+
+      - name: copyright
+        label: Copyright
+        widget: string
+        hint: The copyright if provided will be displayed under the title
+        required: false
+
+      - name: body
+        label: Content
+        # hint: The short biography
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text

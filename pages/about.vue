@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useQuery } from "@tanstack/vue-query";
 
-import type { SystemPage, TeamMember } from "@/types/content";
+import type { AboutPage } from "@/types/content";
 
 defineRouteRules({
 	prerender: true,
@@ -13,29 +13,31 @@ usePageMetadata({
 	title: t("AboutPage.meta.title"),
 });
 
-const { data: team, error: teamError } = useQuery({
-	queryKey: ["about-team"] as const,
+const { data: about, error: aboutError } = useQuery({
+	queryKey: ["about"] as const,
 	queryFn() {
-		return queryContent<SystemPage>("system-pages", "about-team").findOne();
+		return queryContent<AboutPage>("pages/about/about-the-project").findOne();
 	},
 });
 
-const { data: approach, error: approachError } = useQuery({
-	queryKey: ["about-approach"] as const,
-	queryFn() {
-		return queryContent<SystemPage>("system-pages", "about-approach").findOne();
-	},
-});
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-explicit-any
+const parsedContent = ref<Array<any>>([]);
 
-const { data: members, error: membersError } = useQuery({
-	queryKey: ["team"] as const,
-	queryFn() {
-		return queryContent<TeamMember>("team").find();
+watch(
+	() => about.value,
+	async (newValue) => {
+		if (newValue?.sections) {
+			parsedContent.value = await Promise.all(
+				newValue.sections.map(async (section) => {
+					return section.content ? await parseMarkdown(section.content) : "";
+				}),
+			);
+		}
 	},
-});
+	{ immediate: true },
+);
 
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-useErrorMessage(teamError ?? approachError ?? membersError, {
+useErrorMessage(aboutError, {
 	notFound: t("AboutPage.errors.404"),
 	unknown: t("AboutPage.errors.500"),
 });
@@ -53,48 +55,13 @@ useErrorMessage(teamError ?? approachError ?? membersError, {
 			</Card>
 		</div>
 
-		<div class="prose max-w-3xl">
-			<ContentRenderer v-if="team != null" :value="team">
-				<h2 class="font-bold text-frisch-orange">
-					{{ team.title }}
-				</h2>
-				<ContentRendererMarkdown :value="team" />
-				<template #empty></template>
-			</ContentRenderer>
-
-			<ul class="list-none px-0 pt-4 md:pt-8">
-				<li
-					v-for="member of members"
-					:key="member._id"
-					class="grid gap-4 p-0 md:grid-cols-[auto_1fr]"
-				>
-					<div class="relative aspect-square overflow-hidden md:size-72">
-						<img
-							v-if="member.image != null"
-							alt=""
-							class="absolute inset-0 m-0 size-full object-cover"
-							:src="member.image"
-						/>
-					</div>
-					<div>
-						<h2 class="m-0 font-semibold text-frisch-indigo">
-							{{ member.firstName }}
-							{{ member.lastName }}
-						</h2>
-						<ContentRenderer :value="member">
-							<template #empty></template>
-						</ContentRenderer>
-					</div>
-				</li>
-			</ul>
-
-			<ContentRenderer v-if="approach != null" :value="approach">
-				<h2 class="font-bold text-frisch-orange">
-					{{ approach.title }}
-				</h2>
-				<ContentRendererMarkdown :value="approach" />
-				<template #empty></template>
-			</ContentRenderer>
+		<div v-if="about && about.sections && about.sections.length" class="prose max-w-3xl">
+			<div v-for="(section, index) in about.sections" :key="index" class="pb-4">
+				<h2 class="m-0 font-bold text-frisch-orange">{{ section.title }}</h2>
+				<ContentRenderer v-if="parsedContent[index]" :value="parsedContent[index]">
+					<template #empty></template>
+				</ContentRenderer>
+			</div>
 		</div>
 	</MainContent>
 </template>
