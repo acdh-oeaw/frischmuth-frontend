@@ -49,11 +49,12 @@ usePageMetadata({
 				>
 					<span>Aus dem Archiv</span>
 				</Card>
-				<Card
+				<NuxtLink
+					to="/biography"
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 				>
-					<span>NAMEN</span>
-				</Card>
+					<span>BIOGRAFIE</span>
+				</NuxtLink>
 				<Card
 					class="relative aspect-square overflow-hidden bg-frisch-indigo p-4 text-white transition hover:scale-105"
 				>

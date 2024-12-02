@@ -9,6 +9,16 @@
 		},
 		"title": "Über das Projekt"
 	},
+	"BiographyPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Biografie"
+		},
+		"title": "Biografie"
+	},
 	"AppFooter": {
 		"links": {
 			"imprint": "Impressum"
