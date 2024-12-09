@@ -24,7 +24,9 @@
 						"required": true
 					}
 				],
-				"tags": ["api"],
+				"tags": [
+					"api"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -66,7 +68,9 @@
 						"required": true
 					}
 				],
-				"tags": ["api"],
+				"tags": [
+					"api"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -299,15 +303,63 @@
 							"items": {
 								"type": "string",
 								"enum": [
-									19307, 19308, 19309, 19310, 19311, 19312, 19313, 19314, 19315, 19316, 19317,
-									19318, 19319, 19320, 19321, 19322, 19323, 19324, 19325, 19326, 19327, 19328,
-									19329, 19330, 19331, 19332, 19333, 19334, 19335, 19336, 19337, 19338, 19339,
-									19340, 19341, 19342, 19343, 19344, 19345, 19346, 19347, 19348, 19349, 19350,
-									19351, 19352, 19353, 19354, 19355, 19356, 19357, 19358, 19359
+									"Abbildung",
+									"Ankündigung",
+									"Artikel",
+									"Bericht",
+									"Besprechung",
+									"Diplomarbeit",
+									"Dissertation",
+									"Drama",
+									"Drama-, Opernaufführung",
+									"Dramatik",
+									"Erzählung",
+									"Essay",
+									"Film",
+									"Filmdrehbuch, Filmvorlage",
+									"Hochschulschrift",
+									"Hörspiel",
+									"Hörspieldrehbuch",
+									"Hörspielübersetzung, Hörspielbearbeitung",
+									"Interview",
+									"Journalartikel",
+									"Kinder- und Jugendbuch",
+									"Kinder- und Jugendproduktion",
+									"Korrespondenz",
+									"Kunstwerk",
+									"Literatursendung",
+									"Lyrik",
+									"Monografie",
+									"Musik",
+									"Nachdichtung von Barbara Frischmuth",
+									"Nachschlagewerk",
+									"Paratext",
+									"Poetik-Vorlesung",
+									"Porträt",
+									"Primärwerk",
+									"Prosa",
+									"Rede",
+									"Rezension",
+									"Rezeption/Sekundärwerk",
+									"Roman",
+									"Sammelband",
+									"Veröffentlichung in audiovisuellen Medien",
+									"Vorabdruck",
+									"Vorlesung",
+									"akademische Rezeption",
+									"anderweitige journalistische Rezeption",
+									"anderweitiger Beitrag in audiovisuellen Medien",
+									"journalistische Rezeption",
+									"literarischer Sachtext",
+									"produktive Rezeption",
+									"religiöser Text",
+									"Übersetzung",
+									"Übersetzung von Werken Frischmuths",
+									"Übersetzung von Werken anderer Autor:innen"
 								]
 							}
 						},
-						"description": "Type of the work.\n\n* `19307` - Primärwerk\n* `19308` - Prosa\n* `19309` - Roman\n* `19310` - Erzählung\n* `19311` - literarischer Sachtext\n* `19312` - Poetik-Vorlesung\n* `19313` - Kinder- und Jugendbuch\n* `19314` - Rede\n* `19315` - Essay\n* `19316` - Vorlesung\n* `19317` - Rezension\n* `19318` - Lyrik\n* `19319` - Dramatik\n* `19320` - Drama\n* `19321` - Hörspieldrehbuch\n* `19322` - Filmdrehbuch, Filmvorlage\n* `19323` - Veröffentlichung in audiovisuellen Medien\n* `19324` - Hörspiel\n* `19325` - Film\n* `19326` - Kinder- und Jugendproduktion\n* `19327` - Hörspielübersetzung, Hörspielbearbeitung\n* `19328` - Literatursendung\n* `19329` - anderweitiger Beitrag in audiovisuellen Medien\n* `19330` - Paratext\n* `19331` - Abbildung\n* `19332` - Rezeption/Sekundärwerk\n* `19333` - akademische Rezeption\n* `19334` - Monografie\n* `19335` - Sammelband\n* `19336` - Artikel\n* `19337` - Journalartikel\n* `19338` - Hochschulschrift\n* `19339` - Diplomarbeit\n* `19340` - Dissertation\n* `19341` - journalistische Rezeption\n* `19342` - Besprechung\n* `19343` - Bericht\n* `19344` - Ankündigung\n* `19345` - Porträt\n* `19346` - anderweitige journalistische Rezeption\n* `19347` - produktive Rezeption\n* `19348` - Drama-, Opernaufführung\n* `19349` - Nachdichtung von Barbara Frischmuth\n* `19350` - Übersetzung\n* `19351` - Übersetzung von Werken anderer Autor:innen\n* `19352` - Übersetzung von Werken Frischmuths\n* `19353` - Interview\n* `19354` - Korrespondenz\n* `19355` - Kunstwerk\n* `19356` - Musik\n* `19357` - Nachschlagewerk\n* `19358` - Vorabdruck\n* `19359` - religiöser Text",
+						"description": "Type of the work.\n\n* `Primärwerk` - Primärwerk\n* `Prosa` - Prosa\n* `Roman` - Roman\n* `Erzählung` - Erzählung\n* `literarischer Sachtext` - literarischer Sachtext\n* `Poetik-Vorlesung` - Poetik-Vorlesung\n* `Kinder- und Jugendbuch` - Kinder- und Jugendbuch\n* `Rede` - Rede\n* `Essay` - Essay\n* `Vorlesung` - Vorlesung\n* `Rezension` - Rezension\n* `Lyrik` - Lyrik\n* `Dramatik` - Dramatik\n* `Drama` - Drama\n* `Hörspieldrehbuch` - Hörspieldrehbuch\n* `Filmdrehbuch, Filmvorlage` - Filmdrehbuch, Filmvorlage\n* `Veröffentlichung in audiovisuellen Medien` - Veröffentlichung in audiovisuellen Medien\n* `Hörspiel` - Hörspiel\n* `Film` - Film\n* `Kinder- und Jugendproduktion` - Kinder- und Jugendproduktion\n* `Hörspielübersetzung, Hörspielbearbeitung` - Hörspielübersetzung, Hörspielbearbeitung\n* `Literatursendung` - Literatursendung\n* `anderweitiger Beitrag in audiovisuellen Medien` - anderweitiger Beitrag in audiovisuellen Medien\n* `Paratext` - Paratext\n* `Abbildung` - Abbildung\n* `Rezeption/Sekundärwerk` - Rezeption/Sekundärwerk\n* `akademische Rezeption` - akademische Rezeption\n* `Monografie` - Monografie\n* `Sammelband` - Sammelband\n* `Artikel` - Artikel\n* `Journalartikel` - Journalartikel\n* `Hochschulschrift` - Hochschulschrift\n* `Diplomarbeit` - Diplomarbeit\n* `Dissertation` - Dissertation\n* `journalistische Rezeption` - journalistische Rezeption\n* `Besprechung` - Besprechung\n* `Bericht` - Bericht\n* `Ankündigung` - Ankündigung\n* `Porträt` - Porträt\n* `anderweitige journalistische Rezeption` - anderweitige journalistische Rezeption\n* `produktive Rezeption` - produktive Rezeption\n* `Drama-, Opernaufführung` - Drama-, Opernaufführung\n* `Nachdichtung von Barbara Frischmuth` - Nachdichtung von Barbara Frischmuth\n* `Übersetzung` - Übersetzung\n* `Übersetzung von Werken anderer Autor:innen` - Übersetzung von Werken anderer Autor:innen\n* `Übersetzung von Werken Frischmuths` - Übersetzung von Werken Frischmuths\n* `Interview` - Interview\n* `Korrespondenz` - Korrespondenz\n* `Kunstwerk` - Kunstwerk\n* `Musik` - Musik\n* `Nachschlagewerk` - Nachschlagewerk\n* `Vorabdruck` - Vorabdruck\n* `religiöser Text` - religiöser Text",
 						"explode": true,
 						"style": "form"
 					},
@@ -351,7 +403,9 @@
 						"description": "String to find in work titles and subtitles using fuzzy search (unaccent-ed trigram word similarity)."
 					}
 				],
-				"tags": ["api"],
+				"tags": [
+					"api"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -393,7 +447,9 @@
 						"required": true
 					}
 				],
-				"tags": ["api"],
+				"tags": [
+					"api"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -436,7 +492,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -487,7 +545,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -527,7 +587,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -559,7 +621,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -600,7 +664,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -666,7 +732,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -723,7 +791,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -759,7 +829,10 @@
 						"name": "format",
 						"schema": {
 							"type": "string",
-							"enum": ["json", "yaml"]
+							"enum": [
+								"json",
+								"yaml"
+							]
 						}
 					},
 					{
@@ -871,7 +944,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -930,7 +1005,9 @@
 						"required": true
 					}
 				],
-				"tags": ["entity"],
+				"tags": [
+					"entity"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -980,7 +1057,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -1021,7 +1100,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -1107,7 +1188,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -1148,7 +1231,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -1236,7 +1321,9 @@
 						"style": "form"
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -1277,7 +1364,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -1374,7 +1463,9 @@
 						"style": "form"
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -1415,7 +1506,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -1602,7 +1695,9 @@
 						"style": "form"
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -1643,7 +1738,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -1830,12 +1927,20 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["früheres Erzählen", "gleichzeitiges Erzählen", "späteres Erzählen"],
+									"enum": [
+										"früheres Erzählen",
+										"gleichzeitiges Erzählen",
+										"späteres Erzählen"
+									],
 									"type": "string",
 									"description": "* `früheres Erzählen` - früheres Erzählen\n* `gleichzeitiges Erzählen` - gleichzeitiges Erzählen\n* `späteres Erzählen` - späteres Erzählen"
 								},
 								"title": "Zeitpunkt des Erzählens",
-								"enum": ["früheres Erzählen", "gleichzeitiges Erzählen", "späteres Erzählen"]
+								"enum": [
+									"früheres Erzählen",
+									"gleichzeitiges Erzählen",
+									"späteres Erzählen"
+								]
 							}
 						},
 						"description": "* `früheres Erzählen` - früheres Erzählen\n* `gleichzeitiges Erzählen` - gleichzeitiges Erzählen\n* `späteres Erzählen` - späteres Erzählen",
@@ -1850,12 +1955,20 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["extradiegetisch", "intradiegetisch", "metadiegetisch"],
+									"enum": [
+										"extradiegetisch",
+										"intradiegetisch",
+										"metadiegetisch"
+									],
 									"type": "string",
 									"description": "* `extradiegetisch` - extradiegetisch\n* `intradiegetisch` - intradiegetisch\n* `metadiegetisch` - metadiegetisch"
 								},
 								"title": "Ort des Erzählens",
-								"enum": ["extradiegetisch", "intradiegetisch", "metadiegetisch"]
+								"enum": [
+									"extradiegetisch",
+									"intradiegetisch",
+									"metadiegetisch"
+								]
 							}
 						},
 						"description": "* `extradiegetisch` - extradiegetisch\n* `intradiegetisch` - intradiegetisch\n* `metadiegetisch` - metadiegetisch",
@@ -1870,12 +1983,22 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["auktorial", "neutral", "personal", "Ich-Erzähler*in"],
+									"enum": [
+										"auktorial",
+										"neutral",
+										"personal",
+										"Ich-Erzähler*in"
+									],
 									"type": "string",
 									"description": "* `auktorial` - auktorial\n* `neutral` - neutral\n* `personal` - personal\n* `Ich-Erzähler*in` - Ich-Erzähler*in"
 								},
 								"title": "Erzählperspektive",
-								"enum": ["Ich-Erzähler*in", "auktorial", "neutral", "personal"]
+								"enum": [
+									"Ich-Erzähler*in",
+									"auktorial",
+									"neutral",
+									"personal"
+								]
 							}
 						},
 						"description": "* `auktorial` - auktorial\n* `neutral` - neutral\n* `personal` - personal\n* `Ich-Erzähler*in` - Ich-Erzähler*in",
@@ -2019,12 +2142,24 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["Szene", "Dehnung", "Raffung", "Ellipse", "Pause"],
+									"enum": [
+										"Szene",
+										"Dehnung",
+										"Raffung",
+										"Ellipse",
+										"Pause"
+									],
 									"type": "string",
 									"description": "* `Szene` - Szene\n* `Dehnung` - Dehnung\n* `Raffung` - Raffung\n* `Ellipse` - Ellipse\n* `Pause` - Pause"
 								},
 								"title": "Dauer",
-								"enum": ["Dehnung", "Ellipse", "Pause", "Raffung", "Szene"]
+								"enum": [
+									"Dehnung",
+									"Ellipse",
+									"Pause",
+									"Raffung",
+									"Szene"
+								]
 							}
 						},
 						"description": "* `Szene` - Szene\n* `Dehnung` - Dehnung\n* `Raffung` - Raffung\n* `Ellipse` - Ellipse\n* `Pause` - Pause",
@@ -2039,12 +2174,20 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["singulativ", "repetitiv", "iterativ"],
+									"enum": [
+										"singulativ",
+										"repetitiv",
+										"iterativ"
+									],
 									"type": "string",
 									"description": "* `singulativ` - singulativ\n* `repetitiv` - repetitiv\n* `iterativ` - iterativ"
 								},
 								"title": "Frequenz",
-								"enum": ["iterativ", "repetitiv", "singulativ"]
+								"enum": [
+									"iterativ",
+									"repetitiv",
+									"singulativ"
+								]
 							}
 						},
 						"description": "* `singulativ` - singulativ\n* `repetitiv` - repetitiv\n* `iterativ` - iterativ",
@@ -2059,12 +2202,20 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["chronologisch", "anachronisch", "achronisch"],
+									"enum": [
+										"chronologisch",
+										"anachronisch",
+										"achronisch"
+									],
 									"type": "string",
 									"description": "* `chronologisch` - chronologisch\n* `anachronisch` - anachronisch\n* `achronisch` - achronisch"
 								},
 								"title": "Erzählordnung",
-								"enum": ["achronisch", "anachronisch", "chronologisch"]
+								"enum": [
+									"achronisch",
+									"anachronisch",
+									"chronologisch"
+								]
 							}
 						},
 						"description": "* `chronologisch` - chronologisch\n* `anachronisch` - anachronisch\n* `achronisch` - achronisch",
@@ -2086,7 +2237,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -2127,7 +2280,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -2195,12 +2350,18 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["Erstausgabe", "Referenzausgabe"],
+									"enum": [
+										"Erstausgabe",
+										"Referenzausgabe"
+									],
 									"type": "string",
 									"description": "* `Erstausgabe` - Erstausgabe\n* `Referenzausgabe` - Referenzausgabe"
 								},
 								"title": "Ausgabetyp",
-								"enum": ["Erstausgabe", "Referenzausgabe"]
+								"enum": [
+									"Erstausgabe",
+									"Referenzausgabe"
+								]
 							}
 						},
 						"description": "Zur Markierung speziell relevanter Ausgaben\n\n* `Erstausgabe` - Erstausgabe\n* `Referenzausgabe` - Referenzausgabe",
@@ -2398,7 +2559,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -2439,7 +2602,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -2550,7 +2715,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -2591,7 +2758,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -2677,7 +2846,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -2718,7 +2889,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -2844,7 +3017,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -2885,7 +3060,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3004,7 +3181,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3045,7 +3224,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3142,7 +3323,9 @@
 						"description": "Related entity contains"
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3183,7 +3366,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3258,12 +3443,20 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["fiktive Figur", "historische Figur", "mythologische Figur"],
+									"enum": [
+										"fiktive Figur",
+										"historische Figur",
+										"mythologische Figur"
+									],
 									"type": "string",
 									"description": "* `fiktive Figur` - fiktive Figur\n* `historische Figur` - historische Figur\n* `mythologische Figur` - mythologische Figur"
 								},
 								"title": "Erfindungsgrad",
-								"enum": ["fiktive Figur", "historische Figur", "mythologische Figur"]
+								"enum": [
+									"fiktive Figur",
+									"historische Figur",
+									"mythologische Figur"
+								]
 							}
 						},
 						"description": "Faktizität vs. Fiktionalität\n\n* `fiktive Figur` - fiktive Figur\n* `historische Figur` - historische Figur\n* `mythologische Figur` - mythologische Figur",
@@ -3327,7 +3520,11 @@
 						"schema": {
 							"type": "string",
 							"title": "Relevanz",
-							"enum": ["Hauptfigur", "Nebenfigur", "erwähnte Figur"]
+							"enum": [
+								"Hauptfigur",
+								"Nebenfigur",
+								"erwähnte Figur"
+							]
 						},
 						"description": "Bedeutsamkeit für den Text; Erzählfokus\n\n* `Hauptfigur` - Hauptfigur\n* `Nebenfigur` - Nebenfigur\n* `erwähnte Figur` - erwähnte Figur"
 					},
@@ -3339,7 +3536,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3380,7 +3579,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3508,7 +3709,9 @@
 						"description": "Related entity contains"
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3549,7 +3752,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3668,7 +3873,9 @@
 						"description": "Related entity contains"
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3709,7 +3916,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3828,7 +4037,9 @@
 						"description": "Related entity contains"
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3869,7 +4080,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -3966,7 +4179,9 @@
 						"description": "Related entity contains"
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -4007,7 +4222,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -4140,7 +4357,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -4181,7 +4400,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -4263,7 +4484,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -4387,7 +4612,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -4429,7 +4656,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -4494,7 +4723,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -4571,7 +4804,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -4613,7 +4848,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -4700,7 +4937,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -4766,7 +5007,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -4802,14 +5045,16 @@
 						"name": "id",
 						"schema": {
 							"type": "integer",
-							"maximum": 9223372036854775807,
-							"minimum": -9223372036854775808,
+							"maximum": 9223372036854776000,
+							"minimum": -9223372036854776000,
 							"format": "int64"
 						},
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -4889,7 +5134,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -4987,7 +5236,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -5029,7 +5280,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -5123,7 +5376,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -5200,7 +5457,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -5242,7 +5501,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -5322,7 +5583,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -5406,7 +5671,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -5448,7 +5715,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -5528,7 +5797,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -5612,7 +5885,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -5654,7 +5929,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -5729,12 +6006,20 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["fiktive Figur", "historische Figur", "mythologische Figur"],
+									"enum": [
+										"fiktive Figur",
+										"historische Figur",
+										"mythologische Figur"
+									],
 									"type": "string",
 									"description": "* `fiktive Figur` - fiktive Figur\n* `historische Figur` - historische Figur\n* `mythologische Figur` - mythologische Figur"
 								},
 								"title": "Erfindungsgrad",
-								"enum": ["fiktive Figur", "historische Figur", "mythologische Figur"]
+								"enum": [
+									"fiktive Figur",
+									"historische Figur",
+									"mythologische Figur"
+								]
 							}
 						},
 						"description": "Faktizität vs. Fiktionalität\n\n* `fiktive Figur` - fiktive Figur\n* `historische Figur` - historische Figur\n* `mythologische Figur` - mythologische Figur",
@@ -5768,7 +6053,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -5836,7 +6125,11 @@
 						"schema": {
 							"type": "string",
 							"title": "Relevanz",
-							"enum": ["Hauptfigur", "Nebenfigur", "erwähnte Figur"]
+							"enum": [
+								"Hauptfigur",
+								"Nebenfigur",
+								"erwähnte Figur"
+							]
 						},
 						"description": "Bedeutsamkeit für den Text; Erzählfokus\n\n* `Hauptfigur` - Hauptfigur\n* `Nebenfigur` - Nebenfigur\n* `erwähnte Figur` - erwähnte Figur"
 					},
@@ -5855,7 +6148,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -5897,7 +6192,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -5962,7 +6259,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -6053,7 +6354,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -6095,7 +6398,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -6175,7 +6480,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -6268,7 +6577,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -6310,7 +6621,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -6452,7 +6765,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -6535,12 +6852,20 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["früheres Erzählen", "gleichzeitiges Erzählen", "späteres Erzählen"],
+									"enum": [
+										"früheres Erzählen",
+										"gleichzeitiges Erzählen",
+										"späteres Erzählen"
+									],
 									"type": "string",
 									"description": "* `früheres Erzählen` - früheres Erzählen\n* `gleichzeitiges Erzählen` - gleichzeitiges Erzählen\n* `späteres Erzählen` - späteres Erzählen"
 								},
 								"title": "Zeitpunkt des Erzählens",
-								"enum": ["früheres Erzählen", "gleichzeitiges Erzählen", "späteres Erzählen"]
+								"enum": [
+									"früheres Erzählen",
+									"gleichzeitiges Erzählen",
+									"späteres Erzählen"
+								]
 							}
 						},
 						"description": "* `früheres Erzählen` - früheres Erzählen\n* `gleichzeitiges Erzählen` - gleichzeitiges Erzählen\n* `späteres Erzählen` - späteres Erzählen",
@@ -6555,12 +6880,20 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["extradiegetisch", "intradiegetisch", "metadiegetisch"],
+									"enum": [
+										"extradiegetisch",
+										"intradiegetisch",
+										"metadiegetisch"
+									],
 									"type": "string",
 									"description": "* `extradiegetisch` - extradiegetisch\n* `intradiegetisch` - intradiegetisch\n* `metadiegetisch` - metadiegetisch"
 								},
 								"title": "Ort des Erzählens",
-								"enum": ["extradiegetisch", "intradiegetisch", "metadiegetisch"]
+								"enum": [
+									"extradiegetisch",
+									"intradiegetisch",
+									"metadiegetisch"
+								]
 							}
 						},
 						"description": "* `extradiegetisch` - extradiegetisch\n* `intradiegetisch` - intradiegetisch\n* `metadiegetisch` - metadiegetisch",
@@ -6575,12 +6908,22 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["auktorial", "neutral", "personal", "Ich-Erzähler*in"],
+									"enum": [
+										"auktorial",
+										"neutral",
+										"personal",
+										"Ich-Erzähler*in"
+									],
 									"type": "string",
 									"description": "* `auktorial` - auktorial\n* `neutral` - neutral\n* `personal` - personal\n* `Ich-Erzähler*in` - Ich-Erzähler*in"
 								},
 								"title": "Erzählperspektive",
-								"enum": ["Ich-Erzähler*in", "auktorial", "neutral", "personal"]
+								"enum": [
+									"Ich-Erzähler*in",
+									"auktorial",
+									"neutral",
+									"personal"
+								]
 							}
 						},
 						"description": "* `auktorial` - auktorial\n* `neutral` - neutral\n* `personal` - personal\n* `Ich-Erzähler*in` - Ich-Erzähler*in",
@@ -6724,12 +7067,24 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["Szene", "Dehnung", "Raffung", "Ellipse", "Pause"],
+									"enum": [
+										"Szene",
+										"Dehnung",
+										"Raffung",
+										"Ellipse",
+										"Pause"
+									],
 									"type": "string",
 									"description": "* `Szene` - Szene\n* `Dehnung` - Dehnung\n* `Raffung` - Raffung\n* `Ellipse` - Ellipse\n* `Pause` - Pause"
 								},
 								"title": "Dauer",
-								"enum": ["Dehnung", "Ellipse", "Pause", "Raffung", "Szene"]
+								"enum": [
+									"Dehnung",
+									"Ellipse",
+									"Pause",
+									"Raffung",
+									"Szene"
+								]
 							}
 						},
 						"description": "* `Szene` - Szene\n* `Dehnung` - Dehnung\n* `Raffung` - Raffung\n* `Ellipse` - Ellipse\n* `Pause` - Pause",
@@ -6744,12 +7099,20 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["singulativ", "repetitiv", "iterativ"],
+									"enum": [
+										"singulativ",
+										"repetitiv",
+										"iterativ"
+									],
 									"type": "string",
 									"description": "* `singulativ` - singulativ\n* `repetitiv` - repetitiv\n* `iterativ` - iterativ"
 								},
 								"title": "Frequenz",
-								"enum": ["iterativ", "repetitiv", "singulativ"]
+								"enum": [
+									"iterativ",
+									"repetitiv",
+									"singulativ"
+								]
 							}
 						},
 						"description": "* `singulativ` - singulativ\n* `repetitiv` - repetitiv\n* `iterativ` - iterativ",
@@ -6764,12 +7127,20 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["chronologisch", "anachronisch", "achronisch"],
+									"enum": [
+										"chronologisch",
+										"anachronisch",
+										"achronisch"
+									],
 									"type": "string",
 									"description": "* `chronologisch` - chronologisch\n* `anachronisch` - anachronisch\n* `achronisch` - achronisch"
 								},
 								"title": "Erzählordnung",
-								"enum": ["achronisch", "anachronisch", "chronologisch"]
+								"enum": [
+									"achronisch",
+									"anachronisch",
+									"chronologisch"
+								]
 							}
 						},
 						"description": "* `chronologisch` - chronologisch\n* `anachronisch` - anachronisch\n* `achronisch` - achronisch",
@@ -6798,7 +7169,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -6840,7 +7213,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -6908,12 +7283,18 @@
 							"items": {
 								"type": "array",
 								"items": {
-									"enum": ["Erstausgabe", "Referenzausgabe"],
+									"enum": [
+										"Erstausgabe",
+										"Referenzausgabe"
+									],
 									"type": "string",
 									"description": "* `Erstausgabe` - Erstausgabe\n* `Referenzausgabe` - Referenzausgabe"
 								},
 								"title": "Ausgabetyp",
-								"enum": ["Erstausgabe", "Referenzausgabe"]
+								"enum": [
+									"Erstausgabe",
+									"Referenzausgabe"
+								]
 							}
 						},
 						"description": "Zur Markierung speziell relevanter Ausgaben\n\n* `Erstausgabe` - Erstausgabe\n* `Referenzausgabe` - Referenzausgabe",
@@ -6940,7 +7321,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -7156,7 +7541,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -7198,7 +7585,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -7263,7 +7652,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -7329,7 +7722,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -7371,7 +7766,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -7451,7 +7848,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -7535,7 +7936,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -7577,7 +7980,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -7642,7 +8047,11 @@
 						"name": "history_type",
 						"schema": {
 							"type": "string",
-							"enum": ["+", "-", "~"]
+							"enum": [
+								"+",
+								"-",
+								"~"
+							]
 						},
 						"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 					},
@@ -7719,7 +8128,9 @@
 						}
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -7761,7 +8172,9 @@
 						"required": true
 					}
 				],
-				"tags": ["apis"],
+				"tags": [
+					"apis"
+				],
 				"security": [
 					{
 						"tokenAuth": []
@@ -7790,6 +8203,27 @@
 	},
 	"components": {
 		"schemas": {
+			"work_type": {
+				"type": "array",
+				"nullable": true,
+				"items": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "integer"
+						},
+						"key": {
+							"type": "string"
+						},
+						"count": {
+							"type": "integer"
+						},
+						"children": {
+							"$ref": "#/components/schemas/work_type"
+						}
+					}
+				}
+			},
 			"ArchiveData": {
 				"type": "object",
 				"properties": {
@@ -7882,7 +8316,9 @@
 				}
 			},
 			"BlankEnum": {
-				"enum": [""]
+				"enum": [
+					""
+				]
 			},
 			"CharacterData": {
 				"type": "object",
@@ -8009,7 +8445,10 @@
 				}
 			},
 			"EditionTypeEnum": {
-				"enum": ["Erstausgabe", "Referenzausgabe"],
+				"enum": [
+					"Erstausgabe",
+					"Referenzausgabe"
+				],
 				"type": "string",
 				"description": "* `Erstausgabe` - Erstausgabe\n* `Referenzausgabe` - Referenzausgabe"
 			},
@@ -8234,7 +8673,11 @@
 				}
 			},
 			"FictionalityEnum": {
-				"enum": ["fiktive Figur", "historische Figur", "mythologische Figur"],
+				"enum": [
+					"fiktive Figur",
+					"historische Figur",
+					"mythologische Figur"
+				],
 				"type": "string",
 				"description": "* `fiktive Figur` - fiktive Figur\n* `historische Figur` - historische Figur\n* `mythologische Figur` - mythologische Figur"
 			},
@@ -8332,10 +8775,18 @@
 						"type": "integer"
 					}
 				},
-				"required": ["model", "module", "object_id"]
+				"required": [
+					"model",
+					"module",
+					"object_id"
+				]
 			},
 			"HistoryTypeEnum": {
-				"enum": ["+", "~", "-"],
+				"enum": [
+					"+",
+					"~",
+					"-"
+				],
 				"type": "string",
 				"description": "* `+` - Erzeugt\n* `~` - Changed\n* `-` - Deleted"
 			},
@@ -8447,20 +8898,36 @@
 						"type": "string"
 					}
 				},
-				"required": ["id", "name"]
+				"required": [
+					"id",
+					"name"
+				]
 			},
 			"NarrativeChronologyEnum": {
-				"enum": ["früheres Erzählen", "gleichzeitiges Erzählen", "späteres Erzählen"],
+				"enum": [
+					"früheres Erzählen",
+					"gleichzeitiges Erzählen",
+					"späteres Erzählen"
+				],
 				"type": "string",
 				"description": "* `früheres Erzählen` - früheres Erzählen\n* `gleichzeitiges Erzählen` - gleichzeitiges Erzählen\n* `späteres Erzählen` - späteres Erzählen"
 			},
 			"NarrativeLevelEnum": {
-				"enum": ["extradiegetisch", "intradiegetisch", "metadiegetisch"],
+				"enum": [
+					"extradiegetisch",
+					"intradiegetisch",
+					"metadiegetisch"
+				],
 				"type": "string",
 				"description": "* `extradiegetisch` - extradiegetisch\n* `intradiegetisch` - intradiegetisch\n* `metadiegetisch` - metadiegetisch"
 			},
 			"NarrativeSituationEnum": {
-				"enum": ["auktorial", "neutral", "personal", "Ich-Erzähler*in"],
+				"enum": [
+					"auktorial",
+					"neutral",
+					"personal",
+					"Ich-Erzähler*in"
+				],
 				"type": "string",
 				"description": "* `auktorial` - auktorial\n* `neutral` - neutral\n* `personal` - personal\n* `Ich-Erzähler*in` - Ich-Erzähler*in"
 			},
@@ -8531,7 +8998,10 @@
 			},
 			"PaginatedArchiveModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8559,7 +9029,10 @@
 			},
 			"PaginatedCharacterModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8587,7 +9060,10 @@
 			},
 			"PaginatedExpressionModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8615,7 +9091,10 @@
 			},
 			"PaginatedHistoryLogList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8643,7 +9122,10 @@
 			},
 			"PaginatedInterpretatemModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8671,7 +9153,10 @@
 			},
 			"PaginatedMetaCharacterModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8699,7 +9184,10 @@
 			},
 			"PaginatedMinimalEntityList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8727,7 +9215,10 @@
 			},
 			"PaginatedOrganisationModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8755,7 +9246,10 @@
 			},
 			"PaginatedPersonModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8783,7 +9277,10 @@
 			},
 			"PaginatedPhysicalObjectModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8811,7 +9308,10 @@
 			},
 			"PaginatedPlaceModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8839,7 +9339,10 @@
 			},
 			"PaginatedPropertyModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8867,7 +9370,10 @@
 			},
 			"PaginatedResearchPerspectiveModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8895,7 +9401,10 @@
 			},
 			"PaginatedRootObjectModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8923,7 +9432,10 @@
 			},
 			"PaginatedTempTripleModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8951,7 +9463,10 @@
 			},
 			"PaginatedTopicModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -8979,7 +9494,10 @@
 			},
 			"PaginatedTripleModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9007,7 +9525,10 @@
 			},
 			"PaginatedUriModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9035,7 +9556,10 @@
 			},
 			"PaginatedVersionArchiveModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9063,7 +9587,10 @@
 			},
 			"PaginatedVersionCharacterModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9091,7 +9618,10 @@
 			},
 			"PaginatedVersionDataSourceModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9119,7 +9649,10 @@
 			},
 			"PaginatedVersionExpressionModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9147,7 +9680,10 @@
 			},
 			"PaginatedVersionInterpretatemModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9175,7 +9711,10 @@
 			},
 			"PaginatedVersionMetaCharacterModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9203,7 +9742,10 @@
 			},
 			"PaginatedVersionOrganisationModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9231,7 +9773,10 @@
 			},
 			"PaginatedVersionPersonModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9259,7 +9804,10 @@
 			},
 			"PaginatedVersionPhysicalObjectModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9287,7 +9835,10 @@
 			},
 			"PaginatedVersionPlaceModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9315,7 +9866,10 @@
 			},
 			"PaginatedVersionResearchPerspectiveModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9343,7 +9897,10 @@
 			},
 			"PaginatedVersionTempTripleModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9371,7 +9928,10 @@
 			},
 			"PaginatedVersionTopicModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9399,7 +9959,10 @@
 			},
 			"PaginatedVersionWorkModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9427,7 +9990,10 @@
 			},
 			"PaginatedVersionWorkTypeModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9455,7 +10021,10 @@
 			},
 			"PaginatedWorkModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9483,7 +10052,10 @@
 			},
 			"PaginatedWorkPreviewList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9534,40 +10106,7 @@
 								]
 							},
 							"work_type": {
-								"type": "array",
-								"nullable": true,
-								"items": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer"
-										},
-										"key": {
-											"type": "string"
-										},
-										"count": {
-											"type": "integer"
-										},
-										"children": {
-											"type": "array"
-										}
-									}
-								},
-								"example": [
-									{
-										"id": 4,
-										"key": "Prosa",
-										"count": 150,
-										"children": [
-											{
-												"id": 5,
-												"key": "Roman",
-												"count": 50,
-												"children": []
-											}
-										]
-									}
-								]
+								"$ref": "#/components/schemas/work_type"
 							}
 						},
 						"type": "object",
@@ -9608,7 +10147,10 @@
 			},
 			"PaginatedWorkTypeModelList": {
 				"type": "object",
-				"required": ["count", "results"],
+				"required": [
+					"count",
+					"results"
+				],
 				"properties": {
 					"count": {
 						"type": "integer",
@@ -9984,7 +10526,9 @@
 						"description": "Längengrad"
 					}
 				},
-				"required": ["related_works"]
+				"required": [
+					"related_works"
+				]
 			},
 			"PlaceModel": {
 				"type": "object",
@@ -10104,10 +10648,17 @@
 						}
 					}
 				},
-				"required": ["obj_class", "subj_class"]
+				"required": [
+					"obj_class",
+					"subj_class"
+				]
 			},
 			"RelevancyEnum": {
-				"enum": ["Hauptfigur", "Nebenfigur", "erwähnte Figur"],
+				"enum": [
+					"Hauptfigur",
+					"Nebenfigur",
+					"erwähnte Figur"
+				],
 				"type": "string",
 				"description": "* `Hauptfigur` - Hauptfigur\n* `Nebenfigur` - Nebenfigur\n* `erwähnte Figur` - erwähnte Figur"
 			},
@@ -10278,20 +10829,36 @@
 						"title": "Property"
 					}
 				},
-				"required": ["status"]
+				"required": [
+					"status"
+				]
 			},
 			"TemporalDurationEnum": {
-				"enum": ["Szene", "Dehnung", "Raffung", "Ellipse", "Pause"],
+				"enum": [
+					"Szene",
+					"Dehnung",
+					"Raffung",
+					"Ellipse",
+					"Pause"
+				],
 				"type": "string",
 				"description": "* `Szene` - Szene\n* `Dehnung` - Dehnung\n* `Raffung` - Raffung\n* `Ellipse` - Ellipse\n* `Pause` - Pause"
 			},
 			"TemporalFrequencyEnum": {
-				"enum": ["singulativ", "repetitiv", "iterativ"],
+				"enum": [
+					"singulativ",
+					"repetitiv",
+					"iterativ"
+				],
 				"type": "string",
 				"description": "* `singulativ` - singulativ\n* `repetitiv` - repetitiv\n* `iterativ` - iterativ"
 			},
 			"TemporalOrderEnum": {
-				"enum": ["chronologisch", "anachronisch", "achronisch"],
+				"enum": [
+					"chronologisch",
+					"anachronisch",
+					"achronisch"
+				],
 				"type": "string",
 				"description": "* `chronologisch` - chronologisch\n* `anachronisch` - anachronisch\n* `achronisch` - achronisch"
 			},
@@ -10539,7 +11106,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionCharacterModel": {
 				"type": "object",
@@ -10649,7 +11219,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionDataSourceModel": {
 				"type": "object",
@@ -10661,8 +11234,8 @@
 					},
 					"id": {
 						"type": "integer",
-						"maximum": 9223372036854775807,
-						"minimum": -9223372036854775808,
+						"maximum": 9223372036854776000,
+						"minimum": -9223372036854776000,
 						"format": "int64"
 					},
 					"version_tag": {
@@ -10730,7 +11303,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionExpressionModel": {
 				"type": "object",
@@ -10877,7 +11453,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionInterpretatemModel": {
 				"type": "object",
@@ -10952,7 +11531,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionMetaCharacterModel": {
 				"type": "object",
@@ -11027,7 +11609,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionOrganisationModel": {
 				"type": "object",
@@ -11114,7 +11699,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionPersonModel": {
 				"type": "object",
@@ -11207,7 +11795,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionPhysicalObjectModel": {
 				"type": "object",
@@ -11276,7 +11867,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionPlaceModel": {
 				"type": "object",
@@ -11371,7 +11965,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionResearchPerspectiveModel": {
 				"type": "object",
@@ -11458,7 +12055,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionTempTripleModel": {
 				"type": "object",
@@ -11577,7 +12177,11 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type", "status"]
+				"required": [
+					"history_date",
+					"history_type",
+					"status"
+				]
 			},
 			"VersionTopicModel": {
 				"type": "object",
@@ -11664,7 +12268,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionWorkModel": {
 				"type": "object",
@@ -11850,7 +12457,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"VersionWorkTypeModel": {
 				"type": "object",
@@ -11948,7 +12558,10 @@
 						"nullable": true
 					}
 				},
-				"required": ["history_date", "history_type"]
+				"required": [
+					"history_date",
+					"history_type"
+				]
 			},
 			"WorkDetail": {
 				"type": "object",
@@ -11988,7 +12601,12 @@
 									"type": "string"
 								}
 							},
-							"required": ["id", "relation_type", "subtitle", "title"]
+							"required": [
+								"id",
+								"relation_type",
+								"subtitle",
+								"title"
+							]
 						},
 						"readOnly": true
 					},
@@ -12306,7 +12924,11 @@
 						"maxLength": 255
 					}
 				},
-				"required": ["id", "subtitle", "title"]
+				"required": [
+					"id",
+					"subtitle",
+					"title"
+				]
 			},
 			"WorkPreview": {
 				"type": "object",
