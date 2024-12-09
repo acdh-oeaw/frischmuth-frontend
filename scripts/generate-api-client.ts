@@ -1,9 +1,11 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { createUrl, createUrlSearchParams, log, request } from "@acdh-oeaw/lib";
+//import { createUrl, createUrlSearchParams, log, request } from "@acdh-oeaw/lib";
+import { createUrl, createUrlSearchParams, log } from "@acdh-oeaw/lib";
 import { generateZodClientFromOpenAPI } from "openapi-zod-client";
 import type { OpenAPIObject, PathsObject } from "openapi3-ts/oas30";
+import tempdata from "public/swagger.json";
 import { z } from "zod";
 
 async function generate() {
@@ -24,11 +26,11 @@ async function generate() {
 	};
 
 	// download swagger file
-	const data = (await request(options.url, { responseType: "json" })) as OpenAPIObject;
+	//const data = (await request(options.url, { responseType: "json" })) as OpenAPIObject;
 
 	// trim swagger file to only contain the prefixes specified in options.prefixes
 	const prefixes = options.prefixes;
-	let openApiDoc: OpenAPIObject = data;
+	let openApiDoc: OpenAPIObject = tempdata as unknown as OpenAPIObject;
 	const paths: PathsObject = {};
 	for (const [key, value] of Object.entries(openApiDoc.paths)) {
 		if (prefixes.some((retain) => key.startsWith(retain))) {

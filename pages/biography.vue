@@ -10,7 +10,7 @@ defineRouteRules({
 const t = useTranslations();
 
 usePageMetadata({
-	title: t("AboutPage.meta.title"),
+	title: t("BiographyPage.meta.title"),
 });
 
 const { data: biography, error } = useQuery({
@@ -21,8 +21,8 @@ const { data: biography, error } = useQuery({
 });
 
 useErrorMessage(error, {
-	notFound: t("AboutPage.errors.404"),
-	unknown: t("AboutPage.errors.500"),
+	notFound: t("BiographyPage.errors.404"),
+	unknown: t("BiographyPage.errors.500"),
 });
 
 const sortedEntries = computed(() => {
@@ -60,7 +60,7 @@ const sortedEntries = computed(() => {
 								<div v-if="entry.copyright">© {{ entry.copyright }}</div>
 							</div>
 							<div v-else></div>
-							<div class="block size-full self-end object-contain align-top">
+							<div class="relative block size-full self-end object-contain align-top">
 								<NuxtImg
 									:alt="entry.imageTitle ?? ''"
 									preload
@@ -73,7 +73,7 @@ const sortedEntries = computed(() => {
 						<div class="relative grid grid-cols-[1fr_1fr_auto] items-center gap-2">
 							<div v-if="entry.image">
 								<svg class="relative h-0.5 w-10 bg-frisch-indigo">
-									<line x1="0" y1="" x2="100%" y2="" stroke-width="1" />
+									<line x1="0" y1="0" x2="100%" y2="0" stroke-width="1" />
 								</svg>
 							</div>
 							<div v-else></div>
@@ -94,7 +94,7 @@ const sortedEntries = computed(() => {
 											: 'relative h-0.5 w-24 bg-frisch-indigo'
 									"
 								>
-									<line x1="0" y1="" x2="100%" y2="" stroke-width="1" />
+									<line x1="0" y1="0" x2="100%" y2="0" stroke-width="1" />
 								</svg>
 							</div>
 						</div>
