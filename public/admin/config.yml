@@ -262,7 +262,7 @@ collections:
   - name: biography
     label: Biografie-Einträge
     label_singular: Biografie-Einträge
-    # description: Pages
+    # description: Biography entries for the biography-page.
     folder: content/pages/biography
     identifier_field: year
     create: true
@@ -304,7 +304,36 @@ collections:
 
       - name: body
         label: Content
-        # hint: The short biography
+        hint: The short biography
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
+  - name: quotes
+    label: Zitate
+    label_singular: Zitate
+    # description: Quotes for the explore page.
+    folder: content/pages/quotes
+    create: true
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: title
+        hint: For recognition in the cms.
+        widget: string
+        required: true
+
+      - name: link
+        label: Link to the related work
+        # hint: Provide the plain link-text, not link it here.
+        widget: string
+        required: false
+
+      - name: body
+        label: Quote
         widget: markdown
         modes:
           # - raw

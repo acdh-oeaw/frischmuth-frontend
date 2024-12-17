@@ -21,3 +21,8 @@ export interface BiographyEntry extends MarkdownParsedContent {
 	imageTitle?: string;
 	copyright?: string;
 }
+
+export interface Quote extends MarkdownParsedContent {
+	title: string;
+	link: string;
+}

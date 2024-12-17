@@ -1,9 +1,45 @@
 <script lang="ts" setup>
+import { useQuery } from "@tanstack/vue-query";
+
+import type { Quote } from "@/types/content";
+
 defineRouteRules({
 	prerender: true,
 });
 
 const t = useTranslations();
+
+function getRandomEntries(arr: Array<Quote>, count: number) {
+	if (arr.length <= count) return arr;
+
+	const shuffled = arr
+		.map((value) => ({ value, sortKey: Math.random() }))
+		.sort((a, b) => a.sortKey - b.sortKey)
+		.map(({ value }) => value);
+
+	return shuffled.slice(0, count);
+}
+
+const {
+	data: quotes,
+	isLoading: isLoading,
+	error: quotesError,
+} = useQuery({
+	queryKey: ["quotes"],
+	queryFn() {
+		return queryContent<Quote>("pages/quotes").find();
+	},
+});
+
+const randomQuotes = ref<Quote[]>([]);
+
+watchEffect(() => {
+	if (quotes.value) {
+		randomQuotes.value = getRandomEntries(quotes.value, 3);
+	}
+});
+
+const quotesReady = computed(() => randomQuotes.value.length > 0);
 
 usePageMetadata({
 	title: t("ExplorePage.meta.title"),
@@ -29,11 +65,19 @@ usePageMetadata({
 				>
 					<span>Journalistische Rezeption</span>
 				</NuxtLink>
-				<Card
+				<NuxtLink
+					:to="randomQuotes[0]?.link || ''"
 					class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				>
-					<span>"Und dann fiel ich aus den Wolken"</span>
-				</Card>
+					<template v-if="randomQuotes[0] != null">
+						<ContentRenderer :value="randomQuotes[0]" />
+					</template>
+					<template v-else>
+						<span class="flex h-full w-full items-center justify-center text-sm text-frisch-orange">
+							<LoadingSpinner />
+						</span>
+					</template>
+				</NuxtLink>
 				<NuxtLink
 					to="/explore/research-aspects"
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
@@ -65,14 +109,19 @@ usePageMetadata({
 				>
 					<span class="relative">ALTAUSSEE</span>
 				</Card>
-				<Card
+				<NuxtLink
+					:to="randomQuotes[1]?.link || ''"
 					class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				>
-					<span>
-						"Keine Grenze kann so dicht geschlossen werden, dass sie nicht von denen, die unbedingt
-						ihr Glück versuchen wollen, überwunden wird.
-					</span>
-				</Card>
+					<template v-if="randomQuotes[1] != null">
+						<ContentRenderer :value="randomQuotes[1]" />
+					</template>
+					<template v-else>
+						<span class="flex h-full w-full items-center justify-center text-frisch-orange">
+							<LoadingSpinner />
+						</span>
+					</template>
+				</NuxtLink>
 				<NuxtLink
 					to="/explore/glossary"
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
@@ -85,14 +134,19 @@ usePageMetadata({
 				>
 					<span>BIOGRAFIE</span>
 				</NuxtLink>
-				<Card
+				<NuxtLink
+					:to="randomQuotes[2]?.link || ''"
 					class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				>
-					<span>
-						"Für die meisten Schriftsteller gibt es ohnehin nur eine wirkliche Heimat, und das ist
-						die Sprache, in der sie schreiben."
-					</span>
-				</Card>
+					<template v-if="randomQuotes[2] != null">
+						<ContentRenderer :value="randomQuotes[2]" />
+					</template>
+					<template v-else>
+						<span class="flex h-full w-full items-center justify-center text-sm text-frisch-orange">
+							<LoadingSpinner />
+						</span>
+					</template>
+				</NuxtLink>
 				<NuxtLink
 					to="/explore/autobiografiction"
 					class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
