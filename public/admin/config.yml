@@ -167,6 +167,98 @@ collections:
             modes:
               # - raw
               - rich_text
+  - name: places
+    label: Orte-Intro
+    label_singular: Orte-Intro
+    # description: Pages
+    folder: content/pages/places
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: body
+        label: Content
+        i18n: true
+        # hint: The content
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
+  - name: themes
+    label: Themen-Intro
+    label_singular: Themen-Intro
+    # description: Pages
+    folder: content/pages/themes
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: body
+        label: Content
+        i18n: true
+        # hint: The content
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
+  - name: research-aspects
+    label: Forschungshinsichten-Intro
+    label_singular: Forschungshinsichten-Intro
+    # description: Pages
+    folder: content/pages/research-aspects
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: body
+        label: Content
+        i18n: true
+        # hint: The content
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
+  - name: glossary
+    label: Glossar-Intro
+    label_singular: Glossar-Intro
+    # description: Pages
+    folder: content/pages/glossary
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: body
+        label: Content
+        i18n: true
+        # hint: The content
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
   - name: biography
     label: Biografie-Einträge
     label_singular: Biografie-Einträge

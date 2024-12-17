@@ -59,6 +59,46 @@
 		},
 		"title": "Biografie"
 	},
+	"PlacesPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Orte"
+		},
+		"title": "Orte"
+	},
+	"ThemesPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Themen"
+		},
+		"title": "Themen"
+	},
+	"GlossaryPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Glossar"
+		},
+		"title": "Glossar"
+	},
+	"ResearchAspectsPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Forschungs-Hinsichten"
+		},
+		"title": "Forschungs-Hinsichten"
+	},
 	"AppFooter": {
 		"links": {
 			"imprint": "Impressum"

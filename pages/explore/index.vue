@@ -17,11 +17,12 @@ usePageMetadata({
 			<div
 				class="mx-auto grid max-h-full grid-cols-2 gap-2 font-bold lg:gap-4 lg:text-2xl lg:grid-fluid-cols-72"
 			>
-				<Card
+				<NuxtLink
+					to="/explore/places"
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 				>
 					<span>ORTE</span>
-				</Card>
+				</NuxtLink>
 				<NuxtLink
 					to="/explore/journalistic-reception"
 					class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
@@ -33,16 +34,18 @@ usePageMetadata({
 				>
 					<span>"Und dann fiel ich aus den Wolken"</span>
 				</Card>
-				<Card
+				<NuxtLink
+					to="/explore/research-aspects"
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 				>
 					<span>FORSCHUNGS-HINSICHTEN</span>
-				</Card>
+				</NuxtLink>
 				<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
-					<img
+					<NuxtImg
 						alt=""
-						class="absolute inset-0 size-full object-cover"
+						preload
 						src="/assets/images/writing_placeholder.png"
+						class="absolute inset-0 size-full object-cover"
 					/>
 				</Card>
 				<NuxtLink
@@ -52,7 +55,7 @@ usePageMetadata({
 					<span>Aus dem Archiv</span>
 				</NuxtLink>
 				<NuxtLink
-					to="/"
+					to="/explore/themes"
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 				>
 					<span>THEMEN</span>
@@ -70,11 +73,12 @@ usePageMetadata({
 						ihr Glück versuchen wollen, überwunden wird.
 					</span>
 				</Card>
-				<Card
+				<NuxtLink
+					to="/explore/glossary"
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 				>
 					<span>GLOSSAR</span>
-				</Card>
+				</NuxtLink>
 				<NuxtLink
 					to="/explore/biography"
 					class="relative aspect-square overflow-hidden bg-frisch-indigo p-4 text-white transition hover:scale-105"
@@ -95,10 +99,13 @@ usePageMetadata({
 				>
 					<span>Autobiografiktion</span>
 				</NuxtLink>
-				<Card
-					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
-				>
-					<span>INTERPRETATEME</span>
+				<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
+					<NuxtImg
+						alt=""
+						preload
+						src="/assets/images/writing_placeholder.png"
+						class="absolute inset-0 size-full object-cover"
+					/>
 				</Card>
 				<NuxtLink
 					to="/explore/academic-reception"
