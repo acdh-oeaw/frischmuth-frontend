@@ -9,6 +9,46 @@
 		},
 		"title": "Über das Projekt"
 	},
+	"AcademicReceptionPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Akademische Rezeption"
+		},
+		"title": "Akademische Rezeption"
+	},
+	"JournalisticReceptionPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Journalistische Rezeption"
+		},
+		"title": "Journalistische Rezeption"
+	},
+	"AutobiografictionPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Autobiografiktion"
+		},
+		"title": "Autobiografiktion"
+	},
+	"FromTheArchivePage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Aus dem Archiv"
+		},
+		"title": "Aus dem Archiv"
+	},
 	"BiographyPage": {
 		"errors": {
 			"404": "Seite nicht gefunden",

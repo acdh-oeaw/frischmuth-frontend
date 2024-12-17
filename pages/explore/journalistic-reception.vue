@@ -10,13 +10,15 @@ defineRouteRules({
 const t = useTranslations();
 
 usePageMetadata({
-	title: t("AboutPage.meta.title"),
+	title: t("JournalisticReceptionPage"),
 });
 
 const { data: about, error: aboutError } = useQuery({
-	queryKey: ["about"] as const,
+	queryKey: ["journalistic-reception"] as const,
 	queryFn() {
-		return queryContent<StaticPage>("pages/about/about-the-project").findOne();
+		return queryContent<StaticPage>(
+			"pages/journalistic-reception/journalistic-reception",
+		).findOne();
 	},
 });
 
@@ -38,8 +40,8 @@ watch(
 );
 
 useErrorMessage(aboutError, {
-	notFound: t("AboutPage.errors.404"),
-	unknown: t("AboutPage.errors.500"),
+	notFound: t("JournalisticReceptionPage.errors.404"),
+	unknown: t("JournalisticReceptionPage.errors.500"),
 });
 </script>
 
@@ -49,8 +51,8 @@ useErrorMessage(aboutError, {
 	>
 		<div class="flex md:justify-end">
 			<Card class="aspect-square size-full bg-frisch-grey md:size-72">
-				<CardContent class="flex size-full py-4 text-2xl font-bold text-white">
-					<h1 class="uppercase">{{ t("AboutPage.title") }}</h1>
+				<CardContent class="flex size-full py-4 text-2xl font-bold text-frisch-indigo">
+					<h1>{{ t("JournalisticReceptionPage.title") }}</h1>
 				</CardContent>
 			</Card>
 		</div>

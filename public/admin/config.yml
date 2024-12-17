@@ -51,6 +51,122 @@ collections:
             modes:
               # - raw
               - rich_text
+  - name: academic-reception
+    label: Akademische Rezeption
+    label_singular: Akademische Rezeption
+    # description: Pages
+    folder: content/pages/academic-reception
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
+  - name: journalistic-reception
+    label: Journalistische Rezeption
+    label_singular: Journalistische Rezeption
+    # description: Pages
+    folder: content/pages/journalistic-reception
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
+  - name: autobiografiction
+    label: Autobiografiktion
+    label_singular: Autobiografiktion
+    # description: Pages
+    folder: content/pages/autobiografiction
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
+  - name: from-the-archive
+    label: Aus dem Archiv
+    label_singular: Aus dem Archiv
+    # description: Pages
+    folder: content/pages/from-the-archive
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
   - name: biography
     label: Biografie-Einträge
     label_singular: Biografie-Einträge

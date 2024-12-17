@@ -1,11 +1,22 @@
 import { fileURLToPath } from "node:url";
 
+import babel from "vite-plugin-babel";
+
 import { defaultLocale, localesMap } from "./config/i18n.config";
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 export default defineNuxtConfig({
+	vite: {
+		plugins: [
+			babel({
+				babelConfig: {
+					plugins: ["@babel/plugin-transform-named-capturing-groups-regex"],
+				},
+			}),
+		],
+	},
 	alias: {
 		"@": fileURLToPath(new URL("./", import.meta.url)),
 	},

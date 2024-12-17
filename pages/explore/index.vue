@@ -22,11 +22,12 @@ usePageMetadata({
 				>
 					<span>ORTE</span>
 				</Card>
-				<Card
+				<NuxtLink
+					to="/explore/journalistic-reception"
 					class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
 				>
-					<span class="relative">Istanbul</span>
-				</Card>
+					<span>Journalistische Rezeption</span>
+				</NuxtLink>
 				<Card
 					class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				>
@@ -44,21 +45,22 @@ usePageMetadata({
 						src="/assets/images/writing_placeholder.png"
 					/>
 				</Card>
-				<Card
+				<NuxtLink
+					to="/explore/from-the-archive"
 					class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
 				>
 					<span>Aus dem Archiv</span>
-				</Card>
+				</NuxtLink>
 				<NuxtLink
-					to="/biography"
+					to="/"
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 				>
-					<span>BIOGRAFIE</span>
+					<span>THEMEN</span>
 				</NuxtLink>
 				<Card
 					class="relative aspect-square overflow-hidden bg-frisch-indigo p-4 text-white transition hover:scale-105"
 				>
-					<span>JOURNALISTISCHE REZEPTION</span>
+					<span class="relative">ALTAUSSEE</span>
 				</Card>
 				<Card
 					class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
@@ -73,11 +75,12 @@ usePageMetadata({
 				>
 					<span>GLOSSAR</span>
 				</Card>
-				<Card
+				<NuxtLink
+					to="/explore/biography"
 					class="relative aspect-square overflow-hidden bg-frisch-indigo p-4 text-white transition hover:scale-105"
 				>
-					<span>AKADEMISCHE REZEPTION</span>
-				</Card>
+					<span>BIOGRAFIE</span>
+				</NuxtLink>
 				<Card
 					class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				>
@@ -86,21 +89,23 @@ usePageMetadata({
 						die Sprache, in der sie schreiben."
 					</span>
 				</Card>
-				<Card
+				<NuxtLink
+					to="/explore/autobiografiction"
 					class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
 				>
-					<span>Postkoloniale Theorie</span>
-				</Card>
+					<span>Autobiografiktion</span>
+				</NuxtLink>
 				<Card
 					class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 				>
 					<span>INTERPRETATEME</span>
 				</Card>
-				<Card
+				<NuxtLink
+					to="/explore/academic-reception"
 					class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
 				>
-					<span>Kasanapodole</span>
-				</Card>
+					<span>Akademische Rezeption</span>
+				</NuxtLink>
 			</div>
 		</div>
 	</MainContent>
