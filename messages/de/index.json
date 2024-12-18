@@ -19,6 +19,16 @@
 		},
 		"title": "Akademische Rezeption"
 	},
+	"AltausseePage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Altaussee"
+		},
+		"title": "Altaussee"
+	},
 	"JournalisticReceptionPage": {
 		"errors": {
 			"404": "Seite nicht gefunden",

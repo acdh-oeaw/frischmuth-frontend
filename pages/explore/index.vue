@@ -50,13 +50,13 @@ usePageMetadata({
 				to="/explore/places"
 				class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 			>
-				<span>ORTE</span>
+				<span class="uppercase">{{ t("PlacesPage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
 				to="/explore/journalistic-reception"
 				class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
 			>
-				<span>Journalistische Rezeption</span>
+				<span>{{ t("JournalisticReceptionPage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
 				rel="noopener noreferrer"
@@ -80,7 +80,7 @@ usePageMetadata({
 				to="/explore/research-aspects"
 				class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 			>
-				<span>FORSCHUNGS-HINSICHTEN</span>
+				<span class="uppercase">{{ t("ResearchAspectsPage.title") }}</span>
 			</NuxtLink>
 			<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
 				<NuxtImg
@@ -94,18 +94,18 @@ usePageMetadata({
 				to="/explore/from-the-archive"
 				class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
 			>
-				<span>Aus dem Archiv</span>
+				<span>{{ t("FromTheArchivePage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
 				to="/explore/themes"
 				class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 			>
-				<span>THEMEN</span>
+				<span class="uppercase">{{ t("ThemesPage.title") }}</span>
 			</NuxtLink>
 			<Card
 				class="relative aspect-square overflow-hidden bg-frisch-indigo p-4 text-white transition hover:scale-105"
 			>
-				<span class="relative">ALTAUSSEE</span>
+				<span class="uppercase">{{ t("AltausseePage.title") }}</span>
 			</Card>
 			<NuxtLink
 				rel="noopener noreferrer"
@@ -129,14 +129,14 @@ usePageMetadata({
 				to="/explore/academic-reception"
 				class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
 			>
-				<span>Akademische Rezeption</span>
+				<span>{{ t("AcademicReceptionPage.title") }}</span>
 			</NuxtLink>
 
 			<NuxtLink
 				to="/explore/biography"
 				class="relative aspect-square overflow-hidden bg-frisch-indigo p-4 text-white transition hover:scale-105"
 			>
-				<span>BIOGRAFIE</span>
+				<span class="uppercase">{{ t("BiographyPage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
 				rel="noopener noreferrer"
@@ -160,7 +160,7 @@ usePageMetadata({
 				to="/explore/autobiografiction"
 				class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
 			>
-				<span>Autobiografiktion</span>
+				<span>{{ t("AutobiografictionPage.title") }}</span>
 			</NuxtLink>
 			<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
 				<NuxtImg
@@ -174,7 +174,7 @@ usePageMetadata({
 				to="/explore/glossary"
 				class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
 			>
-				<span>GLOSSAR</span>
+				<span class="uppercase">{{ t("GlossaryPage.title") }}</span>
 			</NuxtLink>
 		</div>
 	</MainContent>
