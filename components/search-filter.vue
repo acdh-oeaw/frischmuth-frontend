@@ -185,7 +185,13 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 					<div class="pb-4">
 						<Accordion type="single" collapsible default-value="work_type_primary">
 							<AccordionItem value="work_type_primary">
-								<div class="grid grid-cols-[auto_1fr] items-center gap-2">
+								<div
+									:class="
+										primaryWork != null && primaryWork.count > 0
+											? `grid grid-cols-[auto_1fr] items-center gap-2`
+											: `grid w-full items-center`
+									"
+								>
 									<div v-if="primaryWork != null">
 										<input
 											:id="`workType` + primaryWork.id"
@@ -208,8 +214,14 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 									</div>
 									<AccordionTrigger>
 										<div class="grid grid-cols-[auto_1fr] items-center gap-2">
-											<div class="text-lg">Primärliteratur</div>
-											<span class="text-frisch-grey">({{ primaryWork?.count }})</span>
+											<div class="text-lg">
+												Primärliteratur
+												<span class="text-sm text-frisch-grey">
+													({{
+														primaryWork != null && primaryWork?.count > 0 ? primaryWork?.count : 0
+													}})
+												</span>
+											</div>
 										</div>
 									</AccordionTrigger>
 								</div>
@@ -256,12 +268,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 																		? checkedFacets.workType.includes(subwork.key)
 																		: false) || selectedCheckboxes.includes(subwork.key)
 																"
-																@change="
-																	toggleSubterm(
-																		subwork.key as unknown as string,
-																		subwork.children ?? [],
-																	)
-																"
+																@change="toggleSubterm(subwork.key as unknown as string)"
 															/>
 															<div>
 																<label :for="`workType` + subwork.id" class="pl-2">
@@ -287,7 +294,13 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 					<div class="pb-4">
 						<Accordion type="single" collapsible default-value="work_type_primary">
 							<AccordionItem value="work_type_primary">
-								<div class="grid grid-cols-[auto_1fr] items-center gap-2">
+								<div
+									:class="
+										secondaryWork != null && secondaryWork.count > 0
+											? `grid grid-cols-[auto_1fr] items-center gap-2`
+											: `grid w-full items-center`
+									"
+								>
 									<div v-if="secondaryWork != null">
 										<input
 											:id="`workType` + secondaryWork.id"
@@ -312,9 +325,17 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 										</label>
 									</div>
 									<AccordionTrigger>
-										<div class="grid grid-cols-[auto_1fr] items-center gap-2">
-											<div class="text-lg">Sekundärlitertur / Rezeption</div>
-											<span class="text-frisch-grey">({{ secondaryWork?.count }})</span>
+										<div class="flex w-full items-center gap-2">
+											<div class="text-lg">
+												Sekundärlitertur / Rezeption
+												<span class="text-sm text-frisch-grey">
+													({{
+														secondaryWork != null && secondaryWork?.count > 0
+															? secondaryWork?.count
+															: 0
+													}})
+												</span>
+											</div>
 										</div>
 									</AccordionTrigger>
 								</div>
@@ -355,7 +376,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 															<input
 																:id="`workType` + subwork.id"
 																name="workType"
-																:value="work.key"
+																:value="subwork.key"
 																type="checkbox"
 																class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 																:checked="
@@ -363,12 +384,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 																		? checkedFacets.workType.includes(subwork.key)
 																		: false) || selectedCheckboxes.includes(subwork.key)
 																"
-																@change="
-																	toggleSubterm(
-																		subwork.key as unknown as string,
-																		subwork.children ?? [],
-																	)
-																"
+																@change="toggleSubterm(subwork.key as unknown as string)"
 															/>
 															<div>
 																<div>
