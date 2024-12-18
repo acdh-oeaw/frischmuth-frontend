@@ -1,7 +1,6 @@
 import type { ApiOf, ZodiosQueryParamsByPath, ZodiosResponseByPath } from "@zodios/core";
-import type { z } from "zod";
 
-import type { api, schemas } from "@/lib/api";
+import type { api } from "@/lib/api";
 
 type Api = ApiOf<typeof api>;
 
@@ -11,6 +10,6 @@ export type WorkDetail = ZodiosResponseByPath<Api, "get", "/api/work-detail/:id/
 
 export type SearchFacetLanguage = NonNullable<SearchFilters["facet_language"]>;
 export type SearchFacetTopic = NonNullable<SearchFilters["facet_topic"]>;
+export type SearchFacetWorkType = NonNullable<SearchFilters["facet_work_type"]>;
 
 export type SearchResultFacets = NonNullable<SearchResults["facets"]>;
-export type WorkType = z.infer<typeof schemas.WorkTypeData>;

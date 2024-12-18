@@ -47,7 +47,7 @@ const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 				h(Tooltip, {}, () => [
 					h(TooltipTrigger, { class: "cursor-default" }, () => [
 						IconComponent
-							? h(IconComponent, { class: "size-4 shrink-0" })
+							? h(IconComponent.icon, { class: "size-4 shrink-0" })
 							: h("span", {}, workType.map((type) => type.name).join(", ")),
 					]),
 					h(TooltipContent, {}, () => workType.map((type) => type.name).join(", ")),
@@ -58,7 +58,7 @@ const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 				h(Popover, {}, () => [
 					h(PopoverTrigger, { class: "cursor-default" }, () => [
 						IconComponent
-							? h(IconComponent, { class: "size-4 shrink-0" })
+							? h(IconComponent.icon, { class: "size-4 shrink-0" })
 							: h("span", {}, workType.map((type) => type.name).join(", ")),
 					]),
 					h(PopoverContent, {}, () => workType.map((type) => type.name).join(", ")),

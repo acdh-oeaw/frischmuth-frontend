@@ -157,8 +157,8 @@ const icon = computed(() => {
 			<div class="grid md:grid-cols-2 md:gap-8">
 				<div v-if="work != null" class="bg-white p-8 lg:p-16">
 					<!-- TODO: maybe display siglum here -->
-					<div v-if="work?.work_type != null" class="flex items-center gap-2 pb-2">
-						<component :is="icon" :size="20" />
+					<div v-if="work?.work_type != null && icon" class="flex items-center gap-2 pb-2">
+						<component :is="icon.icon" :size="20" />
 						{{ work?.work_type[0]?.name }}
 					</div>
 					<div class="pb-2">
