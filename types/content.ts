@@ -1,6 +1,6 @@
 import type { MarkdownParsedContent } from "@nuxt/content";
 
-export interface AboutPage extends MarkdownParsedContent {
+export interface StaticPage extends MarkdownParsedContent {
 	title: string;
 	sections: Array<{
 		title: string;
@@ -20,4 +20,9 @@ export interface BiographyEntry extends MarkdownParsedContent {
 	alt?: string;
 	imageTitle?: string;
 	copyright?: string;
+}
+
+export interface Quote extends MarkdownParsedContent {
+	title: string;
+	link: string;
 }
