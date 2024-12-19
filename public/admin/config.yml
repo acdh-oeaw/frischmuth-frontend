@@ -51,10 +51,218 @@ collections:
             modes:
               # - raw
               - rich_text
+  - name: academic-reception
+    label: Akademische Rezeption
+    label_singular: Akademische Rezeption
+    # description: Pages
+    folder: content/pages/academic-reception
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
+  - name: journalistic-reception
+    label: Journalistische Rezeption
+    label_singular: Journalistische Rezeption
+    # description: Pages
+    folder: content/pages/journalistic-reception
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
+  - name: autobiografiction
+    label: Autobiografiktion
+    label_singular: Autobiografiktion
+    # description: Pages
+    folder: content/pages/autobiografiction
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
+  - name: from-the-archive
+    label: Aus dem Archiv
+    label_singular: Aus dem Archiv
+    # description: Pages
+    folder: content/pages/from-the-archive
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
+  - name: places
+    label: Orte-Intro
+    label_singular: Orte-Intro
+    # description: Pages
+    folder: content/pages/places
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: body
+        label: Content
+        i18n: true
+        # hint: The content
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
+  - name: themes
+    label: Themen-Intro
+    label_singular: Themen-Intro
+    # description: Pages
+    folder: content/pages/themes
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: body
+        label: Content
+        i18n: true
+        # hint: The content
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
+  - name: research-aspects
+    label: Forschungshinsichten-Intro
+    label_singular: Forschungshinsichten-Intro
+    # description: Pages
+    folder: content/pages/research-aspects
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: body
+        label: Content
+        i18n: true
+        # hint: The content
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
+  - name: glossary
+    label: Glossar-Intro
+    label_singular: Glossar-Intro
+    # description: Pages
+    folder: content/pages/glossary
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: body
+        label: Content
+        i18n: true
+        # hint: The content
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
   - name: biography
     label: Biografie-Einträge
     label_singular: Biografie-Einträge
-    # description: Pages
+    # description: Biography entries for the biography-page.
     folder: content/pages/biography
     identifier_field: year
     create: true
@@ -96,7 +304,36 @@ collections:
 
       - name: body
         label: Content
-        # hint: The short biography
+        hint: The short biography
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
+  - name: quotes
+    label: Zitate
+    label_singular: Zitate
+    # description: Quotes for the explore page.
+    folder: content/pages/quotes
+    create: true
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: title
+        hint: For recognition in the cms.
+        widget: string
+        required: true
+
+      - name: link
+        label: Link to the related work
+        # hint: Provide the plain link-text, not link it here.
+        widget: string
+        required: false
+
+      - name: body
+        label: Quote
         widget: markdown
         modes:
           # - raw
