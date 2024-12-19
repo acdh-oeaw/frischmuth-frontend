@@ -15,7 +15,7 @@ import {
 	PaginationNext,
 	PaginationPrev,
 } from "@/components/ui/pagination";
-import type { SearchFacetLanguage, SearchFacetTopic } from "@/types/api.ts";
+import type { SearchFacetLanguage, SearchFacetTopic, SearchFacetWorkType } from "@/types/api.ts";
 
 defineRouteRules({
 	prerender: true,
@@ -24,8 +24,9 @@ defineRouteRules({
 const filterCount = computed(() => {
 	const language = route.query.language;
 	const topic = route.query.topic;
+	const workType = route.query.workType;
 
-	return (language?.length ?? 0) + (topic?.length ?? 0);
+	return (language?.length ?? 0) + (topic?.length ?? 0) + (workType?.length ?? 0);
 });
 
 const router = useRouter();
@@ -42,6 +43,7 @@ function onUpdatePage(newPage: number) {
 
 const searchFiltersSchema = v.object({
 	query: v.fallback(v.string(), ""),
+	workType: v.fallback(v.array(v.string()), []),
 	language: v.fallback(v.array(v.string()), []),
 	topic: v.fallback(v.array(v.string()), []),
 });
@@ -65,6 +67,7 @@ const searchFilters = computed(() => {
 	// when there is just one query param, it is an Object instead of an Array, so normalize it
 	const normalizedQuery = {
 		...route.query,
+		workType: normalizeQueryArray(route.query.workType),
 		language: normalizeQueryArray(route.query.language),
 		topic: normalizeQueryArray(route.query.topic),
 	};
@@ -92,6 +95,7 @@ function setSearchFilters(query: Partial<SearchFilter>) {
 		delete query.query;
 	}
 
+	console.log("Query: ", query);
 	void router.push({ query });
 	document.body.scrollTo(0, 0);
 }
@@ -101,6 +105,7 @@ const { data, isPending } = useGetSearchResults(
 		return {
 			facet_language: searchFilters.value.language as SearchFacetLanguage,
 			facet_topic: searchFilters.value.topic as SearchFacetTopic,
+			facet_work_type: searchFilters.value.workType as SearchFacetWorkType,
 			text_filter: searchFilters.value.query,
 			limit,
 			offset: offset.value,
