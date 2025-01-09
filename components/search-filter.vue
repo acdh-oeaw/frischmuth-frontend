@@ -20,7 +20,14 @@ interface workType {
 const route = useRoute();
 const router = useRouter();
 
+const slider = { min: 1940, max: 2025 };
+const sliderValue = ref([slider.min, slider.max]);
+
 const checkedFacets = computed(() => {
+	const startYearValue: Array<LocationQueryValue> | LocationQueryValue | undefined =
+		route.query.startYear;
+	const endYearValue: Array<LocationQueryValue> | LocationQueryValue | undefined =
+		route.query.endYear;
 	const workTypeValue: Array<LocationQueryValue> | LocationQueryValue | undefined =
 		route.query.workType;
 	const languageValue: Array<LocationQueryValue> | LocationQueryValue | undefined =
@@ -28,16 +35,26 @@ const checkedFacets = computed(() => {
 	const topicValue: Array<LocationQueryValue> | LocationQueryValue | undefined = route.query.topic;
 
 	return {
+		startYear: startYearValue ? startYearValue : "",
+		endYear: endYearValue ? endYearValue : "",
 		workType: Array.isArray(workTypeValue) ? workTypeValue : workTypeValue ? [workTypeValue] : [],
 		language: Array.isArray(languageValue) ? languageValue : languageValue ? [languageValue] : [],
 		topic: Array.isArray(topicValue) ? topicValue : topicValue ? [topicValue] : [],
-	} as { language: Array<string>; topic: Array<string>; workType: Array<string> };
+	} as {
+		startYear: string;
+		endYear: string;
+		language: Array<string>;
+		topic: Array<string>;
+		workType: Array<string>;
+	};
 });
 
 const props = defineProps<{
 	facets: SearchResultFacets | null;
 	filterCount: number;
 }>();
+
+const yearChecked = ref(false);
 
 function sortChildrenByCount(item: workType) {
 	if (!item.children) return item;
@@ -74,6 +91,10 @@ function toggleShowMore() {
 	showMore.value = !showMore.value;
 }
 
+function toggleYearChecked() {
+	yearChecked.value = !yearChecked.value;
+}
+
 const sortedTopics = computed(() => {
 	if (props.facets?.topic == null) return null;
 
@@ -94,11 +115,23 @@ watch(
 	checkedFacets,
 	() => {
 		selectedCheckboxes.value = [];
+		if (checkedFacets.value.endYear !== "" && checkedFacets.value.startYear !== "") {
+			yearChecked.value = true;
+			sliderValue.value = [
+				Number(checkedFacets.value.startYear),
+				Number(checkedFacets.value.endYear),
+			];
+		} else yearChecked.value = false;
 	},
 	{ immediate: true },
 );
 
 const isCheckBoxActive = computed(() => selectedCheckboxes.value.length > 0);
+const hasSliderChanged = ref(false);
+
+function onSliderChange() {
+	hasSliderChanged.value = true;
+}
 
 function addCheckbox(value: string) {
 	const index = selectedCheckboxes.value.indexOf(value);
@@ -115,13 +148,12 @@ function removeFilter() {
 	if (newQuery.language) delete newQuery.language;
 	if (newQuery.topic) delete newQuery.topic;
 	if (newQuery.workType) delete newQuery.workType;
+	if (newQuery.startYear) delete newQuery.startYear;
+	if (newQuery.endYear) delete newQuery.endYear;
 
 	void router.push({ query: newQuery });
 	selectedCheckboxes.value = [];
 }
-
-const slider = { min: 1940, max: 2024 };
-const sliderValue = ref([slider.min, slider.max]);
 
 function toggleWork(key: string, subterms: Array<workType>) {
 	const isChecked = selectedCheckboxes.value.includes(key);
@@ -158,6 +190,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 </script>
 
 <template>
+	{{ selectedCheckboxes }}
 	<div class="px-6">
 		<div class="bg-frisch-orange-super-light p-6">
 			<div class="text-lg font-medium text-frisch-orange">
@@ -410,16 +443,39 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 						<Separator class="bg-frisch-orange"></Separator>
 					</div>
 					<div class="pb-4">
-						<Accordion type="single" collapsible default-value="year">
+						<Accordion
+							type="single"
+							collapsible
+							:default-value="yearChecked ? 'year' : undefined"
+							:value="yearChecked ? 'year' : null"
+							@update:model-value="
+								toggleYearChecked();
+								addCheckbox('year');
+							"
+						>
 							<AccordionItem value="year">
-								<AccordionTrigger>
+								<AccordionTrigger
+									class="grid w-full grid-cols-[auto_auto_1fr] place-items-end items-center gap-2"
+								>
+									<div>
+										<input
+											id="year"
+											name="year"
+											:value="yearChecked"
+											type="checkbox"
+											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+											:checked="yearChecked"
+										/>
+									</div>
 									<div class="text-lg">Erscheinungsjahr</div>
 								</AccordionTrigger>
 								<AccordionContent>
 									<div class="w-full text-sm font-normal">
 										<div class="grid w-full grid-cols-[1fr_auto] pb-4">
 											<div>{{ sliderValue[0] }}</div>
+											<input type="hidden" name="startYear" :value="sliderValue[0]" />
 											<div>{{ sliderValue[1] }}</div>
+											<input type="hidden" name="endYear" :value="sliderValue[1]" />
 										</div>
 										<Slider
 											v-model="sliderValue"
@@ -427,6 +483,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 											:max="slider.max"
 											:min="slider.min"
 											:step="1"
+											@update:model-value="onSliderChange"
 										/>
 									</div>
 								</AccordionContent>
@@ -526,7 +583,10 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 							</AccordionItem>
 						</Accordion>
 						<Separator class="bg-frisch-orange"></Separator>
-						<div v-if="isCheckBoxActive" class="flex w-full justify-end pt-4 text-sm">
+						<div
+							v-if="isCheckBoxActive || hasSliderChanged"
+							class="flex w-full justify-end pt-4 text-sm"
+						>
 							<Button variant="frischMarine" type="submit">Filter anwenden</Button>
 						</div>
 					</div>

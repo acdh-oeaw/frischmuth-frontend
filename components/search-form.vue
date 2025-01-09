@@ -1,6 +1,8 @@
 <script setup lang="ts">
 export interface SearchFormData {
 	query: string;
+	startYear: number | undefined;
+	endYear: number | undefined;
 	workType: Array<string>;
 	language: Array<string>;
 	topic: Array<string>;
@@ -16,6 +18,8 @@ function onChange(event: Event) {
 
 	emit("submit", {
 		query: formData.get("query") as string,
+		startYear: formData.get("startYear") as unknown as number,
+		endYear: formData.get("endYear") as unknown as number,
 		workType: formData.getAll("workType") as Array<string>,
 		language: formData.getAll("language") as Array<string>,
 		topic: formData.getAll("topic") as Array<string>,
