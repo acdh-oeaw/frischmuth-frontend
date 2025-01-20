@@ -1,8 +1,8 @@
 <script setup lang="ts">
 export interface SearchFormData {
 	query: string;
-	startYear: number | undefined;
-	endYear: number | undefined;
+	startYear: number | null;
+	endYear: number | null;
 	workType: Array<string>;
 	language: Array<string>;
 	topic: Array<string>;

@@ -93,6 +93,9 @@ function toggleShowMore() {
 
 function toggleYearChecked() {
 	yearChecked.value = !yearChecked.value;
+	setTimeout(() => {
+		sliderValue.value = [slider.min, slider.max];
+	}, 100);
 }
 
 const sortedTopics = computed(() => {
@@ -153,6 +156,7 @@ function removeFilter() {
 
 	void router.push({ query: newQuery });
 	selectedCheckboxes.value = [];
+	yearChecked.value = false;
 }
 
 function toggleWork(key: string, subterms: Array<workType>) {
@@ -190,7 +194,6 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 </script>
 
 <template>
-	{{ selectedCheckboxes }}
 	<div class="px-6">
 		<div class="bg-frisch-orange-super-light p-6">
 			<div class="text-lg font-medium text-frisch-orange">
@@ -444,10 +447,11 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 					</div>
 					<div class="pb-4">
 						<Accordion
+							v-model:open="yearChecked"
 							type="single"
 							collapsible
 							:default-value="yearChecked ? 'year' : undefined"
-							:value="yearChecked ? 'year' : null"
+							:value="yearChecked ? 'year' : undefined"
 							@update:model-value="
 								toggleYearChecked();
 								addCheckbox('year');
@@ -461,7 +465,6 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 										<input
 											id="year"
 											name="year"
-											:value="yearChecked"
 											type="checkbox"
 											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 											:checked="yearChecked"

@@ -22,17 +22,15 @@ defineRouteRules({
 });
 
 const filterCount = computed(() => {
-	const language = route.query.language;
-	const topic = route.query.topic;
-	const workType = route.query.workType;
+	const language = searchFilters.value.language;
+	const topic = searchFilters.value.topic;
+	const workType = searchFilters.value.workType;
 	let year: Array<string> = [];
-	if (route.query.startYear != null && route.query.endYear != null) {
+	if (searchFilters.value.startYear != null && searchFilters.value.endYear != null) {
 		year = [route.query.startYear as string, route.query.endYear as string];
 	}
 
-	return (
-		(language?.length ?? 0) + (topic?.length ?? 0) + (workType?.length ?? 0) + (year.length ? 1 : 0)
-	);
+	return language.length + topic.length + workType.length + (year.length ? 1 : 0);
 });
 
 const router = useRouter();
@@ -136,6 +134,11 @@ function onChange(values: SearchFormData) {
 function setSearchFilters(query: Partial<SearchFilter>) {
 	if (query.query === "") {
 		delete query.query;
+	}
+
+	if (query.startYear === null && query.endYear === null) {
+		delete query.startYear;
+		delete query.endYear;
 	}
 
 	void router.push({ query });
