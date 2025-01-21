@@ -136,7 +136,7 @@ function setSearchFilters(query: Partial<SearchFilter>) {
 		delete query.query;
 	}
 
-	if (query.startYear === null && query.endYear === null) {
+	if (query.startYear === undefined && query.endYear === undefined) {
 		delete query.startYear;
 		delete query.endYear;
 	}
