@@ -22,11 +22,15 @@ defineRouteRules({
 });
 
 const filterCount = computed(() => {
-	const language = route.query.language;
-	const topic = route.query.topic;
-	const workType = route.query.workType;
+	const language = searchFilters.value.language;
+	const topic = searchFilters.value.topic;
+	const workType = searchFilters.value.workType;
+	let year: Array<string> = [];
+	if (searchFilters.value.startYear != null && searchFilters.value.endYear != null) {
+		year = [route.query.startYear as string, route.query.endYear as string];
+	}
 
-	return (language?.length ?? 0) + (topic?.length ?? 0) + (workType?.length ?? 0);
+	return language.length + topic.length + workType.length + (year.length ? 1 : 0);
 });
 
 const router = useRouter();
@@ -41,12 +45,48 @@ function onUpdatePage(newPage: number) {
 	offset.value = (newPage - 1) * limit;
 }
 
-const searchFiltersSchema = v.object({
-	query: v.fallback(v.string(), ""),
-	workType: v.fallback(v.array(v.string()), []),
-	language: v.fallback(v.array(v.string()), []),
-	topic: v.fallback(v.array(v.string()), []),
-});
+const minYear = 1500;
+const maxYear = 2050;
+
+const searchFiltersSchema = v.pipe(
+	v.object({
+		query: v.fallback(v.string(), ""),
+		workType: v.fallback(v.array(v.string()), []),
+		startYear: v.optional(
+			v.pipe(
+				v.string(),
+				v.transform(Number),
+				v.number(),
+				v.integer(),
+				v.minValue(minYear),
+				v.maxValue(maxYear),
+			),
+		),
+		endYear: v.optional(
+			v.pipe(
+				v.string(),
+				v.transform(Number),
+				v.number(),
+				v.integer(),
+				v.minValue(minYear),
+				v.maxValue(maxYear),
+			),
+		),
+		language: v.fallback(v.array(v.string()), []),
+		topic: v.fallback(v.array(v.string()), []),
+	}),
+	v.transform((input) => {
+		const { startYear, endYear } = input;
+		if (startYear != null && endYear != null && startYear > endYear) {
+			return {
+				...input,
+				startYear: endYear,
+				endYear: startYear,
+			};
+		}
+		return input;
+	}),
+);
 
 const isMobile = computed(() => {
 	return window.innerWidth < 1024;
@@ -67,11 +107,12 @@ const searchFilters = computed(() => {
 	// when there is just one query param, it is an Object instead of an Array, so normalize it
 	const normalizedQuery = {
 		...route.query,
+		startYear: route.query.startYear,
+		endYear: route.query.endYear,
 		workType: normalizeQueryArray(route.query.workType),
 		language: normalizeQueryArray(route.query.language),
 		topic: normalizeQueryArray(route.query.topic),
 	};
-
 	return v.parse(searchFiltersSchema, normalizedQuery);
 });
 
@@ -95,7 +136,11 @@ function setSearchFilters(query: Partial<SearchFilter>) {
 		delete query.query;
 	}
 
-	console.log("Query: ", query);
+	if (query.startYear === undefined && query.endYear === undefined) {
+		delete query.startYear;
+		delete query.endYear;
+	}
+
 	void router.push({ query });
 	document.body.scrollTo(0, 0);
 }
@@ -103,6 +148,8 @@ function setSearchFilters(query: Partial<SearchFilter>) {
 const { data, isPending } = useGetSearchResults(
 	computed(() => {
 		return {
+			start_year: searchFilters.value.startYear,
+			end_year: searchFilters.value.endYear,
 			facet_language: searchFilters.value.language as SearchFacetLanguage,
 			facet_topic: searchFilters.value.topic as SearchFacetTopic,
 			facet_work_type: searchFilters.value.workType as SearchFacetWorkType,

@@ -11,5 +11,7 @@ export type WorkDetail = ZodiosResponseByPath<Api, "get", "/api/work-detail/:id/
 export type SearchFacetLanguage = NonNullable<SearchFilters["facet_language"]>;
 export type SearchFacetTopic = NonNullable<SearchFilters["facet_topic"]>;
 export type SearchFacetWorkType = NonNullable<SearchFilters["facet_work_type"]>;
+export type SearchFacetYearEnd = NonNullable<SearchFilters["end_year"]>;
+export type SearchFacetYearStart = NonNullable<SearchFilters["start_year"]>;
 
 export type SearchResultFacets = NonNullable<SearchResults["facets"]>;
