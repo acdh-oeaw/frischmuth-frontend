@@ -446,18 +446,8 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 						<Separator class="bg-frisch-orange"></Separator>
 					</div>
 					<div class="pb-4">
-						<Accordion
-							v-model:open="yearChecked"
-							type="single"
-							collapsible
-							:default-value="yearChecked ? 'year' : undefined"
-							:value="yearChecked ? 'year' : undefined"
-							@update:model-value="
-								toggleYearChecked();
-								addCheckbox('year');
-							"
-						>
-							<AccordionItem value="year">
+						<Accordion type="single" collapsible>
+							<AccordionItem v-model:open="yearChecked" value="year">
 								<AccordionTrigger
 									class="grid w-full grid-cols-[auto_auto_1fr] place-items-end items-center gap-2"
 								>
@@ -468,6 +458,10 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 											type="checkbox"
 											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 											:checked="yearChecked"
+											@change="
+												toggleYearChecked();
+												addCheckbox('year');
+											"
 										/>
 									</div>
 									<div class="text-lg">Erscheinungsjahr</div>
