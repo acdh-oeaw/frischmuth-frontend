@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/vue-query";
 import * as turf from "@turf/turf";
 import type { MapGeoJSONFeature } from "maplibre-gl";
 
-import type { AltausseePlace } from "@/types/content";
+import type { AltausseePlace, StaticPage } from "@/types/content";
 
 defineRouteRules({
 	prerender: true,
@@ -22,6 +22,30 @@ const { data: mapData, error } = useQuery({
 	},
 });
 
+const { data: altaussee, error: textError } = useQuery({
+	queryKey: ["altaussee"] as const,
+	queryFn() {
+		return queryContent<StaticPage>("pages/altaussee/text/altaussee").findOne();
+	},
+});
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-explicit-any
+const parsedContent = ref<Array<any>>([]);
+
+watch(
+	() => altaussee.value,
+	async (newValue) => {
+		if (newValue?.sections) {
+			parsedContent.value = await Promise.all(
+				newValue.sections.map(async (section) => {
+					return section.content ? await parseMarkdown(section.content) : "";
+				}),
+			);
+		}
+	},
+	{ immediate: true },
+);
+
 const places = computed(() => {
 	return mapData.value?.map((place) => {
 		return createGeoJsonFeature(place);
@@ -33,6 +57,11 @@ const isMobile = computed(() => {
 });
 
 useErrorMessage(error, {
+	notFound: t("AltausseePage.errors.404"),
+	unknown: t("AltausseePage.errors.500"),
+});
+
+useErrorMessage(textError, {
 	notFound: t("AltausseePage.errors.404"),
 	unknown: t("AltausseePage.errors.500"),
 });
@@ -74,15 +103,14 @@ function onLayerClick(features: Array<MapGeoJSONFeature & Pick<GeoJsonFeature, "
 const isDetailViewOn = ref(false);
 
 function onChangePlaceDetail(toggleValue: boolean, place: AltausseePlace | null) {
-	console.log("onChange");
 	currentPlace.value = place;
 	isDetailViewOn.value = toggleValue;
 }
 </script>
 
 <template>
-	<MainContent class="container h-full py-4">
-		<div class="grid w-full">
+	<MainContent class="container grid h-full grid-rows-2 py-4">
+		<div class="grid size-full">
 			<Map :is-altaussee="true" :places="places" @layer-click="onLayerClick">
 				<MapPopup v-if="popover != null" :coordinates="popover.coordinates" @close="popover = null">
 					<article class="grid gap-1 text-xs">
@@ -98,14 +126,29 @@ function onChangePlaceDetail(toggleValue: boolean, place: AltausseePlace | null)
 					</article>
 				</MapPopup>
 			</Map>
-			<template v-if="isDetailViewOn">
-				<AltausseeSidebar
-					:render-detail="isDetailViewOn"
-					:is-mobile="isMobile"
-					:place="currentPlace"
-					@close-side-bar="onChangePlaceDetail(false, null)"
-				/>
-			</template>
 		</div>
+		<div
+			v-if="altaussee && altaussee.sections && altaussee.sections.length"
+			class="grid w-full pt-4"
+		>
+			<div
+				v-for="(section, index) in altaussee.sections"
+				:key="index"
+				class="prose max-w-full pb-4"
+			>
+				<h2 class="m-0 font-bold text-frisch-orange">{{ section.title }}</h2>
+				<ContentRenderer v-if="parsedContent[index]" :value="parsedContent[index]">
+					<template #empty></template>
+				</ContentRenderer>
+			</div>
+		</div>
+		<template v-if="isDetailViewOn">
+			<AltausseeSidebar
+				:render-detail="isDetailViewOn"
+				:is-mobile="isMobile"
+				:place="currentPlace"
+				@close-side-bar="onChangePlaceDetail(false, null)"
+			/>
+		</template>
 	</MainContent>
 </template>

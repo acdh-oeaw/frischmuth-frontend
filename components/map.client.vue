@@ -197,7 +197,7 @@ provide(geoMapContextKey, context);
 </script>
 
 <template>
-	<div class="relative grid h-80 text-black">
+	<div class="relative grid text-black">
 		<div ref="elementRef" data-geo-map="true" />
 		<slot />
 	</div>

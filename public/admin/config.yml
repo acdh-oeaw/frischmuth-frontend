@@ -309,6 +309,35 @@ collections:
         modes:
           # - raw
           - rich_text
+  - name: altaussee-page
+    label: Altaussee-Text
+    label_singular: Altaussee-sText
+    # description: Pages
+    folder: content/pages/altaussee/text
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
   - name: altausseePlaces
     label: Altaussee-Orte
     label_singular: Altaussee-Orte
