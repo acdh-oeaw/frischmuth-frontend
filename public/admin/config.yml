@@ -283,7 +283,7 @@ collections:
         required: false
 
       - name: imageTitle
-        label: Title
+        label: Image Title
         widget: string
         hint: The title will be displayed next to the image
         required: false
@@ -340,31 +340,32 @@ collections:
             value_type: float
             required: true
 
-      - name: image
-        label: Image
-        # hint: The image
-        widget: image
+      - name: images
+        label: Images
+        widget: list
         required: false
-
-      - name: imageTitle
-        label: Title
-        widget: string
-        hint: The title will be displayed next to the image
-        required: false
-
-      - name: alt
-        label: Alt
-        widget: string
-        hint:
-          The alt will not be displayed, it should describe the image. If not provided the title of
-          the image will be the alt.
-        required: false
-
-      - name: copyright
-        label: Copyright
-        widget: string
-        hint: The copyright if provided will be displayed under the title
-        required: false
+        allow_add: true
+        fields:
+          - name: titel
+            label: Image Title
+            widget: string
+            required: true
+          - name: image
+            label: Image
+            widget: image
+            required: true
+          - name: alt
+            label: Alt
+            widget: string
+            hint:
+              The alt will not be displayed, it should describe the image. If not provided the title
+              of the image will be the alt.
+            required: false
+          - name: copyright
+            label: Copyright
+            widget: string
+            hint: The copyright if provided will be displayed under the title
+            required: false
 
       - name: body
         label: Description

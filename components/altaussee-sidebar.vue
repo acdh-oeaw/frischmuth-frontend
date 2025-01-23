@@ -44,10 +44,13 @@ onScopeDispose(() => {
 <template>
 	<div v-if="props.isMobile && props.place != null">
 		<Drawer v-model:open="isOpen">
-			<DrawerContent>
-				<div class="grid grid-cols-[auto_1fr] items-center gap-1 px-4 pt-2 text-sm">
+			<DrawerContent class="px-4">
+				<div class="grid grid-cols-[auto_1fr] items-center gap-1 pt-2 text-sm">
 					<MapPinIcon :size="16" />
 					<h1 class="text-lg font-semibold">{{ props.place.title }}</h1>
+				</div>
+				<div v-if="props.place.images != null">
+					<ImageCarousel :images="props.place.images" />
 				</div>
 				<div v-if="props.place.description != null">
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
@@ -86,6 +89,9 @@ onScopeDispose(() => {
 				<div class="grid grid-cols-[auto_1fr] items-center gap-1 pt-2 text-lg font-semibold">
 					<MapPinIcon :size="16" />
 					<h1>{{ props.place.title }}</h1>
+				</div>
+				<div v-if="props.place.images != null" class="relative py-4">
+					<ImageCarousel :images="props.place.images" />
 				</div>
 				<div v-if="props.place.description != null">
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>

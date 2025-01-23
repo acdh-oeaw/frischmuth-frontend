@@ -28,6 +28,10 @@ const places = computed(() => {
 	});
 });
 
+const isMobile = computed(() => {
+	return window.innerWidth < 1024;
+});
+
 useErrorMessage(error, {
 	notFound: t("AltausseePage.errors.404"),
 	unknown: t("AltausseePage.errors.500"),
@@ -96,7 +100,7 @@ function onChangePlaceDetail(toggleValue: boolean, place: AltausseePlace | null)
 			<template v-if="isDetailViewOn">
 				<AltausseeSidebar
 					:render-detail="isDetailViewOn"
-					:is-mobile="false"
+					:is-mobile="isMobile"
 					:place="currentPlace"
 					@close-side-bar="onChangePlaceDetail(false, null)"
 				/>

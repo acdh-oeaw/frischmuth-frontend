@@ -34,11 +34,13 @@ export interface AltausseePlace {
 		longitude: number;
 	};
 	description: string;
-	image?: string;
-	alt?: string;
-	imageTitle?: string;
-	copyright?: string;
-	links: Array<{
+	images: Array<{
+		title: string;
+		image: string;
+		alt?: string;
+		copyright?: string;
+	}>;
+	links?: Array<{
 		workTitle: string;
 		url: string;
 	}>;
