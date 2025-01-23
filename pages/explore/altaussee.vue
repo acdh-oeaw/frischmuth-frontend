@@ -33,6 +33,7 @@ useErrorMessage(error, {
 	unknown: t("AltausseePage.errors.500"),
 });
 
+const currentPlace = ref<AltausseePlace | null>(null);
 const popover = ref<{ coordinates: [number, number]; place: AltausseePlace } | null>(null);
 
 function onLayerClick(features: Array<MapGeoJSONFeature & Pick<GeoJsonFeature, "properties">>) {
@@ -68,8 +69,9 @@ function onLayerClick(features: Array<MapGeoJSONFeature & Pick<GeoJsonFeature, "
 
 const isDetailViewOn = ref(false);
 
-function onChangePlaceDetail() {
-	isDetailViewOn.value = true;
+function onChangePlaceDetail(toggleValue: boolean, place: AltausseePlace | null) {
+	currentPlace.value = place;
+	isDetailViewOn.value = toggleValue;
 }
 </script>
 
@@ -83,7 +85,7 @@ function onChangePlaceDetail() {
 							<NavLink
 								href="#"
 								class="flex cursor-pointer items-center gap-1 underline decoration-dotted hover:no-underline"
-								@click="onChangePlaceDetail"
+								@click="onChangePlaceDetail(true, popover.place)"
 							>
 								{{ popover.place.title }}
 							</NavLink>
@@ -91,11 +93,12 @@ function onChangePlaceDetail() {
 					</article>
 				</MapPopup>
 			</Map>
-			<template v-if="popover != null">
+			<template v-if="isDetailViewOn">
 				<AltausseeSidebar
 					:render-detail="isDetailViewOn"
 					:is-mobile="false"
-					:place="popover.place"
+					:place="currentPlace"
+					@close-side-bar="onChangePlaceDetail(false, null)"
 				/>
 			</template>
 		</div>
