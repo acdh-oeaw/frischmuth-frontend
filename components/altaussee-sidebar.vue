@@ -53,12 +53,13 @@ onScopeDispose(() => {
 					<ImageCarousel :images="props.place.images" />
 				</div>
 				<div v-if="props.place.description != null">
-					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
+					<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
 					<div>
 						{{ props.place.description }}
 					</div>
 				</div>
-				<div v-if="place != null && place.links != null">
+				<div v-if="place != null && place.links != null && place.links.length > 0">
+					<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
 					<div v-for="link in place.links" :key="link.url">
 						<NavLink
 							:href="link.url"
@@ -99,11 +100,12 @@ onScopeDispose(() => {
 						{{ props.place.description }}
 					</div>
 				</div>
-				<div v-if="place != null && place.links != null">
+				<div v-if="place != null && place.links != null && place.links.length > 0">
+					<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
 					<div v-for="link in place.links" :key="link.url">
 						<NavLink
 							:href="link.url"
-							class="flex cursor-pointer items-center gap-1 underline decoration-dotted hover:no-underline"
+							class="flex cursor-pointer items-center gap-1 pb-1 underline decoration-dotted hover:no-underline"
 						>
 							{{ link.workTitle }}
 						</NavLink>
