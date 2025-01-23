@@ -74,6 +74,7 @@ function onLayerClick(features: Array<MapGeoJSONFeature & Pick<GeoJsonFeature, "
 const isDetailViewOn = ref(false);
 
 function onChangePlaceDetail(toggleValue: boolean, place: AltausseePlace | null) {
+	console.log("onChange");
 	currentPlace.value = place;
 	isDetailViewOn.value = toggleValue;
 }

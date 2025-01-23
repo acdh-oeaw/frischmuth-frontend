@@ -43,13 +43,22 @@ onScopeDispose(() => {
 
 <template>
 	<div v-if="props.isMobile && props.place != null">
-		<Drawer v-model:open="isOpen">
+		<Drawer
+			v-model:open="isOpen"
+			@update:open="
+				(isOpen) => {
+					if (!isOpen) {
+						emit('closeSideBar');
+					}
+				}
+			"
+		>
 			<DrawerContent class="px-4">
 				<div class="grid grid-cols-[auto_1fr] items-center gap-1 pt-2 text-sm">
 					<MapPinIcon :size="16" />
 					<h1 class="text-lg font-semibold">{{ props.place.title }}</h1>
 				</div>
-				<div v-if="props.place.images != null">
+				<div v-if="props.place.images != null" class="relative py-4">
 					<ImageCarousel :images="props.place.images" />
 				</div>
 				<div v-if="props.place.description != null">
