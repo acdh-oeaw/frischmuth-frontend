@@ -68,7 +68,12 @@ function setPlaceQuery(id: number | undefined) {
 				<SheetTitle class="pb-2">{{ props.place.name }}</SheetTitle>
 				<SheetDescription>
 					<div v-if="props.place.longitude != null && props.place.latitude != null">
-						<Map :longitude="props.place.longitude" :latitude="props.place.latitude" />
+						<Map
+							class="h-80"
+							:longitude="props.place.longitude"
+							:latitude="props.place.latitude"
+							:is-altaussee="false"
+						/>
 					</div>
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
 					<div v-if="props.place.description !== ''">

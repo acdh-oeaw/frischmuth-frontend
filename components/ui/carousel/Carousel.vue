@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import type {
+	CarouselEmits,
+	CarouselProps,
+	WithClassAsProps,
+} from "@/components/ui/carousel/interface";
+import { useProvideCarousel } from "@/components/ui/carousel/useCarousel";
 import { cn } from "@/utils/styles";
-
-import type { CarouselEmits, CarouselProps, WithClassAsProps } from "./interface";
-import { useProvideCarousel } from "./useCarousel";
 
 const props = withDefaults(defineProps<CarouselProps & WithClassAsProps>(), {
 	orientation: "horizontal",
@@ -49,6 +52,7 @@ function onKeyDown(event: KeyboardEvent) {
 </script>
 
 <template>
+	<!-- eslint-disable-next-line vuejs-accessibility/no-static-element-interactions -->
 	<div
 		:class="cn('relative', props.class)"
 		role="region"
