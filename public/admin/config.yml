@@ -283,7 +283,7 @@ collections:
         required: false
 
       - name: imageTitle
-        label: Title
+        label: Image Title
         widget: string
         hint: The title will be displayed next to the image
         required: false
@@ -309,6 +309,112 @@ collections:
         modes:
           # - raw
           - rich_text
+  - name: altaussee-page
+    label: Altaussee-Text
+    label_singular: Altaussee-sText
+    # description: Pages
+    folder: content/pages/altaussee/text
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Title
+        # hint: The title
+
+      - name: sections
+        label: Sections
+        # hint: The content
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Content
+            name: content
+            widget: markdown
+            modes:
+              # - raw
+              - rich_text
+  - name: altausseePlaces
+    label: Altaussee-Orte
+    label_singular: Altaussee-Orte
+    # description: Biography entries for the biography-page.
+    folder: content/pages/altaussee/places
+    create: true
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: Ortsname
+        widget: string
+        required: true
+
+      - name: coordinates
+        label: Coordinates
+        widget: object
+        fields:
+          - name: latitude
+            label: Latitude
+            widget: number
+            value_type: float
+            required: true
+          - name: longitude
+            label: Longitude
+            widget: number
+            value_type: float
+            required: true
+
+      - name: images
+        label: Images
+        widget: list
+        required: false
+        allow_add: true
+        fields:
+          - name: titel
+            label: Image Title
+            widget: string
+            required: true
+          - name: image
+            label: Image
+            widget: image
+            required: true
+          - name: alt
+            label: Alt
+            widget: string
+            hint:
+              The alt will not be displayed, it should describe the image. If not provided the title
+              of the image will be the alt.
+            required: false
+          - name: copyright
+            label: Copyright
+            widget: string
+            hint: The copyright if provided will be displayed under the title
+            required: false
+
+      - name: body
+        label: Description
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
+      - name: links
+        label: Links to related works
+        widget: list
+        allow_add: true
+        fields:
+          - name: workTitle
+            label: Work Title
+            widget: string
+            required: true
+          - name: url
+            label: URL
+            widget: string
+            required: true
   - name: quotes
     label: Zitate
     label_singular: Zitate

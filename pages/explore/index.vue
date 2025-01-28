@@ -102,11 +102,12 @@ usePageMetadata({
 			>
 				<span class="uppercase">{{ t("ThemesPage.title") }}</span>
 			</NuxtLink>
-			<Card
+			<NuxtLink
+				to="/explore/altaussee"
 				class="relative aspect-square overflow-hidden bg-frisch-indigo p-4 text-white transition hover:scale-105"
 			>
 				<span class="uppercase">{{ t("AltausseePage.title") }}</span>
-			</Card>
+			</NuxtLink>
 			<NuxtLink
 				rel="noopener noreferrer"
 				:to="randomQuotes[1]?.link || ''"

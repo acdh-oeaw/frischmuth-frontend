@@ -26,3 +26,22 @@ export interface Quote extends MarkdownParsedContent {
 	title: string;
 	link: string;
 }
+
+export interface AltausseePlace {
+	title: string;
+	coordinates: {
+		latitude: number;
+		longitude: number;
+	};
+	description: string;
+	images: Array<{
+		title: string;
+		image: string;
+		alt?: string;
+		copyright?: string;
+	}>;
+	links?: Array<{
+		workTitle: string;
+		url: string;
+	}>;
+}
