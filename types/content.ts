@@ -45,3 +45,13 @@ export interface AltausseePlace {
 		url: string;
 	}>;
 }
+
+export interface ExploreImages {
+	title: string;
+	images: Array<{
+		title: string;
+		image: string;
+		alt?: string;
+		copyright?: string;
+	}>;
+}

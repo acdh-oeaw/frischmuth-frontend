@@ -444,3 +444,45 @@ collections:
         modes:
           # - raw
           - rich_text
+  - name: exploreImages
+    label: Entdecken-Kachel-Bilder
+    label_singular: Entdecken-Kachel-Bilder
+    # description: Quotes for the explore page.
+    folder: content/pages/explore-images
+    create: false
+    delete: true
+    # nested:
+    #   depth: 3
+    # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    fields:
+      - name: title
+        label: title
+        hint: For recognition in the cms.
+        widget: string
+        required: true
+      - name: images
+        label: Explore-Kachel-Bilder
+        widget: list
+        required: true
+        allow_add: true
+        fields:
+          - name: titel
+            label: Image Title
+            widget: string
+            required: true
+          - name: image
+            label: Image
+            widget: image
+            required: true
+          - name: alt
+            label: Alt
+            widget: string
+            hint:
+              The alt will not be displayed, it should describe the image. If not provided the title
+              of the image will be the alt.
+            required: false
+          - name: copyright
+            label: Copyright
+            widget: string
+            hint: The copyright if provided will be displayed under the title
+            required: false

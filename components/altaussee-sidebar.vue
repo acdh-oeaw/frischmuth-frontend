@@ -54,7 +54,7 @@ onScopeDispose(() => {
 			"
 		>
 			<DrawerContent class="px-4">
-				<div class="grid grid-cols-[auto_1fr] items-center gap-1 pt-2 text-sm">
+				<div class="grid grid-cols-[auto_1fr] items-center gap-1 overflow-y-auto pt-2 text-sm">
 					<MapPinIcon :size="16" />
 					<h1 class="text-lg font-semibold">{{ props.place.title }}</h1>
 				</div>
@@ -85,7 +85,7 @@ onScopeDispose(() => {
 		<div
 			v-if="props.renderDetail && props.place != null"
 			:data-state="isClosed ? 'closed' : 'open'"
-			class="3xl:w-1/6 fixed inset-y-0 right-0 z-50 h-full w-3/4 gap-4 border-l bg-background p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5"
+			class="3xl:w-1/6 fixed inset-y-0 right-0 z-50 h-full w-3/4 gap-4 overflow-y-auto border-l bg-background p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5"
 		>
 			<Button
 				variant="transparent"
