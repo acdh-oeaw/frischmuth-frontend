@@ -28,7 +28,7 @@ collections:
     # description: Pages
     folder: content/pages/about
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
@@ -57,7 +57,7 @@ collections:
     # description: Pages
     folder: content/pages/academic-reception
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
@@ -86,7 +86,7 @@ collections:
     # description: Pages
     folder: content/pages/journalistic-reception
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
@@ -115,7 +115,7 @@ collections:
     # description: Pages
     folder: content/pages/autobiografiction
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
@@ -144,7 +144,7 @@ collections:
     # description: Pages
     folder: content/pages/from-the-archive
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
@@ -173,7 +173,7 @@ collections:
     # description: Pages
     folder: content/pages/places
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
@@ -196,7 +196,7 @@ collections:
     # description: Pages
     folder: content/pages/themes
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
@@ -219,7 +219,7 @@ collections:
     # description: Pages
     folder: content/pages/research-aspects
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
@@ -242,7 +242,7 @@ collections:
     # description: Pages
     folder: content/pages/glossary
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
@@ -315,7 +315,7 @@ collections:
     # description: Pages
     folder: content/pages/altaussee/text
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
@@ -450,7 +450,7 @@ collections:
     # description: Quotes for the explore page.
     folder: content/pages/explore-images
     create: false
-    delete: true
+    delete: false
     # nested:
     #   depth: 3
     # meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
