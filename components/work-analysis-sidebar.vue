@@ -24,6 +24,15 @@ watch(
 	{ immediate: true },
 );
 
+watch(
+	() => props.work,
+	(newWork, oldWork) => {
+		if (newWork !== oldWork && isOpen.value) {
+			closeSidebar();
+		}
+	},
+);
+
 let timer: ReturnType<typeof setTimeout> | null = null;
 
 function closeSidebar() {

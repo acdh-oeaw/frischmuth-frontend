@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { EyeIcon, GlobeIcon, XIcon } from "lucide-vue-next";
+import { EyeIcon, EyeOffIcon, GlobeIcon, XIcon } from "lucide-vue-next";
 
 import {
 	Accordion,
@@ -247,18 +247,41 @@ function closeSidebar() {
 						</div>
 					</span>
 					<div v-if="!isMobile">
-						<Button variant="transparent" class="px-0" @click="toggleAnalysisSidebar()">
-							<span class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange">
-								<EyeIcon :size="16" />
+						<Button
+							:disabled="work.text_analysis === '' || undefined"
+							variant="transparent"
+							class="px-0"
+							@click="toggleAnalysisSidebar()"
+						>
+							<span
+								:class="
+									work.text_analysis != '' || undefined
+										? `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange`
+										: `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-black`
+								"
+							>
+								<component
+									:is="work.text_analysis != '' || undefined ? EyeIcon : EyeOffIcon"
+									:size="16"
+								/>
 								<span class="flex justify-start font-semibold">Analyse</span>
 							</span>
 						</Button>
 					</div>
 					<div class="block md:hidden">
-						<Drawer>
+						<Drawer :disbaled="work.text_analysis != '' || undefined">
 							<DrawerTrigger class="w-full">
-								<span class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange">
-									<EyeIcon :size="16" />
+								<span
+									:class="
+										work.text_analysis != '' || undefined
+											? `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange`
+											: `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-black`
+									"
+								>
+									<component
+										:is="work.text_analysis != '' || undefined ? EyeIcon : EyeOffIcon"
+										:size="16"
+									/>
 									<span class="flex justify-start font-semibold">Analyse</span>
 								</span>
 							</DrawerTrigger>
@@ -304,7 +327,17 @@ function closeSidebar() {
 						{{ work?.summary }}
 					</div>
 					<div v-else class="text-sm text-muted-foreground">Keine Zusammenfassung vorhanden.</div>
-					<Accordion type="single" class="font-normal" collapsible>
+					<Accordion
+						:key="work?.id"
+						:disabled="work?.context || work?.historical_events ? false : true"
+						type="single"
+						:class="
+							work?.context || work?.historical_events
+								? `font-normal`
+								: `font-normal text-frisch-grey`
+						"
+						collapsible
+					>
 						<AccordionItem value="context">
 							<AccordionTrigger>
 								<div class="text-lg font-semibold">Kontexte</div>
@@ -319,12 +352,29 @@ function closeSidebar() {
 										<span>{{ work?.historical_events }}</span>
 									</div>
 								</div>
-								<div v-else class="text-sm text-muted-foreground">Keine Kontexte vorhanden.</div>
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>
 					<div>
-						<Accordion type="single" collapsible>
+						<Accordion
+							:key="work?.id"
+							:disabled="
+								(characters.main && characters.main?.length > 0) ||
+								(characters.secondary && characters.secondary?.length > 0) ||
+								(characters.spokenOf && characters.spokenOf?.length > 0)
+									? false
+									: true
+							"
+							type="single"
+							:class="
+								(characters.main && characters.main?.length > 0) ||
+								(characters.secondary && characters.secondary?.length > 0) ||
+								(characters.spokenOf && characters.spokenOf?.length > 0)
+									? `font-normal`
+									: `font-normal text-frisch-grey`
+							"
+							collapsible
+						>
 							<AccordionItem value="characters">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Charaktere</div>
@@ -394,7 +444,25 @@ function closeSidebar() {
 						</Accordion>
 					</div>
 					<div>
-						<Accordion type="single" collapsible>
+						<Accordion
+							:key="work?.id"
+							:disabled="
+								(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
+								(places.discussed && places.discussed.length > 0) ||
+								(places.mentioned && places.mentioned.length > 0)
+									? false
+									: true
+							"
+							type="single"
+							:class="
+								(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
+								(places.discussed && places.discussed.length > 0) ||
+								(places.mentioned && places.mentioned.length > 0)
+									? `font-normal`
+									: `font-normal text-frisch-grey`
+							"
+							collapsible
+						>
 							<AccordionItem value="places">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Orte</div>
@@ -490,7 +558,25 @@ function closeSidebar() {
 						</Accordion>
 					</div>
 					<div>
-						<Accordion type="single" collapsible>
+						<Accordion
+							:key="work?.id"
+							:disabled="
+								(relatedWork.references && relatedWork.references?.length > 0) ||
+								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
+								(relatedWork.referencedIn && relatedWork.referencedIn.length > 0)
+									? false
+									: true
+							"
+							type="single"
+							:class="
+								(relatedWork.references && relatedWork.references?.length > 0) ||
+								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
+								(relatedWork.referencedIn && relatedWork.referencedIn.length > 0)
+									? `font-normal`
+									: `font-normal text-frisch-grey`
+							"
+							collapsible
+						>
 							<AccordionItem value="relations">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Bezüge</div>
@@ -553,7 +639,17 @@ function closeSidebar() {
 						</Accordion>
 					</div>
 					<div>
-						<Accordion type="single" collapsible>
+						<Accordion
+							:key="work?.id"
+							:disabled="work?.physical_objects && work?.physical_objects.length > 0 ? false : true"
+							type="single"
+							:class="
+								work?.physical_objects && work?.physical_objects.length > 0
+									? `font-normal`
+									: `font-normal text-frisch-grey`
+							"
+							collapsible
+						>
 							<AccordionItem value="relations">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Physische Objekte</div>
@@ -581,9 +677,6 @@ function closeSidebar() {
 													</div>
 												</div>
 											</div>
-											<div v-else class="text-sm text-muted-foreground">
-												Keine physikalischen Objekte vorhanden.
-											</div>
 										</div>
 									</div>
 								</AccordionContent>
@@ -605,10 +698,11 @@ function closeSidebar() {
 			@close-side-bar="toggleAnalysisSidebar()"
 		/>
 		<MapSidebar
-			v-if="isPlaceSideBarActive"
+			v-if="isPlaceSideBarActive && work != null"
 			class="absolute right-0 top-0 z-50 h-full shadow-xl"
 			:is-mobile="isMobile"
 			:place="currentPlace"
+			:work-id="work.id"
 			relation="Schauplatz"
 			@close-place-side-bar="togglePlaceSideBar(null)"
 		/>

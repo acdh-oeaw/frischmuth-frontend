@@ -11,6 +11,7 @@ const props = defineProps<{
 		latitude: number | null | undefined;
 		description: string | undefined;
 	};
+	workId: string;
 	relation: string;
 	isMobile: boolean;
 }>();
@@ -35,6 +36,16 @@ watch(
 	},
 	() => {
 		isOpen.value = true;
+	},
+	{ immediate: true },
+);
+
+watch(
+	() => props.workId,
+	(newWork, oldWork) => {
+		if (newWork !== oldWork && isOpen.value) {
+			closeSidebar();
+		}
 	},
 );
 </script>
