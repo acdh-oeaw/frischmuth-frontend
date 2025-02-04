@@ -690,7 +690,7 @@ function closeSidebar() {
 			<LoadingSpinner />
 		</Centered>
 		<WorkAnalysisSidebar
-			v-if="isAnalysisSidebarActive"
+			v-if="isAnalysisSidebarActive && work != null"
 			class="absolute right-0 top-0 z-50 h-full shadow-xl"
 			:show="isAnalysisSidebarActive"
 			:work="work"
@@ -698,11 +698,11 @@ function closeSidebar() {
 			@close-side-bar="toggleAnalysisSidebar()"
 		/>
 		<MapSidebar
-			v-if="isPlaceSideBarActive && work != null"
+			v-if="isPlaceSideBarActive && work != null && currentPlace != null"
 			class="absolute right-0 top-0 z-50 h-full shadow-xl"
 			:is-mobile="isMobile"
 			:place="currentPlace"
-			:work-id="work.id"
+			:work-id="work.id ?? 0"
 			relation="Schauplatz"
 			@close-place-side-bar="togglePlaceSideBar(null)"
 		/>

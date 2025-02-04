@@ -11,7 +11,7 @@ const props = defineProps<{
 		latitude: number | null | undefined;
 		description: string | undefined;
 	};
-	workId: string;
+	workId: number;
 	relation: string;
 	isMobile: boolean;
 }>();
@@ -22,6 +22,7 @@ let timer: ReturnType<typeof setTimeout> | null = null;
 
 function closeSidebar() {
 	isClosed.value = true;
+	if (timer) clearTimeout(timer);
 	timer = setTimeout(() => {
 		emit("closePlaceSideBar");
 	}, 300);

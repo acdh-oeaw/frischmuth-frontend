@@ -37,6 +37,7 @@ let timer: ReturnType<typeof setTimeout> | null = null;
 
 function closeSidebar() {
 	isClosed.value = true;
+	if (timer) clearTimeout(timer);
 	timer = setTimeout(() => {
 		emit("closeSideBar");
 	}, 300);
