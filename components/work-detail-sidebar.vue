@@ -686,7 +686,7 @@ function closeSidebar() {
 				</div>
 			</div>
 		</div>
-		<Centered v-else class="pointer-events-none">
+		<Centered v-else class="pointer-events-none bg-white">
 			<LoadingSpinner />
 		</Centered>
 		<WorkAnalysisSidebar

@@ -186,7 +186,10 @@ const facets = computed(() => {
 </script>
 
 <template>
-	<MainContent class="overflow-x-hidden bg-frisch-marine md:pr-0 lg:overflow-x-auto">
+	<MainContent
+		data-layout="constrained"
+		class="overflow-x-hidden bg-frisch-marine md:pr-0 lg:overflow-x-auto"
+	>
 		<h1 class="sr-only">{{ t("SearchPage.title") }}</h1>
 		<div
 			class="relative grid h-full grid-cols-[1fr_0px] md:transition-all md:delay-150 md:data-[workdetail]:grid-cols-[1fr_650px] md:data-[workdetail]:gap-8 md:data-[workdetail]:pr-0 2xl:pr-20 2xl:ease-in-out"
@@ -298,10 +301,10 @@ const facets = computed(() => {
 					<LoadingSpinner />
 				</Centered>
 			</div>
-			<div>
+			<div class="h-full overflow-y-auto">
 				<WorkDetailSidebar
 					v-if="id != null"
-					class="grid h-full"
+					class="relative grid h-full"
 					:work-id="id"
 					@close-detail-view="closeDetailView()"
 				/>
