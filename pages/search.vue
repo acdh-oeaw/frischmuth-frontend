@@ -142,7 +142,9 @@ function setSearchFilters(query: Partial<SearchFilter>) {
 		delete query.endYear;
 	}
 
-	void router.push({ query });
+	const updatedQuery = { ...query, ...route.query };
+
+	void router.push({ query: updatedQuery });
 	document.body.scrollTo(0, 0);
 }
 
