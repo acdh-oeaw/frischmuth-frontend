@@ -115,10 +115,10 @@ usePageMetadata({
 				<span class="uppercase">{{ t("ResearchAspectsPage.title") }}</span>
 			</NuxtLink>
 			<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
-				<template v-if="randomImages != null">
+				<template v-if="randomImages != null && randomImages.length > 0">
 					<NuxtImg
 						preload
-						:alt="randomImages[0].alt ? randomImages[0]?.alt : randomImages[0]?.title"
+						:alt="randomImages[0]?.alt || randomImages[0]?.title || ''"
 						:src="randomImages ? randomImages[0]?.image : '/assets/images/writing_placeholder.png'"
 						class="absolute inset-0 size-full object-cover"
 					/>
@@ -203,10 +203,10 @@ usePageMetadata({
 				<span>{{ t("AutobiografictionPage.title") }}</span>
 			</NuxtLink>
 			<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
-				<template v-if="randomImages != null">
+				<template v-if="randomImages != null && randomImages.length > 1">
 					<NuxtImg
 						preload
-						:alt="randomImages[1].alt ? randomImages[1]?.alt : randomImages[1]?.title"
+						:alt="randomImages[1]?.alt || randomImages[1]?.title || ''"
 						:src="randomImages ? randomImages[1]?.image : '/assets/images/writing_placeholder.png'"
 						class="absolute inset-0 size-full object-cover"
 					/>
