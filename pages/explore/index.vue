@@ -1,11 +1,18 @@
 <script lang="ts" setup>
 import { useQuery } from "@tanstack/vue-query";
 
-import type { Quote } from "@/types/content";
+import type { ExploreImages, Quote } from "@/types/content";
 
 defineRouteRules({
 	prerender: true,
 });
+
+interface Image {
+	title: string;
+	image: string;
+	alt?: string;
+	copyright?: string;
+}
 
 const t = useTranslations();
 
@@ -20,6 +27,17 @@ function getRandomEntries(arr: Array<Quote>, count: number) {
 	return shuffled.slice(0, count);
 }
 
+function getRandomImages(arr: ExploreImages, count: number): Array<Image> {
+	if (arr.images.length <= count) return arr.images;
+
+	const shuffled = arr.images
+		.map((value) => ({ value, sortKey: Math.random() }))
+		.sort((a, b) => a.sortKey - b.sortKey)
+		.map(({ value }) => value);
+
+	return shuffled.slice(0, count) as Array<Image>;
+}
+
 const { data: quotes } = useQuery({
 	queryKey: ["quotes"],
 	queryFn() {
@@ -27,11 +45,25 @@ const { data: quotes } = useQuery({
 	},
 });
 
+const { data: exploreImages } = useQuery({
+	queryKey: ["exploreImages"],
+	queryFn() {
+		return queryContent<ExploreImages>("pages/explore-images/explore-images").findOne();
+	},
+});
+
 const randomQuotes = ref<Array<Quote>>([]);
+const randomImages = ref<Array<Image> | null>(null);
 
 watchEffect(() => {
 	if (quotes.value) {
 		randomQuotes.value = getRandomEntries(quotes.value, 3);
+	}
+});
+
+watchEffect(() => {
+	if (exploreImages.value) {
+		randomImages.value = getRandomImages(exploreImages.value, 2);
 	}
 });
 
@@ -83,12 +115,19 @@ usePageMetadata({
 				<span class="uppercase">{{ t("ResearchAspectsPage.title") }}</span>
 			</NuxtLink>
 			<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
-				<NuxtImg
-					alt=""
-					preload
-					src="/assets/images/writing_placeholder.png"
-					class="absolute inset-0 size-full object-cover"
-				/>
+				<template v-if="randomImages != null && randomImages.length > 0">
+					<NuxtImg
+						preload
+						:alt="randomImages[0]?.alt || randomImages[0]?.title || ''"
+						:src="randomImages ? randomImages[0]?.image : '/assets/images/writing_placeholder.png'"
+						class="absolute inset-0 size-full object-cover"
+					/>
+				</template>
+				<template v-else>
+					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">
+						<LoadingSpinner />
+					</span>
+				</template>
 			</Card>
 			<NuxtLink
 				to="/explore/from-the-archive"
@@ -164,12 +203,19 @@ usePageMetadata({
 				<span>{{ t("AutobiografictionPage.title") }}</span>
 			</NuxtLink>
 			<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
-				<NuxtImg
-					alt=""
-					preload
-					src="/assets/images/writing_placeholder.png"
-					class="absolute inset-0 size-full object-cover"
-				/>
+				<template v-if="randomImages != null && randomImages.length > 1">
+					<NuxtImg
+						preload
+						:alt="randomImages[1]?.alt || randomImages[1]?.title || ''"
+						:src="randomImages ? randomImages[1]?.image : '/assets/images/writing_placeholder.png'"
+						class="absolute inset-0 size-full object-cover"
+					/>
+				</template>
+				<template v-else>
+					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">
+						<LoadingSpinner />
+					</span>
+				</template>
 			</Card>
 			<NuxtLink
 				to="/explore/glossary"

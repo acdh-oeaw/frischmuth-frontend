@@ -38,7 +38,7 @@ const sortedEntries = computed(() => {
 
 <template>
 	<MainContent
-		class="grid gap-8 p-4 md:grid-cols-[1fr_3fr] md:justify-center md:px-12 2xl:grid-cols-[2fr_3fr]"
+		class="grid gap-8 p-4 md:grid-cols-[1fr_3fr] md:justify-center md:px-12 lg:py-8 2xl:grid-cols-[2fr_3fr]"
 	>
 		<div class="flex md:justify-end">
 			<Card class="aspect-square size-full bg-frisch-indigo md:size-72">
