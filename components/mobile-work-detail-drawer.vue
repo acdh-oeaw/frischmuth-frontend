@@ -12,6 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 
 import WorkAnalysisSidebar from "./work-analysis-sidebar.vue";
 
+const route = useRoute();
 const isMobile = computed(() => {
 	return window.innerWidth < 820;
 });
@@ -238,6 +239,7 @@ function closeSidebar() {
 								:href="{
 									path: `/search`,
 									query: {
+										...route.query,
 										topic: topic.name,
 									},
 								}"
@@ -587,7 +589,13 @@ function closeSidebar() {
 													<div v-for="relation in relatedWork.references" :key="relation.id">
 														<NuxtLink
 															class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-															:href="`/work/${relation.id}`"
+															:href="{
+																path: route.path,
+																query: {
+																	...route.query,
+																	work: relation.id,
+																},
+															}"
 														>
 															{{ relation.title }}
 														</NuxtLink>
@@ -603,7 +611,13 @@ function closeSidebar() {
 													<div v-for="relation in relatedWork.referencedIn" :key="relation.id">
 														<NuxtLink
 															class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-															:href="`/work/${relation.id}`"
+															:href="{
+																path: route.path,
+																query: {
+																	...route.query,
+																	work: relation.id,
+																},
+															}"
 														>
 															{{ relation.title }}
 														</NuxtLink>
@@ -619,7 +633,13 @@ function closeSidebar() {
 													<div v-for="relation in relatedWork.discussedIn" :key="relation.id">
 														<NuxtLink
 															class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-															:href="`/work/${relation.id}`"
+															:href="{
+																path: route.path,
+																query: {
+																	...route.query,
+																	work: relation.id,
+																},
+															}"
 														>
 															{{ relation.title }}
 														</NuxtLink>
