@@ -7,6 +7,8 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 import WorkAnalysisSidebar from "./work-analysis-sidebar.vue";
 
@@ -246,25 +248,78 @@ function closeSidebar() {
 					</span>
 					<div v-if="!isMobile">
 						<Button
-							:disabled="!(work.text_analysis != '' || analysisTags.length > 0)"
+							:disabled="work.text_analysis === '' || undefined"
 							variant="transparent"
 							class="px-0"
 							@click="toggleAnalysisSidebar()"
 						>
 							<span
 								:class="
-									work.text_analysis != '' || analysisTags.length > 0
+									work.text_analysis != '' || undefined
 										? `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange`
 										: `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-black`
 								"
 							>
 								<component
-									:is="work.text_analysis != '' || analysisTags.length > 0 ? EyeIcon : EyeOffIcon"
+									:is="work.text_analysis != '' || undefined ? EyeIcon : EyeOffIcon"
 									:size="16"
 								/>
 								<span class="flex justify-start font-semibold">Analyse</span>
 							</span>
 						</Button>
+					</div>
+					<div class="block md:hidden">
+						<Drawer :disabled="work.text_analysis != '' || undefined">
+							<DrawerTrigger class="w-full">
+								<span
+									:class="
+										work.text_analysis != '' || undefined
+											? `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange`
+											: `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-grey`
+									"
+								>
+									<component
+										:is="work.text_analysis != '' || undefined ? EyeIcon : EyeOffIcon"
+										:size="16"
+									/>
+									<span class="flex justify-start font-semibold">Analyse</span>
+								</span>
+							</DrawerTrigger>
+							<DrawerContent>
+								<div class="overflow-auto bg-white py-8">
+									<div class="grid grid-cols-[auto_1fr] items-center gap-4">
+										<div
+											class="size-0 border-y-[55px] border-l-[55px] border-y-transparent border-l-frisch-marine"
+										/>
+										<div class="py-2 text-lg font-semibold">Analyse</div>
+									</div>
+									<div class="block hyphens-auto px-8 text-justify lg:px-16">
+										<div v-if="work?.text_analysis">
+											{{ work?.text_analysis }}
+										</div>
+										<div v-else class="text-sm text-muted-foreground">
+											Keine narrotologische Analyse vorhanden.
+										</div>
+										<div v-if="analysisTags.length > 0" class="py-4">
+											<span v-for="tag in analysisTags" :key="tag.name" class="mb-2 mr-1">
+												<Popover>
+													<PopoverTrigger>
+														<span
+															class="mb-1 inline-block cursor-default bg-frisch-orange px-2 py-1 text-xs text-white opacity-85"
+														>
+															{{ tag.value }}
+														</span>
+													</PopoverTrigger>
+													<PopoverContent>
+														{{ tag.name }}
+													</PopoverContent>
+												</Popover>
+											</span>
+										</div>
+									</div>
+								</div>
+							</DrawerContent>
+						</Drawer>
 					</div>
 					<Separator class="my-4 h-[3px] bg-frisch-marine"></Separator>
 					<div class="py-2 text-lg font-semibold">Zusammenfassung</div>

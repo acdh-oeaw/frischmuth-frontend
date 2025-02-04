@@ -53,7 +53,7 @@ watch(
 
 <template>
 	<div v-if="props.isMobile">
-		<Drawer v-model="isOpen">
+		<Drawer v-model:open="isOpen">
 			<DrawerContent>
 				<div class="flex items-center gap-1 px-4 pt-2 text-sm">
 					<MapPinIcon :size="16" />
@@ -63,6 +63,7 @@ watch(
 				<div class="px-4 py-2">
 					<div v-if="props.place.longitude != null && props.place.latitude != null">
 						<Map
+							class="h-80"
 							:longitude="props.place.longitude"
 							:latitude="props.place.latitude"
 							:is-altaussee="false"

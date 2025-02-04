@@ -89,6 +89,7 @@ const searchFiltersSchema = v.pipe(
 );
 
 const isMobile = computed(() => {
+	if (typeof window === "undefined") return false;
 	return window.innerWidth < 1024;
 });
 
@@ -160,12 +161,21 @@ const { data, isPending } = useGetSearchResults(
 	}),
 );
 
+let timer: ReturnType<typeof setTimeout> | null = null;
+
 function closeDetailView() {
 	if (route.query.work !== undefined) {
 		const updatedQuery = { ...route.query };
 		delete updatedQuery.work;
 		void router.push({ query: updatedQuery });
 	}
+}
+
+function closeMobileDetailView() {
+	isWorkSelected.value = false;
+	timer = setTimeout(() => {
+		closeDetailView();
+	}, 300);
 }
 
 const id = computed(() => {
@@ -183,6 +193,22 @@ const facets = computed(() => {
 	}
 	return null;
 });
+
+const isWorkSelected = ref(false);
+
+watch(
+	() => id.value,
+	(newId) => {
+		isWorkSelected.value = newId !== undefined;
+	},
+	{ immediate: true },
+);
+
+onScopeDispose(() => {
+	if (timer != null) {
+		clearTimeout(timer);
+	}
+});
 </script>
 
 <template>
@@ -198,7 +224,7 @@ const facets = computed(() => {
 			<div>
 				<div
 					v-if="!isLoading"
-					class="grid h-full grid-rows-[auto_1fr] gap-8 md:grid-cols-2 lg:grid-rows-none 2xl:grid-cols-[minmax(650px,_1fr)_3fr]"
+					class="grid h-full grid-rows-[auto_1fr] md:grid-cols-2 md:gap-8 lg:grid-rows-none 2xl:grid-cols-[minmax(650px,_1fr)_3fr]"
 				>
 					<div class="hidden md:block">
 						<SearchForm query="" @submit="onChange">
@@ -309,6 +335,13 @@ const facets = computed(() => {
 					@close-detail-view="closeDetailView()"
 				/>
 			</div>
+		</div>
+		<div v-if="isMobile && id != null">
+			<Drawer v-model:open="isWorkSelected">
+				<DrawerContent>
+					<MobileWorkDetailDrawer :work-id="id" @close-detail-view="closeMobileDetailView()" />
+				</DrawerContent>
+			</Drawer>
 		</div>
 	</MainContent>
 </template>
