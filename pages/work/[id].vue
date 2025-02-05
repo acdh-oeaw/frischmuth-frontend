@@ -220,7 +220,7 @@ const icon = computed(() => {
 							<DrawerTrigger class="w-full">
 								<span class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange">
 									<EyeIcon :size="16" />
-									<span class="flex justify-start font-semibold">Narratologische Analyse</span>
+									<span class="flex justify-start font-semibold">Analyse</span>
 								</span>
 								<!-- Behaviour needs review
 								<span
@@ -240,15 +240,13 @@ const icon = computed(() => {
 										<div
 											class="size-0 border-y-[55px] border-l-[55px] border-y-transparent border-l-frisch-marine"
 										/>
-										<div class="py-2 text-lg font-semibold">Narratologische Analyse</div>
+										<div class="py-2 text-lg font-semibold">Analyse</div>
 									</div>
 									<div class="block hyphens-auto px-8 text-justify lg:px-16">
 										<div v-if="work?.text_analysis">
 											{{ work?.text_analysis }}
 										</div>
-										<div v-else class="text-sm text-muted-foreground">
-											Keine narrotologische Analyse vorhanden.
-										</div>
+										<div v-else class="text-sm text-muted-foreground">Keine Analyse vorhanden.</div>
 										<div v-if="analysisTags.length > 0" class="py-4">
 											<span v-for="tag in analysisTags" :key="tag.name" class="mb-2 mr-1">
 												<Popover>
@@ -276,7 +274,17 @@ const icon = computed(() => {
 						{{ work?.summary }}
 					</div>
 					<div v-else class="text-sm text-muted-foreground">Keine Zusammenfassung vorhanden.</div>
-					<Accordion type="single" class="font-normal" collapsible>
+					<Accordion
+						:key="work?.id"
+						:disabled="work?.context || work?.historical_events ? false : true"
+						type="single"
+						:class="
+							work?.context || work?.historical_events
+								? `font-normal`
+								: `font-normal text-frisch-grey`
+						"
+						collapsible
+					>
 						<AccordionItem value="context">
 							<AccordionTrigger>
 								<div class="text-lg font-semibold">Kontexte</div>
@@ -296,7 +304,25 @@ const icon = computed(() => {
 						</AccordionItem>
 					</Accordion>
 					<div>
-						<Accordion type="single" collapsible>
+						<Accordion
+							:key="work?.id"
+							:disabled="
+								(characters.main && characters.main?.length > 0) ||
+								(characters.secondary && characters.secondary?.length > 0) ||
+								(characters.spokenOf && characters.spokenOf?.length > 0)
+									? false
+									: true
+							"
+							type="single"
+							:class="
+								(characters.main && characters.main?.length > 0) ||
+								(characters.secondary && characters.secondary?.length > 0) ||
+								(characters.spokenOf && characters.spokenOf?.length > 0)
+									? `font-normal`
+									: `font-normal text-frisch-grey`
+							"
+							collapsible
+						>
 							<AccordionItem value="characters">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Charaktere</div>
@@ -366,7 +392,25 @@ const icon = computed(() => {
 						</Accordion>
 					</div>
 					<div>
-						<Accordion type="single" collapsible>
+						<Accordion
+							:key="work?.id"
+							:disabled="
+								(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
+								(places.discussed && places.discussed.length > 0) ||
+								(places.mentioned && places.mentioned.length > 0)
+									? false
+									: true
+							"
+							type="single"
+							:class="
+								(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
+								(places.discussed && places.discussed.length > 0) ||
+								(places.mentioned && places.mentioned.length > 0)
+									? `font-normal`
+									: `font-normal text-frisch-grey`
+							"
+							collapsible
+						>
 							<AccordionItem value="places">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Orte</div>
@@ -480,7 +524,25 @@ const icon = computed(() => {
 						</Accordion>
 					</div>
 					<div>
-						<Accordion type="single" collapsible>
+						<Accordion
+							:key="work?.id"
+							:disabled="
+								(relatedWork.references && relatedWork.references?.length > 0) ||
+								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
+								(relatedWork.referencedIn && relatedWork.referencedIn.length > 0)
+									? false
+									: true
+							"
+							type="single"
+							:class="
+								(relatedWork.references && relatedWork.references?.length > 0) ||
+								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
+								(relatedWork.referencedIn && relatedWork.referencedIn.length > 0)
+									? `font-normal`
+									: `font-normal text-frisch-grey`
+							"
+							collapsible
+						>
 							<AccordionItem value="relations">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Bezüge</div>
@@ -543,7 +605,17 @@ const icon = computed(() => {
 						</Accordion>
 					</div>
 					<div>
-						<Accordion type="single" collapsible>
+						<Accordion
+							:key="work?.id"
+							:disabled="work?.physical_objects && work?.physical_objects.length > 0 ? false : true"
+							type="single"
+							:class="
+								work?.physical_objects && work?.physical_objects.length > 0
+									? `font-normal`
+									: `font-normal text-frisch-grey`
+							"
+							collapsible
+						>
 							<AccordionItem value="relations">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Physische Objekte</div>
@@ -586,15 +658,13 @@ const icon = computed(() => {
 						<div
 							class="size-0 border-y-[55px] border-l-[55px] border-y-transparent border-l-frisch-marine"
 						/>
-						<div class="py-2 text-lg font-semibold">Narratologische Analyse</div>
+						<div class="py-2 text-lg font-semibold">Analyse</div>
 					</div>
 					<div class="block hyphens-auto px-16 text-justify">
 						<div v-if="work?.text_analysis">
 							{{ work?.text_analysis }}
 						</div>
-						<div v-else class="text-sm text-muted-foreground">
-							Keine narrotologische Analyse vorhanden.
-						</div>
+						<div v-else class="text-sm text-muted-foreground">Keine Analyse vorhanden.</div>
 						<div v-if="analysisTags.length > 0" class="py-4">
 							<span v-for="tag in analysisTags" :key="tag.name" class="mb-2 mr-1">
 								<span v-if="!isTablet">
