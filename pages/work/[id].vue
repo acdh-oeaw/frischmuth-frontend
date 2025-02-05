@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { EyeIcon, EyeOffIcon, GlobeIcon, XIcon } from "lucide-vue-next";
+import { EyeIcon, GlobeIcon } from "lucide-vue-next";
 
 import {
 	Accordion,
@@ -9,10 +9,10 @@ import {
 } from "@/components/ui/accordion";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-
-import WorkAnalysisSidebar from "./work-analysis-sidebar.vue";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const route = useRoute();
+
 const isMobile = computed(() => {
 	return window.innerWidth < 820;
 });
@@ -21,25 +21,13 @@ const isTablet = computed(() => {
 	return window.innerWidth < 1536;
 });
 
-const props = defineProps<{
-	workId: number;
-}>();
-
-interface Place {
-	id: number | undefined;
-	name: string | undefined;
-	longitude: number | null | undefined;
-	latitude: number | null | undefined;
-	description: string | undefined;
-}
-
-const isAnalysisSidebarActive = ref(false);
-const isPlaceSideBarActive = ref(false);
-const currentPlace = ref<Place | null>(null);
+const id = computed(() => {
+	return Number(route.params.id as string);
+});
 
 const { data, isPending, isPlaceholderData } = useGetWork(
 	computed(() => {
-		return props.workId;
+		return id.value;
 	}),
 );
 
@@ -50,15 +38,6 @@ const work = computed(() => {
 const isLoading = computed(() => {
 	return isPending.value || isPlaceholderData.value;
 });
-
-function toggleAnalysisSidebar() {
-	isAnalysisSidebarActive.value = !isAnalysisSidebarActive.value;
-}
-
-function togglePlaceSideBar(place: Place | null) {
-	isPlaceSideBarActive.value = !isPlaceSideBarActive.value;
-	currentPlace.value = place;
-}
 
 const characters = computed(() => {
 	return {
@@ -167,26 +146,15 @@ const icon = computed(() => {
 	}
 	return null;
 });
-
-const emit = defineEmits(["closeDetailView"]);
-
-function closeSidebar() {
-	emit("closeDetailView");
-}
 </script>
 
 <template>
-	<MainContent class="relative grid h-full bg-frisch-marine">
-		<div v-if="!isLoading" class="relative grid h-full overflow-y-auto">
-			<Button
-				variant="transparent"
-				class="absolute right-4 top-4 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
-				size="icon"
-				@click="closeSidebar()"
-			>
-				<XIcon class="size-4" />
-			</Button>
-			<div class="grid w-full overflow-y-auto">
+	<MainContent class="relative grid h-full bg-frisch-marine md:pr-14 2xl:pr-20">
+		<div v-if="!isLoading" class="grid h-full md:grid-cols-[auto_1fr]">
+			<div
+				class="hidden size-0 border-y-[85px] border-l-[85px] border-y-transparent border-l-frisch-orange md:block md:border-y-[65px] md:border-l-[65px]"
+			/>
+			<div class="grid md:grid-cols-2 md:gap-8">
 				<div v-if="work != null" class="bg-white p-8 lg:p-16">
 					<!-- TODO: maybe display siglum here -->
 					<div v-if="work?.work_type != null && icon" class="flex items-center gap-2 pb-2">
@@ -239,7 +207,6 @@ function closeSidebar() {
 								:href="{
 									path: `/search`,
 									query: {
-										...route.query,
 										topic: topic.name,
 									},
 								}"
@@ -248,44 +215,24 @@ function closeSidebar() {
 							</NuxtLink>
 						</div>
 					</span>
-					<div v-if="!isMobile">
-						<Button
-							:disabled="work.text_analysis === '' || undefined"
-							variant="transparent"
-							class="px-0"
-							@click="toggleAnalysisSidebar()"
-						>
-							<span
-								:class="
-									work.text_analysis != '' || undefined
-										? `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange`
-										: `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-black`
-								"
-							>
-								<component
-									:is="work.text_analysis != '' || undefined ? EyeIcon : EyeOffIcon"
-									:size="16"
-								/>
-								<span class="flex justify-start font-semibold">Analyse</span>
-							</span>
-						</Button>
-					</div>
 					<div class="block md:hidden">
-						<Drawer :disabled="work.text_analysis != '' || undefined">
+						<Drawer>
 							<DrawerTrigger class="w-full">
-								<span
-									:class="
-										work.text_analysis != '' || undefined
-											? `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange`
-											: `grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-grey`
-									"
-								>
-									<component
-										:is="work.text_analysis != '' || undefined ? EyeIcon : EyeOffIcon"
-										:size="16"
-									/>
-									<span class="flex justify-start font-semibold">Analyse</span>
+								<span class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange">
+									<EyeIcon :size="16" />
+									<span class="flex justify-start font-semibold">Narratologische Analyse</span>
 								</span>
+								<!-- Behaviour needs review
+								<span
+									v-else
+									class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-muted-foreground"
+								>
+									<EyeOffIcon :size="16" />
+									<span class="flex justify-start font-semibold">
+										Keine narrotologische Analyse vorhanden.
+									</span>
+								</span>
+								 -->
 							</DrawerTrigger>
 							<DrawerContent>
 								<div class="overflow-auto bg-white py-8">
@@ -293,7 +240,7 @@ function closeSidebar() {
 										<div
 											class="size-0 border-y-[55px] border-l-[55px] border-y-transparent border-l-frisch-marine"
 										/>
-										<div class="py-2 text-lg font-semibold">Analyse</div>
+										<div class="py-2 text-lg font-semibold">Narratologische Analyse</div>
 									</div>
 									<div class="block hyphens-auto px-8 text-justify lg:px-16">
 										<div v-if="work?.text_analysis">
@@ -329,17 +276,7 @@ function closeSidebar() {
 						{{ work?.summary }}
 					</div>
 					<div v-else class="text-sm text-muted-foreground">Keine Zusammenfassung vorhanden.</div>
-					<Accordion
-						:key="work?.id"
-						:disabled="work?.context || work?.historical_events ? false : true"
-						type="single"
-						:class="
-							work?.context || work?.historical_events
-								? `font-normal`
-								: `font-normal text-frisch-grey`
-						"
-						collapsible
-					>
+					<Accordion type="single" class="font-normal" collapsible>
 						<AccordionItem value="context">
 							<AccordionTrigger>
 								<div class="text-lg font-semibold">Kontexte</div>
@@ -354,29 +291,12 @@ function closeSidebar() {
 										<span>{{ work?.historical_events }}</span>
 									</div>
 								</div>
+								<div v-else class="text-sm text-muted-foreground">Keine Kontexte vorhanden.</div>
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>
 					<div>
-						<Accordion
-							:key="work?.id"
-							:disabled="
-								(characters.main && characters.main?.length > 0) ||
-								(characters.secondary && characters.secondary?.length > 0) ||
-								(characters.spokenOf && characters.spokenOf?.length > 0)
-									? false
-									: true
-							"
-							type="single"
-							:class="
-								(characters.main && characters.main?.length > 0) ||
-								(characters.secondary && characters.secondary?.length > 0) ||
-								(characters.spokenOf && characters.spokenOf?.length > 0)
-									? `font-normal`
-									: `font-normal text-frisch-grey`
-							"
-							collapsible
-						>
+						<Accordion type="single" collapsible>
 							<AccordionItem value="characters">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Charaktere</div>
@@ -446,25 +366,7 @@ function closeSidebar() {
 						</Accordion>
 					</div>
 					<div>
-						<Accordion
-							:key="work?.id"
-							:disabled="
-								(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
-								(places.discussed && places.discussed.length > 0) ||
-								(places.mentioned && places.mentioned.length > 0)
-									? false
-									: true
-							"
-							type="single"
-							:class="
-								(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
-								(places.discussed && places.discussed.length > 0) ||
-								(places.mentioned && places.mentioned.length > 0)
-									? `font-normal`
-									: `font-normal text-frisch-grey`
-							"
-							collapsible
-						>
+						<Accordion type="single" collapsible>
 							<AccordionItem value="places">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Orte</div>
@@ -482,14 +384,21 @@ function closeSidebar() {
 																v-if="place.id && place.latitude && place.longitude"
 																class="flex items-center"
 															>
-																<Button
-																	class="px-0"
-																	variant="transparent"
-																	@click="togglePlaceSideBar(place)"
+																<NuxtLink
+																	:href="{
+																		path: `/work/${work.id}`,
+																		query: {
+																			place: place.id,
+																		},
+																	}"
 																>
 																	<span class="sr-only">Ort anzeigen</span>
-																	<EyeIcon class="text-frisch-orange" :size="16" />
-																</Button>
+																	<MapSidebar
+																		:is-mobile="isMobile"
+																		:place="place"
+																		relation="Schauplatz"
+																	/>
+																</NuxtLink>
 															</span>
 														</span>
 													</div>
@@ -508,14 +417,21 @@ function closeSidebar() {
 																v-if="place.id && place.latitude && place.longitude"
 																class="flex items-center"
 															>
-																<Button
-																	class="px-0"
-																	variant="transparent"
-																	@click="togglePlaceSideBar(place)"
+																<NuxtLink
+																	:href="{
+																		path: `/work/${work.id}`,
+																		query: {
+																			place: place.id,
+																		},
+																	}"
 																>
 																	<span class="sr-only">Ort anzeigen</span>
-																	<EyeIcon class="text-frisch-orange" :size="16" />
-																</Button>
+																	<MapSidebar
+																		:place="place"
+																		relation="Beleuchteter Ort"
+																		:is-mobile="isMobile"
+																	/>
+																</NuxtLink>
 															</span>
 														</span>
 													</div>
@@ -534,14 +450,21 @@ function closeSidebar() {
 																v-if="place.id && place.latitude && place.longitude"
 																class="flex items-center"
 															>
-																<Button
-																	class="px-0"
-																	variant="transparent"
-																	@click="togglePlaceSideBar(place)"
+																<NuxtLink
+																	:href="{
+																		path: `/work/${work.id}`,
+																		query: {
+																			place: place.id,
+																		},
+																	}"
 																>
 																	<span class="sr-only">Ort anzeigen</span>
-																	<EyeIcon class="text-frisch-orange" :size="16" />
-																</Button>
+																	<MapSidebar
+																		:is-mobile="isMobile"
+																		:place="place"
+																		relation="Erwähnter Ort"
+																	/>
+																</NuxtLink>
 															</span>
 														</span>
 													</div>
@@ -557,25 +480,7 @@ function closeSidebar() {
 						</Accordion>
 					</div>
 					<div>
-						<Accordion
-							:key="work?.id"
-							:disabled="
-								(relatedWork.references && relatedWork.references?.length > 0) ||
-								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
-								(relatedWork.referencedIn && relatedWork.referencedIn.length > 0)
-									? false
-									: true
-							"
-							type="single"
-							:class="
-								(relatedWork.references && relatedWork.references?.length > 0) ||
-								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
-								(relatedWork.referencedIn && relatedWork.referencedIn.length > 0)
-									? `font-normal`
-									: `font-normal text-frisch-grey`
-							"
-							collapsible
-						>
+						<Accordion type="single" collapsible>
 							<AccordionItem value="relations">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Bezüge</div>
@@ -589,13 +494,7 @@ function closeSidebar() {
 													<div v-for="relation in relatedWork.references" :key="relation.id">
 														<NuxtLink
 															class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-															:href="{
-																path: route.path,
-																query: {
-																	...route.query,
-																	work: relation.id,
-																},
-															}"
+															:href="`/work/${relation.id}`"
 														>
 															{{ relation.title }}
 														</NuxtLink>
@@ -611,13 +510,7 @@ function closeSidebar() {
 													<div v-for="relation in relatedWork.referencedIn" :key="relation.id">
 														<NuxtLink
 															class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-															:href="{
-																path: route.path,
-																query: {
-																	...route.query,
-																	work: relation.id,
-																},
-															}"
+															:href="`/work/${relation.id}`"
 														>
 															{{ relation.title }}
 														</NuxtLink>
@@ -633,13 +526,7 @@ function closeSidebar() {
 													<div v-for="relation in relatedWork.discussedIn" :key="relation.id">
 														<NuxtLink
 															class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-															:href="{
-																path: route.path,
-																query: {
-																	...route.query,
-																	work: relation.id,
-																},
-															}"
+															:href="`/work/${relation.id}`"
 														>
 															{{ relation.title }}
 														</NuxtLink>
@@ -656,17 +543,7 @@ function closeSidebar() {
 						</Accordion>
 					</div>
 					<div>
-						<Accordion
-							:key="work?.id"
-							:disabled="work?.physical_objects && work?.physical_objects.length > 0 ? false : true"
-							type="single"
-							:class="
-								work?.physical_objects && work?.physical_objects.length > 0
-									? `font-normal`
-									: `font-normal text-frisch-grey`
-							"
-							collapsible
-						>
+						<Accordion type="single" collapsible>
 							<AccordionItem value="relations">
 								<AccordionTrigger>
 									<div class="text-lg font-semibold">Physische Objekte</div>
@@ -694,6 +571,9 @@ function closeSidebar() {
 													</div>
 												</div>
 											</div>
+											<div v-else class="text-sm text-muted-foreground">
+												Keine physikalischen Objekte vorhanden.
+											</div>
 										</div>
 									</div>
 								</AccordionContent>
@@ -701,27 +581,60 @@ function closeSidebar() {
 						</Accordion>
 					</div>
 				</div>
+				<div class="hidden md:block md:bg-white md:py-8">
+					<div class="grid grid-cols-[auto_1fr] items-center gap-4">
+						<div
+							class="size-0 border-y-[55px] border-l-[55px] border-y-transparent border-l-frisch-marine"
+						/>
+						<div class="py-2 text-lg font-semibold">Narratologische Analyse</div>
+					</div>
+					<div class="block hyphens-auto px-16 text-justify">
+						<div v-if="work?.text_analysis">
+							{{ work?.text_analysis }}
+						</div>
+						<div v-else class="text-sm text-muted-foreground">
+							Keine narrotologische Analyse vorhanden.
+						</div>
+						<div v-if="analysisTags.length > 0" class="py-4">
+							<span v-for="tag in analysisTags" :key="tag.name" class="mb-2 mr-1">
+								<span v-if="!isTablet">
+									<TooltipProvider>
+										<Tooltip>
+											<TooltipTrigger as-child>
+												<span
+													class="mb-1 inline-block cursor-default bg-frisch-orange px-2 py-1 text-xs text-white opacity-85"
+												>
+													{{ tag.value }}
+												</span>
+											</TooltipTrigger>
+											<TooltipContent>
+												<p>{{ tag.name }}</p>
+											</TooltipContent>
+										</Tooltip>
+									</TooltipProvider>
+								</span>
+								<span v-else>
+									<Popover>
+										<PopoverTrigger>
+											<span
+												class="mb-1 inline-block cursor-default bg-frisch-orange px-2 py-1 text-xs text-white opacity-85"
+											>
+												{{ tag.value }}
+											</span>
+										</PopoverTrigger>
+										<PopoverContent>
+											{{ tag.name }}
+										</PopoverContent>
+									</Popover>
+								</span>
+							</span>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<Centered v-else class="pointer-events-none bg-white">
+		<Centered v-else class="pointer-events-none">
 			<LoadingSpinner />
 		</Centered>
-		<WorkAnalysisSidebar
-			v-if="isAnalysisSidebarActive && work != null"
-			class="absolute right-0 top-0 z-50 h-full shadow-xl"
-			:show="isAnalysisSidebarActive"
-			:work="work"
-			:is-tablet="isTablet"
-			@close-side-bar="toggleAnalysisSidebar()"
-		/>
-		<MapSidebar
-			v-if="isPlaceSideBarActive && work != null && currentPlace != null"
-			class="absolute right-0 top-0 z-50 h-full shadow-xl"
-			:is-mobile="isMobile"
-			:place="currentPlace"
-			:work-id="work.id ?? 0"
-			relation="Schauplatz"
-			@close-place-side-bar="togglePlaceSideBar(null)"
-		/>
 	</MainContent>
 </template>
