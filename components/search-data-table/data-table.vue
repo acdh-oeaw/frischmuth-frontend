@@ -82,13 +82,17 @@ const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 		accessorKey: "title",
 		header: () => h("div", "Titel"),
 		cell: ({ row }) => {
+			const route = useRoute();
+			const id = row.original.id;
+
 			return h(
 				NavLink,
 				{
 					class:
 						"underline decoration-dotted transition hover:no-underline focus-visible:no-underline",
 					href: {
-						path: row.original.id ? `/work/${row.original.id as unknown as string}` : "",
+						path: route.path,
+						query: { ...route.query, work: id },
 					},
 				},
 				row.getValue("title"),
