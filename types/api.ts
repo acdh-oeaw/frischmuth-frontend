@@ -15,4 +15,3 @@ export type SearchFacetYearEnd = NonNullable<SearchFilters["end_year"]>;
 export type SearchFacetYearStart = NonNullable<SearchFilters["start_year"]>;
 
 export type SearchResultFacets = NonNullable<SearchResults["facets"]>;
-
