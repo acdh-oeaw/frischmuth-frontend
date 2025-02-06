@@ -4,10 +4,10 @@
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "20.x",
+		"node": "22.x",
 		"pnpm": "9.x"
 	},
-	"packageManager": "pnpm@9.7.0",
+	"packageManager": "pnpm@9.15.5",
 	"scripts": {
 		"analyze": "nuxt analyze",
 		"build": "nuxt build --dotenv ./.env.local",
@@ -91,7 +91,7 @@
 		"@nuxt/devtools": "^1.6.0",
 		"@playwright/test": "^1.48.1",
 		"@types/geojson": "^7946.0.14",
-		"@types/node": "^20.17.0",
+		"@types/node": "^22.13.1",
 		"axe-core": "^4.10.2",
 		"axe-playwright": "^2.0.3",
 		"ci-info": "^4.0.0",
