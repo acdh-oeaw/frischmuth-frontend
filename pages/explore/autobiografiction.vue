@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { isNonEmptyArray } from "@acdh-oeaw/lib";
 import { useQuery } from "@tanstack/vue-query";
 
 import type { StaticPage } from "@/types/content";
@@ -20,21 +21,18 @@ const { data: about, error: aboutError } = useQuery({
 	},
 });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-explicit-any
-const parsedContent = ref<Array<any>>([]);
+const { data: parsedContent } = useAsyncData(
+	"autobiografiction-page-sections",
+	async () => {
+		if (!isNonEmptyArray(about.value?.sections)) return [];
 
-watch(
-	() => about.value,
-	async (newValue) => {
-		if (newValue?.sections) {
-			parsedContent.value = await Promise.all(
-				newValue.sections.map(async (section) => {
-					return section.content ? await parseMarkdown(section.content) : "";
-				}),
-			);
-		}
+		return Promise.all(
+			about.value.sections.map((section) => {
+				return $fetch("/api/parse-mdc", { body: { input: section.content }, method: "POST" });
+			}),
+		);
 	},
-	{ immediate: true },
+	{ watch: [about] },
 );
 
 useErrorMessage(aboutError, {
@@ -58,7 +56,7 @@ useErrorMessage(aboutError, {
 		<div v-if="about && about.sections && about.sections.length" class="prose max-w-3xl">
 			<div v-for="(section, index) in about.sections" :key="index" class="pb-4">
 				<h2 class="m-0 font-bold text-frisch-orange">{{ section.title }}</h2>
-				<ContentRenderer v-if="parsedContent[index]" :value="parsedContent[index]">
+				<ContentRenderer v-if="parsedContent?.[index]" :value="parsedContent[index]">
 					<template #empty></template>
 				</ContentRenderer>
 			</div>
