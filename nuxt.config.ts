@@ -20,7 +20,7 @@ export default defineNuxtConfig({
 		dataValue: "ui-color-scheme",
 	},
 
-	components: [{ path: "@/components", extensions: [".vue"], pathPrefix: false }],
+	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
 
 	content: {
 		defaultLocale,
@@ -39,6 +39,13 @@ export default defineNuxtConfig({
 		enabled: process.env.NODE_ENV === "development",
 	},
 
+	eslint: {
+		config: {
+			autoInit: false,
+			standalone: true,
+		},
+	},
+
 	experimental: {
 		componentIslands: {
 			selectiveClient: true,
@@ -52,12 +59,24 @@ export default defineNuxtConfig({
 			},
 		},
 		inlineRouteRules: true,
+		/**
+		 * @see https://github.com/nuxt-modules/i18n/issues/3240
+		 */
+		scanPageMeta: true,
+		// typedPages: true,
 	},
 
 	features: {
 		/** @see https://github.com/nuxt/nuxt/issues/21821 */
-		inlineStyles: false,
+		inlineStyles(id) {
+			// eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+			return id != null && id.includes(".vue");
+		},
 	},
+
+	// future: {
+	// 	compatibilityVersion: 4,
+	// },
 
 	i18n: {
 		baseUrl,
@@ -65,6 +84,9 @@ export default defineNuxtConfig({
 		detectBrowserLanguage: {
 			redirectOn: "root",
 		},
+		// experimental: {
+		// 	typedOptionsAndMessages: "default",
+		// },
 		langDir: "./messages",
 		lazy: true,
 		locales: Object.values(localesMap),
@@ -85,6 +107,7 @@ export default defineNuxtConfig({
 
 	modules: [
 		"@nuxt/content",
+		"@nuxt/eslint",
 		"@nuxt/image",
 		"@nuxtjs/color-mode",
 		"@nuxtjs/i18n",
@@ -131,5 +154,5 @@ export default defineNuxtConfig({
 		},
 	},
 
-	compatibilityDate: "2024-08-09",
+	compatibilityDate: "2025-01-01",
 });

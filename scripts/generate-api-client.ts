@@ -23,10 +23,10 @@ async function generate() {
 		dist: outputFilePath,
 	};
 
-	// download swagger file
+	/** Download OpenAPI file. */
 	const data = (await request(options.url, { responseType: "json" })) as OpenAPIObject;
 
-	// trim swagger file to only contain the prefixes specified in options.prefixes
+	/** Trim OpenAPI file to only contain the prefixes specified in `options.prefixes`. */
 	const prefixes = options.prefixes;
 	let openApiDoc: OpenAPIObject = data;
 	const paths: PathsObject = {};
@@ -40,7 +40,7 @@ async function generate() {
 		paths,
 	};
 
-	// use the trimmed openAPIDoc with openapi-zod-client
+	/** Use the trimmed `openAPIDoc` with `openapi-zod-client`. */
 	await generateZodClientFromOpenAPI({
 		openApiDoc,
 		distPath: options.dist,
@@ -56,6 +56,10 @@ async function generate() {
 	writeFileSync(outputFilePath, modifiedFileContent, { encoding: "utf-8" });
 }
 
-void generate().then(() => {
-	log.success("Successfully generated api client.");
-});
+generate()
+	.then(() => {
+		log.success("Successfully generated api client.");
+	})
+	.catch((error: unknown) => {
+		log.error("Failed to generate api client.\n", String(error));
+	});
