@@ -63,9 +63,9 @@ const sortedEntries = computed(() => {
 							<div class="relative block size-full self-end object-contain align-top">
 								<NuxtImg
 									:alt="entry.imageTitle ?? ''"
+									class="size-full object-contain"
 									preload
 									:src="entry.image"
-									class="size-full object-contain"
 								/>
 							</div>
 						</div>
@@ -73,7 +73,7 @@ const sortedEntries = computed(() => {
 						<div class="relative grid grid-cols-[1fr_1fr_auto] items-center gap-2">
 							<div v-if="entry.image">
 								<svg class="relative h-0.5 w-10 bg-frisch-indigo">
-									<line x1="0" y1="0" x2="100%" y2="0" stroke-width="1" />
+									<line stroke-width="1" x1="0" x2="100%" y1="0" y2="0" />
 								</svg>
 							</div>
 							<div v-else></div>
@@ -94,7 +94,7 @@ const sortedEntries = computed(() => {
 											: 'relative h-0.5 w-24 bg-frisch-indigo'
 									"
 								>
-									<line x1="0" y1="0" x2="100%" y2="0" stroke-width="1" />
+									<line stroke-width="1" x1="0" x2="100%" y1="0" y2="0" />
 								</svg>
 							</div>
 						</div>
@@ -108,7 +108,7 @@ const sortedEntries = computed(() => {
 			</div>
 			<div>
 				<svg class="absolute left-1/2 top-0 h-full w-1 translate-x-[-200%] bg-frisch-indigo">
-					<line x1="0" y1="0" x2="0" y2="100%" stroke-width="4" />
+					<line stroke-width="4" x1="0" x2="0" y1="0" y2="100%" />
 				</svg>
 			</div>
 		</div>

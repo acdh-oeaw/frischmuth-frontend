@@ -114,8 +114,8 @@ function onChangePlaceDetail(toggleValue: boolean, place: AltausseePlace | null)
 					<article class="grid gap-1 text-xs">
 						<strong class="font-medium">
 							<NavLink
-								href="#"
 								class="flex cursor-pointer items-center gap-1 underline decoration-dotted hover:no-underline"
+								href="#"
 								@click="onChangePlaceDetail(true, popover.place)"
 							>
 								{{ popover.place.title }}
@@ -142,9 +142,9 @@ function onChangePlaceDetail(toggleValue: boolean, place: AltausseePlace | null)
 		</div>
 		<template v-if="isDetailViewOn">
 			<AltausseeSidebar
-				:render-detail="isDetailViewOn"
 				:is-mobile="isMobile"
 				:place="currentPlace"
+				:render-detail="isDetailViewOn"
 				@close-side-bar="onChangePlaceDetail(false, null)"
 			/>
 		</template>

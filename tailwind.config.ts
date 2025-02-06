@@ -14,7 +14,7 @@ const fluidColumnsPlugin = createPlugin(({ addUtilities, matchUtilities, theme }
 			},
 		},
 
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		 
 		{ values: theme("width")! },
 	);
 

@@ -51,7 +51,7 @@ async function generate() {
 	});
 
 	const fileContent = readFileSync(outputFilePath, { encoding: "utf-8" });
-	const modifiedFileContent = "// @ts-nocheck\n" + fileContent;
+	const modifiedFileContent = `// @ts-nocheck\n${  fileContent}`;
 
 	writeFileSync(outputFilePath, modifiedFileContent, { encoding: "utf-8" });
 }

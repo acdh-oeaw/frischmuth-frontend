@@ -28,7 +28,7 @@ const iconComponent = computed(() => {
 	<div v-if="props.isMobile || props.isTablet">
 		<Popover>
 			<PopoverTrigger>
-				<component :is="iconComponent" :size="16" class="inline text-frisch-orange" />
+				<component :is="iconComponent" class="inline text-frisch-orange" :size="16" />
 			</PopoverTrigger>
 			<PopoverContent>
 				<p>{{ props.fictionality }}</p>
@@ -39,7 +39,7 @@ const iconComponent = computed(() => {
 		<TooltipProvider>
 			<Tooltip>
 				<TooltipTrigger as-child>
-					<component :is="iconComponent" :size="16" class="inline text-frisch-orange" />
+					<component :is="iconComponent" class="inline text-frisch-orange" :size="16" />
 				</TooltipTrigger>
 				<TooltipContent>
 					<p>{{ props.fictionality }}</p>

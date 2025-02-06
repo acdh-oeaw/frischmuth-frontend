@@ -2,7 +2,7 @@ import { fileURLToPath } from "node:url";
 
 import { defaultLocale, localesMap } from "./config/i18n.config";
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+ 
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 export default defineNuxtConfig({

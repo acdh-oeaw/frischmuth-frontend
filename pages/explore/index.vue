@@ -79,21 +79,21 @@ usePageMetadata({
 			class="grid max-h-full grid-cols-2 gap-2 font-bold lg:gap-4 lg:text-2xl lg:grid-fluid-cols-72"
 		>
 			<NuxtLink
-				to="/explore/places"
 				class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
+				to="/explore/places"
 			>
 				<span class="uppercase">{{ t("PlacesPage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
-				to="/explore/journalistic-reception"
 				class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
+				to="/explore/journalistic-reception"
 			>
 				<span>{{ t("JournalisticReceptionPage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
+				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				rel="noopener noreferrer"
 				:to="randomQuotes[0]?.link || ''"
-				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 			>
 				<span class="sr-only">
 					{{ randomQuotes[0]?.text || "Loading content..." }}
@@ -109,18 +109,18 @@ usePageMetadata({
 				</template>
 			</NuxtLink>
 			<NuxtLink
-				to="/explore/research-aspects"
 				class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
+				to="/explore/research-aspects"
 			>
 				<span class="uppercase">{{ t("ResearchAspectsPage.title") }}</span>
 			</NuxtLink>
 			<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
 				<template v-if="randomImages != null && randomImages.length > 0">
 					<NuxtImg
-						preload
 						:alt="randomImages[0]?.alt || randomImages[0]?.title || ''"
-						:src="randomImages ? randomImages[0]?.image : '/assets/images/writing_placeholder.png'"
 						class="absolute inset-0 size-full object-cover"
+						preload
+						:src="randomImages ? randomImages[0]?.image : '/assets/images/writing_placeholder.png'"
 					/>
 				</template>
 				<template v-else>
@@ -130,27 +130,27 @@ usePageMetadata({
 				</template>
 			</Card>
 			<NuxtLink
-				to="/explore/from-the-archive"
 				class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
+				to="/explore/from-the-archive"
 			>
 				<span>{{ t("FromTheArchivePage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
-				to="/explore/themes"
 				class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
+				to="/explore/themes"
 			>
 				<span class="uppercase">{{ t("ThemesPage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
-				to="/explore/altaussee"
 				class="relative aspect-square overflow-hidden bg-frisch-indigo p-4 text-white transition hover:scale-105"
+				to="/explore/altaussee"
 			>
 				<span class="uppercase">{{ t("AltausseePage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
+				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				rel="noopener noreferrer"
 				:to="randomQuotes[1]?.link || ''"
-				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 			>
 				<span class="sr-only">
 					{{ randomQuotes[1]?.text || "Loading content..." }}
@@ -166,22 +166,22 @@ usePageMetadata({
 				</template>
 			</NuxtLink>
 			<NuxtLink
-				to="/explore/academic-reception"
 				class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
+				to="/explore/academic-reception"
 			>
 				<span>{{ t("AcademicReceptionPage.title") }}</span>
 			</NuxtLink>
 
 			<NuxtLink
-				to="/explore/biography"
 				class="relative aspect-square overflow-hidden bg-frisch-indigo p-4 text-white transition hover:scale-105"
+				to="/explore/biography"
 			>
 				<span class="uppercase">{{ t("BiographyPage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
+				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				rel="noopener noreferrer"
 				:to="randomQuotes[2]?.link || ''"
-				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 			>
 				<span class="sr-only">
 					{{ randomQuotes[2]?.text || "Loading content..." }}
@@ -197,18 +197,18 @@ usePageMetadata({
 				</template>
 			</NuxtLink>
 			<NuxtLink
-				to="/explore/autobiografiction"
 				class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
+				to="/explore/autobiografiction"
 			>
 				<span>{{ t("AutobiografictionPage.title") }}</span>
 			</NuxtLink>
 			<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
 				<template v-if="randomImages != null && randomImages.length > 1">
 					<NuxtImg
-						preload
 						:alt="randomImages[1]?.alt || randomImages[1]?.title || ''"
-						:src="randomImages ? randomImages[1]?.image : '/assets/images/writing_placeholder.png'"
 						class="absolute inset-0 size-full object-cover"
+						preload
+						:src="randomImages ? randomImages[1]?.image : '/assets/images/writing_placeholder.png'"
 					/>
 				</template>
 				<template v-else>
@@ -218,8 +218,8 @@ usePageMetadata({
 				</template>
 			</Card>
 			<NuxtLink
-				to="/explore/glossary"
 				class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
+				to="/explore/glossary"
 			>
 				<span class="uppercase">{{ t("GlossaryPage.title") }}</span>
 			</NuxtLink>

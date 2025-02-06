@@ -5,7 +5,7 @@ import { expect, test } from "@/e2e/lib/test";
 import { ensureTrailingSlash } from "@/utils/ensure-trailing-slash";
 import { escape } from "@/utils/safe-json-ld-replacer";
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+ 
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 test("should set a canonical url", async ({ page }) => {

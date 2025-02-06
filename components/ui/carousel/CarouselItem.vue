@@ -11,7 +11,6 @@ const { orientation } = useCarousel();
 
 <template>
 	<div
-		role="group"
 		aria-roledescription="slide"
 		:class="
 			cn(
@@ -20,6 +19,7 @@ const { orientation } = useCarousel();
 				props.class,
 			)
 		"
+		role="group"
 	>
 		<slot />
 	</div>
