@@ -14,7 +14,6 @@ const fluidColumnsPlugin = createPlugin(({ addUtilities, matchUtilities, theme }
 			},
 		},
 
-		 
 		{ values: theme("width")! },
 	);
 
