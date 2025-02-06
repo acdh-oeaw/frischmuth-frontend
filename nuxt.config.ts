@@ -76,7 +76,21 @@ export default defineNuxtConfig({
 		dirs: ["./config/"],
 	},
 
-	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
+	mdc: {
+		remarkPlugins: {
+			/** @see https://github.com/nuxt-modules/mdc/issues/187 */
+			"remark-emoji": false,
+		},
+	},
+
+	modules: [
+		"@nuxt/content",
+		"@nuxt/image",
+		"@nuxtjs/color-mode",
+		"@nuxtjs/i18n",
+		"@nuxtjs/mdc",
+		"@vueuse/nuxt",
+	],
 
 	nitro: {
 		compressPublicAssets: true,
