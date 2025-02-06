@@ -86,7 +86,7 @@ export default defineNuxtConfig({
 		// experimental: {
 		// 	typedOptionsAndMessages: "default",
 		// },
-		langDir: "./messages",
+		langDir: "../messages",
 		lazy: true,
 		locales: Object.values(localesMap),
 		strategy: "prefix_except_default",
