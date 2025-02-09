@@ -54,19 +54,14 @@ const { data: page } = await useAsyncData("explore-page", async () => {
 	return { exploreImages, quotes };
 });
 
-const randomQuotes = ref<Array<Quote>>([]);
-const randomImages = ref<Array<Image> | null>(null);
-
-watchEffect(() => {
-	if (page.value?.quotes) {
-		randomQuotes.value = getRandomEntries(page.value.quotes, 3);
-	}
+const randomQuotes = computed(() => {
+	if (!page.value?.quotes) return [];
+	return getRandomEntries(page.value.quotes, 3);
 });
 
-watchEffect(() => {
-	if (page.value?.exploreImages) {
-		randomImages.value = getRandomImages(page.value.exploreImages, 2);
-	}
+const randomImages = computed(() => {
+	if (!page.value?.exploreImages) return [];
+	return getRandomImages(page.value.exploreImages, 2);
 });
 </script>
 

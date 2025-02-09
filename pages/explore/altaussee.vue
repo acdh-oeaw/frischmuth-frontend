@@ -29,7 +29,6 @@ const { data } = await useAsyncData("altaussee-page", async () => {
 });
 
 const mapData = computed(() => data.value?.places);
-//
 
 const places = computed(() => {
 	return mapData.value?.map((place) => {
