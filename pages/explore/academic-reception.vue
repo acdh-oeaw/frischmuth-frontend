@@ -36,7 +36,7 @@ const { data: parsedContent } = useAsyncData(
 );
 
 useErrorMessage(aboutError, {
-	notFound: t("AcademicReceptionPage"),
+	notFound: t("AcademicReceptionPage.errors.404"),
 	unknown: t("AcademicReceptionPage.errors.500"),
 });
 </script>
