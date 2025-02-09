@@ -11,7 +11,7 @@ defineRouteRules({
 const t = useTranslations();
 
 usePageMetadata({
-	title: t("JournalisticReceptionPage"),
+	title: t("JournalisticReceptionPage.meta.title"),
 });
 
 const { data: about, error: aboutError } = useQuery({

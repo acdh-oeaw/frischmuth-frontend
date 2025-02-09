@@ -8,7 +8,7 @@ defineRouteRules({
 const t = useTranslations();
 
 usePageMetadata({
-	title: t("GlossaryPage"),
+	title: t("GlossaryPage.meta.title"),
 });
 
 const { data: glossary, error: aboutError } = useQuery({
