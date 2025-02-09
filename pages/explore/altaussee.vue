@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { isNonEmptyArray } from "@acdh-oeaw/lib";
-import { useQuery } from "@tanstack/vue-query";
 import * as turf from "@turf/turf";
 import type { MapGeoJSONFeature } from "maplibre-gl";
 
@@ -16,33 +14,22 @@ usePageMetadata({
 	title: t("AltausseePage.meta.title"),
 });
 
-const { data: mapData, error } = useQuery({
-	queryKey: ["mapData"] as const,
-	queryFn() {
-		return queryContent<AltausseePlace>("pages/altaussee/places").find();
-	},
+const { data } = await useAsyncData("altaussee-page", async () => {
+	const page = await $fetch<StaticPage>("/api/markdown-file", {
+		body: JSON.stringify({ path: "pages/altaussee/text/altaussee.md" }),
+		method: "POST",
+	});
+
+	const places = await $fetch<Array<AltausseePlace>>("/api/markdown-folder", {
+		body: JSON.stringify({ path: "pages/altaussee/places" }),
+		method: "POST",
+	});
+
+	return { page, places };
 });
 
-const { data: altaussee, error: textError } = useQuery({
-	queryKey: ["altaussee"] as const,
-	queryFn() {
-		return queryContent<StaticPage>("pages/altaussee/text/altaussee").findOne();
-	},
-});
-
-const { data: parsedContent } = useAsyncData(
-	"altaussee-page-sections",
-	async () => {
-		if (!isNonEmptyArray(altaussee.value?.sections)) return [];
-
-		return Promise.all(
-			altaussee.value.sections.map((section) => {
-				return $fetch("/api/parse-mdc", { body: { input: section.content }, method: "POST" });
-			}),
-		);
-	},
-	{ watch: [altaussee] },
-);
+const mapData = computed(() => data.value?.places);
+//
 
 const places = computed(() => {
 	return mapData.value?.map((place) => {
@@ -54,16 +41,6 @@ const isMobile = computed(() => {
 	return window.innerWidth < 1024;
 });
 
-useErrorMessage(error, {
-	notFound: t("AltausseePage.errors.404"),
-	unknown: t("AltausseePage.errors.500"),
-});
-
-useErrorMessage(textError, {
-	notFound: t("AltausseePage.errors.404"),
-	unknown: t("AltausseePage.errors.500"),
-});
-
 const currentPlace = ref<AltausseePlace | null>(null);
 const popover = ref<{ coordinates: [number, number]; place: AltausseePlace } | null>(null);
 
@@ -72,7 +49,7 @@ function onLayerClick(features: Array<MapGeoJSONFeature & Pick<GeoJsonFeature, "
 
 	const selectedPlace: AltausseePlace | undefined = features
 		.map((feature) => {
-			return mapData.value?.find((place) => feature.properties._id === place.title);
+			return mapData.value?.find((place) => feature.properties._id === place.metadata.title);
 		})
 		.find((place) => place !== undefined);
 
@@ -118,26 +95,22 @@ function onChangePlaceDetail(toggleValue: boolean, place: AltausseePlace | null)
 								href="#"
 								@click="onChangePlaceDetail(true, popover.place)"
 							>
-								{{ popover.place.title }}
+								{{ popover.place.metadata.title }}
 							</NavLink>
 						</strong>
 					</article>
 				</MapPopup>
 			</Map>
 		</div>
-		<div
-			v-if="altaussee && altaussee.sections && altaussee.sections.length"
-			class="grid w-full pt-4"
-		>
+		<div v-if="data?.page.sections" class="grid w-full pt-4">
 			<div
-				v-for="(section, index) in altaussee.sections"
+				v-for="(section, index) in data.page.sections"
 				:key="index"
 				class="prose max-w-full pb-4"
 			>
 				<h2 class="m-0 font-bold text-frisch-orange">{{ section.title }}</h2>
-				<ContentRenderer v-if="parsedContent?.[index]" :value="parsedContent[index]">
-					<template #empty></template>
-				</ContentRenderer>
+				<!-- eslint-disable-next-line vue/no-v-html -->
+				<section v-html="section.content" />
 			</div>
 		</div>
 		<template v-if="isDetailViewOn">

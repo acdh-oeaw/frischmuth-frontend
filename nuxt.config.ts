@@ -19,13 +19,9 @@ export default defineNuxtConfig({
 		dataValue: "ui-color-scheme",
 	},
 
-	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
+	compatibilityDate: "2025-01-01",
 
-	content: {
-		defaultLocale,
-		locales: Object.keys(localesMap),
-		markdown: {},
-	},
+	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
 
 	css: [
 		"@fontsource-variable/inter/standard.css",
@@ -97,22 +93,7 @@ export default defineNuxtConfig({
 		dirs: ["./config/"],
 	},
 
-	mdc: {
-		remarkPlugins: {
-			/** @see https://github.com/nuxt-modules/mdc/issues/187 */
-			"remark-emoji": false,
-		},
-	},
-
-	modules: [
-		"@nuxt/content",
-		"@nuxt/eslint",
-		"@nuxt/image",
-		"@nuxtjs/color-mode",
-		"@nuxtjs/i18n",
-		"@nuxtjs/mdc",
-		"@vueuse/nuxt",
-	],
+	modules: ["@nuxt/eslint", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
 
 	nitro: {
 		compressPublicAssets: true,
@@ -152,6 +133,4 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-
-	compatibilityDate: "2025-01-01",
 });

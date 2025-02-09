@@ -56,20 +56,22 @@ onScopeDispose(() => {
 			<DrawerContent class="px-4">
 				<div class="grid grid-cols-[auto_1fr] items-center gap-1 overflow-y-auto pt-2 text-sm">
 					<MapPinIcon :size="16" />
-					<h1 class="text-lg font-semibold">{{ props.place.title }}</h1>
+					<h1 class="text-lg font-semibold">{{ props.place.metadata.title }}</h1>
 				</div>
-				<div v-if="props.place.images != null" class="relative py-4">
-					<ImageCarousel :images="props.place.images" />
+				<div v-if="props.place.metadata.images != null" class="relative py-4">
+					<ImageCarousel :images="props.place.metadata.images" />
 				</div>
-				<div v-if="props.place.description != null">
+				<div v-if="props.place.metadata.description != null">
 					<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
 					<div>
-						{{ props.place.description }}
+						{{ props.place.metadata.description }}
 					</div>
 				</div>
-				<div v-if="place != null && place.links != null && place.links.length > 0">
+				<div
+					v-if="place != null && place.metadata.links != null && place.metadata.links.length > 0"
+				>
 					<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
-					<div v-for="link in place.links" :key="link.url">
+					<div v-for="link in place.metadata.links" :key="link.url">
 						<NavLink
 							class="flex cursor-pointer items-center gap-1 underline decoration-dotted hover:no-underline"
 							:href="link.url"
@@ -98,20 +100,22 @@ onScopeDispose(() => {
 			<div>
 				<div class="grid grid-cols-[auto_1fr] items-center gap-1 pt-2 text-lg font-semibold">
 					<MapPinIcon :size="16" />
-					<h1>{{ props.place.title }}</h1>
+					<h1>{{ props.place.metadata.title }}</h1>
 				</div>
-				<div v-if="props.place.images != null" class="relative py-4">
-					<ImageCarousel :images="props.place.images" />
+				<div v-if="props.place.metadata.images != null" class="relative py-4">
+					<ImageCarousel :images="props.place.metadata.images" />
 				</div>
-				<div v-if="props.place.description != null">
+				<div v-if="props.place.metadata.description != null">
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
 					<div>
-						{{ props.place.description }}
+						{{ props.place.metadata.description }}
 					</div>
 				</div>
-				<div v-if="place != null && place.links != null && place.links.length > 0">
+				<div
+					v-if="place != null && place.metadata.links != null && place.metadata.links.length > 0"
+				>
 					<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
-					<div v-for="link in place.links" :key="link.url">
+					<div v-for="link in place.metadata.links" :key="link.url">
 						<NavLink
 							class="flex cursor-pointer items-center gap-1 pb-1 underline decoration-dotted hover:no-underline"
 							:href="link.url"

@@ -1,10 +1,14 @@
 <script lang="ts" setup>
-import { useQuery } from "@tanstack/vue-query";
-
 import type { ExploreImages, Quote } from "@/types/content";
 
 defineRouteRules({
 	prerender: true,
+});
+
+const t = useTranslations();
+
+usePageMetadata({
+	title: t("ExplorePage.meta.title"),
 });
 
 interface Image {
@@ -13,8 +17,6 @@ interface Image {
 	alt?: string;
 	copyright?: string;
 }
-
-const t = useTranslations();
 
 function getRandomEntries(arr: Array<Quote>, count: number) {
 	if (arr.length <= count) return arr;
@@ -28,9 +30,9 @@ function getRandomEntries(arr: Array<Quote>, count: number) {
 }
 
 function getRandomImages(arr: ExploreImages, count: number): Array<Image> {
-	if (arr.images.length <= count) return arr.images;
+	if (arr.metadata.images.length <= count) return arr.metadata.images;
 
-	const shuffled = arr.images
+	const shuffled = arr.metadata.images
 		.map((value) => ({ value, sortKey: Math.random() }))
 		.sort((a, b) => a.sortKey - b.sortKey)
 		.map(({ value }) => value);
@@ -38,37 +40,33 @@ function getRandomImages(arr: ExploreImages, count: number): Array<Image> {
 	return shuffled.slice(0, count) as Array<Image>;
 }
 
-const { data: quotes } = useQuery({
-	queryKey: ["quotes"],
-	queryFn() {
-		return queryContent<Quote>("pages/quotes").find();
-	},
-});
+const { data: page } = await useAsyncData("explore-page", async () => {
+	const exploreImages = await $fetch<ExploreImages>("/api/markdown-file", {
+		body: JSON.stringify({ path: "pages/explore-images/explore-images.md" }),
+		method: "POST",
+	});
 
-const { data: exploreImages } = useQuery({
-	queryKey: ["exploreImages"],
-	queryFn() {
-		return queryContent<ExploreImages>("pages/explore-images/explore-images").findOne();
-	},
+	const quotes = await $fetch<Array<Quote>>("/api/markdown-folder", {
+		body: JSON.stringify({ path: "pages/quotes" }),
+		method: "POST",
+	});
+
+	return { exploreImages, quotes };
 });
 
 const randomQuotes = ref<Array<Quote>>([]);
 const randomImages = ref<Array<Image> | null>(null);
 
 watchEffect(() => {
-	if (quotes.value) {
-		randomQuotes.value = getRandomEntries(quotes.value, 3);
+	if (page.value?.quotes) {
+		randomQuotes.value = getRandomEntries(page.value.quotes, 3);
 	}
 });
 
 watchEffect(() => {
-	if (exploreImages.value) {
-		randomImages.value = getRandomImages(exploreImages.value, 2);
+	if (page.value?.exploreImages) {
+		randomImages.value = getRandomImages(page.value.exploreImages, 2);
 	}
-});
-
-usePageMetadata({
-	title: t("ExplorePage.meta.title"),
 });
 </script>
 
@@ -93,14 +91,15 @@ usePageMetadata({
 			<NuxtLink
 				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				rel="noopener noreferrer"
-				:to="randomQuotes[0]?.link || ''"
+				:to="randomQuotes[0]?.metadata.link || ''"
 			>
 				<span class="sr-only">
-					{{ randomQuotes[0]?.text || "Loading content..." }}
+					{{ randomQuotes[0]?.metadata.title || "Loading content..." }}
 				</span>
 
 				<template v-if="randomQuotes[0] != null">
-					<ContentRenderer class="text-frisch-orange" :value="randomQuotes[0]" />
+					<!-- eslint-disable-next-line vue/no-v-html -->
+					<div class="text-frisch-orange" v-html="randomQuotes[0].body" />
 				</template>
 				<template v-else>
 					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">
@@ -150,14 +149,15 @@ usePageMetadata({
 			<NuxtLink
 				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				rel="noopener noreferrer"
-				:to="randomQuotes[1]?.link || ''"
+				:to="randomQuotes[1]?.metadata.link || ''"
 			>
 				<span class="sr-only">
-					{{ randomQuotes[1]?.text || "Loading content..." }}
+					{{ randomQuotes[1]?.metadata.title || "Loading content..." }}
 				</span>
 
 				<template v-if="randomQuotes[1] != null">
-					<ContentRenderer class="text-frisch-orange" :value="randomQuotes[1]" />
+					<!-- eslint-disable-next-line vue/no-v-html -->
+					<div class="text-frisch-orange" v-html="randomQuotes[1].body" />
 				</template>
 				<template v-else>
 					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">
@@ -181,14 +181,15 @@ usePageMetadata({
 			<NuxtLink
 				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
 				rel="noopener noreferrer"
-				:to="randomQuotes[2]?.link || ''"
+				:to="randomQuotes[2]?.metadata.link || ''"
 			>
 				<span class="sr-only">
-					{{ randomQuotes[2]?.text || "Loading content..." }}
+					{{ randomQuotes[2]?.metadata.title || "Loading content..." }}
 				</span>
 
 				<template v-if="randomQuotes[2] != null">
-					<ContentRenderer class="text-frisch-orange" :value="randomQuotes[2]" />
+					<!-- eslint-disable-next-line vue/no-v-html -->
+					<div class="text-frisch-orange" v-html="randomQuotes[2].body" />
 				</template>
 				<template v-else>
 					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">

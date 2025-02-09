@@ -1,33 +1,29 @@
-import type { MarkdownParsedContent } from "@nuxt/content";
+import type { ParsedMarkdown } from "@/server/utils/markdown";
 
-export interface StaticPage extends MarkdownParsedContent {
+export type StaticPage = ParsedMarkdown<{
 	title: string;
-	sections: Array<{
-		title: string;
-		content: string; // maybe MarkdownParsedContent
-	}>;
-}
+}>;
 
-export interface TeamMember extends MarkdownParsedContent {
+export type TeamMember = ParsedMarkdown<{
 	firstName?: string;
 	lastName: string;
 	image?: string;
-}
+}>;
 
-export interface BiographyEntry extends MarkdownParsedContent {
+export type BiographyEntry = ParsedMarkdown<{
 	year: string;
 	image?: string;
 	alt?: string;
 	imageTitle?: string;
 	copyright?: string;
-}
+}>;
 
-export interface Quote extends MarkdownParsedContent {
+export type Quote = ParsedMarkdown<{
 	title: string;
 	link: string;
-}
+}>;
 
-export interface AltausseePlace {
+export type AltausseePlace = ParsedMarkdown<{
 	title: string;
 	coordinates: {
 		latitude: number;
@@ -44,9 +40,9 @@ export interface AltausseePlace {
 		workTitle: string;
 		url: string;
 	}>;
-}
+}>;
 
-export interface ExploreImages {
+export type ExploreImages = ParsedMarkdown<{
 	title: string;
 	images: Array<{
 		title: string;
@@ -54,4 +50,4 @@ export interface ExploreImages {
 		alt?: string;
 		copyright?: string;
 	}>;
-}
+}>;

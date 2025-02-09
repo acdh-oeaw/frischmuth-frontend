@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useQuery } from "@tanstack/vue-query";
+import type { StaticPage } from "@/types/content";
 
 defineRouteRules({
 	prerender: true,
@@ -11,16 +11,11 @@ usePageMetadata({
 	title: t("PlacesPage.meta.title"),
 });
 
-const { data: places, error: aboutError } = useQuery({
-	queryKey: ["places"] as const,
-	queryFn() {
-		return queryContent("pages/places/places").findOne();
-	},
-});
-
-useErrorMessage(aboutError, {
-	notFound: t("PlacesPage.errors.404"),
-	unknown: t("PlacesPage.errors.500"),
+const { data: page } = await useAsyncData("places-page", async () => {
+	return $fetch<StaticPage>("/api/markdown-file", {
+		body: JSON.stringify({ path: "pages/places/places.md" }),
+		method: "POST",
+	});
 });
 </script>
 
@@ -36,8 +31,7 @@ useErrorMessage(aboutError, {
 			</Card>
 		</div>
 
-		<ContentRenderer v-if="places" class="prose max-w-3xl" :value="places">
-			<template #empty></template>
-		</ContentRenderer>
+		<!-- eslint-disable-next-line vue/no-v-html -->
+		<section class="prose max-w-3xl" v-html="page?.body" />
 	</MainContent>
 </template>
