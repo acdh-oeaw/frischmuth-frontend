@@ -5,9 +5,9 @@
 	"type": "module",
 	"engines": {
 		"node": "22.x",
-		"pnpm": "9.x"
+		"pnpm": "10.x"
 	},
-	"packageManager": "pnpm@9.15.5",
+	"packageManager": "pnpm@10.2.1",
 	"scripts": {
 		"analyze": "nuxt analyze --dotenv ./.env.local",
 		"build": "nuxt build --dotenv ./.env.local",
