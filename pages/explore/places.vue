@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import transliterate from "@sindresorhus/transliterate";
-import { useQuery } from "@tanstack/vue-query";
+import type { StaticPage } from "@/types/content";
 import { SearchIcon } from "lucide-vue-next";
 
 defineRouteRules({
@@ -42,19 +42,14 @@ const isLoading = computed(() => {
 });
 
 usePageMetadata({
-	title: t("PlacesPage"),
+	title: t("PlacesPage.meta.title"),
 });
 
-const { data: placesIntro, error: aboutError } = useQuery({
-	queryKey: ["placesIntro"] as const,
-	queryFn() {
-		return queryContent("pages/places/places").findOne();
-	},
-});
-
-useErrorMessage(aboutError, {
-	notFound: t("PlacesPage.errors.404"),
-	unknown: t("PlacesPage.errors.500"),
+const { data: page } = await useAsyncData("places-page", async () => {
+	return $fetch<StaticPage>("/api/markdown-file", {
+		body: JSON.stringify({ path: "pages/places/places.md" }),
+		method: "POST",
+	});
 });
 
 const isMobile = computed(() => {
@@ -74,59 +69,7 @@ const isMobile = computed(() => {
 			</Card>
 		</div>
 
-		<div>
-			<ContentRenderer v-if="placesIntro" class="prose max-w-3xl" :value="placesIntro">
-				<template #empty></template>
-			</ContentRenderer>
-			<div v-if="!isLoading">
-				<nav
-					class="prose flex w-full max-w-3xl justify-center pt-4 text-frisch-indigo"
-					aria-label="Orte"
-				>
-					<a href="#10">WIP Navigation</a>
-				</nav>
-				<div v-for="(letterGroup, index) in places" :key="index" class="prose max-w-3xl pt-5">
-					<!-- Group of places by letter -->
-					<h2 :id="String(index)" class="mb-3 text-2xl font-bold text-frisch-indigo">
-						{{ String.fromCharCode(65 + index) }}
-					</h2>
-					<div v-if="letterGroup.length === 0" class="p-3 text-sm text-muted-foreground">
-						Keine Orte vorhanden.
-					</div>
-					<div v-else class="flex flex-wrap">
-						<div v-for="(place, letter) in letterGroup" :key="place.name" class="p-1 text-base">
-							<div class="flex gap-2">
-								{{ place.name }}
-								<NuxtLink
-									:href="{
-										path: '/search',
-										query: {
-											query: place.name,
-										},
-									}"
-								>
-									<span class="sr-only">Nach verknüpften Werken suchen</span>
-									<SearchIcon :size="16" class="mt-1 text-frisch-indigo" />
-								</NuxtLink>
-								<span v-if="place.latitude && place.longitude" class="flex items-center">
-									<span class="sr-only">Ort anzeigen</span>
-									<MapSidebar
-										class="cursor-pointer"
-										:is-mobile="isMobile"
-										:place="place"
-										relation="Ort"
-									/>
-								</span>
-
-								<span v-if="letter !== letterGroup.length - 1">|</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<Centered v-else class="pointer-events-none">
-				<LoadingSpinner />
-			</Centered>
-		</div>
+		<!-- eslint-disable-next-line vue/no-v-html -->
+		<section class="prose max-w-3xl" v-html="page?.body" />
 	</MainContent>
 </template>

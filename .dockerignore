@@ -4,9 +4,6 @@
 node_modules/
 .pnpm-store/
 
-# generated libs
-/lib/*
-
 # logs
 *.log
 
@@ -16,6 +13,7 @@ node_modules/
 
 # caches
 .eslintcache
+.prettiercache
 .stylelintcache
 *.tsbuildinfo
 
@@ -38,6 +36,9 @@ dist
 /playwright/.cache/
 /playwright-report/
 /test-results/
+
+# generated libs
+/lib/*
 
 
 ## .dockerignore ##

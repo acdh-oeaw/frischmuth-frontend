@@ -2,7 +2,6 @@ import { fileURLToPath } from "node:url";
 
 import { defaultLocale, localesMap } from "./config/i18n.config";
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 export default defineNuxtConfig({
@@ -20,13 +19,9 @@ export default defineNuxtConfig({
 		dataValue: "ui-color-scheme",
 	},
 
-	components: [{ path: "@/components", extensions: [".vue"], pathPrefix: false }],
+	compatibilityDate: "2025-01-01",
 
-	content: {
-		defaultLocale,
-		locales: Object.keys(localesMap),
-		markdown: {},
-	},
+	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
 
 	css: [
 		"@fontsource-variable/inter/standard.css",
@@ -37,6 +32,13 @@ export default defineNuxtConfig({
 
 	devtools: {
 		enabled: process.env.NODE_ENV === "development",
+	},
+
+	eslint: {
+		config: {
+			autoInit: false,
+			standalone: true,
+		},
 	},
 
 	experimental: {
@@ -52,12 +54,24 @@ export default defineNuxtConfig({
 			},
 		},
 		inlineRouteRules: true,
+		/**
+		 * @see https://github.com/nuxt-modules/i18n/issues/3240
+		 */
+		scanPageMeta: true,
+		// typedPages: true,
 	},
 
 	features: {
 		/** @see https://github.com/nuxt/nuxt/issues/21821 */
-		inlineStyles: false,
+		inlineStyles(id) {
+			// eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+			return id != null && id.includes(".vue");
+		},
 	},
+
+	// future: {
+	// 	compatibilityVersion: 4,
+	// },
 
 	i18n: {
 		baseUrl,
@@ -65,7 +79,10 @@ export default defineNuxtConfig({
 		detectBrowserLanguage: {
 			redirectOn: "root",
 		},
-		langDir: "./messages",
+		// experimental: {
+		// 	typedOptionsAndMessages: "default",
+		// },
+		langDir: "../messages",
 		lazy: true,
 		locales: Object.values(localesMap),
 		strategy: "prefix_except_default",
@@ -76,21 +93,7 @@ export default defineNuxtConfig({
 		dirs: ["./config/"],
 	},
 
-	mdc: {
-		remarkPlugins: {
-			/** @see https://github.com/nuxt-modules/mdc/issues/187 */
-			"remark-emoji": false,
-		},
-	},
-
-	modules: [
-		"@nuxt/content",
-		"@nuxt/image",
-		"@nuxtjs/color-mode",
-		"@nuxtjs/i18n",
-		"@nuxtjs/mdc",
-		"@vueuse/nuxt",
-	],
+	modules: ["@nuxt/eslint", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
 
 	nitro: {
 		compressPublicAssets: true,
@@ -130,6 +133,4 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-
-	compatibilityDate: "2024-08-09",
 });

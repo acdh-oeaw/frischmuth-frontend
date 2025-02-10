@@ -13,7 +13,7 @@ const props = defineProps<{
 const api = ref<CarouselApi>();
 const current = ref(0);
 
-let show = ref(false);
+const show = ref(false);
 
 function setApi(val: CarouselApi) {
 	api.value = val;

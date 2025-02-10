@@ -34,7 +34,7 @@ function onChange(event: Event) {
 <template>
 	<div class="relative flex h-full">
 		<div class="absolute inset-0 w-full overflow-auto bg-frisch-orange-searchform">
-			<form role="search" @submit.stop.prevent="onChange" @submit.prevent="onChange">
+			<form role="search" @submit.prevent="onChange" @submit.stop.prevent="onChange">
 				<div class="overflow-y-auto">
 					<slot />
 				</div>

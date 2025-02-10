@@ -182,7 +182,7 @@ const facets = computed(() => {
 			<div class="hidden md:block">
 				<SearchForm query="" @submit="onChange">
 					<SearchTextInput :search-query="searchQuery ?? ''" />
-					<SearchFilter :filter-count="filterCount" :facets="facets" />
+					<SearchFilter :facets="facets" :filter-count="filterCount" />
 				</SearchForm>
 			</div>
 			<div
@@ -195,7 +195,7 @@ const facets = computed(() => {
 							class="grid w-full grid-cols-2 items-center bg-frisch-orange-searchform text-frisch-orange"
 						>
 							<div class="flex items-center">
-								<SearchIcon :size="32" class="m-1.5 p-1" />
+								<SearchIcon class="m-1.5 p-1" :size="32" />
 								<span class="font-semibold">Suche</span>
 							</div>
 							<div class="flex justify-end px-4">
@@ -236,8 +236,8 @@ const facets = computed(() => {
 					<DataTable
 						class="flex align-top"
 						:data="data.results"
-						:results-total="data.count"
 						:is-mobile="isMobile"
+						:results-total="data.count"
 					/>
 				</div>
 				<div class="flex justify-center p-8 align-top">
@@ -245,10 +245,10 @@ const facets = computed(() => {
 						v-if="data?.count != null"
 						v-slot="{ page }"
 						class="justify-self-center"
-						:sibling-count="isMobile ? 0 : 1"
-						:show-edges="true"
-						:total="data.count"
 						:items-per-page="limit"
+						:show-edges="true"
+						:sibling-count="isMobile ? 0 : 1"
+						:total="data.count"
 						@update:page="onUpdatePage"
 					>
 						<PaginationList v-slot="{ items }" class="flex items-center gap-1">

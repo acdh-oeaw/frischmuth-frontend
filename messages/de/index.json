@@ -29,86 +29,6 @@
 		},
 		"title": "Altaussee"
 	},
-	"JournalisticReceptionPage": {
-		"errors": {
-			"404": "Seite nicht gefunden",
-			"500": "Interner Fehler"
-		},
-		"meta": {
-			"title": "Journalistische Rezeption"
-		},
-		"title": "Journalistische Rezeption"
-	},
-	"AutobiografictionPage": {
-		"errors": {
-			"404": "Seite nicht gefunden",
-			"500": "Interner Fehler"
-		},
-		"meta": {
-			"title": "Autobiografiktion"
-		},
-		"title": "Autobiografiktion"
-	},
-	"FromTheArchivePage": {
-		"errors": {
-			"404": "Seite nicht gefunden",
-			"500": "Interner Fehler"
-		},
-		"meta": {
-			"title": "Aus dem Archiv"
-		},
-		"title": "Aus dem Archiv"
-	},
-	"BiographyPage": {
-		"errors": {
-			"404": "Seite nicht gefunden",
-			"500": "Interner Fehler"
-		},
-		"meta": {
-			"title": "Biografie"
-		},
-		"title": "Biografie"
-	},
-	"PlacesPage": {
-		"errors": {
-			"404": "Seite nicht gefunden",
-			"500": "Interner Fehler"
-		},
-		"meta": {
-			"title": "Orte"
-		},
-		"title": "Orte"
-	},
-	"ThemesPage": {
-		"errors": {
-			"404": "Seite nicht gefunden",
-			"500": "Interner Fehler"
-		},
-		"meta": {
-			"title": "Themen"
-		},
-		"title": "Themen"
-	},
-	"GlossaryPage": {
-		"errors": {
-			"404": "Seite nicht gefunden",
-			"500": "Interner Fehler"
-		},
-		"meta": {
-			"title": "Glossar"
-		},
-		"title": "Glossar"
-	},
-	"ResearchAspectsPage": {
-		"errors": {
-			"404": "Seite nicht gefunden",
-			"500": "Interner Fehler"
-		},
-		"meta": {
-			"title": "Forschungs-Hinsichten"
-		},
-		"title": "Forschungs-Hinsichten"
-	},
 	"AppFooter": {
 		"links": {
 			"imprint": "Impressum"
@@ -120,6 +40,26 @@
 			"home": "Startseite"
 		},
 		"navigation-main": "Hauptnavigation"
+	},
+	"AutobiografictionPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Autobiografiktion"
+		},
+		"title": "Autobiografiktion"
+	},
+	"BiographyPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Biografie"
+		},
+		"title": "Biografie"
 	},
 	"DefaultLayout": {
 		"skip-to-main-content": "Zum Hauptinhalt springen"
@@ -140,6 +80,26 @@
 		},
 		"title": "Entdecken"
 	},
+	"FromTheArchivePage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Aus dem Archiv"
+		},
+		"title": "Aus dem Archiv"
+	},
+	"GlossaryPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Glossar"
+		},
+		"title": "Glossar"
+	},
 	"ImprintPage": {
 		"meta": {
 			"title": "Impressum"
@@ -157,16 +117,56 @@
 		},
 		"title": "Startseite"
 	},
+	"JournalisticReceptionPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Journalistische Rezeption"
+		},
+		"title": "Journalistische Rezeption"
+	},
 	"NotFoundPage": {
 		"meta": {
 			"title": "Seite nicht gefunden"
 		},
 		"title": "Seite nicht gefunden"
 	},
+	"PlacesPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Orte"
+		},
+		"title": "Orte"
+	},
+	"ResearchAspectsPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Forschungs-Hinsichten"
+		},
+		"title": "Forschungs-Hinsichten"
+	},
 	"SearchPage": {
 		"meta": {
 			"title": "Suche"
 		},
 		"title": "Suche"
+	},
+	"ThemesPage": {
+		"errors": {
+			"404": "Seite nicht gefunden",
+			"500": "Interner Fehler"
+		},
+		"meta": {
+			"title": "Themen"
+		},
+		"title": "Themen"
 	}
 }

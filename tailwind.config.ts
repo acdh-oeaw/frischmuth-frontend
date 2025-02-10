@@ -1,7 +1,7 @@
-import typography from "@tailwindcss/typography";
+import typographyPlugin from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 import createPlugin from "tailwindcss/plugin";
-import animate from "tailwindcss-animate";
+import animatePlugin from "tailwindcss-animate";
 
 // eslint-disable-next-line @typescript-eslint/unbound-method
 const fluidColumnsPlugin = createPlugin(({ addUtilities, matchUtilities, theme }) => {
@@ -14,7 +14,6 @@ const fluidColumnsPlugin = createPlugin(({ addUtilities, matchUtilities, theme }
 			},
 		},
 
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		{ values: theme("width")! },
 	);
 
@@ -125,7 +124,7 @@ const config = {
 			},
 		},
 	},
-	plugins: [animate, typography, fluidColumnsPlugin],
+	plugins: [animatePlugin, fluidColumnsPlugin, typographyPlugin],
 } satisfies Config;
 
 export default config;

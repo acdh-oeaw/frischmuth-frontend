@@ -8,11 +8,11 @@ export function createGeoJsonFeature(place: AltausseePlace): GeoJsonFeature {
 	return {
 		type: "Feature",
 		geometry: {
-			coordinates: [place.coordinates.longitude, place.coordinates.latitude],
+			coordinates: [place.metadata.coordinates.longitude, place.metadata.coordinates.latitude],
 			type: "Point",
 		},
 		properties: {
-			_id: place.title,
+			_id: place.metadata.title,
 		},
 	};
 }

@@ -184,7 +184,7 @@ const icon = computed(() => {
 						</div>
 
 						<div class="flex items-center">
-							<GlobeIcon :size="16" class="mr-2" />
+							<GlobeIcon class="mr-2" :size="16" />
 							<div
 								v-if="
 									work?.expression_data[0]?.language != null &&
@@ -276,14 +276,14 @@ const icon = computed(() => {
 					<div v-else class="text-sm text-muted-foreground">Keine Zusammenfassung vorhanden.</div>
 					<Accordion
 						:key="work?.id"
-						:disabled="work?.context || work?.historical_events ? false : true"
-						type="single"
 						:class="
 							work?.context || work?.historical_events
 								? `font-normal`
 								: `font-normal text-frisch-grey`
 						"
 						collapsible
+						:disabled="work?.context || work?.historical_events ? false : true"
+						type="single"
 					>
 						<AccordionItem value="context">
 							<AccordionTrigger>
@@ -306,14 +306,6 @@ const icon = computed(() => {
 					<div>
 						<Accordion
 							:key="work?.id"
-							:disabled="
-								(characters.main && characters.main?.length > 0) ||
-								(characters.secondary && characters.secondary?.length > 0) ||
-								(characters.spokenOf && characters.spokenOf?.length > 0)
-									? false
-									: true
-							"
-							type="single"
 							:class="
 								(characters.main && characters.main?.length > 0) ||
 								(characters.secondary && characters.secondary?.length > 0) ||
@@ -322,6 +314,14 @@ const icon = computed(() => {
 									: `font-normal text-frisch-grey`
 							"
 							collapsible
+							:disabled="
+								(characters.main && characters.main?.length > 0) ||
+								(characters.secondary && characters.secondary?.length > 0) ||
+								(characters.spokenOf && characters.spokenOf?.length > 0)
+									? false
+									: true
+							"
+							type="single"
 						>
 							<AccordionItem value="characters">
 								<AccordionTrigger>
@@ -394,14 +394,6 @@ const icon = computed(() => {
 					<div>
 						<Accordion
 							:key="work?.id"
-							:disabled="
-								(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
-								(places.discussed && places.discussed.length > 0) ||
-								(places.mentioned && places.mentioned.length > 0)
-									? false
-									: true
-							"
-							type="single"
 							:class="
 								(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
 								(places.discussed && places.discussed.length > 0) ||
@@ -410,6 +402,14 @@ const icon = computed(() => {
 									: `font-normal text-frisch-grey`
 							"
 							collapsible
+							:disabled="
+								(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
+								(places.discussed && places.discussed.length > 0) ||
+								(places.mentioned && places.mentioned.length > 0)
+									? false
+									: true
+							"
+							type="single"
 						>
 							<AccordionItem value="places">
 								<AccordionTrigger>
@@ -471,9 +471,9 @@ const icon = computed(() => {
 																>
 																	<span class="sr-only">Ort anzeigen</span>
 																	<MapSidebar
+																		:is-mobile="isMobile"
 																		:place="place"
 																		relation="Beleuchteter Ort"
-																		:is-mobile="isMobile"
 																	/>
 																</NuxtLink>
 															</span>
@@ -526,14 +526,6 @@ const icon = computed(() => {
 					<div>
 						<Accordion
 							:key="work?.id"
-							:disabled="
-								(relatedWork.references && relatedWork.references?.length > 0) ||
-								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
-								(relatedWork.referencedIn && relatedWork.referencedIn.length > 0)
-									? false
-									: true
-							"
-							type="single"
 							:class="
 								(relatedWork.references && relatedWork.references?.length > 0) ||
 								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
@@ -542,6 +534,14 @@ const icon = computed(() => {
 									: `font-normal text-frisch-grey`
 							"
 							collapsible
+							:disabled="
+								(relatedWork.references && relatedWork.references?.length > 0) ||
+								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
+								(relatedWork.referencedIn && relatedWork.referencedIn.length > 0)
+									? false
+									: true
+							"
+							type="single"
 						>
 							<AccordionItem value="relations">
 								<AccordionTrigger>
@@ -607,14 +607,14 @@ const icon = computed(() => {
 					<div>
 						<Accordion
 							:key="work?.id"
-							:disabled="work?.physical_objects && work?.physical_objects.length > 0 ? false : true"
-							type="single"
 							:class="
 								work?.physical_objects && work?.physical_objects.length > 0
 									? `font-normal`
 									: `font-normal text-frisch-grey`
 							"
 							collapsible
+							:disabled="work?.physical_objects && work?.physical_objects.length > 0 ? false : true"
+							type="single"
 						>
 							<AccordionItem value="relations">
 								<AccordionTrigger>
