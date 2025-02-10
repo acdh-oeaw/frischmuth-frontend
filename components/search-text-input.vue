@@ -12,10 +12,10 @@ const props = defineProps<{
 			<div>
 				<Input
 					:id="searchLabelId"
+					:default-value="props.searchQuery"
 					name="query"
 					placeholder="Suche"
 					type="search"
-					:default-value="props.searchQuery"
 				/>
 				<SubmitButton />
 			</div>

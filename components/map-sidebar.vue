@@ -30,7 +30,7 @@ function setPlaceQuery(id: number | undefined) {
 	<div v-if="props.isMobile">
 		<Drawer>
 			<DrawerTrigger class="w-full">
-				<EyeIcon :size="16" class="text-frisch-orange" />
+				<EyeIcon class="text-frisch-orange" :size="16" />
 			</DrawerTrigger>
 			<DrawerContent>
 				<div class="flex items-center gap-1 px-4 pt-2 text-sm">
@@ -41,9 +41,9 @@ function setPlaceQuery(id: number | undefined) {
 				<div class="px-4 py-2">
 					<div v-if="props.place.longitude != null && props.place.latitude != null">
 						<Map
-							:longitude="props.place.longitude"
-							:latitude="props.place.latitude"
 							:is-altaussee="false"
+							:latitude="props.place.latitude"
+							:longitude="props.place.longitude"
 						/>
 					</div>
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
@@ -58,7 +58,7 @@ function setPlaceQuery(id: number | undefined) {
 	<div v-else>
 		<Sheet>
 			<SheetTrigger as-child @click="setPlaceQuery(props.place.id)">
-				<EyeIcon :size="16" class="text-frisch-orange" />
+				<EyeIcon class="text-frisch-orange" :size="16" />
 			</SheetTrigger>
 			<SheetContent>
 				<div class="flex items-center gap-1 text-sm">
@@ -70,9 +70,9 @@ function setPlaceQuery(id: number | undefined) {
 					<div v-if="props.place.longitude != null && props.place.latitude != null">
 						<Map
 							class="h-80"
-							:longitude="props.place.longitude"
-							:latitude="props.place.latitude"
 							:is-altaussee="false"
+							:latitude="props.place.latitude"
+							:longitude="props.place.longitude"
 						/>
 					</div>
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>

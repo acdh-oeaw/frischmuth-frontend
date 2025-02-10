@@ -100,7 +100,7 @@ const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 		accessorKey: "expression_data",
 		header: () => h("div", "Edition"),
 		cell: ({ row }) => {
-			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const edition = row.getValue("expression_data") as Array<any> | undefined;
 			return h("div", {}, edition?.map((type) => type.edition_type).join(", "));
 		},
@@ -109,7 +109,7 @@ const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 		accessorKey: "expression_data",
 		header: () => h("div", "Ort"),
 		cell: ({ row }) => {
-			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const placeOfPublication = row.getValue("expression_data") as Array<any> | undefined;
 			return h("div", {}, placeOfPublication?.map((type) => type.place_of_publication).join(", "));
 		},
@@ -118,7 +118,7 @@ const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 		accessorKey: "expression_data",
 		header: () => h("div", "Verlag"),
 		cell: ({ row }) => {
-			// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const publisher = row.getValue("expression_data") as Array<any> | undefined;
 			return h("div", {}, publisher?.map((type) => type.publisher).join(", "));
 		},
@@ -175,13 +175,13 @@ function getCellClass<T>(columnDef?: CustomColumnDef<T>): string {
 						<TableHead
 							v-for="header in headerGroup.headers"
 							:key="header.id"
-							:class="getHeaderClass(header.column.columnDef)"
 							class="truncate p-2 text-left"
+							:class="getHeaderClass(header.column.columnDef)"
 						>
 							<FlexRender
 								v-if="!header.isPlaceholder"
-								:render="header.column.columnDef.header"
 								:props="header.getContext()"
+								:render="header.column.columnDef.header"
 							/>
 						</TableHead>
 					</TableRow>
@@ -199,13 +199,13 @@ function getCellClass<T>(columnDef?: CustomColumnDef<T>): string {
 								class="truncate p-2"
 								:class="getCellClass(cell.column.columnDef)"
 							>
-								<FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
+								<FlexRender :props="cell.getContext()" :render="cell.column.columnDef.cell" />
 							</TableCell>
 						</TableRow>
 					</template>
 					<template v-else>
 						<TableRow>
-							<TableCell :col-span="columns.length" class="h-24 text-center">
+							<TableCell class="h-24 text-center" :col-span="columns.length">
 								Keine Einträge zu dieser Suche.
 							</TableCell>
 						</TableRow>

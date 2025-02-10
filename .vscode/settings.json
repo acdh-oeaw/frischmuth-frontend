@@ -1,5 +1,6 @@
 {
 	"css.validate": false,
+	"debug.toolBarLocation": "docked",
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
 	},
@@ -13,9 +14,6 @@
 	"editor.rulers": [100],
 	"editor.stickyScroll.enabled": true,
 	"eslint.enable": true,
-	"eslint.options": {
-		"ignorePath": ".gitignore"
-	},
 	"eslint.validate": ["javascript", "typescript", "vue"],
 	"files.associations": {
 		"*.css": "tailwindcss"
@@ -44,7 +42,10 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"workbench.editor.labelFormat": "medium",
 	"workbench.tree.enableStickyScroll": true,
-	"[markdown][mdc]": {
+	"[markdown]": {
+		"editor.wordWrap": "on"
+	},
+	"[mdc]": {
 		"editor.wordWrap": "on"
 	}
 }

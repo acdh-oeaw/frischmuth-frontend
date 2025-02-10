@@ -36,12 +36,12 @@ function close() {
 					</div>
 					<div class="hidden lg:flex">
 						<ul
+							class="ml-auto flex gap-x-4 font-bold transition"
 							:class="
 								route.path !== '/'
 									? 'opacity-100 translate-y-0'
 									: 'opacity-0 translate-y-5 pointer-events-none'
 							"
-							class="ml-auto flex gap-x-4 font-bold transition"
 							role="list"
 						>
 							<li
@@ -51,8 +51,8 @@ function close() {
 							>
 								<Separator v-if="index > 0" class="h-full w-0.5 bg-frisch-orange" />
 								<NavLink
-									:href="link.href"
 									class="text-frisch-orange transition hover:text-frisch-indigo aria-[current]:text-frisch-indigo"
+									:href="link.href"
 								>
 									{{ link.label }}
 								</NavLink>
@@ -70,7 +70,7 @@ function close() {
 										: 'opacity-0 translate-x-5 pointer-events-none'
 								"
 							>
-								<MenuIcon :size="32" class="bg-frisch-orange p-1 text-white" />
+								<MenuIcon class="bg-frisch-orange p-1 text-white" :size="32" />
 							</SheetTrigger>
 							<SheetContent class="overflow-y-auto">
 								<SheetTitle class="sr-only">Navigationsmenü</SheetTitle>

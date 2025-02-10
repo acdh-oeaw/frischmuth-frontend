@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useQuery } from "@tanstack/vue-query";
+import type { StaticPage } from "@/types/content";
 
 defineRouteRules({
 	prerender: true,
@@ -8,19 +8,14 @@ defineRouteRules({
 const t = useTranslations();
 
 usePageMetadata({
-	title: t("GlossaryPage"),
+	title: t("GlossaryPage.meta.title"),
 });
 
-const { data: glossary, error: aboutError } = useQuery({
-	queryKey: ["glossary"] as const,
-	queryFn() {
-		return queryContent("pages/glossary/glossary").findOne();
-	},
-});
-
-useErrorMessage(aboutError, {
-	notFound: t("GlossaryPage.errors.404"),
-	unknown: t("GlossaryPage.errors.500"),
+const { data: glossary } = await useAsyncData("glossary-page", async () => {
+	return $fetch<StaticPage>("/api/markdown-file", {
+		body: JSON.stringify({ path: "pages/glossary/glossary.md" }),
+		method: "POST",
+	});
 });
 </script>
 
@@ -36,8 +31,7 @@ useErrorMessage(aboutError, {
 			</Card>
 		</div>
 
-		<ContentRenderer v-if="glossary" class="prose max-w-3xl" :value="glossary">
-			<template #empty></template>
-		</ContentRenderer>
+		<!-- eslint-disable-next-line vue/no-v-html -->
+		<div class="prose max-w-3xl" v-html="glossary?.body" />
 	</MainContent>
 </template>

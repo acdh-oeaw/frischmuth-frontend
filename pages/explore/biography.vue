@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useQuery } from "@tanstack/vue-query";
-
 import type { BiographyEntry } from "@/types/content";
 
 defineRouteRules({
@@ -13,23 +11,18 @@ usePageMetadata({
 	title: t("BiographyPage.meta.title"),
 });
 
-const { data: biography, error } = useQuery({
-	queryKey: ["biography"] as const,
-	queryFn() {
-		return queryContent<BiographyEntry>("pages/biography").find();
-	},
+const { data: biograpies } = await useAsyncData("biography-page", async () => {
+	return $fetch<Array<BiographyEntry>>("/api/markdown-folder", {
+		body: JSON.stringify({ path: "pages/biography" }),
+		method: "POST",
+	});
 });
 
-useErrorMessage(error, {
-	notFound: t("BiographyPage.errors.404"),
-	unknown: t("BiographyPage.errors.500"),
-});
+const sortedBiographies = computed(() => {
+	if (biograpies.value == null) return null;
 
-const sortedEntries = computed(() => {
-	if (biography.value == null) return null;
-
-	const sorted = biography.value.slice().sort((a, b) => {
-		return Number(a.year) - Number(b.year);
+	const sorted = biograpies.value.slice().sort((a, b) => {
+		return Number(a.metadata.year) - Number(b.metadata.year);
 	});
 
 	return sorted.slice(0, 10);
@@ -48,67 +41,69 @@ const sortedEntries = computed(() => {
 			</Card>
 		</div>
 
-		<div v-if="biography" class="relative w-full max-w-5xl">
+		<div v-if="biograpies" class="relative w-full max-w-5xl">
 			<div>
-				<div v-for="(entry, index) in sortedEntries" :key="index" class="pb-4">
+				<div v-for="(biography, index) in sortedBiographies" :key="index" class="pb-4">
 					<div class="grid w-full grid-cols-[1fr_auto_1fr] items-start justify-end gap-4 pb-2">
-						<div v-if="entry.image" class="grid grid-cols-[auto_1fr] items-end gap-4">
-							<div v-if="entry.imageTitle || entry.copyright" class="prose m-0 text-sm">
-								<div v-if="entry.imageTitle" class="font-semibold text-frisch-indigo">
-									{{ entry.imageTitle }}
+						<div v-if="biography.metadata.image" class="grid grid-cols-[auto_1fr] items-end gap-4">
+							<div
+								v-if="biography.metadata.imageTitle || biography.metadata.copyright"
+								class="prose m-0 text-sm"
+							>
+								<div v-if="biography.metadata.imageTitle" class="font-semibold text-frisch-indigo">
+									{{ biography.metadata.imageTitle }}
 								</div>
-								<div v-if="entry.copyright">© {{ entry.copyright }}</div>
+								<div v-if="biography.metadata.copyright">© {{ biography.metadata.copyright }}</div>
 							</div>
 							<div v-else></div>
 							<div class="relative block size-full self-end object-contain align-top">
 								<NuxtImg
-									:alt="entry.imageTitle ?? ''"
-									preload
-									:src="entry.image"
+									:alt="biography.metadata.imageTitle ?? ''"
 									class="size-full object-contain"
+									preload
+									:src="biography.metadata.image"
 								/>
 							</div>
 						</div>
 						<div v-else></div>
 						<div class="relative grid grid-cols-[1fr_1fr_auto] items-center gap-2">
-							<div v-if="entry.image">
+							<div v-if="biography.metadata.image">
 								<svg class="relative h-0.5 w-10 bg-frisch-indigo">
-									<line x1="0" y1="0" x2="100%" y2="0" stroke-width="1" />
+									<line stroke-width="1" x1="0" x2="100%" y1="0" y2="0" />
 								</svg>
 							</div>
 							<div v-else></div>
 							<div
 								:class="
-									entry.image
+									biography.metadata.image
 										? 'prose pl-1 m-0 justify-center text-sm font-bold text-frisch-orange'
 										: 'prose m-0 justify-center text-sm font-bold text-frisch-orange'
 								"
 							>
-								{{ entry.year }}
+								{{ biography.metadata.year }}
 							</div>
 							<div>
 								<svg
 									:class="
-										entry.image
+										biography.metadata.image
 											? 'relative h-0.5 w-24 bg-frisch-indigo mr-2'
 											: 'relative h-0.5 w-24 bg-frisch-indigo'
 									"
 								>
-									<line x1="0" y1="0" x2="100%" y2="0" stroke-width="1" />
+									<line stroke-width="1" x1="0" x2="100%" y1="0" y2="0" />
 								</svg>
 							</div>
 						</div>
 						<div class="prose prose-p:m-0">
-							<ContentRenderer v-if="entry" :value="entry">
-								<template #empty></template>
-							</ContentRenderer>
+							<!-- eslint-disable-next-line vue/no-v-html -->
+							<div v-html="biography.body" />
 						</div>
 					</div>
 				</div>
 			</div>
 			<div>
 				<svg class="absolute left-1/2 top-0 h-full w-1 translate-x-[-200%] bg-frisch-indigo">
-					<line x1="0" y1="0" x2="0" y2="100%" stroke-width="4" />
+					<line stroke-width="4" x1="0" x2="0" y1="0" y2="100%" />
 				</svg>
 			</div>
 		</div>

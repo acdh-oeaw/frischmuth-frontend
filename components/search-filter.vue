@@ -203,13 +203,13 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 							<span class="text-sm">Aktive Filter ({{ props.filterCount }})</span>
 							<Button
 								v-if="props.filterCount > 0"
-								type="reset"
 								class="items-center p-2"
+								type="reset"
 								variant="searchform"
 								@click="removeFilter()"
 							>
 								<div class="bg-frisch-orange">
-									<XIcon :size="12" class="font-bold text-white" />
+									<XIcon class="font-bold text-white" :size="12" />
 								</div>
 							</Button>
 						</div>
@@ -218,7 +218,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 				</div>
 				<div class="pb-4">
 					<div class="pb-4">
-						<Accordion type="single" collapsible default-value="work_type_primary">
+						<Accordion collapsible default-value="work_type_primary" type="single">
 							<AccordionItem value="work_type_primary">
 								<div
 									:class="
@@ -230,20 +230,20 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 									<div v-if="primaryWork != null">
 										<input
 											:id="`workType` + primaryWork.id"
-											name="workType"
-											:value="primaryWork.key"
-											type="checkbox"
-											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 											:checked="
 												(checkedFacets.workType
 													? checkedFacets.workType.includes(primaryWork.key)
 													: false) || selectedCheckboxes.includes(primaryWork.key)
 											"
+											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+											name="workType"
+											type="checkbox"
+											:value="primaryWork.key"
 											@change="
 												toggleWork(primaryWork.key as unknown as string, primaryWork.children ?? [])
 											"
 										/>
-										<label :for="`workType` + primaryWork.id" class="sr-only pl-2 font-medium">
+										<label class="sr-only pl-2 font-medium" :for="`workType` + primaryWork.id">
 											{{ primaryWork.key }}
 										</label>
 									</div>
@@ -271,19 +271,19 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 												<div class="grid grid-cols-[auto_1fr] items-center pb-1">
 													<input
 														:id="`workType` + work.id"
-														name="workType"
-														:value="work.key"
-														type="checkbox"
-														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 														:checked="
 															(checkedFacets.workType
 																? checkedFacets.workType.includes(work.key)
 																: false) || selectedCheckboxes.includes(work.key)
 														"
+														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+														name="workType"
+														type="checkbox"
+														:value="work.key"
 														@change="toggleWork(work.key as unknown as string, work.children ?? [])"
 													/>
 													<div>
-														<label :for="`workType` + work.id" class="pl-2 font-medium">
+														<label class="pl-2 font-medium" :for="`workType` + work.id">
 															{{ work.key }}
 														</label>
 														<span class="pl-1 text-frisch-grey">({{ work.count }})</span>
@@ -294,19 +294,19 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 														<div class="grid grid-cols-[auto_1fr] items-center pl-5">
 															<input
 																:id="`workType` + subwork.id"
-																name="workType"
-																:value="subwork.key"
-																type="checkbox"
-																class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 																:checked="
 																	(checkedFacets.workType
 																		? checkedFacets.workType.includes(subwork.key)
 																		: false) || selectedCheckboxes.includes(subwork.key)
 																"
+																class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+																name="workType"
+																type="checkbox"
+																:value="subwork.key"
 																@change="toggleSubterm(subwork.key as unknown as string)"
 															/>
 															<div>
-																<label :for="`workType` + subwork.id" class="pl-2">
+																<label class="pl-2" :for="`workType` + subwork.id">
 																	{{ subwork.key }}
 																</label>
 																<span class="pl-1 text-frisch-grey">({{ subwork.count }})</span>
@@ -327,7 +327,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 						<Separator class="bg-frisch-orange"></Separator>
 					</div>
 					<div class="pb-4">
-						<Accordion type="single" collapsible default-value="work_type_primary">
+						<Accordion collapsible default-value="work_type_primary" type="single">
 							<AccordionItem value="work_type_primary">
 								<div
 									:class="
@@ -339,15 +339,15 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 									<div v-if="secondaryWork != null">
 										<input
 											:id="`workType` + secondaryWork.id"
-											name="workType"
-											:value="secondaryWork.key"
-											type="checkbox"
-											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 											:checked="
 												(checkedFacets.workType
 													? checkedFacets.workType.includes(secondaryWork.key)
 													: false) || selectedCheckboxes.includes(secondaryWork.key)
 											"
+											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+											name="workType"
+											type="checkbox"
+											:value="secondaryWork.key"
 											@change="
 												toggleWork(
 													secondaryWork.key as unknown as string,
@@ -355,7 +355,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 												)
 											"
 										/>
-										<label :for="`workType` + secondaryWork.id" class="sr-only pl-2 font-medium">
+										<label class="sr-only pl-2 font-medium" :for="`workType` + secondaryWork.id">
 											{{ secondaryWork.key }}
 										</label>
 									</div>
@@ -387,19 +387,19 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 												<div class="grid grid-cols-[auto_1fr] items-center pb-1">
 													<input
 														:id="`workType` + work.id"
-														name="workType"
-														:value="work.key"
-														type="checkbox"
-														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 														:checked="
 															(checkedFacets.workType
 																? checkedFacets.workType.includes(work.key)
 																: false) || selectedCheckboxes.includes(work.key)
 														"
+														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+														name="workType"
+														type="checkbox"
+														:value="work.key"
 														@change="toggleWork(work.key as unknown as string, work.children ?? [])"
 													/>
 													<div>
-														<label :for="`workType` + work.id" class="pl-2 font-medium">
+														<label class="pl-2 font-medium" :for="`workType` + work.id">
 															{{ work.key }}
 														</label>
 														<span class="pl-1 text-frisch-grey">({{ work.count }})</span>
@@ -410,20 +410,20 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 														<div class="grid grid-cols-[auto_1fr] items-center pl-5">
 															<input
 																:id="`workType` + subwork.id"
-																name="workType"
-																:value="subwork.key"
-																type="checkbox"
-																class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 																:checked="
 																	(checkedFacets.workType
 																		? checkedFacets.workType.includes(subwork.key)
 																		: false) || selectedCheckboxes.includes(subwork.key)
 																"
+																class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+																name="workType"
+																type="checkbox"
+																:value="subwork.key"
 																@change="toggleSubterm(subwork.key as unknown as string)"
 															/>
 															<div>
 																<div>
-																	<label :for="`workType` + subwork.id" class="pl-2">
+																	<label class="pl-2" :for="`workType` + subwork.id">
 																		{{ subwork.key }}
 																	</label>
 																	<span class="pl-1 text-frisch-grey">({{ subwork.count }})</span>
@@ -446,8 +446,8 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 					</div>
 					<div class="pb-4">
 						<Accordion
-							type="single"
 							collapsible
+							type="single"
 							@update:model-value="
 								resetSlider();
 								addCheckbox('year');
@@ -460,10 +460,10 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 									<div>
 										<input
 											id="year"
+											:checked="yearChecked"
+											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 											name="year"
 											type="checkbox"
-											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
-											:checked="yearChecked"
 										/>
 									</div>
 									<div class="text-lg">Erscheinungsjahr</div>
@@ -472,9 +472,9 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 									<div class="w-full text-sm font-normal">
 										<div class="grid w-full grid-cols-[1fr_auto] pb-4">
 											<div>{{ sliderValue[0] }}</div>
-											<input type="hidden" name="startYear" :value="sliderValue[0]" />
+											<input name="startYear" type="hidden" :value="sliderValue[0]" />
 											<div>{{ sliderValue[1] }}</div>
-											<input type="hidden" name="endYear" :value="sliderValue[1]" />
+											<input name="endYear" type="hidden" :value="sliderValue[1]" />
 										</div>
 										<Slider
 											v-model="sliderValue"
@@ -491,7 +491,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 						<Separator class="bg-frisch-orange"></Separator>
 					</div>
 					<div class="pb-4">
-						<Accordion type="single" collapsible default-value="language">
+						<Accordion collapsible default-value="language" type="single">
 							<AccordionItem value="language">
 								<AccordionTrigger>
 									<div class="text-lg">Sprache</div>
@@ -512,11 +512,15 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 												<label class="grid cursor-pointer grid-cols-[auto_1fr] items-center gap-2">
 													<input
 														:id="`language${index}`"
-														name="language"
-														:value="item.key"
-														type="checkbox"
-														:checked="checkedFacets.language ? checkedFacets.language.includes(item.key!) : false"
+														:checked="
+															checkedFacets.language
+																? checkedFacets.language.includes(item.key!)
+																: false
+														"
 														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+														name="language"
+														type="checkbox"
+														:value="item.key"
 														@change="addCheckbox(item.key!)"
 													/>
 													<span>{{ item.key }}</span>
@@ -535,7 +539,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 						<Separator class="bg-frisch-orange"></Separator>
 					</div>
 					<div class="pb-4">
-						<Accordion type="single" collapsible default-value="topic">
+						<Accordion collapsible default-value="topic" type="single">
 							<AccordionItem value="topic">
 								<AccordionTrigger>
 									<div class="text-lg">Thema</div>
@@ -553,11 +557,13 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 												<label class="grid cursor-pointer grid-cols-[auto_1fr] items-center gap-2">
 													<input
 														:id="`topic${index}`"
-														name="topic"
-														:value="item.key"
-														type="checkbox"
-														:checked="checkedFacets.topic ? checkedFacets.topic.includes(item.key!) : false"
+														:checked="
+															checkedFacets.topic ? checkedFacets.topic.includes(item.key!) : false
+														"
 														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+														name="topic"
+														type="checkbox"
+														:value="item.key"
 														@change="addCheckbox(item.key!)"
 													/>
 													<span>{{ item.key }}</span>
@@ -571,9 +577,9 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 									</div>
 									<Button
 										v-if="sortedTopics"
-										variant="searchform"
-										type="button"
 										class="p-0 pb-2 text-sm font-medium"
+										type="button"
+										variant="searchform"
 										@click="toggleShowMore"
 									>
 										{{ showMore ? `Weniger anzeigen` : `Mehr anzeigen ...` }}
@@ -586,7 +592,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 							v-if="isCheckBoxActive || hasSliderChanged"
 							class="flex w-full justify-end pt-4 text-sm"
 						>
-							<Button variant="frischMarine" type="submit">Filter anwenden</Button>
+							<Button type="submit" variant="frischMarine">Filter anwenden</Button>
 						</div>
 					</div>
 				</div>

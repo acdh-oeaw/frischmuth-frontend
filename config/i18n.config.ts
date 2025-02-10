@@ -10,7 +10,7 @@ export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "de";
 
 export const localesMap = {
-	de: { code: "de", iso: "de", files: ["de/index.json", "de/metadata.json"] },
+	de: { code: "de", language: "de", files: ["de/index.json", "de/metadata.json"] },
 } satisfies Record<Locale, LocaleObject>;
 
 export type Messages = typeof de & typeof metadata;
