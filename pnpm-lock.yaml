@@ -1628,6 +1628,10 @@ packages:
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
 
+  '@sindresorhus/transliterate@1.6.0':
+    resolution: {integrity: sha512-doH1gimEu3A46VX6aVxpHTeHrytJAG6HgdxntYnCFiIFHEM/ZGpG8KiZGBChchjQmG0XFIBL552kBTjVcMZXwQ==}
+    engines: {node: '>=12'}
+
   '@stefanprobst/lib@0.1.4':
     resolution: {integrity: sha512-zRW3DbXP7G49g+a66orQ3D5KqsWb5ejm32s4SXdrRHdLCNhp/bLY9jNY6g5GwlvYbiHQf8pDnP/JWYABcx01Zw==}
     engines: {node: '>=18', pnpm: '>=8'}
@@ -3655,8 +3659,8 @@ packages:
   fast-npm-meta@0.2.2:
     resolution: {integrity: sha512-E+fdxeaOQGo/CMWc9f4uHFfgUPJRAu7N3uB8GBvB3SDPAIWJK4GKyYhkAGFq+GYrcbKNfQIz5VVQyJnDuPPCrg==}
 
-  fast-npm-meta@0.3.0:
-    resolution: {integrity: sha512-/tsAcCWpUwA8jIm73Gx69xRSng2cjxU0bVLImFl/l9vZbeGHbvtiYZwmVEoCZKOrms9oBRaT3ODdezhNS83gIA==}
+  fast-npm-meta@0.3.1:
+    resolution: {integrity: sha512-W9gVhqRyz2O3j20I0nFmYEyaMC/046oaMRxxAQ0w6noakfbhpLmlIXmnnqSOmVVuJZ6x5hOPVwlv7PocuawZsw==}
 
   fast-redact@3.5.0:
     resolution: {integrity: sha512-dwsoQlS7h9hMeYUq1W++23NDcBLV4KqONnITDV9DjfS3q1SgDGVrBdvvTLUotWtPSD7asWDV9/CmsZPy8Hf70A==}
@@ -7253,23 +7257,6 @@ snapshots:
       '@babel/helper-member-expression-to-functions': 7.25.9
       '@babel/helper-optimise-call-expression': 7.25.9
       '@babel/traverse': 7.26.8
-      '@babel/traverse': 7.25.9
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/helper-replace-supers@7.25.9(@babel/core@7.26.7)':
-    dependencies:
-      '@babel/core': 7.26.7
-      '@babel/helper-member-expression-to-functions': 7.25.9
-      '@babel/helper-optimise-call-expression': 7.25.9
-      '@babel/traverse': 7.25.9
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/helper-simple-access@7.25.9':
-    dependencies:
-      '@babel/traverse': 7.25.9
-      '@babel/types': 7.25.9
     transitivePeerDependencies:
       - supports-color
 
@@ -7326,11 +7313,6 @@ snapshots:
       '@babel/core': 7.26.8
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-jsx@7.25.9(@babel/core@7.26.7)':
-    dependencies:
-      '@babel/core': 7.26.7
-      '@babel/helper-plugin-utils': 7.25.9
-
   '@babel/plugin-syntax-typescript@7.25.9(@babel/core@7.26.8)':
     dependencies:
       '@babel/core': 7.26.8
@@ -7345,16 +7327,8 @@ snapshots:
       - supports-color
 
   '@babel/plugin-transform-typescript@7.26.8(@babel/core@7.26.8)':
-  '@babel/plugin-transform-named-capturing-groups-regex@7.25.9(@babel/core@7.26.7)':
     dependencies:
       '@babel/core': 7.26.8
-      '@babel/core': 7.26.7
-      '@babel/helper-create-regexp-features-plugin': 7.26.3(@babel/core@7.26.7)
-      '@babel/helper-plugin-utils': 7.25.9
-
-  '@babel/plugin-transform-typescript@7.25.9(@babel/core@7.25.9)':
-    dependencies:
-      '@babel/core': 7.25.9
       '@babel/helper-annotate-as-pure': 7.25.9
       '@babel/helper-create-class-features-plugin': 7.25.9(@babel/core@7.26.8)
       '@babel/helper-plugin-utils': 7.26.5
@@ -8114,7 +8088,7 @@ snapshots:
       destr: 2.0.3
       error-stack-parser-es: 1.0.5
       execa: 9.5.2
-      fast-npm-meta: 0.3.0
+      fast-npm-meta: 0.3.1
       get-port-please: 3.1.2
       hookable: 5.5.3
       image-meta: 0.2.1
@@ -8648,6 +8622,10 @@ snapshots:
   '@sindresorhus/merge-streams@2.3.0': {}
 
   '@sindresorhus/merge-streams@4.0.0': {}
+
+  '@sindresorhus/transliterate@1.6.0':
+    dependencies:
+      escape-string-regexp: 5.0.0
 
   '@stefanprobst/lib@0.1.4': {}
 
@@ -10056,7 +10034,6 @@ snapshots:
       '@vitest/spy': 3.0.5
       estree-walker: 3.0.3
       magic-string: 0.30.17
-      magic-string: 0.30.17
     optionalDependencies:
       vite: 6.1.0(@types/node@22.13.1)(jiti@2.4.2)(stylus@0.57.0)(terser@5.38.1)(tsx@4.19.2)(yaml@2.7.0)
 
@@ -10273,7 +10250,6 @@ snapshots:
 
   '@vuedx/template-ast-types@0.7.1':
     dependencies:
-      '@vue/compiler-core': 3.5.13
       '@vue/compiler-core': 3.5.13
 
   '@vueuse/core@10.11.1(vue@3.5.13(typescript@5.7.3))':
@@ -11733,7 +11709,7 @@ snapshots:
 
   fast-npm-meta@0.2.2: {}
 
-  fast-npm-meta@0.3.0: {}
+  fast-npm-meta@0.3.1: {}
 
   fast-redact@3.5.0: {}
 

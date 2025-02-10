@@ -96,7 +96,7 @@ router.afterEach((to, from) => {
 </script>
 
 <template>
-	<div class="grid min-h-full grid-rows-[auto_1fr_auto] overflow-y-hidden antialiased">
+	<div class="grid h-full grid-rows-[auto_1fr_auto]">
 		<SkipLink target-id="main-content">{{ t("DefaultLayout.skip-to-main-content") }}</SkipLink>
 
 		<AppHeader />

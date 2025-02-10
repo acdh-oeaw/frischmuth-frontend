@@ -2,6 +2,8 @@
 
 :root {
 	--font-body: "Inter Variable";
+
+	@apply antialiased;
 }
 
 html,
@@ -35,8 +37,4 @@ body,
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
-}
-
-#__nuxt {
-	overflow-y: scroll;
 }
