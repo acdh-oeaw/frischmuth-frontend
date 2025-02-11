@@ -24,6 +24,7 @@ async function generate() {
 			"/api/work-preview",
 			"/apis/api/apis_ontology.place",
 			"/apis/api/apis_ontology.topic",
+			"/apis/api/apis_ontology.researchperspective",
 		],
 		dist: outputFilePath,
 	};
