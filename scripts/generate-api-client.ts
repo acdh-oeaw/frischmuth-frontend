@@ -19,7 +19,12 @@ async function generate() {
 			pathname: "/apis/swagger/schema",
 			searchParams: createUrlSearchParams({ format: "json" }),
 		}),
-		prefixes: ["/api/work-detail/{id}", "/api/work-preview", "/apis/api/apis_ontology.place"],
+		prefixes: [
+			"/api/work-detail/{id}",
+			"/api/work-preview",
+			"/apis/api/apis_ontology.place",
+			"/apis/api/apis_ontology.topic",
+		],
 		dist: outputFilePath,
 	};
 
