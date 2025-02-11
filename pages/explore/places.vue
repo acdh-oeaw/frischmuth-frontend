@@ -120,6 +120,7 @@ watch(
 							<div class="flex gap-2">
 								{{ place.name }}
 								<NuxtLink
+									class="relative"
 									:href="{
 										path: '/search',
 										query: { query: place.name },
@@ -128,7 +129,7 @@ watch(
 									<span class="sr-only">Nach verknüpften Werken suchen</span>
 									<SearchIcon class="mt-1 text-frisch-indigo" :size="16" />
 								</NuxtLink>
-								<span v-if="place.latitude && place.longitude" class="flex items-center">
+								<span v-if="place.latitude && place.longitude" class="relative flex items-center">
 									<span class="sr-only">Ort anzeigen</span>
 									<MapSidebar
 										class="cursor-pointer"
