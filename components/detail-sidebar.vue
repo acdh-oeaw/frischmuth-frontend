@@ -5,9 +5,9 @@ import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 
 const props = defineProps<{
 	source: {
-		name: string | undefined;
-		alternativeName: string | undefined;
-		description: string | undefined;
+		name?: string | undefined;
+		alternative_name?: string | undefined;
+		description?: string | undefined;
 	};
 	sourceType: string;
 	isMobile: boolean;
@@ -25,7 +25,10 @@ const props = defineProps<{
 					{{ props.sourceType }}
 				</div>
 				<h1 class="px-4 pb-2 text-lg font-semibold">{{ props.source.name }}</h1>
-				<h2 v-if="props.source.alternativeName" class="px-4 pb-2 font-normal text-muted-foreground">
+				<h2
+					v-if="props.source.alternative_name"
+					class="px-4 pb-2 font-normal text-muted-foreground"
+				>
 					{{ props.source.name }}
 				</h2>
 				<div class="px-4 py-2">
@@ -49,7 +52,7 @@ const props = defineProps<{
 				<SheetTitle class="pb-2">
 					{{ props.source.name }}
 					<h2
-						v-if="props.source.alternativeName"
+						v-if="props.source.alternative_name"
 						class="px-4 pb-2 font-normal text-muted-foreground"
 					>
 						{{ props.source.name }}

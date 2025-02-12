@@ -2,6 +2,7 @@
 import transliterate from "@sindresorhus/transliterate";
 import { SearchIcon } from "lucide-vue-next";
 
+import type { Places } from "@/types/api";
 import type { StaticPage } from "@/types/content";
 
 defineRouteRules({
@@ -17,25 +18,22 @@ const { data, isPending } = useGetPlaces();
 const places = computed(() => {
 	if (!data.value?.results) return [];
 
-	// Step 1: Group places by their first letter
 	const grouped = data.value.results
-		.map((place) => ({
-			...place,
-			firstLetter: transliterate(place.name[0].toUpperCase())[0],
-		}))
+		.filter((place): place is { name: string } => Boolean(place?.name))
+		.map((place) => {
+			const firstLetter = place.name?.charAt(0)?.toUpperCase() ?? "#";
+			return { ...place, firstLetter: transliterate(firstLetter)[0] ?? "#" };
+		})
 		.sort((a, b) => a.name.localeCompare(b.name, "de", { sensitivity: "base" }))
-		.reduce((acc, place) => {
-			if (!acc[place.firstLetter]) {
-				acc[place.firstLetter] = [];
-			}
-			acc[place.firstLetter].push(place);
+		.reduce<Record<string, Places>>((acc, place) => {
+			const key = place.firstLetter || "#";
+			if (!acc[key]) acc[key] = [];
+			acc[key].push(place);
 			return acc;
 		}, {});
 
-	// Step 2: Generate full alphabet array
 	const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
 
-	// Step 3: Ensure every letter is present, even if empty
 	return alphabet.map((letter) => ({
 		letter,
 		places: grouped[letter] || [],

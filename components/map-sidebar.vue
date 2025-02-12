@@ -7,11 +7,11 @@ const router = useRouter();
 
 const props = defineProps<{
 	place: {
-		id: number | undefined;
-		name: string | undefined;
-		longitude: number | null | undefined;
-		latitude: number | null | undefined;
-		description: string | undefined;
+		id?: number | undefined;
+		name?: string | undefined;
+		longitude?: number | null | undefined;
+		latitude?: number | null | undefined;
+		description?: string | undefined;
 	};
 	relation: string;
 	isMobile: boolean;

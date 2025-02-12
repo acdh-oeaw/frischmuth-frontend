@@ -1,19 +1,35 @@
 import { useQuery } from "@tanstack/vue-query";
 
-import type { PlacesResults } from "@/types/api";
+import type { Places } from "@/types/api";
 
 export function useGetPlaces() {
 	const { $api } = useNuxtApp();
+
 	return useQuery({
 		queryKey: ["placelist"] as const,
 		async queryFn() {
-			const response = await $api["apis_api_apis_ontology.place_list"]({
-				queries: {
-					limit: 475,
-				},
-			});
+			let allResults: Places = [];
+			let nextUrl: boolean;
+			let offset = 0;
+			const limit = 500;
 
-			return response as PlacesResults;
+			do {
+				const response = await $api["apis_api_apis_ontology.place_list"]({
+					queries: { limit, offset },
+				});
+
+				allResults = [...allResults, ...response.results];
+
+				if (response.next) {
+					const url = new URL(response.next);
+					offset = Number(url.searchParams.get("offset")) || offset + limit;
+					nextUrl = true;
+				} else {
+					nextUrl = false;
+				}
+			} while (nextUrl);
+
+			return { count: allResults.length, results: allResults };
 		},
 	});
 }

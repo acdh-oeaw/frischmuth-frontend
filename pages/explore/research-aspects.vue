@@ -2,6 +2,7 @@
 import transliterate from "@sindresorhus/transliterate";
 import { SearchIcon } from "lucide-vue-next";
 
+import type { ResearchPerspectives } from "@/types/api";
 import type { StaticPage } from "@/types/content";
 
 defineRouteRules({
@@ -20,25 +21,22 @@ const { data, isPending } = useGetPerspectives();
 const perspectives = computed(() => {
 	if (!data.value?.results) return [];
 
-	// Step 1: Group places by their first letter
 	const grouped = data.value.results
-		.map((perspective) => ({
-			...perspective,
-			firstLetter: transliterate(perspective.name[0].toUpperCase())[0],
-		}))
+		.filter((perspective): perspective is { name: string } => Boolean(perspective?.name))
+		.map((perspective) => {
+			const firstLetter = perspective.name?.charAt(0)?.toUpperCase() ?? "#";
+			return { ...perspective, firstLetter: transliterate(firstLetter)[0] ?? "#" };
+		})
 		.sort((a, b) => a.name.localeCompare(b.name, "de", { sensitivity: "base" }))
-		.reduce((acc, perspective) => {
-			if (!acc[perspective.firstLetter]) {
-				acc[perspective.firstLetter] = [];
-			}
-			acc[perspective.firstLetter].push(perspective);
+		.reduce<Record<string, ResearchPerspectives>>((acc, perspective) => {
+			const key = perspective.firstLetter || "#";
+			if (!acc[key]) acc[key] = [];
+			acc[key].push(perspective);
 			return acc;
 		}, {});
 
-	// Step 2: Generate full alphabet array
 	const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
 
-	// Step 3: Ensure every letter is present, even if empty
 	return alphabet.map((letter) => ({
 		letter,
 		perspectives: grouped[letter] || [],
