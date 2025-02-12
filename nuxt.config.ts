@@ -9,6 +9,12 @@ export default defineNuxtConfig({
 		"@": fileURLToPath(new URL("./", import.meta.url)),
 	},
 
+	router: {
+		options: {
+			scrollBehaviorType: "smooth",
+		},
+	},
+
 	app: {
 		layoutTransition: false,
 		pageTransition: false,

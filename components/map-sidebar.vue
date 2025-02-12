@@ -7,11 +7,11 @@ const router = useRouter();
 
 const props = defineProps<{
 	place: {
-		id: number | undefined;
-		name: string | undefined;
-		longitude: number | null | undefined;
-		latitude: number | null | undefined;
-		description: string | undefined;
+		id?: number | undefined;
+		name?: string | undefined;
+		longitude?: number | null | undefined;
+		latitude?: number | null | undefined;
+		description?: string | undefined;
 	};
 	relation: string;
 	isMobile: boolean;
@@ -47,7 +47,7 @@ function setPlaceQuery(id: number | undefined) {
 						/>
 					</div>
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
-					<div v-if="props.place.description !== ''">
+					<div v-if="props.place.description !== ''" class="text-black">
 						{{ props.place.description }}
 					</div>
 					<div v-else class="text-sm text-muted-foreground">Keine Beschreibung vorhanden.</div>
@@ -76,7 +76,7 @@ function setPlaceQuery(id: number | undefined) {
 						/>
 					</div>
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
-					<div v-if="props.place.description !== ''">
+					<div v-if="props.place.description !== ''" class="text-black">
 						{{ props.place.description }}
 					</div>
 					<div v-else>Keine Beschreibung vorhanden.</div>
