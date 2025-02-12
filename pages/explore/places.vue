@@ -89,7 +89,7 @@ watch(
 		<div>
 			<!-- eslint-disable-next-line vue/no-v-html -->
 			<section class="prose max-w-3xl pt-4 lg:pt-8" v-html="page?.body" />
-			<div v-if="!isLoading">
+			<div v-if="!isLoading" class="pb-4 lg:pb-8">
 				<nav
 					aria-label="Orte"
 					class="sticky top-0 z-10 mt-5 flex w-full max-w-3xl flex-wrap justify-center gap-2 bg-white py-4 transition-all duration-300"
