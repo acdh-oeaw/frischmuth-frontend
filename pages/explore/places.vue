@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import transliterate from "@sindresorhus/transliterate";
-import { SearchIcon } from "lucide-vue-next";
+import { EyeIcon } from "lucide-vue-next";
 
 import type { Places } from "@/types/api";
 import type { StaticPage } from "@/types/content";
@@ -10,10 +10,22 @@ defineRouteRules({
 });
 
 const route = useRoute();
+const router = useRouter();
 
 const t = useTranslations();
 
 const { data, isPending } = useGetPlaces();
+
+const isOpen = ref(false);
+
+function setPlaceQuery(id: number | undefined) {
+	if (id != null) {
+		void router.push({
+			query: { place: id },
+		});
+		isOpen.value = true;
+	}
+}
 
 const places = computed(() => {
 	if (!data.value?.results) return [];
@@ -55,9 +67,15 @@ const { data: page } = await useAsyncData("places-page", async () => {
 	});
 });
 
-const isMobile = computed(() => {
-	return window.innerWidth < 1024;
+const isMobile = ref(false);
+
+onMounted(() => {
+	isMobile.value = window.innerWidth < 1024;
 });
+
+function extractIdFromUrl(url: string) {
+	return url.split("/").slice(-2, -1)[0]; // Gets the second last part of the URL
+}
 
 watch(
 	() => {
@@ -73,11 +91,31 @@ watch(
 		}
 	},
 );
+
+watch(
+	() => {
+		return route.query.place;
+	},
+	() => {
+		if (route.query.place) {
+			isOpen.value = true;
+		}
+	},
+	{ immediate: true },
+);
+
+function closeSidebar() {
+	isOpen.value = false;
+
+	void router.replace({
+		query: { ...route.query, place: undefined },
+	});
+}
 </script>
 
 <template>
 	<MainContent
-		class="grid h-full gap-8 overflow-y-auto md:grid-cols-[1fr_3fr] md:justify-center md:px-12 2xl:grid-cols-[2fr_3fr]"
+		class="grid h-full gap-8 overflow-y-auto px-4 md:grid-cols-[1fr_3fr] md:justify-center md:px-12 2xl:grid-cols-[2fr_3fr]"
 	>
 		<div class="flex pt-4 md:justify-end lg:pt-8">
 			<Card class="aspect-square size-full bg-frisch-orange md:size-72">
@@ -117,7 +155,8 @@ watch(
 						<div v-for="(place, index) in group.places" :key="place.name" class="p-1 text-base">
 							<div class="flex gap-2">
 								{{ place.name }}
-								<NuxtLink
+								<!-- Needs review
+								 <NuxtLink
 									class="relative"
 									:href="{
 										path: '/search',
@@ -127,15 +166,15 @@ watch(
 									<span class="sr-only">Nach verknüpften Werken suchen</span>
 									<SearchIcon class="mt-1 text-frisch-indigo" :size="16" />
 								</NuxtLink>
-								<span v-if="place.latitude && place.longitude" class="relative flex items-center">
-									<span class="sr-only">Ort anzeigen</span>
-									<MapSidebar
-										class="cursor-pointer"
-										:is-mobile="isMobile"
-										:place="place"
-										relation="Ort"
-									/>
-								</span>
+								-->
+								<span class="sr-only">Ort anzeigen</span>
+								<Button
+									class="px-0 pb-4 text-frisch-orange"
+									variant="transparent"
+									@click="setPlaceQuery(extractIdFromUrl(place.url ?? '') as unknown as number)"
+								>
+									<EyeIcon class="p-0.5" />
+								</Button>
 								<span v-if="index !== group.places.length - 1">|</span>
 							</div>
 						</div>
@@ -145,6 +184,15 @@ watch(
 			<Centered v-else class="pointer-events-none">
 				<LoadingSpinner />
 			</Centered>
+		</div>
+		<div v-show="isOpen">
+			<MapSidebar
+				class="absolute"
+				:is-mobile="isMobile"
+				:is-open="isOpen"
+				relation="Ort"
+				@close-side-bar="closeSidebar()"
+			/>
 		</div>
 	</MainContent>
 </template>

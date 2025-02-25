@@ -150,6 +150,10 @@ watch(() => {
 	return props.places;
 }, updateScope);
 
+watch(() => {
+	return props.longitude, props.latitude;
+}, updateScope);
+
 function updateScope() {
 	if (!props.isAltaussee) {
 		const singlePlaceId = "single-place";
@@ -169,6 +173,7 @@ function updateScope() {
 		};
 
 		sourcePlace?.setData(data);
+		context.map?.flyTo({ center: [props.longitude ?? 0, props.latitude ?? 0] });
 	} else {
 		if (props.places != null) {
 			assert(context.map != null);
