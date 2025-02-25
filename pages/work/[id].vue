@@ -12,6 +12,10 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const route = useRoute();
+const router = useRouter();
+
+const isOpen = ref(false);
+const currentRelation = ref("");
 
 const isMobile = computed(() => {
 	return window.innerWidth < 820;
@@ -146,6 +150,24 @@ const icon = computed(() => {
 	}
 	return null;
 });
+
+function closeSidebar() {
+	isOpen.value = false;
+
+	void router.replace({
+		query: { ...route.query, place: undefined },
+	});
+}
+
+function setPlaceQueryAndRelation(id: number | undefined, relation: string) {
+	if (id != null) {
+		void router.push({
+			query: { place: id },
+		});
+		isOpen.value = true;
+		currentRelation.value = relation;
+	}
+}
 </script>
 
 <template>
@@ -423,27 +445,22 @@ const icon = computed(() => {
 												<div v-if="places.takesPlaceIn != null && places.takesPlaceIn.length > 0">
 													<div v-for="place in places.takesPlaceIn" :key="place.id">
 														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
-															<span>{{ place.name }}</span>
+															<span
+																:class="`${place.id && place.latitude && place.longitude ? '' : 'py-2'}`"
+																>{{ place.name }}</span
+															>
 															<span
 																v-if="place.id && place.latitude && place.longitude"
 																class="flex items-center"
 															>
-																<NuxtLink
-																	:href="{
-																		path: `/work/${work.id}`,
-																		query: {
-																			place: place.id,
-																		},
-																	}"
+																<Button
+																	class="px-0 text-frisch-orange"
+																	variant="transparent"
+																	@click="setPlaceQueryAndRelation(place.id, 'Schauplatz')"
 																>
-																	<span class="sr-only">Ort anzeigen</span>
-																	<MapSidebar
-																		:id="place.id"
-																		:is-mobile="isMobile"
-																		:name="place.name"
-																		relation="Schauplatz"
-																	/>
-																</NuxtLink>
+																	<EyeIcon :size="16" />
+																</Button>
+																<span class="sr-only">Ort anzeigen</span>
 															</span>
 														</span>
 													</div>
@@ -457,27 +474,22 @@ const icon = computed(() => {
 												<div v-if="places.discussed != null && places.discussed.length > 0">
 													<div v-for="place in places.discussed" :key="place.id">
 														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
-															<span>{{ place.name }}</span>
+															<span
+																:class="`${place.id && place.latitude && place.longitude ? '' : 'py-2'}`"
+																>{{ place.name }}</span
+															>
 															<span
 																v-if="place.id && place.latitude && place.longitude"
 																class="flex items-center"
 															>
-																<NuxtLink
-																	:href="{
-																		path: `/work/${work.id}`,
-																		query: {
-																			place: place.id,
-																		},
-																	}"
+																<Button
+																	class="px-0 text-frisch-orange"
+																	variant="transparent"
+																	@click="setPlaceQueryAndRelation(place.id, 'Beschriebener Ort')"
 																>
-																	<span class="sr-only">Ort anzeigen</span>
-																	<MapSidebar
-																		:id="place.id"
-																		:is-mobile="isMobile"
-																		:name="place.name"
-																		relation="Beleuchteter Ort"
-																	/>
-																</NuxtLink>
+																	<EyeIcon :size="16" />
+																</Button>
+																<span class="sr-only">Ort anzeigen</span>
 															</span>
 														</span>
 													</div>
@@ -491,27 +503,22 @@ const icon = computed(() => {
 												<div v-if="places.mentioned != null && places.mentioned.length > 0">
 													<div v-for="place in places.mentioned" :key="place.id">
 														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
-															<span>{{ place.name }}</span>
+															<span
+																:class="`${place.id && place.latitude && place.longitude ? '' : 'py-2'}`"
+																>{{ place.name }}</span
+															>
 															<span
 																v-if="place.id && place.latitude && place.longitude"
 																class="flex items-center"
 															>
-																<NuxtLink
-																	:href="{
-																		path: `/work/${work.id}`,
-																		query: {
-																			place: place.id,
-																		},
-																	}"
+																<Button
+																	class="px-0 text-frisch-orange"
+																	variant="transparent"
+																	@click="setPlaceQueryAndRelation(place.id, 'Erwähnter Ort')"
 																>
-																	<span class="sr-only">Ort anzeigen</span>
-																	<MapSidebar
-																		:id="place.id"
-																		:is-mobile="isMobile"
-																		:name="place.name"
-																		relation="Erwähnter Ort"
-																	/>
-																</NuxtLink>
+																	<EyeIcon :size="16" />
+																</Button>
+																<span class="sr-only">Ort anzeigen</span>
 															</span>
 														</span>
 													</div>
@@ -709,5 +716,14 @@ const icon = computed(() => {
 		<Centered v-else class="pointer-events-none">
 			<LoadingSpinner />
 		</Centered>
+		<div v-show="isOpen">
+			<MapSidebar
+				class="absolute"
+				:is-mobile="isMobile"
+				:is-open="isOpen"
+				:relation="currentRelation"
+				@close-side-bar="closeSidebar()"
+			/>
+		</div>
 	</MainContent>
 </template>
