@@ -115,7 +115,7 @@ function closeSidebar() {
 
 <template>
 	<MainContent
-		class="grid h-full gap-8 overflow-y-auto md:grid-cols-[1fr_3fr] md:justify-center md:px-12 2xl:grid-cols-[2fr_3fr]"
+		class="grid h-full gap-8 overflow-y-auto px-4 md:grid-cols-[1fr_3fr] md:justify-center md:px-12 2xl:grid-cols-[2fr_3fr]"
 	>
 		<div class="flex pt-4 md:justify-end lg:pt-8">
 			<Card class="aspect-square size-full bg-frisch-orange md:size-72">
