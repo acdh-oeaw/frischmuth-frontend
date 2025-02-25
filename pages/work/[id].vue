@@ -438,8 +438,9 @@ const icon = computed(() => {
 																>
 																	<span class="sr-only">Ort anzeigen</span>
 																	<MapSidebar
+																		:id="place.id"
 																		:is-mobile="isMobile"
-																		:place="place"
+																		:name="place.name"
 																		relation="Schauplatz"
 																	/>
 																</NuxtLink>
@@ -471,8 +472,9 @@ const icon = computed(() => {
 																>
 																	<span class="sr-only">Ort anzeigen</span>
 																	<MapSidebar
+																		:id="place.id"
 																		:is-mobile="isMobile"
-																		:place="place"
+																		:name="place.name"
 																		relation="Beleuchteter Ort"
 																	/>
 																</NuxtLink>
@@ -504,8 +506,9 @@ const icon = computed(() => {
 																>
 																	<span class="sr-only">Ort anzeigen</span>
 																	<MapSidebar
+																		:id="place.id"
 																		:is-mobile="isMobile"
-																		:place="place"
+																		:name="place.name"
 																		relation="Erwähnter Ort"
 																	/>
 																</NuxtLink>

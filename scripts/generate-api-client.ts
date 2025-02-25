@@ -22,6 +22,7 @@ async function generate() {
 		prefixes: [
 			"/api/work-detail/{id}",
 			"/api/work-preview",
+			"/api/place-detail/{id}",
 			"/apis/api/apis_ontology.place",
 			"/apis/api/apis_ontology.topic",
 			"/apis/api/apis_ontology.researchperspective",
