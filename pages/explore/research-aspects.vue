@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import transliterate from "@sindresorhus/transliterate";
-import { SearchIcon } from "lucide-vue-next";
+import { EyeIcon } from "lucide-vue-next";
 
 import type { ResearchPerspectives } from "@/types/api";
 import type { StaticPage } from "@/types/content";
@@ -11,12 +11,23 @@ defineRouteRules({
 
 const t = useTranslations();
 const route = useRoute();
+const router = useRouter();
 
 usePageMetadata({
 	title: t("ResearchAspectsPage.meta.title"),
 });
 
 const { data, isPending } = useGetPerspectives();
+const isOpen = ref(false);
+
+function setPerspectiveQuery(id: number | undefined) {
+	if (id != null) {
+		void router.push({
+			query: { perspective: id },
+		});
+		isOpen.value = true;
+	}
+}
 
 const perspectives = computed(() => {
 	if (!data.value?.results) return [];
@@ -54,9 +65,15 @@ const { data: page } = await useAsyncData("research-aspects-page", async () => {
 	});
 });
 
-const isMobile = computed(() => {
-	return window.innerWidth < 1024;
+const isMobile = ref(false);
+
+onMounted(() => {
+	isMobile.value = window.innerWidth < 1024;
 });
+
+function extractIdFromUrl(url: string) {
+	return url.split("/").slice(-2, -1)[0]; // Gets the second last part of the URL
+}
 
 watch(
 	() => {
@@ -72,6 +89,26 @@ watch(
 		}
 	},
 );
+
+watch(
+	() => {
+		return route.query.perspective;
+	},
+	() => {
+		if (route.query.perspective) {
+			isOpen.value = true;
+		}
+	},
+	{ immediate: true },
+);
+
+function closeSidebar() {
+	isOpen.value = false;
+
+	void router.replace({
+		query: { ...route.query, perspective: undefined },
+	});
+}
 </script>
 
 <template>
@@ -120,7 +157,8 @@ watch(
 						>
 							<div class="flex gap-2">
 								{{ perspective.name }}
-								<NuxtLink
+								<!-- Needs review
+								 <NuxtLink
 									class="relative"
 									:href="{
 										path: '/search',
@@ -130,15 +168,19 @@ watch(
 									<span class="sr-only">Nach verknüpften Werken suchen</span>
 									<SearchIcon class="mt-1 text-frisch-indigo" :size="16" />
 								</NuxtLink>
-								<span v-if="perspective.description" class="relative flex items-center">
-									<span class="sr-only">Forschungshinsicht anzeigen</span>
-									<DetailSidebar
-										class="cursor-pointer"
-										:is-mobile="isMobile"
-										:source="perspective"
-										source-type="Forschungshinsicht"
-									/>
-								</span>
+								-->
+								<span class="sr-only">Forschungsansicht anzeigen</span>
+								<Button
+									class="px-0 pb-4 text-frisch-orange"
+									variant="transparent"
+									@click="
+										setPerspectiveQuery(
+											extractIdFromUrl(perspective.url ?? '') as unknown as number,
+										)
+									"
+								>
+									<EyeIcon class="p-0.5" />
+								</Button>
 								<span v-if="index !== group.perspectives.length - 1">|</span>
 							</div>
 						</div>
@@ -148,6 +190,15 @@ watch(
 			<Centered v-else class="pointer-events-none">
 				<LoadingSpinner />
 			</Centered>
+		</div>
+		<div v-show="isOpen">
+			<PerspectiveSidebar
+				class="absolute"
+				:is-mobile="isMobile"
+				:is-open="isOpen"
+				relation="Forschungshinsicht"
+				@close-side-bar="closeSidebar()"
+			/>
 		</div>
 	</MainContent>
 </template>
