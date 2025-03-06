@@ -33,6 +33,7 @@ export type GlossaryFilters = ZodiosQueryParamsByPath<
 >;
 export type GlossaryResults = ZodiosResponseByPath<Api, "get", "/apis/api/apis_ontology.glossar/">;
 
+export type TopicDetail = ZodiosResponseByPath<Api, "get", "/api/topic-detail/:id/">;
 export type PlaceDetail = ZodiosResponseByPath<Api, "get", "/api/place-detail/:id/">;
 export type ResearchPerspective = ZodiosResponseByPath<
 	Api,

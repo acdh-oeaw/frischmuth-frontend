@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import transliterate from "@sindresorhus/transliterate";
-import { SearchIcon } from "lucide-vue-next";
+import { EyeIcon } from "lucide-vue-next";
 
 import type { Topics } from "@/types/api";
 import type { StaticPage } from "@/types/content";
@@ -10,6 +10,7 @@ defineRouteRules({
 });
 
 const route = useRoute();
+const router = useRouter();
 
 const t = useTranslations();
 
@@ -18,6 +19,16 @@ usePageMetadata({
 });
 
 const { data, isPending } = useGetTopics();
+const isOpen = ref(false);
+
+function setTopicQuery(id: number | undefined) {
+	if (id != null) {
+		void router.push({
+			query: { topic: id },
+		});
+		isOpen.value = true;
+	}
+}
 
 const topics = computed(() => {
 	if (!data.value?.results) return [];
@@ -55,9 +66,15 @@ const { data: page } = await useAsyncData("themes-page", async () => {
 	});
 });
 
-const isMobile = computed(() => {
-	return window.innerWidth < 1024;
+const isMobile = ref(false);
+
+onMounted(() => {
+	isMobile.value = window.innerWidth < 1024;
 });
+
+function extractIdFromUrl(url: string) {
+	return url.split("/").slice(-2, -1)[0]; // Gets the second last part of the URL
+}
 
 watch(
 	() => {
@@ -73,6 +90,26 @@ watch(
 		}
 	},
 );
+
+watch(
+	() => {
+		return route.query.topic;
+	},
+	() => {
+		if (route.query.topic) {
+			isOpen.value = true;
+		}
+	},
+	{ immediate: true },
+);
+
+function closeSidebar() {
+	isOpen.value = false;
+
+	void router.replace({
+		query: { ...route.query, topic: undefined },
+	});
+}
 </script>
 
 <template>
@@ -117,25 +154,26 @@ watch(
 						<div v-for="(topic, index) in group.topics" :key="topic.name" class="p-1 text-base">
 							<div class="flex gap-2">
 								{{ topic.name }}
-								<NuxtLink
+								<!-- Needs review
+								 <NuxtLink
 									class="relative"
 									:href="{
 										path: '/search',
-										query: { topic: topic.name },
+										query: { query: perspective.name },
 									}"
 								>
 									<span class="sr-only">Nach verknüpften Werken suchen</span>
 									<SearchIcon class="mt-1 text-frisch-indigo" :size="16" />
 								</NuxtLink>
-								<span v-if="topic.description" class="relative flex items-center">
-									<span class="sr-only">Thema anzeigen</span>
-									<DetailSidebar
-										class="cursor-pointer"
-										:is-mobile="isMobile"
-										:source="topic"
-										source-type="Thema"
-									/>
-								</span>
+								-->
+								<span class="sr-only">Thema anzeigen</span>
+								<Button
+									class="px-0 pb-4 text-frisch-orange"
+									variant="transparent"
+									@click="setTopicQuery(extractIdFromUrl(topic.url ?? '') as unknown as number)"
+								>
+									<EyeIcon class="p-0.5" />
+								</Button>
 								<span v-if="index !== group.topics.length - 1">|</span>
 							</div>
 						</div>
@@ -145,6 +183,15 @@ watch(
 			<Centered v-else class="pointer-events-none">
 				<LoadingSpinner />
 			</Centered>
+		</div>
+		<div v-show="isOpen">
+			<TopicSidebar
+				class="absolute"
+				:is-mobile="isMobile"
+				:is-open="isOpen"
+				relation="Thema"
+				@close-side-bar="closeSidebar()"
+			/>
 		</div>
 	</MainContent>
 </template>

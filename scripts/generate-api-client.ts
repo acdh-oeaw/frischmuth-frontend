@@ -24,6 +24,7 @@ async function generate() {
 			"/api/work-preview",
 			"/api/place-detail/{id}",
 			"/api/research-perspective-detail/{id}",
+			"/api/topic-detail/{id}",
 			"/apis/api/apis_ontology.place",
 			"/apis/api/apis_ontology.topic",
 			"/apis/api/apis_ontology.researchperspective",
