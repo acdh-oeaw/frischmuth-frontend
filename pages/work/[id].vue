@@ -14,8 +14,10 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 const route = useRoute();
 const router = useRouter();
 
-const isOpen = ref(false);
+const isOpenPlace = ref(false);
+const isOpenCharacter = ref(false);
 const currentRelation = ref("");
+const currentMetaId = ref<number | null>(null);
 
 const isMobile = computed(() => {
 	return window.innerWidth < 820;
@@ -50,8 +52,10 @@ const characters = computed(() => {
 			.map((character) => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
+					id: character.id,
 					name: character.fallback_name,
 					fictionality: fictionality,
+					metacharacterId: character.metacharacter ? character.metacharacter.id : null,
 				};
 			}),
 		secondary: work.value?.characters
@@ -59,8 +63,10 @@ const characters = computed(() => {
 			.map((character) => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
+					id: character.id,
 					name: character.fallback_name,
 					fictionality: fictionality,
+					metacharacterId: character.metacharacter ? character.metacharacter.id : null,
 				};
 			}),
 		spokenOf: work.value?.characters
@@ -68,8 +74,10 @@ const characters = computed(() => {
 			.map((character) => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
+					id: character.id,
 					name: character.fallback_name,
 					fictionality: fictionality,
+					metacharacterId: character.metacharacter ? character.metacharacter.id : null,
 				};
 			}),
 	};
@@ -152,21 +160,35 @@ const icon = computed(() => {
 });
 
 function closeSidebar() {
-	isOpen.value = false;
+	isOpenPlace.value = false;
+	isOpenCharacter.value = false;
 
 	void router.replace({
-		query: { ...route.query, place: undefined },
+		query: { ...route.query, place: undefined, character: undefined },
 	});
 }
 
-function setPlaceQueryAndRelation(id: number | undefined, relation: string) {
+function setQueryAndRelation(dataType: string, id: number | undefined, relation: string) {
+	closeSidebar();
 	if (id != null) {
-		void router.push({
-			query: { place: id },
-		});
-		isOpen.value = true;
+		if (dataType === "Ort") {
+			void router.push({
+				query: { place: id },
+			});
+			isOpenPlace.value = true;
+		} else {
+			void router.push({
+				query: { character: id },
+			});
+			isOpenCharacter.value = true;
+		}
+
 		currentRelation.value = relation;
 	}
+}
+
+function setMetaId(id: number | null) {
+	currentMetaId.value = id;
 }
 </script>
 
@@ -358,11 +380,29 @@ function setPlaceQueryAndRelation(id: number | undefined, relation: string) {
 													<span v-if="character.fictionality" class="flex items-center gap-1">
 														<CharacterFictionality
 															:fictionality="character.fictionality"
+															:is-detail-view="false"
+															:is-mobile="isMobile"
+															:is-tablet="isTablet"
+														/>
+														<CharacterFictionality
+															v-if="character.metacharacterId != null"
+															fictionality="Metacharakter"
+															:is-detail-view="false"
 															:is-mobile="isMobile"
 															:is-tablet="isTablet"
 														/>
 
-														{{ character.name }}
+														<Button
+															class="flex cursor-pointer items-center p-0 text-base font-normal underline decoration-dotted hover:no-underline"
+															variant="transparent"
+															@click="
+																setQueryAndRelation('Charakter', character.id, 'Hauptfigur');
+																setMetaId(character.metacharacterId);
+															"
+														>
+															{{ character.name }}
+															<span class="sr-only">Charakter anzeigen</span>
+														</Button>
 													</span>
 												</div>
 											</div>
@@ -377,11 +417,28 @@ function setPlaceQueryAndRelation(id: number | undefined, relation: string) {
 													<span v-if="character.fictionality" class="flex items-center gap-1">
 														<CharacterFictionality
 															:fictionality="character.fictionality"
+															:is-detail-view="false"
 															:is-mobile="isMobile"
 															:is-tablet="isTablet"
 														/>
-
-														{{ character.name }}
+														<CharacterFictionality
+															v-if="character.metacharacterId != null"
+															fictionality="Metacharakter"
+															:is-detail-view="false"
+															:is-mobile="isMobile"
+															:is-tablet="isTablet"
+														/>
+														<Button
+															class="flex cursor-pointer items-center p-0 text-base font-normal underline decoration-dotted hover:no-underline"
+															variant="transparent"
+															@click="
+																setQueryAndRelation('Charakter', character.id, 'Nebenfigur');
+																setMetaId(character.metacharacterId);
+															"
+														>
+															{{ character.name }}
+															<span class="sr-only">Charakter anzeigen</span>
+														</Button>
 													</span>
 												</div>
 											</div>
@@ -394,13 +451,32 @@ function setPlaceQueryAndRelation(id: number | undefined, relation: string) {
 											<div v-if="characters.spokenOf != null && characters.spokenOf.length > 0">
 												<div v-for="character in characters.spokenOf" :key="character.name">
 													<span v-if="character.fictionality" class="flex items-center gap-1">
-														<CharacterFictionality
-															:fictionality="character.fictionality"
-															:is-mobile="isMobile"
-															:is-tablet="isTablet"
-														/>
-
-														{{ character.name }}
+														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
+															<CharacterFictionality
+																:fictionality="character.fictionality"
+																:is-detail-view="false"
+																:is-mobile="isMobile"
+																:is-tablet="isTablet"
+															/>
+															<CharacterFictionality
+																v-if="character.metacharacterId != null"
+																fictionality="Metacharakter"
+																:is-detail-view="false"
+																:is-mobile="isMobile"
+																:is-tablet="isTablet"
+															/>
+															<Button
+																class="flex cursor-pointer items-center p-0 text-base font-normal underline decoration-dotted hover:no-underline"
+																variant="transparent"
+																@click="
+																	setQueryAndRelation('Charakter', character.id, 'Erwähnte Figur');
+																	setMetaId(character.metacharacterId);
+																"
+															>
+																{{ character.name }}
+																<span class="sr-only">Charakter anzeigen</span>
+															</Button>
+														</span>
 													</span>
 												</div>
 											</div>
@@ -445,23 +521,14 @@ function setPlaceQueryAndRelation(id: number | undefined, relation: string) {
 												<div v-if="places.takesPlaceIn != null && places.takesPlaceIn.length > 0">
 													<div v-for="place in places.takesPlaceIn" :key="place.id">
 														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
-															<span
-																:class="`${place.id && place.latitude && place.longitude ? '' : 'py-2'}`"
-																>{{ place.name }}</span
+															<Button
+																class="flex cursor-pointer items-start gap-1 p-0 text-base font-normal underline decoration-dotted hover:no-underline"
+																variant="transparent"
+																@click="setQueryAndRelation('Ort', place.id, 'Schauplatz')"
 															>
-															<span
-																v-if="place.id && place.latitude && place.longitude"
-																class="flex items-center"
-															>
-																<Button
-																	class="px-0 text-frisch-orange"
-																	variant="transparent"
-																	@click="setPlaceQueryAndRelation(place.id, 'Schauplatz')"
-																>
-																	<EyeIcon :size="16" />
-																</Button>
+																{{ place.name }}
 																<span class="sr-only">Ort anzeigen</span>
-															</span>
+															</Button>
 														</span>
 													</div>
 												</div>
@@ -474,23 +541,14 @@ function setPlaceQueryAndRelation(id: number | undefined, relation: string) {
 												<div v-if="places.discussed != null && places.discussed.length > 0">
 													<div v-for="place in places.discussed" :key="place.id">
 														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
-															<span
-																:class="`${place.id && place.latitude && place.longitude ? '' : 'py-2'}`"
-																>{{ place.name }}</span
+															<Button
+																class="flex cursor-pointer items-start gap-1 p-0 text-base font-normal underline decoration-dotted hover:no-underline"
+																variant="transparent"
+																@click="setQueryAndRelation('Ort', place.id, 'Beschriebener Ort')"
 															>
-															<span
-																v-if="place.id && place.latitude && place.longitude"
-																class="flex items-center"
-															>
-																<Button
-																	class="px-0 text-frisch-orange"
-																	variant="transparent"
-																	@click="setPlaceQueryAndRelation(place.id, 'Beschriebener Ort')"
-																>
-																	<EyeIcon :size="16" />
-																</Button>
+																{{ place.name }}
 																<span class="sr-only">Ort anzeigen</span>
-															</span>
+															</Button>
 														</span>
 													</div>
 												</div>
@@ -503,23 +561,14 @@ function setPlaceQueryAndRelation(id: number | undefined, relation: string) {
 												<div v-if="places.mentioned != null && places.mentioned.length > 0">
 													<div v-for="place in places.mentioned" :key="place.id">
 														<span class="grid grid-cols-[auto_1fr] items-center gap-1">
-															<span
-																:class="`${place.id && place.latitude && place.longitude ? '' : 'py-2'}`"
-																>{{ place.name }}</span
+															<Button
+																class="flex cursor-pointer items-start gap-1 p-0 text-base font-normal underline decoration-dotted hover:no-underline"
+																variant="transparent"
+																@click="setQueryAndRelation('Ort', place.id, 'Erwähnter Ort')"
 															>
-															<span
-																v-if="place.id && place.latitude && place.longitude"
-																class="flex items-center"
-															>
-																<Button
-																	class="px-0 text-frisch-orange"
-																	variant="transparent"
-																	@click="setPlaceQueryAndRelation(place.id, 'Erwähnter Ort')"
-																>
-																	<EyeIcon :size="16" />
-																</Button>
+																{{ place.name }}
 																<span class="sr-only">Ort anzeigen</span>
-															</span>
+															</Button>
 														</span>
 													</div>
 												</div>
@@ -716,12 +765,22 @@ function setPlaceQueryAndRelation(id: number | undefined, relation: string) {
 		<Centered v-else class="pointer-events-none">
 			<LoadingSpinner />
 		</Centered>
-		<div v-show="isOpen">
+		<div v-show="isOpenPlace">
 			<MapSidebar
 				class="absolute"
 				:is-mobile="isMobile"
-				:is-open="isOpen"
+				:is-open="isOpenPlace"
 				:relation="currentRelation"
+				@close-side-bar="closeSidebar()"
+			/>
+		</div>
+		<div v-show="isOpenCharacter">
+			<CharacterSidebar
+				class="absolute"
+				:fictionality="currentRelation"
+				:is-mobile="isMobile"
+				:is-open="isOpenCharacter"
+				:meta-id="currentMetaId"
 				@close-side-bar="closeSidebar()"
 			/>
 		</div>

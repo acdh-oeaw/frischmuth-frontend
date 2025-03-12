@@ -29,6 +29,8 @@ async function generate() {
 			"/apis/api/apis_ontology.topic",
 			"/apis/api/apis_ontology.researchperspective",
 			"/apis/api/apis_ontology.glossar",
+			"/apis/api/apis_ontology.character/{id}",
+			"/apis/api/apis_ontology.metacharacter/{id}",
 		],
 		dist: outputFilePath,
 	};
