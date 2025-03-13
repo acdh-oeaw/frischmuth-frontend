@@ -56,6 +56,7 @@ export type ResearchPerspectives = NonNullable<ResearchResults["results"]>;
 export type GlossaryEntries = NonNullable<GlossaryResults["results"]>;
 
 export type SearchResultFacets = NonNullable<SearchResults["facets"]>;
+export type ExpressionData = NonNullable<[WorkDetail["expression_data"]]>;
 
 export interface CharacterResponse {
 	name: string | undefined;

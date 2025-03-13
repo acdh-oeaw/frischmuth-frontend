@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { UserRoundIcon, UsersRoundIcon, XIcon } from "lucide-vue-next";
 
-import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import type { CharacterResponse } from "@/types/api";
 
 import LoadingSpinner from "./ui/loading-spinner.vue";

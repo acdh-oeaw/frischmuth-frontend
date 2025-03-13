@@ -1,16 +1,6 @@
 <script lang="ts" setup>
 import { EyeIcon, GlobeIcon } from "lucide-vue-next";
 
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-
 const route = useRoute();
 const router = useRouter();
 
@@ -200,10 +190,12 @@ function setMetaId(id: number | null) {
 			/>
 			<div class="grid md:grid-cols-2 md:gap-8">
 				<div v-if="work != null" class="bg-white p-8 lg:p-16">
-					<!-- TODO: maybe display siglum here -->
-					<div v-if="work?.work_type != null && icon" class="flex items-center gap-2 pb-2">
-						<component :is="icon.icon" :size="20" />
-						{{ work?.work_type[0]?.name }}
+					<div class="grid w-full grid-cols-2">
+						<div v-if="work?.work_type != null && icon" class="flex items-center gap-2 pb-2">
+							<component :is="icon.icon" :size="20" />
+							{{ work?.work_type[0]?.name }}
+						</div>
+						<CitationButton class="place-self-end" :metadata="[work?.expression_data]" />
 					</div>
 					<div class="pb-2">
 						<div class="text-xl font-semibold">
@@ -246,7 +238,7 @@ function setMetaId(id: number | null) {
 						</div>
 					</div>
 					<span v-for="topic in work?.topics" :key="topic.id" class="mb-2 mr-1">
-						<div class="mb-1 inline-block bg-frisch-grey px-2 py-1 text-xs text-white opacity-85">
+						<div class="mb-1 inline-block bg-frisch-indigo px-2 py-1 text-xs text-white opacity-85">
 							<NuxtLink
 								:href="{
 									path: `/search`,

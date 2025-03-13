@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { GlassesIcon, XIcon } from "lucide-vue-next";
 
-import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import type { ResearchPerspective } from "@/types/api";
 
 import LoadingSpinner from "./ui/loading-spinner.vue";

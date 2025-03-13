@@ -36,6 +36,10 @@ export default defineNuxtConfig({
 		"@/styles/index.css",
 	],
 
+	typescript: {
+		shim: false, // Ensures Vue SFCs are handled properly with TypeScript
+	},
+
 	devtools: {
 		enabled: process.env.NODE_ENV === "development",
 	},

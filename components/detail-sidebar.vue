@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { EyeIcon } from "lucide-vue-next";
 
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-
 const props = defineProps<{
 	source: {
 		name?: string | undefined;

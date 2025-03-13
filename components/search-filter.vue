@@ -2,12 +2,6 @@
 import { XIcon } from "lucide-vue-next";
 import type { LocationQueryValue } from "vue-router";
 
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "@/components/ui/accordion";
 import type { SearchResultFacets } from "@/types/api";
 
 interface workType {
