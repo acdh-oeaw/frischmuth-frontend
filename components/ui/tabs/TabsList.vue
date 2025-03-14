@@ -2,7 +2,7 @@
 import { TabsList, type TabsListProps } from "reka-ui";
 import { computed, type HTMLAttributes } from "vue";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/styles";
 
 const props = defineProps<TabsListProps & { class?: HTMLAttributes["class"] }>();
 
