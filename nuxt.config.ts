@@ -38,6 +38,7 @@ export default defineNuxtConfig({
 
 	typescript: {
 		shim: false, // Ensures Vue SFCs are handled properly with TypeScript
+		typeCheck: true,
 	},
 
 	devtools: {
