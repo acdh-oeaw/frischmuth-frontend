@@ -144,7 +144,7 @@ onScopeDispose(() => {
 									RIS
 								</TabsTrigger>
 							</TabsList>
-							<div class="h-40 overflow-y-auto outline outline-1 outline-frisch-grey/50">
+							<div class="h-40 max-w-md overflow-y-auto outline outline-1 outline-frisch-grey/50">
 								<TabsContent class="p-2 text-black" value="bibtex">
 									<pre>{{ bibtex }}</pre>
 								</TabsContent>
