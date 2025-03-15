@@ -34,7 +34,7 @@ const config = {
 		"./pages/**/*.@(css|ts|vue)",
 		"./styles/**/*.css",
 	],
-	darkMode: ["selector", '[data-ui-color-scheme="dark"]', "class"],
+	darkMode: ["selector", '[data-ui-color-scheme="dark"]'],
 	theme: {
 		container: {
 			center: true,
