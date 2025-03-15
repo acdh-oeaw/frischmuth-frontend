@@ -2,7 +2,7 @@
 import { AlertDialogDescription, type AlertDialogDescriptionProps } from "reka-ui";
 import { computed, type HTMLAttributes } from "vue";
 
-import { cn } from "@/utils/styles.ts";
+import { cn } from "@/utils/styles";
 
 const props = defineProps<AlertDialogDescriptionProps & { class?: HTMLAttributes["class"] }>();
 

@@ -190,8 +190,8 @@ function setMetaId(id: number | null) {
 			/>
 			<div class="grid md:grid-cols-2 md:gap-8">
 				<div v-if="work != null" class="bg-white p-8 lg:p-16">
-					<div class="grid w-full grid-cols-2">
-						<div v-if="work?.work_type != null && icon" class="flex items-center gap-2 pb-2">
+					<div class="grid w-full grid-cols-2 items-center pb-2">
+						<div v-if="work?.work_type != null && icon" class="flex items-center gap-2">
 							<component :is="icon.icon" :size="20" />
 							{{ work?.work_type[0]?.name }}
 						</div>
