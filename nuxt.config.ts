@@ -130,17 +130,4 @@ export default defineNuxtConfig({
 			redmineId: process.env.NUXT_PUBLIC_REDMINE_ID,
 		},
 	},
-
-	typescript: {
-		shim: false,
-		strict: true,
-		// https://github.com/nuxt/nuxt/issues/14816#issuecomment-1484918081
-		tsConfig: {
-			compilerOptions: {
-				paths: {
-					"@/*": ["./*"],
-				},
-			},
-		},
-	},
 });
