@@ -136,7 +136,7 @@ watch(
 				<XIcon class="size-4" />
 			</Button>
 			<div>
-				<div class="grid grid-cols-[auto_1fr] items-center gap-1 pt-2 text-sm font-semibold">
+				<div class="grid grid-cols-[auto_1fr] items-center gap-1 pt-2 text-sm">
 					<GlassesIcon :size="16" />
 					{{ relation }}
 				</div>
