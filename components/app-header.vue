@@ -2,7 +2,6 @@
 import { MenuIcon } from "lucide-vue-next";
 
 import type { NavLinkProps } from "@/components/nav-link.vue";
-import { Separator } from "@/components/ui/separator";
 
 const route = useRoute();
 

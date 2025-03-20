@@ -7,11 +7,15 @@
 		"config": "tailwind.config.ts",
 		"css": "styles/shadcn-ui.css",
 		"baseColor": "neutral",
-		"cssVariables": true
+		"cssVariables": true,
+		"prefix": ""
 	},
-	"framework": "nuxt",
 	"aliases": {
 		"components": "@/components",
-		"utils": "@/utils/styles"
-	}
+		"composables": "@/composables",
+		"utils": "@/utils/styles",
+		"ui": "@/components/ui",
+		"lib": "@/lib"
+	},
+	"iconLibrary": "lucide"
 }

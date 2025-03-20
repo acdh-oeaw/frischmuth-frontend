@@ -15,7 +15,7 @@ import {
 	PaginationNext,
 	PaginationPrev,
 } from "@/components/ui/pagination";
-import type { SearchFacetLanguage, SearchFacetTopic, SearchFacetWorkType } from "@/types/api.ts";
+import type { SearchFacetLanguage, SearchFacetTopic, SearchFacetWorkType } from "@/types/api";
 
 defineRouteRules({
 	prerender: true,

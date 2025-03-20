@@ -57,6 +57,8 @@ export type GlossaryEntries = NonNullable<GlossaryResults["results"]>;
 
 export type SearchResultFacets = NonNullable<SearchResults["facets"]>;
 
+export type ExpressionData = NonNullable<[WorkDetail["expression_data"]]>;
+
 export type metaCharacter = ZodiosResponseByPath<Api, "get", "/api/metacharacter-detail/:id/">;
 
 export interface CharacterResponse {

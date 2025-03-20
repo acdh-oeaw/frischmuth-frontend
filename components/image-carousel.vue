@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { CarouselApi } from "@/components/ui/carousel";
+import type { CarouselApi } from "@/components/ui/carousel/index";
 
 const props = defineProps<{
 	images: Array<{

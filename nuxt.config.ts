@@ -36,6 +36,11 @@ export default defineNuxtConfig({
 		"@/styles/index.css",
 	],
 
+	typescript: {
+		shim: false, // Ensures Vue SFCs are handled properly with TypeScript
+		typeCheck: true,
+	},
+
 	devtools: {
 		enabled: process.env.NODE_ENV === "development",
 	},
@@ -124,19 +129,6 @@ export default defineNuxtConfig({
 			matomoBaseUrl: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
 			matomoId: process.env.NUXT_PUBLIC_MATOMO_ID,
 			redmineId: process.env.NUXT_PUBLIC_REDMINE_ID,
-		},
-	},
-
-	typescript: {
-		shim: false,
-		strict: true,
-		// https://github.com/nuxt/nuxt/issues/14816#issuecomment-1484918081
-		tsConfig: {
-			compilerOptions: {
-				paths: {
-					"@/*": ["./*"],
-				},
-			},
 		},
 	},
 });

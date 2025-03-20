@@ -1,16 +1,6 @@
 <script lang="ts" setup>
 import { EyeIcon, GlobeIcon } from "lucide-vue-next";
 
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-
 const route = useRoute();
 const router = useRouter();
 
@@ -159,6 +149,33 @@ const icon = computed(() => {
 	return null;
 });
 
+const persons = computed(() => {
+	const authors: Array<string> = [];
+	const editors: Array<string> = [];
+
+	work.value?.persons?.forEach((person) => {
+		const name = `${person.forename} ${person.surname}`;
+
+		if (person.relation_type === "has author") {
+			authors.push(name);
+		} else if (person.relation_type === "has editor") {
+			editors.push(name);
+		}
+	});
+
+	const formattedAuthors = authors.join(", ");
+	const formattedEditors = editors.join(", ");
+
+	if (formattedAuthors && formattedEditors) {
+		return `${formattedAuthors} | ${formattedEditors}`;
+	} else if (formattedAuthors) {
+		return formattedAuthors;
+	} else if (formattedEditors) {
+		return formattedEditors;
+	}
+	return "";
+});
+
 function closeSidebar() {
 	isOpenPlace.value = false;
 	isOpenCharacter.value = false;
@@ -186,6 +203,16 @@ function setQueryAndRelation(dataType: string, id: number | undefined, relation:
 		currentRelation.value = relation;
 	}
 }
+const metadataPersons = computed(() => {
+	const authors: Array<{ forename: string; surname: string }> = [];
+
+	work.value?.persons?.forEach((person) => {
+		if (person.relation_type === "has author") {
+			authors.push({ forename: person.forename ?? "", surname: person.surname ?? "" });
+		}
+	});
+	return authors;
+});
 
 function setMetaId(id: number | null) {
 	currentMetaId.value = id;
@@ -200,21 +227,30 @@ function setMetaId(id: number | null) {
 			/>
 			<div class="grid md:grid-cols-2 md:gap-8">
 				<div v-if="work != null" class="bg-white p-8 lg:p-16">
-					<!-- TODO: maybe display siglum here -->
-					<div v-if="work?.work_type != null && icon" class="flex items-center gap-2 pb-2">
-						<component :is="icon.icon" :size="20" />
-						{{ work?.work_type[0]?.name }}
+					<div class="grid w-full grid-cols-2 items-center pb-2">
+						<div v-if="work?.work_type != null && icon" class="flex items-center gap-2">
+							<component :is="icon.icon" :size="20" />
+							{{ work?.work_type[0]?.name }}
+						</div>
+						<CitationButton
+							class="place-self-end"
+							:metadata="[work?.expression_data]"
+							:persons="metadataPersons ?? []"
+						/>
+					</div>
+					<div v-if="persons" class="italic">
+						{{ persons }}
 					</div>
 					<div class="pb-2">
 						<div class="text-xl font-semibold">
 							{{ work?.title }}
 						</div>
-						<div v-if="work?.subtitle" class="italic">
+						<div v-if="work?.subtitle">
 							{{ work?.subtitle }}
 						</div>
 					</div>
-					<div v-if="work?.expression_data != null" class="pb-2">
-						<div class="pb-2">
+					<div v-if="work?.expression_data != null" class="pb-2 text-sm">
+						<div class="pb-1">
 							<span v-for="(entry, index) in work.expression_data" :key="index">
 								<span>{{ entry?.edition_type?.[0] || "" }}</span>
 								<span v-if="entry.edition_type?.[0]">{{ ", " }}</span>
@@ -235,10 +271,9 @@ function setMetaId(id: number | null) {
 									work?.expression_data[0]?.language.length > 0
 								"
 							>
-								<div v-for="(language, index) in work?.expression_data[0]?.language" :key="index">
-									<span>{{ language }}</span>
-									<span v-if="index !== work?.expression_data[0]?.language.length - 1">
-										{{ ", " }}&nbsp;
+								<div class="w-full">
+									<span v-if="work?.expression_data[0]?.language?.length">
+										{{ work.expression_data[0].language.join(", ") }}
 									</span>
 								</div>
 							</div>
@@ -246,7 +281,7 @@ function setMetaId(id: number | null) {
 						</div>
 					</div>
 					<span v-for="topic in work?.topics" :key="topic.id" class="mb-2 mr-1">
-						<div class="mb-1 inline-block bg-frisch-grey px-2 py-1 text-xs text-white opacity-85">
+						<div class="mb-1 inline-block bg-frisch-indigo px-2 py-1 text-xs text-white opacity-85">
 							<NuxtLink
 								:href="{
 									path: `/search`,

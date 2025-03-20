@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { MapPinIcon, XIcon } from "lucide-vue-next";
 
-import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import type { PlaceDetail } from "@/types/api";
 
 import LoadingSpinner from "./ui/loading-spinner.vue";
