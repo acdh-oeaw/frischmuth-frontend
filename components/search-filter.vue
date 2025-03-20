@@ -14,7 +14,7 @@ interface workType {
 const route = useRoute();
 const router = useRouter();
 
-const slider = { min: 1940, max: 2025 };
+const slider = { min: 1941, max: 2025 };
 const sliderValue = ref([slider.min, slider.max]);
 
 const checkedFacets = computed(() => {

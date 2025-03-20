@@ -104,7 +104,7 @@ const randomImages = computed(() => {
 			</NuxtLink>
 			<NuxtLink
 				class="relative aspect-square overflow-hidden bg-frisch-orange p-4 text-white transition hover:scale-105"
-				to="/explore/research-aspects"
+				to="/explore/research-perspectives"
 			>
 				<span class="uppercase">{{ t("ResearchAspectsPage.title") }}</span>
 			</NuxtLink>
