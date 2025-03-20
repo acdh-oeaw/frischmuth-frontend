@@ -213,6 +213,7 @@ const metadataPersons = computed(() => {
 	});
 	return authors;
 });
+
 function setMetaId(id: number | null) {
 	currentMetaId.value = id;
 }

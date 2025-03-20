@@ -56,14 +56,14 @@ export type ResearchPerspectives = NonNullable<ResearchResults["results"]>;
 export type GlossaryEntries = NonNullable<GlossaryResults["results"]>;
 
 export type SearchResultFacets = NonNullable<SearchResults["facets"]>;
+
 export type ExpressionData = NonNullable<[WorkDetail["expression_data"]]>;
+
+export type metaCharacter = ZodiosResponseByPath<Api, "get", "/api/metacharacter-detail/:id/">;
 
 export interface CharacterResponse {
 	name: string | undefined;
 	description: string | undefined;
 	fictionality: string | undefined;
-	metacharacter: {
-		name: string | undefined;
-		description: string | undefined;
-	} | null;
+	metacharacter: metaCharacter | null;
 }

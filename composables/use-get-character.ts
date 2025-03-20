@@ -23,7 +23,7 @@ export function useGetCharacterDetails(params: CharacterParams) {
 
 			// Only fetch metacharacter if metacharacterId is provided
 			const metaCharacter = metacharacterId
-				? await $api["apis_api_apis_ontology.metacharacter_retrieve"]({
+				? await $api.api_metacharacter_detail_retrieve({
 						params: { id: metacharacterId },
 					})
 				: null;
@@ -32,12 +32,7 @@ export function useGetCharacterDetails(params: CharacterParams) {
 				name: character.fallback_name,
 				description: character.description,
 				fictionality: character.fictionality ? character.fictionality[0] : undefined,
-				metacharacter: metaCharacter
-					? {
-							name: metaCharacter.name,
-							description: metaCharacter.description,
-						}
-					: null,
+				metacharacter: metaCharacter,
 			};
 
 			return response;

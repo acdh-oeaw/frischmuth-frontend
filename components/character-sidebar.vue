@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { UserRoundIcon, UsersRoundIcon, XIcon } from "lucide-vue-next";
 
+import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import type { CharacterResponse } from "@/types/api";
 
 import LoadingSpinner from "./ui/loading-spinner.vue";
@@ -164,6 +165,23 @@ watch(
 							<div class="pt-2 text-base font-semibold text-black">Beschreibung</div>
 							<div>
 								{{ characterDetail.metacharacter.description }}
+							</div>
+						</div>
+						<div
+							v-if="
+								characterDetail.metacharacter != null &&
+								characterDetail.metacharacter.related_works != null &&
+								characterDetail.metacharacter.related_works.length > 0
+							"
+						>
+							<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
+							<div v-for="link in characterDetail.metacharacter.related_works" :key="link.id">
+								<NavLink
+									class="flex cursor-pointer items-center gap-1 underline decoration-dotted hover:no-underline"
+									:href="`/work/${link.id}`"
+								>
+									{{ link.title }}
+								</NavLink>
 							</div>
 						</div>
 						<div v-else class="flex h-full pt-2 align-middle text-sm text-neutral-500">
