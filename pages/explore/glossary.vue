@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import transliterate from "@sindresorhus/transliterate";
-import { SearchIcon } from "lucide-vue-next";
 
 import type { GlossaryEntries } from "@/types/api";
 import type { StaticPage } from "@/types/content";
@@ -116,16 +115,6 @@ watch(
 						<div v-for="(entry, index) in group.entries" :key="entry.name" class="p-1 text-base">
 							<div class="flex gap-2">
 								{{ entry.name }}
-								<NuxtLink
-									class="relative"
-									:href="{
-										path: '/search',
-										query: { query: entry.name },
-									}"
-								>
-									<span class="sr-only">Nach verknüpften Werken suchen</span>
-									<SearchIcon class="mt-1 text-frisch-indigo" :size="16" />
-								</NuxtLink>
 								<span v-if="entry.description" class="relative flex items-center">
 									<span class="sr-only">Glossareintrag anzeigen</span>
 									<DetailSidebar
