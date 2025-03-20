@@ -9,6 +9,7 @@ import type { ExpressionData } from "@/types/api";
 
 const props = defineProps<{
 	metadata: ExpressionData;
+	persons: Array<{ forename: string; surname: string }>;
 }>();
 
 const bibtex = ref("");
@@ -17,13 +18,20 @@ const ris = ref("");
 const copied = ref(false);
 
 const currentTab = ref("apa");
+const isDisabled = ref(false);
 
 const citation = computed(() => {
 	const citations = (props.metadata || []).flatMap((refs) => {
 		return refs?.map((ref) => {
 			return {
-				type: "book",
-				author: [{ given: "Barbara", family: "Frischmuth" }],
+				author:
+					ref?.persons && ref?.persons.length <= 0
+						? props.persons.map((author) => {
+								return { given: author.forename, family: author.surname };
+							})
+						: ref?.persons?.map((author) => {
+								return { given: author.forename, family: author.surname };
+							}),
 				title: ref?.title ?? "",
 				edition: ref?.edition_type ?? "",
 				language: ref?.language?.join(", ") ?? "",
@@ -34,14 +42,14 @@ const citation = computed(() => {
 			};
 		});
 	});
-	citations.forEach((cit) => {
-		console.log(cit);
-	});
 	return new Cite(citations);
 });
 
 watchEffect(() => {
 	console.log(citation.value.data);
+	if (citation.value.data.length <= 0) {
+		isDisabled.value = true;
+	}
 	bibtex.value = citation.value.format("bibtex");
 	apa.value = citation.value.format("bibliography", {
 		format: "html",
@@ -114,9 +122,10 @@ onScopeDispose(() => {
 <template>
 	<div ref="citation-container">
 		<AlertDialog>
-			<AlertDialogTrigger>
+			<AlertDialogTrigger :disabled="isDisabled">
 				<Button
 					class="m-0 h-full items-center gap-1 bg-frisch-grey px-2 py-1 text-xs shadow-none hover:bg-frisch-grey/90"
+					:disabled="isDisabled"
 				>
 					<MessageSquareQuote :size="16" />
 					Zitieren

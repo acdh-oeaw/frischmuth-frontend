@@ -149,6 +149,33 @@ const icon = computed(() => {
 	return null;
 });
 
+const persons = computed(() => {
+	const authors: Array<string> = [];
+	const editors: Array<string> = [];
+
+	work.value?.persons?.forEach((person) => {
+		const name = `${person.forename} ${person.surname}`;
+
+		if (person.relation_type === "has author") {
+			authors.push(name);
+		} else if (person.relation_type === "has editor") {
+			editors.push(name);
+		}
+	});
+
+	const formattedAuthors = authors.join(", ");
+	const formattedEditors = editors.join(", ");
+
+	if (formattedAuthors && formattedEditors) {
+		return `${formattedAuthors} | ${formattedEditors}`;
+	} else if (formattedAuthors) {
+		return formattedAuthors;
+	} else if (formattedEditors) {
+		return formattedEditors;
+	}
+	return "";
+});
+
 function closeSidebar() {
 	isOpenPlace.value = false;
 	isOpenCharacter.value = false;
@@ -176,7 +203,16 @@ function setQueryAndRelation(dataType: string, id: number | undefined, relation:
 		currentRelation.value = relation;
 	}
 }
+const metadataPersons = computed(() => {
+	const authors: Array<{ forename: string; surname: string }> = [];
 
+	work.value?.persons?.forEach((person) => {
+		if (person.relation_type === "has author") {
+			authors.push({ forename: person.forename ?? "", surname: person.surname ?? "" });
+		}
+	});
+	return authors;
+});
 function setMetaId(id: number | null) {
 	currentMetaId.value = id;
 }
@@ -195,18 +231,25 @@ function setMetaId(id: number | null) {
 							<component :is="icon.icon" :size="20" />
 							{{ work?.work_type[0]?.name }}
 						</div>
-						<CitationButton class="place-self-end" :metadata="[work?.expression_data]" />
+						<CitationButton
+							class="place-self-end"
+							:metadata="[work?.expression_data]"
+							:persons="metadataPersons ?? []"
+						/>
+					</div>
+					<div v-if="persons" class="italic">
+						{{ persons }}
 					</div>
 					<div class="pb-2">
 						<div class="text-xl font-semibold">
 							{{ work?.title }}
 						</div>
-						<div v-if="work?.subtitle" class="italic">
+						<div v-if="work?.subtitle">
 							{{ work?.subtitle }}
 						</div>
 					</div>
-					<div v-if="work?.expression_data != null" class="pb-2">
-						<div class="pb-2">
+					<div v-if="work?.expression_data != null" class="pb-2 text-sm">
+						<div class="pb-1">
 							<span v-for="(entry, index) in work.expression_data" :key="index">
 								<span>{{ entry?.edition_type?.[0] || "" }}</span>
 								<span v-if="entry.edition_type?.[0]">{{ ", " }}</span>
@@ -227,10 +270,9 @@ function setMetaId(id: number | null) {
 									work?.expression_data[0]?.language.length > 0
 								"
 							>
-								<div v-for="(language, index) in work?.expression_data[0]?.language" :key="index">
-									<span>{{ language }}</span>
-									<span v-if="index !== work?.expression_data[0]?.language.length - 1">
-										{{ ", " }}&nbsp;
+								<div class="w-full">
+									<span v-if="work?.expression_data[0]?.language?.length">
+										{{ work.expression_data[0].language.join(", ") }}
 									</span>
 								</div>
 							</div>
