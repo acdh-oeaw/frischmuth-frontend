@@ -61,10 +61,10 @@ const { data: page } = await useAsyncData("glossary-page", async () => {
 	});
 });
 
-const isMobile = computed(() => {
-	if (window.innerWidth != null) {
-		return window.innerWidth < 1024;
-	} else return false;
+const isMobile = ref(false);
+
+onMounted(() => {
+	isMobile.value = window.innerWidth < 1024;
 });
 
 watch(
