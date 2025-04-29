@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import transliterate from "@sindresorhus/transliterate";
+import { EyeIcon } from "lucide-vue-next";
 
 import type { GlossaryEntries } from "@/types/api";
 import type { StaticPage } from "@/types/content";
@@ -9,13 +10,20 @@ defineRouteRules({
 });
 
 const route = useRoute();
+const router = useRouter();
 const t = useTranslations();
 
 usePageMetadata({
 	title: t("GlossaryPage.meta.title"),
 });
 
+const isOpen = ref(false);
+
 const { data, isPending } = useGetGlossary();
+
+function extractIdFromUrl(url: string) {
+	return url.split("/").slice(-2, -1)[0]; // Gets the second last part of the URL
+}
 
 const glossary = computed(() => {
 	if (!data.value?.results) return [];
@@ -54,7 +62,9 @@ const { data: page } = await useAsyncData("glossary-page", async () => {
 });
 
 const isMobile = computed(() => {
-	return window.innerWidth < 1024;
+	if (window.innerWidth != null) {
+		return window.innerWidth < 1024;
+	} else return false;
 });
 
 watch(
@@ -71,6 +81,23 @@ watch(
 		}
 	},
 );
+
+function setGlossaryQuery(id: number | undefined) {
+	if (id != null) {
+		void router.push({
+			query: { entry: id },
+		});
+		isOpen.value = true;
+	}
+}
+
+function closeSidebar() {
+	isOpen.value = false;
+
+	void router.replace({
+		query: { ...route.query, entry: undefined },
+	});
+}
 </script>
 
 <template>
@@ -115,15 +142,14 @@ watch(
 						<div v-for="(entry, index) in group.entries" :key="entry.name" class="p-1 text-base">
 							<div class="flex gap-2">
 								{{ entry.name }}
-								<span v-if="entry.description" class="relative flex items-center">
-									<span class="sr-only">Glossareintrag anzeigen</span>
-									<DetailSidebar
-										class="cursor-pointer"
-										:is-mobile="isMobile"
-										:source="entry"
-										source-type="Glossareintrag"
-									/>
-								</span>
+								<span class="sr-only">Ort anzeigen</span>
+								<Button
+									class="px-0 pb-4 text-frisch-orange"
+									variant="transparent"
+									@click="setGlossaryQuery(extractIdFromUrl(entry.url ?? '') as unknown as number)"
+								>
+									<EyeIcon class="p-0.5" />
+								</Button>
 								<span v-if="index !== group.entries.length - 1">|</span>
 							</div>
 						</div>
@@ -133,6 +159,15 @@ watch(
 			<Centered v-else class="pointer-events-none">
 				<LoadingSpinner />
 			</Centered>
+		</div>
+		<div v-show="isOpen">
+			<GlossarySidebar
+				class="absolute"
+				:is-mobile="isMobile"
+				:is-open="isOpen"
+				relation="Glossareintrag"
+				@close-side-bar="closeSidebar()"
+			/>
 		</div>
 	</MainContent>
 </template>
