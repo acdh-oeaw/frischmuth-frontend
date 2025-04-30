@@ -1,0 +1,73 @@
+@media print {
+	@page {
+		margin: 20mm;
+		size: a4;
+	}
+
+	header,
+	footer {
+		display: none !important;
+	}
+
+	/* Hide unnecessary elements for print */
+	nav,
+	aside {
+		display: none !important;
+	}
+
+	/* General print adjustments */
+	.text-sm {
+		font-size: 12px;
+	}
+
+	.text-lg {
+		font-size: 16px;
+	}
+
+	.print-heading {
+		margin-top: 10px; /* Add spacing above the heading */
+		margin-bottom: 10px; /* Add spacing below the heading */
+		padding-bottom: 5px; /* Padding under the border */
+		font-weight: 700; /* Make the text bold */
+		font-size: 18px; /* Adjust font size */
+	}
+
+	.grid {
+		display: grid !important;
+		grid-template-columns: repeat(3, 1fr); /* Ensure three equal-width columns */
+		gap: 10px;
+		text-align: left !important;
+	}
+
+	.flex-container {
+		display: flex !important;
+		justify-content: flex-start !important; /* Align flex items to the left */
+		align-items: flex-start !important; /* Align flex items at the top */
+	}
+
+	/* Ensure that all items inside the grid are aligned to the left */
+	.grid-item {
+		text-align: left !important;
+	}
+
+	.grid > div {
+		display: block; /* Avoid flexbox properties that could cause issues */
+		text-align: left !important; /* Ensure grid items align text to the left */
+	}
+
+	.text-center {
+		text-align: left !important; /* Override any center-alignment classes */
+	}
+
+	.no-padding {
+		padding: 0 !important;
+	}
+
+	.page-break {
+		page-break-before: always;
+	}
+
+	.hide-buttons button {
+		display: none !important;
+	}
+}
