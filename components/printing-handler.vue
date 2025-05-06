@@ -145,7 +145,6 @@ const cloneContentForPrint = () => {
 							}
 						}
 
-						// If no valid related works found
 						const fallbackParagraph = document.createElement("p");
 						fallbackParagraph.textContent = "Keine Bezüge vorhanden.";
 						printArea.appendChild(fallbackParagraph);
@@ -183,23 +182,28 @@ const preparePrintContent = (): Promise<void> => {
 	});
 };
 
+const printWithPreparation = async () => {
+	await preparePrintContent();
+	await nextTick();
+
+	requestAnimationFrame(() => {
+		handlePrint();
+	});
+};
+
 const { handlePrint } = useVueToPrint({
 	content: componentRef,
 	documentTitle: "DetailView_Digitales_Archiv_Barbara_Frischmuth",
 	removeAfterPrint: true,
-	onBeforePrint: async () => {
-		await preparePrintContent();
-	},
 });
 
 const handleKeydown = (event: KeyboardEvent) => {
 	if ((event.ctrlKey || event.metaKey) && event.key === "p") {
-		event.preventDefault(); // Prevent default print dialog
-		handlePrint(); // Trigger print function
+		event.preventDefault();
+		printWithPreparation();
 	}
 };
 
-// Attach event listener on mount and clean up on unmount
 onMounted(() => {
 	window.addEventListener("keydown", handleKeydown);
 });
@@ -213,7 +217,7 @@ onBeforeUnmount(() => {
 	<div>
 		<Button
 			class="m-0 h-6 items-center gap-1 bg-frisch-grey px-2 text-xs shadow-none hover:bg-frisch-grey/90"
-			@click="handlePrint"
+			@click="printWithPreparation"
 		>
 			<PrinterIcon :size="16" />
 			Drucken
