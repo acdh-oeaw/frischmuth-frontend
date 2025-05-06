@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { EyeIcon, GlobeIcon } from "lucide-vue-next";
 
+import type { Characters, Places, RelatedWork } from "~/types/work";
+
 const route = useRoute();
 const router = useRouter();
 
@@ -34,33 +36,6 @@ const work = computed(() => {
 const isLoading = computed(() => {
 	return isPending.value || isPlaceholderData.value;
 });
-
-export interface Characters {
-	main:
-		| Array<{
-				id: number | undefined;
-				name: string | undefined;
-				fictionality: string | undefined | null;
-				metacharacterId: number | null;
-		  }>
-		| undefined;
-	secondary:
-		| Array<{
-				id: number | undefined;
-				name: string | undefined;
-				fictionality: string | undefined | null;
-				metacharacterId: number | null;
-		  }>
-		| undefined;
-	spokenOf:
-		| Array<{
-				id: number | undefined;
-				name: string | undefined;
-				fictionality: string | undefined | null;
-				metacharacterId: number | null;
-		  }>
-		| undefined;
-}
 
 const characters: ComputedRef<Characters> = computed(() => {
 	return {
@@ -100,7 +75,7 @@ const characters: ComputedRef<Characters> = computed(() => {
 	};
 });
 
-const places = computed(() => {
+const places: ComputedRef<Places> = computed(() => {
 	return {
 		mentioned: work.value?.places
 			?.filter((place) => place.relation_type === "mentions")
@@ -132,7 +107,7 @@ const places = computed(() => {
 	};
 });
 
-const relatedWork = computed(() => {
+const relatedWork: ComputedRef<RelatedWork> = computed(() => {
 	return {
 		referencedIn: work.value?.related_works
 			?.filter((relation) => relation.relation_type === "is referenced in")

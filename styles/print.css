@@ -26,7 +26,6 @@
 
 	.print-heading {
 		margin-top: 10px; /* Add spacing above the heading */
-		margin-bottom: 10px; /* Add spacing below the heading */
 		padding-bottom: 5px; /* Padding under the border */
 		font-weight: 700; /* Make the text bold */
 		font-size: 18px; /* Adjust font size */
@@ -69,5 +68,10 @@
 
 	.hide-buttons button {
 		display: none !important;
+	}
+
+	h3 {
+		padding-top: 10px;
+		font-weight: 600;
 	}
 }
