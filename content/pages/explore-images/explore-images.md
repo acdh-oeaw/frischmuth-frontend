@@ -1,10 +1,10 @@
 ---
 title: Explore-Kachel-Bilder
 images:
-  - titel: Test1
-    image: /assets/images/untitled-design.png
+  - titel: Rezitation
+    image: /assets/images/rezitation.jpg
     alt: Test1
-    copyright: ""
+    copyright: © 2024 Matthias Schmidt
   - titel: Test2
     alt: Test2
     image: /assets/images/writing_placeholder.png
