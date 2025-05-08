@@ -1,0 +1,88 @@
+@media print {
+	@page {
+		margin: 20mm;
+		size: a4;
+	}
+
+	header,
+	footer {
+		display: none !important;
+	}
+
+	nav,
+	aside {
+		display: none !important;
+	}
+
+	.text-sm {
+		font-size: 12px;
+	}
+
+	.text-lg {
+		font-size: 16px;
+	}
+
+	.grid {
+		display: grid !important;
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
+		text-align: left !important;
+	}
+
+	.flex-container {
+		display: flex !important;
+		justify-content: flex-start !important;
+		align-items: flex-start !important;
+	}
+
+	.grid-item {
+		text-align: left !important;
+	}
+
+	.grid > div {
+		display: block;
+		text-align: left !important;
+	}
+
+	.text-center {
+		text-align: left !important;
+	}
+
+	.no-padding {
+		padding: 0 !important;
+	}
+
+	.page-break {
+		page-break-before: always;
+	}
+
+	.page-break-avoid {
+		page-break-inside: avoid;
+	}
+
+	.hide-buttons button {
+		display: none !important;
+	}
+
+	.print-heading {
+		margin-top: 24px;
+		margin-bottom: 8px;
+		font-weight: 700;
+		font-size: 18px;
+	}
+
+	h3 {
+		margin-top: 16px;
+		margin-bottom: 4px;
+		font-weight: 600;
+	}
+
+	#mobile-drawer {
+		display: none;
+	}
+
+	#work-type {
+		display: grid;
+		grid-template-columns: auto 1fr;
+	}
+}
