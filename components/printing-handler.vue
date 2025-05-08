@@ -174,8 +174,6 @@ const preparePrintContent = (): Promise<void> => {
 
 		cloneContentForPrint();
 
-		nextTick();
-
 		requestAnimationFrame(() => {
 			resolve();
 		});
