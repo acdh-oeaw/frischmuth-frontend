@@ -232,7 +232,11 @@ function setMetaId(id: number | null) {
 				<div v-if="work != null" class="bg-white p-8 lg:p-16">
 					<div id="print-metadata">
 						<div class="grid w-full grid-cols-2 items-center pb-2">
-							<div v-if="work?.work_type != null && icon" class="flex items-center gap-2">
+							<div
+								v-if="work?.work_type != null && icon"
+								id="work-type"
+								class="flex items-center gap-2"
+							>
 								<component :is="icon.icon" :size="20" />
 								{{ work?.work_type[0]?.name }}
 							</div>
@@ -306,7 +310,7 @@ function setMetaId(id: number | null) {
 								</NuxtLink>
 							</div>
 						</span>
-						<div class="block md:hidden">
+						<div id="mobile-drawer" class="block md:hidden">
 							<Drawer>
 								<DrawerTrigger class="w-full">
 									<span
