@@ -371,7 +371,8 @@ function setMetaId(id: number | null) {
 					>
 						<div v-if="work?.context || work?.historical_events">
 							<div class="pb-1">
-								{{ work?.context }}
+								<!-- eslint-disable-next-line vue/no-v-html -->
+								<div class="prose min-w-full text-black" v-html="work?.context" />
 							</div>
 							<div v-if="work?.historical_events">
 								<span class="font-semibold">Historische Events:&nbsp;</span>
@@ -761,3 +762,9 @@ function setMetaId(id: number | null) {
 		</div>
 	</MainContent>
 </template>
+
+<style scoped>
+.prose :deep(a) {
+	@apply underline font-normal decoration-dotted transition hover:no-underline focus-visible:no-underline;
+}
+</style>
