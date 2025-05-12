@@ -133,16 +133,31 @@ const cloneContentForPrint = () => {
 						printArea.appendChild(subHeading);
 
 						if (works && works.length > 0) {
-							const titles = works
-								.map((w) => w.title)
-								.filter((title): title is string => Boolean(title));
+							works.forEach((work) => {
+								// Process authors
+								const validAuthor = work.authors
+									?.map((a) => {
+										return (
+											[a.surname, a.forename, a.fallback_name].find(
+												(name) => name && name.trim(),
+											) || null
+										); // Fallback to null if no valid name is found
+									})
+									.filter(Boolean)[0];
 
-							if (titles.length > 0) {
-								const titlesParagraph = document.createElement("p");
-								titlesParagraph.textContent = titles.join(", ");
-								printArea.appendChild(titlesParagraph);
-								return;
-							}
+								const authorText = validAuthor || "";
+
+								const authorTitleParagraph = document.createElement("p");
+								if (authorText) {
+									authorTitleParagraph.textContent = `${authorText}: ${work.title ?? ""}`;
+								} else {
+									authorTitleParagraph.textContent = work.title ?? "";
+								}
+
+								printArea.appendChild(authorTitleParagraph);
+							});
+
+							return;
 						}
 
 						const fallbackParagraph = document.createElement("p");

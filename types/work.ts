@@ -40,12 +40,20 @@ export interface Places {
 }
 
 export interface RelatedWorkItem {
-	id: number | string;
-	title: string;
+	id?: number;
+	title?: string;
+	authors?: Array<Partial<Author>>;
 }
 
 export interface RelatedWork {
 	referencedIn?: Array<RelatedWorkItem>;
 	references?: Array<RelatedWorkItem>;
 	discussedIn?: Array<RelatedWorkItem>;
+}
+
+export interface Author {
+	id?: number;
+	forename?: string;
+	surname?: string;
+	fallback_name?: string;
 }

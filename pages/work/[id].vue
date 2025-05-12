@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { EyeIcon, GlobeIcon } from "lucide-vue-next";
 
-import type { Characters, Places, RelatedWork } from "~/types/work";
+import type { Author, Characters, Places, RelatedWork } from "~/types/work";
 
 const route = useRoute();
 const router = useRouter();
@@ -114,18 +114,21 @@ const relatedWork: ComputedRef<RelatedWork> = computed(() => {
 			.map((relation) => ({
 				id: relation.id,
 				title: relation.title,
+				authors: relation.authors,
 			})),
 		references: work.value?.related_works
 			?.filter((relation) => relation.relation_type === "references")
 			.map((relation) => ({
 				id: relation.id,
 				title: relation.title,
+				authors: relation.authors,
 			})),
 		discussedIn: work.value?.related_works
 			?.filter((relation) => relation.relation_type === "is discussed in")
 			.map((relation) => ({
 				id: relation.id,
 				title: relation.title,
+				authors: relation.authors,
 			})),
 	};
 });
@@ -218,6 +221,11 @@ const metadataPersons = computed(() => {
 
 function setMetaId(id: number | null) {
 	currentMetaId.value = id;
+}
+function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
+	return authors
+		.map((a) => a?.surname?.trim() || a?.forename?.trim() || a?.fallback_name?.trim() || "")
+		.filter((name) => name !== "");
 }
 </script>
 
@@ -602,18 +610,23 @@ function setMetaId(id: number | null) {
 						:key-value="work?.id ?? 0"
 						title="Bezüge"
 					>
-						<div class="grid grid-rows-[auto_auto_auto] gap-4 2xl:grid-cols-3">
+						<div class="grid grid-rows-[auto_auto_auto] gap-4">
 							<div>
 								<div class="pb-2 font-semibold">Erwähnte Werke</div>
 								<div v-if="relatedWork.references && relatedWork.references.length > 0">
 									<div v-for="relation in relatedWork.references" :key="relation.id">
-										<NuxtLink
-											id="relatedWork-references"
-											class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-											:href="`/work/${relation.id}`"
-										>
-											{{ relation.title }}
-										</NuxtLink>
+										<div class="pb-2">
+											<template v-if="getValidAuthorNames(relation.authors || []).length > 0">
+												<span> {{ getValidAuthorNames(relation.authors ?? []).join(", ") }}: </span>
+											</template>
+											<NuxtLink
+												id="relatedWork-references"
+												class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
+												:href="`/work/${relation.id}`"
+											>
+												<span>{{ relation.title }}</span>
+											</NuxtLink>
+										</div>
 									</div>
 								</div>
 								<div v-else class="text-sm text-muted-foreground">Keine Bezüge vorhanden.</div>
@@ -622,13 +635,18 @@ function setMetaId(id: number | null) {
 								<div class="pb-2 font-semibold">Wurde erwähnt in</div>
 								<div v-if="relatedWork.referencedIn && relatedWork.referencedIn.length > 0">
 									<div v-for="relation in relatedWork.referencedIn" :key="relation.id">
-										<NuxtLink
-											id="relatedWork-referencedIn"
-											class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-											:href="`/work/${relation.id}`"
-										>
-											{{ relation.title }}
-										</NuxtLink>
+										<div class="pb-2">
+											<template v-if="getValidAuthorNames(relation.authors || []).length > 0">
+												<span> {{ getValidAuthorNames(relation.authors ?? []).join(", ") }}: </span>
+											</template>
+											<NuxtLink
+												id="relatedWork-references"
+												class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
+												:href="`/work/${relation.id}`"
+											>
+												<span>{{ relation.title }}</span>
+											</NuxtLink>
+										</div>
 									</div>
 								</div>
 								<div v-else class="text-sm text-muted-foreground">Keine Bezüge vorhanden.</div>
@@ -637,13 +655,18 @@ function setMetaId(id: number | null) {
 								<div class="pb-2 font-semibold">Wurde besprochen in</div>
 								<div v-if="relatedWork.discussedIn && relatedWork.discussedIn.length > 0">
 									<div v-for="relation in relatedWork.discussedIn" :key="relation.id">
-										<NuxtLink
-											id="relatedWork-discussedIn"
-											class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-											:href="`/work/${relation.id}`"
-										>
-											{{ relation.title }}
-										</NuxtLink>
+										<div class="pb-2">
+											<template v-if="getValidAuthorNames(relation.authors || []).length > 0">
+												<span> {{ getValidAuthorNames(relation.authors ?? []).join(", ") }}: </span>
+											</template>
+											<NuxtLink
+												id="relatedWork-references"
+												class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
+												:href="`/work/${relation.id}`"
+											>
+												<span>{{ relation.title }}</span>
+											</NuxtLink>
+										</div>
 									</div>
 								</div>
 								<div v-else class="text-sm text-muted-foreground">Keine Bezüge vorhanden.</div>
