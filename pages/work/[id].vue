@@ -181,6 +181,10 @@ const persons = computed(() => {
 	return "";
 });
 
+const interpretatems = computed(() => {
+	return work.value?.interpretatems;
+});
+
 function closeSidebar() {
 	isOpenPlace.value = false;
 	isOpenCharacter.value = false;
@@ -264,9 +268,9 @@ function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
 							{{ persons }}
 						</div>
 						<div class="pb-2">
-							<div class="text-xl font-semibold">
+							<h1 class="text-xl font-semibold">
 								{{ work?.title }}
-							</div>
+							</h1>
 							<div v-if="work?.subtitle">
 								{{ work?.subtitle }}
 							</div>
@@ -366,7 +370,10 @@ function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
 						</div>
 						<Separator class="my-4 h-[3px] bg-frisch-marine"></Separator>
 						<div class="py-2 text-lg font-semibold">Zusammenfassung</div>
-						<div v-if="work?.summary" class="block hyphens-auto text-justify">
+						<div
+							v-if="work?.summary"
+							class="prose block min-w-full hyphens-auto text-justify text-black"
+						>
 							{{ work?.summary }}
 						</div>
 						<div v-else class="text-sm text-muted-foreground">Keine Zusammenfassung vorhanden.</div>
@@ -688,7 +695,7 @@ function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
 										<div>
 											<div class="pb-2 font-semibold">Archiv</div>
 											<div v-for="thing in work?.physical_objects" :key="thing.id">
-												<div>
+												<div class="pb-2">
 													{{ thing.archive?.name }}
 												</div>
 											</div>
@@ -696,7 +703,7 @@ function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
 										<div>
 											<div class="pb-2 font-semibold">Objekt</div>
 											<div v-for="thing in work?.physical_objects" :key="thing.id">
-												<div>{{ thing.name }}</div>
+												<div class="pb-2">{{ thing.name }}</div>
 											</div>
 										</div>
 									</div>
@@ -713,11 +720,11 @@ function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
 						<div
 							class="size-0 border-y-[55px] border-l-[55px] border-y-transparent border-l-frisch-marine"
 						/>
-						<div class="py-2 text-lg font-semibold">Analyse</div>
+						<h2 class="py-2 text-lg font-semibold">Analyse</h2>
 					</div>
 					<div
 						:id="work?.text_analysis || analysisTags.length > 0 ? 'print-analysis' : ''"
-						class="block hyphens-auto px-16 text-justify"
+						class="prose block min-w-full hyphens-auto px-16 text-justify text-black"
 					>
 						<div v-if="work?.text_analysis">
 							{{ work?.text_analysis }}
@@ -756,6 +763,9 @@ function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
 									</Popover>
 								</span>
 							</span>
+						</div>
+						<div v-if="interpretatems && interpretatems.length > 0">
+							<InterpretatemDisplay :interpretatems="interpretatems ?? []" />
 						</div>
 					</div>
 				</div>

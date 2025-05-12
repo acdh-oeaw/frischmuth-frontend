@@ -67,3 +67,5 @@ export interface CharacterResponse {
 	fictionality: string | undefined;
 	metacharacter: metaCharacter | null;
 }
+
+export type Interpretatem = WorkDetail["interpretatems"];
