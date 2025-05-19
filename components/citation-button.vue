@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import "@citation-js/plugin-bibtex";
+import "@citation-js/plugin-csl";
 
 // @ts-expect-error missing types for citation-js
-import Cite from "citation-js";
+import Cite, { plugins } from "citation-js";
 import { ArrowDownToLine, CopyIcon, MessageSquareQuote, XIcon } from "lucide-vue-next";
 
 import type { ExpressionData } from "@/types/api";
@@ -20,6 +21,24 @@ const copied = ref(false);
 const currentTab = ref("apa");
 const isDisabled = ref(false);
 
+const customCSL = ref<string | null>(null);
+
+const templateName = "customAPA";
+
+onMounted(async () => {
+	try {
+		const response = await fetch("/styles/citation-stylesheet.csl");
+		if (!response.ok) throw new Error("Failed to fetch CSL");
+		const cslText = await response.text();
+
+		customCSL.value = cslText;
+		const template = plugins.config.get("@csl");
+		template.templates.add(templateName, customCSL.value);
+	} catch (error) {
+		console.error("Error loading CSL file:", error);
+	}
+});
+
 const citation = computed(() => {
 	const citations = (props.metadata || []).flatMap((refs) => {
 		return refs?.map((ref) => {
@@ -36,8 +55,8 @@ const citation = computed(() => {
 				edition: ref?.edition_type ?? "",
 				language: ref?.language?.join(", ") ?? "",
 				publication_date: ref?.publication_date ?? "",
-				publisher: ref?.publisher?.name ?? "",
-				place_of_publication: ref?.place_of_publication?.[0]?.name ?? "",
+				publisher: ref.publisher?.name ?? "",
+				"publisher-place": ref?.place_of_publication?.[0]?.name ?? "",
 				issued: ref?.publication_date ? { "date-parts": [[ref.publication_date]] } : undefined,
 			};
 		});
@@ -46,17 +65,27 @@ const citation = computed(() => {
 });
 
 watchEffect(() => {
-	console.log(citation.value.data);
 	if (citation.value.data.length <= 0) {
 		isDisabled.value = true;
+		return;
 	}
+
 	bibtex.value = citation.value.format("bibtex");
-	apa.value = citation.value.format("bibliography", {
-		format: "html",
-		template: "apa",
-		lang: "de-DE",
-	});
 	ris.value = citation.value.format("ris");
+
+	if (customCSL.value) {
+		apa.value = citation.value.format("bibliography", {
+			format: "html",
+			template: templateName,
+			lang: "de-DE",
+		});
+	} else {
+		apa.value = citation.value.format("bibliography", {
+			format: "html",
+			template: "apa",
+			lang: "de-DE",
+		});
+	}
 });
 
 function copyToClipboard() {
@@ -144,7 +173,7 @@ onScopeDispose(() => {
 						<Tabs class="w-full" default-value="apa">
 							<TabsList class="mb-4 w-full">
 								<TabsTrigger class="w-full" value="apa" @click="currentTab = 'apa'">
-									APA
+									APA (modifiziert)
 								</TabsTrigger>
 								<TabsTrigger class="w-full" value="bibtex" @click="currentTab = 'bibtex'">
 									BibTeX

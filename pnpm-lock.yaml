@@ -14,6 +14,9 @@ importers:
       '@citation-js/plugin-bibtex':
         specifier: ^0.7.18
         version: 0.7.18(@citation-js/core@0.7.18)
+      '@citation-js/plugin-csl':
+        specifier: ^0.7.18
+        version: 0.7.18(@citation-js/core@0.7.18)
       '@fontsource-variable/inter':
         specifier: ^5.1.1
         version: 5.2.5
