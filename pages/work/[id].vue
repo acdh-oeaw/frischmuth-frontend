@@ -231,6 +231,11 @@ function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
 		.map((a) => a?.surname?.trim() || a?.forename?.trim() || a?.fallback_name?.trim() || "")
 		.filter((name) => name !== "");
 }
+
+const isOpen = ref(false);
+function openDrawer() {
+	isOpen.value = !isOpen.value;
+}
 </script>
 
 <template>
@@ -323,15 +328,15 @@ function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
 							</div>
 						</span>
 						<div id="mobile-drawer" class="block md:hidden">
-							<Drawer>
-								<DrawerTrigger class="w-full">
+							<Drawer v-model:open="isOpen">
+								<Button class="items-center p-0" variant="transparent" @click="openDrawer()">
 									<span
 										class="grid grid-cols-[auto_1fr] items-center gap-2 pt-2 text-frisch-orange"
 									>
 										<EyeIcon :size="16" />
 										<span class="flex justify-start font-semibold">Analyse</span>
 									</span>
-								</DrawerTrigger>
+								</Button>
 								<DrawerContent>
 									<div class="overflow-auto bg-white py-8">
 										<div class="grid grid-cols-[auto_1fr] items-center gap-4">

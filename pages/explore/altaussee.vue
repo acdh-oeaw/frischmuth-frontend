@@ -83,8 +83,8 @@ function onChangePlaceDetail(toggleValue: boolean, place: AltausseePlace | null)
 </script>
 
 <template>
-	<MainContent class="container grid h-full grid-rows-2 p-4 lg:py-8">
-		<div class="grid size-full">
+	<MainContent class="container grid h-full p-4 lg:grid-rows-2 lg:py-8">
+		<div class="grid aspect-square lg:size-full">
 			<Map :is-altaussee="true" :places="places" @layer-click="onLayerClick">
 				<MapPopup v-if="popover != null" :coordinates="popover.coordinates" @close="popover = null">
 					<article class="grid gap-1 text-xs">
