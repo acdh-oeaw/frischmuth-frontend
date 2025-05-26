@@ -174,9 +174,7 @@ const sortedBiographies = computed(() => {
 					</div>
 				</div>
 				<div>
-					<svg
-						class="absolute left-1/2 top-0 ml-1 h-full max-h-full w-1 -translate-x-14 bg-frisch-indigo"
-					>
+					<svg class="absolute left-[140px] top-0 h-full w-1 bg-frisch-indigo">
 						<line stroke-width="4" x1="0" x2="0" y1="0" y2="100%" />
 					</svg>
 				</div>
