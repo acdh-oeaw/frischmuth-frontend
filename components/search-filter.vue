@@ -374,11 +374,7 @@ watch(
 									<div v-if="secondaryWork != null">
 										<input
 											:id="`workType` + secondaryWork.id"
-											:checked="
-												(checkedFacets.workType
-													? checkedFacets.workType.includes(secondaryWork.key)
-													: false) || selectedCheckboxes.includes(secondaryWork.key)
-											"
+											:checked="selectedCheckboxes.includes(secondaryWork.key)"
 											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 											name="workType"
 											type="checkbox"
@@ -422,11 +418,7 @@ watch(
 												<div class="grid grid-cols-[auto_1fr] items-center pb-1">
 													<input
 														:id="`workType` + work.id"
-														:checked="
-															(checkedFacets.workType
-																? checkedFacets.workType.includes(work.key)
-																: false) || selectedCheckboxes.includes(work.key)
-														"
+														:checked="selectedCheckboxes.includes(work.key)"
 														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 														name="workType"
 														type="checkbox"
@@ -445,11 +437,7 @@ watch(
 														<div class="grid grid-cols-[auto_1fr] items-center pl-5">
 															<input
 																:id="`workType` + subwork.id"
-																:checked="
-																	(checkedFacets.workType
-																		? checkedFacets.workType.includes(subwork.key)
-																		: false) || selectedCheckboxes.includes(subwork.key)
-																"
+																:checked="selectedCheckboxes.includes(subwork.key)"
 																class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 																name="workType"
 																type="checkbox"
