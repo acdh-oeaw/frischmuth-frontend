@@ -106,11 +106,21 @@ const sortedTopics = computed(() => {
 });
 
 const selectedCheckboxes = ref<Array<string>>([]);
+const hasSliderChanged = ref(false);
+const isCheckBoxActive = ref(false);
 
 watch(
 	checkedFacets,
 	() => {
 		selectedCheckboxes.value = [];
+		isCheckBoxActive.value = false;
+
+		if (checkedFacets.value.workType.length > 0) {
+			selectedCheckboxes.value.push(...checkedFacets.value.workType);
+			console.log("Selectedboxes: ", selectedCheckboxes);
+		}
+
+		hasSliderChanged.value = false;
 		if (checkedFacets.value.endYear !== "" && checkedFacets.value.startYear !== "") {
 			yearChecked.value = true;
 			sliderValue.value = [
@@ -121,9 +131,6 @@ watch(
 	},
 	{ immediate: true },
 );
-
-const isCheckBoxActive = computed(() => selectedCheckboxes.value.length > 0);
-const hasSliderChanged = ref(false);
 
 function onSliderChange() {
 	hasSliderChanged.value = true;
@@ -136,6 +143,9 @@ function addCheckbox(value: string) {
 	} else {
 		selectedCheckboxes.value.push(value);
 	}
+	if (selectedCheckboxes.value.length > 0) {
+		isCheckBoxActive.value = true;
+	} else isCheckBoxActive.value = false;
 }
 
 function removeFilter() {
@@ -150,20 +160,43 @@ function removeFilter() {
 	void router.push({ query: newQuery });
 	selectedCheckboxes.value = [];
 	yearChecked.value = false;
+	hasSliderChanged.value = false;
+	isCheckBoxActive.value = false;
 }
 
 function toggleWork(key: string, subterms: Array<workType>) {
-	const isChecked = selectedCheckboxes.value.includes(key);
+	// const isChecked = selectedCheckboxes.value.includes(key);
 
-	updateSelectedCheckboxes(key, !isChecked);
+	// updateSelectedCheckboxes(key, !isChecked);
 
-	subterms.forEach((subterm) => {
-		updateSelectedCheckboxes(subterm.key as unknown as string, !isChecked);
-		if (subterm.children != null && subterm.children.length > 0) {
-			subterm.children.forEach((subterm) => {
-				updateSelectedCheckboxes(subterm.key as unknown as string, !isChecked);
-			});
-		}
+	// subterms.forEach((subterm) => {
+	// 	updateSelectedCheckboxes(subterm.key as unknown as string, !isChecked);
+	// 	if (subterm.children != null && subterm.children.length > 0) {
+	// 		subterm.children.forEach((subterm) => {
+	// 			updateSelectedCheckboxes(subterm.key as unknown as string, !isChecked);
+	// 		});
+	// 	}
+	// });
+	const isCurrentlyChecked = selectedCheckboxes.value.includes(key);
+	const shouldBeChecked = !isCurrentlyChecked;
+
+	const allChildKeys = collectAllKeys(subterms);
+
+	console.log("all children: ", allChildKeys);
+	// Apply to parent
+	updateSelectedCheckboxes(key, shouldBeChecked);
+
+	// Apply to all descendants
+	allChildKeys.forEach((childKey) => {
+		updateSelectedCheckboxes(childKey, shouldBeChecked);
+	});
+}
+
+// Recursively collect all descendant keys
+function collectAllKeys(items: Array<workType>): Array<string> {
+	return items.flatMap((item) => {
+		const childrenKeys = item.children ? collectAllKeys(item.children) : [];
+		return [item.key, ...childrenKeys];
 	});
 }
 
@@ -173,17 +206,37 @@ function toggleSubterm(key: string) {
 }
 
 function updateSelectedCheckboxes(id: string, isChecked: boolean) {
+	// if (isChecked) {
+	// 	if (!selectedCheckboxes.value.includes(id)) {
+	// 		selectedCheckboxes.value.push(id);
+	// 	}
+	// } else {
+	// 	const index = selectedCheckboxes.value.indexOf(id);
+	// 	if (index > -1) {
+	// 		selectedCheckboxes.value.splice(index, 1);
+	// 	}
+	// }
+
+	console.log("update selectedCheckboxes with: ", id, isChecked);
 	if (isChecked) {
-		if (!selectedCheckboxes.value.includes(id)) {
-			selectedCheckboxes.value.push(id);
-		}
+		selectedCheckboxes.value = Array.from(new Set([...selectedCheckboxes.value, id]));
 	} else {
-		const index = selectedCheckboxes.value.indexOf(id);
-		if (index > -1) {
-			selectedCheckboxes.value.splice(index, 1);
-		}
+		selectedCheckboxes.value = selectedCheckboxes.value.filter((v) => v !== id);
 	}
+	if (selectedCheckboxes.value.length > 0) {
+		isCheckBoxActive.value = true;
+	} else isCheckBoxActive.value = false;
 }
+
+watch(
+	selectedCheckboxes,
+	(val) => {
+		console.log("Updated checkboxes:", val);
+	},
+	{
+		immediate: true,
+	},
+);
 </script>
 
 <template>
@@ -224,11 +277,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 									<div v-if="primaryWork != null">
 										<input
 											:id="`workType` + primaryWork.id"
-											:checked="
-												(checkedFacets.workType
-													? checkedFacets.workType.includes(primaryWork.key)
-													: false) || selectedCheckboxes.includes(primaryWork.key)
-											"
+											:checked="selectedCheckboxes.includes(primaryWork.key)"
 											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 											name="workType"
 											type="checkbox"
@@ -265,11 +314,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 												<div class="grid grid-cols-[auto_1fr] items-center pb-1">
 													<input
 														:id="`workType` + work.id"
-														:checked="
-															(checkedFacets.workType
-																? checkedFacets.workType.includes(work.key)
-																: false) || selectedCheckboxes.includes(work.key)
-														"
+														:checked="selectedCheckboxes.includes(work.key)"
 														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 														name="workType"
 														type="checkbox"
@@ -288,11 +333,7 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 														<div class="grid grid-cols-[auto_1fr] items-center pl-5">
 															<input
 																:id="`workType` + subwork.id"
-																:checked="
-																	(checkedFacets.workType
-																		? checkedFacets.workType.includes(subwork.key)
-																		: false) || selectedCheckboxes.includes(subwork.key)
-																"
+																:checked="selectedCheckboxes.includes(subwork.key)"
 																class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
 																name="workType"
 																type="checkbox"
