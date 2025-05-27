@@ -187,8 +187,8 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 </script>
 
 <template>
-	<div class="px-6">
-		<div class="bg-frisch-orange-super-light p-6">
+	<div class="relative px-6">
+		<div class="relative bg-frisch-orange-super-light p-6">
 			<div class="text-lg font-medium text-frisch-orange">
 				<div class="pb-4">
 					<div class="grid grid-cols-2 items-center">
@@ -581,16 +581,21 @@ function updateSelectedCheckboxes(id: string, isChecked: boolean) {
 								</AccordionContent>
 							</AccordionItem>
 						</Accordion>
-						<Separator class="bg-frisch-orange"></Separator>
-						<div
-							v-if="isCheckBoxActive || hasSliderChanged"
-							class="flex w-full justify-end pt-4 text-sm"
-						>
-							<Button type="submit" variant="frischMarine">Filter anwenden</Button>
-						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="absolute bottom-20 right-40 z-10 pr-5 transition">
+		<div
+			class="fixed justify-end pt-4 text-sm transition"
+			:class="
+				isCheckBoxActive || hasSliderChanged
+					? 'opacity-100 translate-y-0'
+					: 'opacity-0 translate-y-5 pointer-events-none'
+			"
+		>
+			<Button type="submit" variant="frischMarine">Filter anwenden</Button>
 		</div>
 	</div>
 </template>
