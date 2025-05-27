@@ -120,6 +120,15 @@ watch(
 			console.log("Selectedboxes: ", selectedCheckboxes);
 		}
 
+		setTimeout(() => {
+			if (anyChildChecked(primaryWork.value)) {
+				selectedCheckboxes.value.push("Primärwerk");
+			}
+			if (anyChildChecked(secondaryWork.value)) {
+				selectedCheckboxes.value.push("Rezeption/Sekundärwerk");
+			}
+		}, 1000);
+
 		hasSliderChanged.value = false;
 		if (checkedFacets.value.endYear !== "" && checkedFacets.value.startYear !== "") {
 			yearChecked.value = true;
@@ -164,35 +173,79 @@ function removeFilter() {
 	isCheckBoxActive.value = false;
 }
 
+function findParentByChildKey(childKey: string, nodes: Array<workType> | null): workType | null {
+	if (!nodes) return null;
+	for (const node of nodes) {
+		if (node.children && node.children.some((child) => child.key === childKey)) {
+			console.log("findParent: ", node);
+			return node;
+		}
+		if (node.children) {
+			const found = findParentByChildKey(childKey, node.children);
+			if (found) return found;
+		}
+	}
+	return null;
+}
+
+function areAllChildrenChecked(children: Array<workType> | null): boolean {
+	if (!children || children.length === 0) return true;
+	return children.every(
+		(child) =>
+			selectedCheckboxes.value.includes(child.key) && areAllChildrenChecked(child.children),
+	);
+}
+
+function updateParentState(childKey: string) {
+	console.log("updateParentsState: ", childKey);
+	// Try finding parent in primaryWork tree first, then secondaryWork
+	let parent = findParentByChildKey(childKey, primaryWork.value?.children || null);
+	if (!parent) {
+		parent = findParentByChildKey(childKey, secondaryWork.value?.children || null);
+	}
+	console.log(parent);
+	if (!parent) {
+		// Check if childKey belongs to primaryWork subtree
+		if (primaryWork.value && isChildOfRoot(childKey, primaryWork.value)) {
+			// If *any* child of primaryWork is unchecked, untick the root "Primärwerk"
+			const allSelected = areAllChildrenChecked(primaryWork.value.children);
+			updateSelectedCheckboxes("Primärwerk", allSelected);
+		}
+
+		// Check if childKey belongs to secondaryWork subtree
+		if (secondaryWork.value && isChildOfRoot(childKey, secondaryWork.value)) {
+			// If *any* child of secondaryWork is unchecked, untick the root "Rezeption/Sekundärwerk"
+			const allSelected = areAllChildrenChecked(secondaryWork.value.children);
+			updateSelectedCheckboxes("Rezeption/Sekundärwerk", allSelected);
+		}
+
+		return; // done updating root state
+	}
+
+	// Check if all children of this parent are selected
+	const allChildrenSelected = areAllChildrenChecked(parent.children);
+
+	// Update parent checkbox state accordingly
+	updateSelectedCheckboxes(parent.key, allChildrenSelected);
+
+	// Recursively update higher level parents, if any
+	updateParentState(parent.key);
+}
+
 function toggleWork(key: string, subterms: Array<workType>) {
-	// const isChecked = selectedCheckboxes.value.includes(key);
-
-	// updateSelectedCheckboxes(key, !isChecked);
-
-	// subterms.forEach((subterm) => {
-	// 	updateSelectedCheckboxes(subterm.key as unknown as string, !isChecked);
-	// 	if (subterm.children != null && subterm.children.length > 0) {
-	// 		subterm.children.forEach((subterm) => {
-	// 			updateSelectedCheckboxes(subterm.key as unknown as string, !isChecked);
-	// 		});
-	// 	}
-	// });
 	const isCurrentlyChecked = selectedCheckboxes.value.includes(key);
 	const shouldBeChecked = !isCurrentlyChecked;
 
 	const allChildKeys = collectAllKeys(subterms);
 
-	console.log("all children: ", allChildKeys);
-	// Apply to parent
 	updateSelectedCheckboxes(key, shouldBeChecked);
 
-	// Apply to all descendants
 	allChildKeys.forEach((childKey) => {
 		updateSelectedCheckboxes(childKey, shouldBeChecked);
 	});
+	updateParentState(key);
 }
 
-// Recursively collect all descendant keys
 function collectAllKeys(items: Array<workType>): Array<string> {
 	return items.flatMap((item) => {
 		const childrenKeys = item.children ? collectAllKeys(item.children) : [];
@@ -201,22 +254,74 @@ function collectAllKeys(items: Array<workType>): Array<string> {
 }
 
 function toggleSubterm(key: string) {
+	// const isChecked = selectedCheckboxes.value.includes(key);
+	// updateSelectedCheckboxes(key, !isChecked);
+
 	const isChecked = selectedCheckboxes.value.includes(key);
 	updateSelectedCheckboxes(key, !isChecked);
+
+	// Find parent in both primary and secondary trees
+	let parent = findParentByChildKey(key, primaryWork.value?.children || null);
+	if (!parent) {
+		parent = findParentByChildKey(key, secondaryWork.value?.children || null);
+	}
+
+	if (parent) {
+		const allChildrenSelected = areAllChildrenChecked(parent.children);
+		updateSelectedCheckboxes(parent.key, allChildrenSelected);
+		updateParentState(parent.key); // Recursively update upwards if needed
+	} else {
+		// If no parent found, might be a root-level child
+		// Check if key belongs under Primärwerk or Sekundärwerk root
+		if (isChildOfRoot(key, primaryWork.value)) {
+			updateRootState("Primärwerk", primaryWork.value);
+		}
+		if (isChildOfRoot(key, secondaryWork.value)) {
+			updateRootState("Rezeption/Sekundärwerk", secondaryWork.value);
+		}
+	}
+}
+
+function anyChildChecked(rootNode: workType | null): boolean {
+	if (!rootNode || !rootNode.children) return false;
+
+	// Recursive search
+	function search(children: Array<workType>): boolean {
+		return children.some((child) => {
+			if (selectedCheckboxes.value.includes(child.key)) return true;
+			if (child.children) return search(child.children);
+			return false;
+		});
+	}
+
+	return search(rootNode.children);
+}
+
+function isChildOfRoot(childKey: string, rootNode: workType | null): boolean {
+	console.log("Hello! ", childKey, rootNode);
+	if (!rootNode || !rootNode.children) return false;
+
+	// Recursively check if childKey exists somewhere under rootNode.children
+	function search(children: Array<workType>): boolean {
+		for (const child of children) {
+			if (child.key === childKey) return true;
+			if (child.children && search(child.children)) return true;
+		}
+		return false;
+	}
+
+	return search(rootNode.children);
+}
+
+function updateRootState(rootKey: string, rootNode: workType | null) {
+	if (!rootNode || !rootNode.children) return;
+
+	const allChildrenSelected = areAllChildrenChecked(rootNode.children);
+
+	updateSelectedCheckboxes(rootKey, allChildrenSelected);
 }
 
 function updateSelectedCheckboxes(id: string, isChecked: boolean) {
-	// if (isChecked) {
-	// 	if (!selectedCheckboxes.value.includes(id)) {
-	// 		selectedCheckboxes.value.push(id);
-	// 	}
-	// } else {
-	// 	const index = selectedCheckboxes.value.indexOf(id);
-	// 	if (index > -1) {
-	// 		selectedCheckboxes.value.splice(index, 1);
-	// 	}
-	// }
-
 	console.log("update selectedCheckboxes with: ", id, isChecked);
 	if (isChecked) {
 		selectedCheckboxes.value = Array.from(new Set([...selectedCheckboxes.value, id]));
@@ -615,9 +720,11 @@ watch(
 			</div>
 		</div>
 	</div>
-	<div class="absolute bottom-20 right-40 z-10 pr-5 transition">
+	<div
+		class="absolute bottom-20 left-1/2 z-50 justify-center transition md:left-auto md:right-40 md:pr-5"
+	>
 		<div
-			class="fixed justify-end pt-4 text-sm transition"
+			class="fixed -translate-x-1/2 justify-end pt-4 text-sm transition md:translate-x-0"
 			:class="
 				isCheckBoxActive || hasSliderChanged
 					? 'opacity-100 translate-y-0'
