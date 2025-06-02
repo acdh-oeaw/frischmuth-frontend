@@ -123,6 +123,17 @@ onScopeDispose(() => {
 						</NavLink>
 					</div>
 				</div>
+				<div
+					v-if="
+						props.place.metadata.links == null &&
+						props.place.metadata.description == null &&
+						props.place.metadata.images == null
+					"
+				>
+					<span class="flex h-full pt-4 align-middle text-sm text-neutral-500">
+						Keine weiteren Informationen vorhanden.
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>
