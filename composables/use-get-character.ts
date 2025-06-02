@@ -29,7 +29,10 @@ export function useGetCharacterDetails(params: CharacterParams) {
 				: null;
 
 			const response: CharacterResponse = {
-				name: character.fallback_name,
+				name:
+					character.fallback_name !== ""
+						? character.fallback_name
+						: `${character.forename ?? ""} ${character.surname ?? ""}`,
 				description: character.description,
 				fictionality: character.fictionality ? character.fictionality[0] : undefined,
 				metacharacter: metaCharacter,
