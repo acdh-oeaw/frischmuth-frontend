@@ -37,6 +37,8 @@ const isLoading = computed(() => {
 	return isPending.value || isPlaceholderData.value;
 });
 
+//TODO: add name or surname
+
 const characters: ComputedRef<Characters> = computed(() => {
 	return {
 		main: work.value?.characters
@@ -45,7 +47,10 @@ const characters: ComputedRef<Characters> = computed(() => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
 					id: character.id,
-					name: character.fallback_name,
+					name:
+						character.fallback_name !== ""
+							? character.fallback_name
+							: `${character.forename} ${character.surname}`,
 					fictionality: fictionality,
 					metacharacterId: character.metacharacter ? character.metacharacter.id : null,
 				};
@@ -56,7 +61,10 @@ const characters: ComputedRef<Characters> = computed(() => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
 					id: character.id,
-					name: character.fallback_name,
+					name:
+						character.fallback_name !== ""
+							? character.fallback_name
+							: `${character.forename} ${character.surname}`,
 					fictionality: fictionality,
 					metacharacterId: character.metacharacter ? character.metacharacter.id : null,
 				};
@@ -67,7 +75,10 @@ const characters: ComputedRef<Characters> = computed(() => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
 					id: character.id,
-					name: character.fallback_name,
+					name:
+						character.fallback_name !== ""
+							? character.fallback_name
+							: `${character.forename} ${character.surname}`,
 					fictionality: fictionality,
 					metacharacterId: character.metacharacter ? character.metacharacter.id : null,
 				};
@@ -395,7 +406,7 @@ function openDrawer() {
 								<div class="prose min-w-full text-black" v-html="work?.context" />
 							</div>
 							<div v-if="work?.historical_events">
-								<span class="font-semibold">Historische Events:&nbsp;</span>
+								<span class="font-semibold">Historische Kontexte:&nbsp;</span>
 								<span>{{ work?.historical_events }}</span>
 							</div>
 						</div>
