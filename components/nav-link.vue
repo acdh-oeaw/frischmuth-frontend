@@ -11,7 +11,11 @@ const localePath = useLocalePath();
 </script>
 
 <template>
-	<NuxtLink :external="props.external" :href="props.external ? props.href : localePath(props.href)">
+	<NuxtLink
+		:external="props.external"
+		:href="props.external ? props.href : localePath(props.href)"
+		:target="props.target"
+	>
 		<slot />
 	</NuxtLink>
 </template>

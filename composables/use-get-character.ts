@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/vue-query";
 
-import type { CharacterResponse } from "@/types/api";
+import type { CharacterDetail, CharacterResponse } from "@/types/api";
 
 interface CharacterParams {
 	id: ComputedRef<number | null>;
@@ -17,7 +17,7 @@ export function useGetCharacterDetails(params: CharacterParams) {
 			const [, id, metacharacterId] = queryKey;
 			if (!id) return null;
 
-			const character = await $api["apis_api_apis_ontology.character_retrieve"]({
+			const character: CharacterDetail = await $api.api_character_detail_retrieve({
 				params: { id },
 			});
 
@@ -35,6 +35,7 @@ export function useGetCharacterDetails(params: CharacterParams) {
 						: `${character.forename ?? ""} ${character.surname ?? ""}`,
 				description: character.description,
 				fictionality: character.fictionality ? character.fictionality[0] : undefined,
+				uris: character.uris,
 				metacharacter: metaCharacter,
 			};
 

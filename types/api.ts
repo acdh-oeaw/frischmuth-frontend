@@ -32,11 +32,7 @@ export type GlossaryFilters = ZodiosQueryParamsByPath<
 	"/apis/api/apis_ontology.glossar/"
 >;
 export type GlossaryResults = ZodiosResponseByPath<Api, "get", "/apis/api/apis_ontology.glossar/">;
-export type CharacterDetail = ZodiosResponseByPath<
-	Api,
-	"get",
-	"/apis/api/apis_ontology.character/:id/"
->;
+export type CharacterDetail = ZodiosResponseByPath<Api, "get", "/api/character-detail/:id/">;
 export type TopicDetail = ZodiosResponseByPath<Api, "get", "/api/topic-detail/:id/">;
 export type PlaceDetail = ZodiosResponseByPath<Api, "get", "/api/place-detail/:id/">;
 export type ResearchPerspective = ZodiosResponseByPath<
@@ -65,6 +61,7 @@ export interface CharacterResponse {
 	name: string | undefined;
 	description: string | undefined;
 	fictionality: string | undefined;
+	uris: Array<string> | undefined;
 	metacharacter: metaCharacter | null;
 }
 

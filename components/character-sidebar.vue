@@ -97,11 +97,19 @@ watch(
 						<div class="mb-1 inline-block bg-frisch-grey px-2 py-1 text-xs text-white opacity-85">
 							{{ characterDetail.fictionality }}
 						</div>
-						<div v-if="characterDetail.description !== ''">
-							<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-							<div>
-								{{ characterDetail.description }}
+						<div
+							v-if="
+								characterDetail.description !== '' ||
+								(characterDetail.uris != null && characterDetail.uris.length > 0)
+							"
+						>
+							<div v-if="characterDetail.description !== ''">
+								<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
+								<div>
+									{{ characterDetail.description }}
+								</div>
 							</div>
+							<div>Weitere Informationen finden Sie hier: {{ characterDetail.uris }}</div>
 						</div>
 						<div v-else class="flex h-full align-middle text-sm text-neutral-500">
 							Keine weiteren Informationen vorhanden.
@@ -145,13 +153,35 @@ watch(
 							:is-detail-view="true"
 						/>
 					</div>
-					<div v-if="characterDetail.description !== ''">
-						<div class="pt-2 text-base font-semibold text-black">Beschreibung</div>
-						<div>
-							{{ characterDetail.description }}
+					<div
+						v-if="
+							characterDetail.description !== '' ||
+							(characterDetail.uris != null && characterDetail.uris.length > 0)
+						"
+					>
+						<div v-if="characterDetail.description !== ''">
+							<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
+							<div>
+								{{ characterDetail.description }}
+							</div>
+						</div>
+						<div
+							v-if="characterDetail.uris != null && characterDetail.uris.length > 0"
+							class="py-2"
+						>
+							<h2 class="font-semibold">Weitere Informationen finden Sie hier:</h2>
+							<div v-for="(url, index) in characterDetail.uris" :key="index">
+								<NavLink
+									class="flex cursor-pointer items-center gap-1 pt-1 underline decoration-dotted hover:no-underline"
+									:href="url"
+									target="_blank"
+								>
+									{{ url }}
+								</NavLink>
+							</div>
 						</div>
 					</div>
-					<div v-else class="flex h-full pt-2 align-middle text-sm text-neutral-500">
+					<div v-else class="flex h-full pt-2 text-neutral-500" text-sm>
 						Keine weiteren Informationen vorhanden.
 					</div>
 					<div v-if="characterDetail.metacharacter != null">
