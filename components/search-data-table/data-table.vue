@@ -97,21 +97,40 @@ const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 		maxWidth: true, // Custom property
 	},
 	{
+		accessorKey: "authors",
+		header: () => h("div", "Autor"),
+		cell: ({ row }) => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const authors = row.getValue("authors") as Array<any> | undefined;
+			return h(
+				"div",
+				{},
+				authors
+					?.map((author) => {
+						return author.label;
+					})
+					.join(" / "),
+			);
+		},
+	},
+	{
 		accessorKey: "expression_data",
 		header: () => h("div", "Edition"),
 		cell: ({ row }) => {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const edition = row.getValue("expression_data") as Array<any> | undefined;
-			return h("div", {}, edition?.map((type) => type.edition_type).join(", "));
-		},
-	},
-	{
-		accessorKey: "expression_data",
-		header: () => h("div", "Ort"),
-		cell: ({ row }) => {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			const placeOfPublication = row.getValue("expression_data") as Array<any> | undefined;
-			return h("div", {}, placeOfPublication?.map((type) => type.place_of_publication).join(", "));
+			return h(
+				"div",
+				{},
+				edition
+					?.map((type) => {
+						const edition = type.edition_type[0];
+						if (edition != null) {
+							return edition === "Referenzausgabe" ? "RA" : "EA";
+						} else return type.edition_type;
+					})
+					.join(", "),
+			);
 		},
 	},
 	{
