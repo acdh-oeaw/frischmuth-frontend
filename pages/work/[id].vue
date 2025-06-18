@@ -250,6 +250,7 @@ function openDrawer() {
 </script>
 
 <template>
+	<!-- eslint-disable vue/no-v-html -->
 	<MainContent class="relative grid h-full bg-frisch-marine md:pr-14 2xl:pr-20">
 		<div v-if="!isLoading" class="grid h-full md:grid-cols-[auto_1fr]">
 			<div
@@ -388,10 +389,9 @@ function openDrawer() {
 						<div class="py-2 text-lg font-semibold">Zusammenfassung</div>
 						<div
 							v-if="work?.summary"
-							class="prose block min-w-full hyphens-auto text-justify text-black"
-						>
-							{{ work?.summary }}
-						</div>
+							class="prose min-w-full hyphens-auto text-black"
+							v-html="work?.summary"
+						/>
 						<div v-else class="text-sm text-muted-foreground">Keine Zusammenfassung vorhanden.</div>
 					</div>
 					<DetailAccordion
@@ -402,12 +402,11 @@ function openDrawer() {
 					>
 						<div v-if="work?.context || work?.historical_events">
 							<div class="pb-1">
-								<!-- eslint-disable-next-line vue/no-v-html -->
 								<div class="prose min-w-full text-black" v-html="work?.context" />
 							</div>
 							<div v-if="work?.historical_events">
 								<span class="font-semibold">Historische Kontexte:&nbsp;</span>
-								<span>{{ work?.historical_events }}</span>
+								<div class="prose min-w-full text-black" v-html="work?.historical_events" />
 							</div>
 						</div>
 						<div v-else class="text-sm text-muted-foreground">Keine Kontexte vorhanden.</div>
@@ -742,9 +741,11 @@ function openDrawer() {
 						:id="work?.text_analysis || analysisTags.length > 0 ? 'print-analysis' : ''"
 						class="prose block min-w-full hyphens-auto px-16 text-justify text-black"
 					>
-						<div v-if="work?.text_analysis">
-							{{ work?.text_analysis }}
-						</div>
+						<div
+							v-if="work?.text_analysis"
+							class="prose min-w-full hyphens-auto text-black"
+							v-html="work?.text_analysis"
+						/>
 						<div v-else class="text-sm text-muted-foreground">Keine Analyse vorhanden.</div>
 						<div v-if="analysisTags.length > 0" class="py-4">
 							<span v-for="tag in analysisTags" :key="tag.name" class="mb-2 mr-1">
