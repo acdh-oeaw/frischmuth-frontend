@@ -120,29 +120,8 @@ const places: ComputedRef<Places> = computed(() => {
 
 const relatedWork: ComputedRef<RelatedWork> = computed(() => {
 	return {
-		references: work.value?.related_works
-			?.filter((relation) => relation.relation_type === "references")
-			.map((relation) => ({
-				id: relation.id,
-				title: relation.title,
-				authors: relation.authors,
-			})),
-		referencedIn: work.value?.related_works
-			?.filter((relation) => relation.relation_type === "is referenced in")
-			.map((relation) => ({
-				id: relation.id,
-				title: relation.title,
-				authors: relation.authors,
-			})),
 		discusses: work.value?.related_works
 			?.filter((relation) => relation.relation_type === "discusses")
-			.map((relation) => ({
-				id: relation.id,
-				title: relation.title,
-				authors: relation.authors,
-			})),
-		discussedIn: work.value?.related_works
-			?.filter((relation) => relation.relation_type === "is discussed in")
 			.map((relation) => ({
 				id: relation.id,
 				title: relation.title,
@@ -155,8 +134,29 @@ const relatedWork: ComputedRef<RelatedWork> = computed(() => {
 				title: relation.title,
 				authors: relation.authors,
 			})),
+		references: work.value?.related_works
+			?.filter((relation) => relation.relation_type === "references")
+			.map((relation) => ({
+				id: relation.id,
+				title: relation.title,
+				authors: relation.authors,
+			})),
+		discussedIn: work.value?.related_works
+			?.filter((relation) => relation.relation_type === "is discussed in")
+			.map((relation) => ({
+				id: relation.id,
+				title: relation.title,
+				authors: relation.authors,
+			})),
 		mentionedIn: work.value?.related_works
 			?.filter((relation) => relation.relation_type === "is mentioned in")
+			.map((relation) => ({
+				id: relation.id,
+				title: relation.title,
+				authors: relation.authors,
+			})),
+		referencedIn: work.value?.related_works
+			?.filter((relation) => relation.relation_type === "is referenced in")
 			.map((relation) => ({
 				id: relation.id,
 				title: relation.title,

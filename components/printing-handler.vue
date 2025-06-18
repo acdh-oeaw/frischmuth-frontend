@@ -121,9 +121,12 @@ const cloneContentForPrint = () => {
 						key: keyof RelatedWork;
 						title: string;
 					}> = [
-						{ key: "references", title: "Erwähnte Werke" },
-						{ key: "referencedIn", title: "Wurde erwähnt in" },
-						{ key: "discussedIn", title: "Wurde besprochen in" },
+						{ key: "discusses", title: "Diskutierte Werke" },
+						{ key: "mentions", title: "Erwähnte Werke" },
+						{ key: "references", title: "Referenzierte Werke" },
+						{ key: "discussedIn", title: "Wurde diskutiert in" },
+						{ key: "mentionedIn", title: "Wurde erwähnt in" },
+						{ key: "referencedIn", title: "Wurde referenziert in" },
 					];
 
 					relatedWorkSections.forEach(({ key, title }) => {

@@ -7,9 +7,9 @@ const props = defineProps<{
 }>();
 
 const relationType: Record<string, string> = {
-	references: "Referenziert",
-	discusses: "Diskutiert",
-	mentions: "Erwähnt",
+	references: "Referenzierte Werke",
+	discusses: "Diskutierte Werke",
+	mentions: "Erwähnte Werke",
 	referencedIn: "Wurde referenziert in",
 	discussedIn: "Wurde diskutiert in",
 	mentionedIn: "Wurde erwähnt in",
