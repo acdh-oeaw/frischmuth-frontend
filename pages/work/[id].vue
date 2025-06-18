@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { EyeIcon, GlobeIcon } from "lucide-vue-next";
 
-import type { Author, Characters, Places, RelatedWork } from "~/types/work";
+import type { Characters, Places, RelatedWork } from "~/types/work";
 
 const route = useRoute();
 const router = useRouter();
@@ -120,13 +120,6 @@ const places: ComputedRef<Places> = computed(() => {
 
 const relatedWork: ComputedRef<RelatedWork> = computed(() => {
 	return {
-		referencedIn: work.value?.related_works
-			?.filter((relation) => relation.relation_type === "is referenced in")
-			.map((relation) => ({
-				id: relation.id,
-				title: relation.title,
-				authors: relation.authors,
-			})),
 		references: work.value?.related_works
 			?.filter((relation) => relation.relation_type === "references")
 			.map((relation) => ({
@@ -134,8 +127,36 @@ const relatedWork: ComputedRef<RelatedWork> = computed(() => {
 				title: relation.title,
 				authors: relation.authors,
 			})),
+		referencedIn: work.value?.related_works
+			?.filter((relation) => relation.relation_type === "is referenced in")
+			.map((relation) => ({
+				id: relation.id,
+				title: relation.title,
+				authors: relation.authors,
+			})),
+		discusses: work.value?.related_works
+			?.filter((relation) => relation.relation_type === "discusses")
+			.map((relation) => ({
+				id: relation.id,
+				title: relation.title,
+				authors: relation.authors,
+			})),
 		discussedIn: work.value?.related_works
 			?.filter((relation) => relation.relation_type === "is discussed in")
+			.map((relation) => ({
+				id: relation.id,
+				title: relation.title,
+				authors: relation.authors,
+			})),
+		mentions: work.value?.related_works
+			?.filter((relation) => relation.relation_type === "mentions")
+			.map((relation) => ({
+				id: relation.id,
+				title: relation.title,
+				authors: relation.authors,
+			})),
+		mentionedIn: work.value?.related_works
+			?.filter((relation) => relation.relation_type === "is mentioned in")
 			.map((relation) => ({
 				id: relation.id,
 				title: relation.title,
@@ -236,11 +257,6 @@ const metadataPersons = computed(() => {
 
 function setMetaId(id: number | null) {
 	currentMetaId.value = id;
-}
-function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
-	return authors
-		.map((a) => a?.surname?.trim() || a?.forename?.trim() || a?.fallback_name?.trim() || "")
-		.filter((name) => name !== "");
 }
 
 const isOpen = ref(false);
@@ -623,9 +639,12 @@ function openDrawer() {
 					<DetailAccordion
 						id="accordion-related-works"
 						:disabled="
+							(relatedWork.discusses && relatedWork.discusses?.length > 0) ||
+							(relatedWork.mentions && relatedWork.mentions.length > 0) ||
 							(relatedWork.references && relatedWork.references?.length > 0) ||
 							(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
-							(relatedWork.referencedIn && relatedWork.referencedIn.length > 0)
+							(relatedWork.referencedIn && relatedWork.referencedIn.length > 0) ||
+							(relatedWork.mentionedIn && relatedWork.mentionedIn.length > 0)
 								? false
 								: true
 						"
@@ -633,66 +652,16 @@ function openDrawer() {
 						title="Bezüge"
 					>
 						<div class="grid grid-rows-[auto_auto_auto] gap-4">
-							<div>
-								<div class="pb-2 font-semibold">Erwähnte Werke</div>
-								<div v-if="relatedWork.references && relatedWork.references.length > 0">
-									<div v-for="relation in relatedWork.references" :key="relation.id">
-										<div class="pb-2">
-											<template v-if="getValidAuthorNames(relation.authors || []).length > 0">
-												<span> {{ getValidAuthorNames(relation.authors ?? []).join(", ") }}: </span>
-											</template>
-											<NuxtLink
-												id="relatedWork-references"
-												class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-												:href="`/work/${relation.id}`"
-											>
-												<span>{{ relation.title }}</span>
-											</NuxtLink>
-										</div>
-									</div>
-								</div>
-								<div v-else class="text-sm text-muted-foreground">Keine Bezüge vorhanden.</div>
-							</div>
-							<div>
-								<div class="pb-2 font-semibold">Wurde erwähnt in</div>
-								<div v-if="relatedWork.referencedIn && relatedWork.referencedIn.length > 0">
-									<div v-for="relation in relatedWork.referencedIn" :key="relation.id">
-										<div class="pb-2">
-											<template v-if="getValidAuthorNames(relation.authors || []).length > 0">
-												<span> {{ getValidAuthorNames(relation.authors ?? []).join(", ") }}: </span>
-											</template>
-											<NuxtLink
-												id="relatedWork-references"
-												class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-												:href="`/work/${relation.id}`"
-											>
-												<span>{{ relation.title }}</span>
-											</NuxtLink>
-										</div>
-									</div>
-								</div>
-								<div v-else class="text-sm text-muted-foreground">Keine Bezüge vorhanden.</div>
-							</div>
-							<div>
-								<div class="pb-2 font-semibold">Wurde besprochen in</div>
-								<div v-if="relatedWork.discussedIn && relatedWork.discussedIn.length > 0">
-									<div v-for="relation in relatedWork.discussedIn" :key="relation.id">
-										<div class="pb-2">
-											<template v-if="getValidAuthorNames(relation.authors || []).length > 0">
-												<span> {{ getValidAuthorNames(relation.authors ?? []).join(", ") }}: </span>
-											</template>
-											<NuxtLink
-												id="relatedWork-references"
-												class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
-												:href="`/work/${relation.id}`"
-											>
-												<span>{{ relation.title }}</span>
-											</NuxtLink>
-										</div>
-									</div>
-								</div>
-								<div v-else class="text-sm text-muted-foreground">Keine Bezüge vorhanden.</div>
-							</div>
+							<RelatedWorkDisplay :related-work="relatedWork.discusses" relation="discusses" />
+							<RelatedWorkDisplay :related-work="relatedWork.mentions" relation="mentions" />
+							<RelatedWorkDisplay :related-work="relatedWork.references" relation="references" />
+							<Separator class="h-[3px] bg-frisch-marine" />
+							<RelatedWorkDisplay :related-work="relatedWork.discussedIn" relation="discussedIn" />
+							<RelatedWorkDisplay :related-work="relatedWork.mentionedIn" relation="mentionedIn" />
+							<RelatedWorkDisplay
+								:related-work="relatedWork.referencedIn"
+								relation="referencedIn"
+							/>
 						</div>
 					</DetailAccordion>
 					<DetailAccordion

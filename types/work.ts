@@ -49,6 +49,9 @@ export interface RelatedWork {
 	referencedIn?: Array<RelatedWorkItem>;
 	references?: Array<RelatedWorkItem>;
 	discussedIn?: Array<RelatedWorkItem>;
+	discusses?: Array<RelatedWorkItem>;
+	mentionedIn?: Array<RelatedWorkItem>;
+	mentions?: Array<RelatedWorkItem>;
 }
 
 export interface Author {
