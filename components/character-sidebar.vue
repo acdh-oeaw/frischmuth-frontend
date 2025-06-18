@@ -172,7 +172,7 @@ watch(
 							<h2 class="font-semibold">Weitere Informationen finden Sie hier:</h2>
 							<div v-for="(url, index) in characterDetail.uris" :key="index">
 								<NavLink
-									class="flex cursor-pointer items-center gap-1 pt-1 underline decoration-dotted hover:no-underline"
+									class="flex cursor-pointer items-center gap-1 hyphens-auto pt-1 underline decoration-dotted hover:no-underline"
 									:href="url"
 									target="_blank"
 								>
