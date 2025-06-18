@@ -42,7 +42,10 @@ usePageMetadata({
 });
 
 function onUpdatePage(newPage: number) {
-	offset.value = (newPage - 1) * limit;
+	setSearchFilters({
+		...searchFilters.value,
+		page: newPage,
+	});
 }
 
 const minYear = 1500;
@@ -50,6 +53,10 @@ const maxYear = 2050;
 
 const searchFiltersSchema = v.pipe(
 	v.object({
+		page: v.fallback(
+			v.pipe(v.string(), v.transform(Number), v.number(), v.integer(), v.minValue(1)),
+			1,
+		),
 		query: v.fallback(v.string(), ""),
 		workType: v.fallback(v.array(v.string()), []),
 		startYear: v.optional(
@@ -96,8 +103,11 @@ const searchQuery = computed(() => {
 	return route.query.query as string;
 });
 
-const offset = ref(0);
 const limit = 20;
+const currentPage = computed({
+	get: () => searchFilters.value.page,
+	set: (page: number) => onUpdatePage(page),
+});
 
 const isMobileSearchOpen = ref(false);
 
@@ -107,6 +117,7 @@ const searchFilters = computed(() => {
 	// when there is just one query param, it is an Object instead of an Array, so normalize it
 	const normalizedQuery = {
 		...route.query,
+		page: route.query.page,
 		startYear: route.query.startYear,
 		endYear: route.query.endYear,
 		workType: normalizeQueryArray(route.query.workType),
@@ -126,6 +137,10 @@ function normalizeQueryArray(param: Array<LocationQueryValue> | LocationQueryVal
 	return [];
 }
 
+const offset = computed(() => {
+	return searchFilters.value.page ? (searchFilters.value.page - 1) * limit : 0;
+});
+
 function onChange(values: SearchFormData) {
 	setSearchFilters(values);
 	isMobileSearchOpen.value = false;
@@ -139,6 +154,10 @@ function setSearchFilters(query: Partial<SearchFilter>) {
 	if (query.startYear === undefined && query.endYear === undefined) {
 		delete query.startYear;
 		delete query.endYear;
+	}
+
+	if (query.page === 1) {
+		delete query.page;
 	}
 
 	void router.push({ query });
@@ -244,12 +263,12 @@ const facets = computed(() => {
 					<Pagination
 						v-if="data?.count != null"
 						v-slot="{ page }"
+						v-model:page="currentPage"
 						class="justify-self-center"
 						:items-per-page="limit"
 						:show-edges="true"
 						:sibling-count="isMobile ? 0 : 1"
 						:total="data.count"
-						@update:page="onUpdatePage"
 					>
 						<PaginationList v-slot="{ items }" class="flex items-center gap-1">
 							<PaginationFirst />
