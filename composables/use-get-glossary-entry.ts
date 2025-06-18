@@ -14,7 +14,6 @@ export function useGetGlossaryEntry(params: GlossaryEntryParams) {
 			const response = await $api["apis_api_apis_ontology.glossar_retrieve"]({
 				params: { id: id ?? 0 },
 			});
-			console.log(response);
 			return response;
 		},
 		enabled: computed(() => {

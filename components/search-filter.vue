@@ -79,6 +79,20 @@ const secondaryWork = computed(() => {
 	return secondary ? sortChildrenByCount(secondary as workType) : secondary;
 });
 
+const allWorkTypes = computed(() => {
+	if (
+		primaryWork.value &&
+		primaryWork.value.children &&
+		secondaryWork.value &&
+		secondaryWork.value.children
+	) {
+		const tempArray = [...primaryWork.value.children, ...secondaryWork.value.children];
+
+		return tempArray;
+	}
+	return [];
+});
+
 const showMore = ref(false);
 
 function toggleShowMore() {
@@ -112,22 +126,13 @@ const isCheckBoxActive = ref(false);
 watch(
 	checkedFacets,
 	() => {
+		console.log("checkedFacets: ", checkedFacets);
 		selectedCheckboxes.value = [];
 		isCheckBoxActive.value = false;
 
 		if (checkedFacets.value.workType.length > 0) {
 			selectedCheckboxes.value.push(...checkedFacets.value.workType);
-			console.log("Selectedboxes: ", selectedCheckboxes);
 		}
-
-		setTimeout(() => {
-			if (anyChildChecked(primaryWork.value)) {
-				selectedCheckboxes.value.push("Primärwerk");
-			}
-			if (anyChildChecked(secondaryWork.value)) {
-				selectedCheckboxes.value.push("Rezeption/Sekundärwerk");
-			}
-		}, 1000);
 
 		hasSliderChanged.value = false;
 		if (checkedFacets.value.endYear !== "" && checkedFacets.value.startYear !== "") {
@@ -177,7 +182,6 @@ function findParentByChildKey(childKey: string, nodes: Array<workType> | null): 
 	if (!nodes) return null;
 	for (const node of nodes) {
 		if (node.children && node.children.some((child) => child.key === childKey)) {
-			console.log("findParent: ", node);
 			return node;
 		}
 		if (node.children) {
@@ -197,26 +201,14 @@ function areAllChildrenChecked(children: Array<workType> | null): boolean {
 }
 
 function updateParentState(childKey: string) {
-	console.log("updateParentsState: ", childKey);
 	// Try finding parent in primaryWork tree first, then secondaryWork
-	let parent = findParentByChildKey(childKey, primaryWork.value?.children || null);
-	if (!parent) {
-		parent = findParentByChildKey(childKey, secondaryWork.value?.children || null);
-	}
-	console.log(parent);
+	const parent = findParentByChildKey(childKey, allWorkTypes.value);
 	if (!parent) {
 		// Check if childKey belongs to primaryWork subtree
-		if (primaryWork.value && isChildOfRoot(childKey, primaryWork.value)) {
+		if (allWorkTypes.value && isChildOfRoot(childKey, parent)) {
 			// If *any* child of primaryWork is unchecked, untick the root "Primärwerk"
-			const allSelected = areAllChildrenChecked(primaryWork.value.children);
+			const allSelected = areAllChildrenChecked(allWorkTypes.value);
 			updateSelectedCheckboxes("Primärwerk", allSelected);
-		}
-
-		// Check if childKey belongs to secondaryWork subtree
-		if (secondaryWork.value && isChildOfRoot(childKey, secondaryWork.value)) {
-			// If *any* child of secondaryWork is unchecked, untick the root "Rezeption/Sekundärwerk"
-			const allSelected = areAllChildrenChecked(secondaryWork.value.children);
-			updateSelectedCheckboxes("Rezeption/Sekundärwerk", allSelected);
 		}
 
 		return; // done updating root state
@@ -298,7 +290,6 @@ function anyChildChecked(rootNode: workType | null): boolean {
 }
 
 function isChildOfRoot(childKey: string, rootNode: workType | null): boolean {
-	console.log("Hello! ", childKey, rootNode);
 	if (!rootNode || !rootNode.children) return false;
 
 	// Recursively check if childKey exists somewhere under rootNode.children
@@ -322,7 +313,6 @@ function updateRootState(rootKey: string, rootNode: workType | null) {
 }
 
 function updateSelectedCheckboxes(id: string, isChecked: boolean) {
-	console.log("update selectedCheckboxes with: ", id, isChecked);
 	if (isChecked) {
 		selectedCheckboxes.value = Array.from(new Set([...selectedCheckboxes.value, id]));
 	} else {
@@ -369,353 +359,212 @@ watch(
 					<Separator class="bg-frisch-orange"></Separator>
 				</div>
 				<div class="pb-4">
-					<div class="pb-4">
-						<Accordion collapsible default-value="work_type_primary" type="single">
-							<AccordionItem value="work_type_primary">
+					<Accordion collapsible default-value="work_type" type="single">
+						<AccordionItem value="work_type">
+							<AccordionTrigger>
+								<div class="text-lg">Werktyp</div>
+							</AccordionTrigger>
+							<AccordionContent>
 								<div
-									:class="
-										primaryWork != null && primaryWork.count > 0
-											? `grid grid-cols-[auto_1fr] items-center gap-2`
-											: `grid w-full items-center`
-									"
+									v-if="allWorkTypes && allWorkTypes.length > 0"
+									class="flex text-sm font-normal"
 								>
-									<div v-if="primaryWork != null">
-										<input
-											:id="`workType` + primaryWork.id"
-											:checked="selectedCheckboxes.includes(primaryWork.key)"
-											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
-											name="workType"
-											type="checkbox"
-											:value="primaryWork.key"
-											@change="
-												toggleWork(primaryWork.key as unknown as string, primaryWork.children ?? [])
-											"
-										/>
-										<label class="sr-only pl-2 font-medium" :for="`workType` + primaryWork.id">
-											{{ primaryWork.key }}
-										</label>
-									</div>
-									<AccordionTrigger>
-										<div class="grid grid-cols-[auto_1fr] items-center gap-2">
-											<div class="text-lg">
-												Primärliteratur
-												<span class="text-sm text-frisch-grey">
-													({{
-														primaryWork != null && primaryWork?.count > 0 ? primaryWork?.count : 0
-													}})
-												</span>
-											</div>
-										</div>
-									</AccordionTrigger>
-								</div>
-								<AccordionContent>
-									<div
-										v-if="primaryWork && primaryWork.children && primaryWork.children.length > 0"
-										class="flex text-sm font-normal"
-									>
-										<fieldset class="flex w-full flex-col">
-											<legend class="sr-only">Werktyp | Primärliteratur</legend>
-											<div v-for="work in primaryWork.children" :key="work.id" class="pb-1">
-												<div class="grid grid-cols-[auto_1fr] items-center pb-1">
-													<input
-														:id="`workType` + work.id"
-														:checked="selectedCheckboxes.includes(work.key)"
-														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
-														name="workType"
-														type="checkbox"
-														:value="work.key"
-														@change="toggleWork(work.key as unknown as string, work.children ?? [])"
-													/>
-													<div>
-														<label class="pl-2 font-medium" :for="`workType` + work.id">
-															{{ work.key }}
-														</label>
-														<span class="pl-1 text-frisch-grey">({{ work.count }})</span>
-													</div>
+									<fieldset class="flex w-full flex-col">
+										<legend class="sr-only">Werktyp</legend>
+										<div v-for="work in allWorkTypes" :key="work.id" class="pb-1">
+											<div class="grid grid-cols-[auto_1fr] items-center pb-1">
+												<input
+													:id="`workType` + work.id"
+													:checked="selectedCheckboxes.includes(work.key)"
+													class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+													name="workType"
+													type="checkbox"
+													:value="work.key"
+													@change="toggleWork(work.key as unknown as string, work.children ?? [])"
+												/>
+												<div>
+													<label class="pl-2 font-medium" :for="`workType` + work.id">
+														{{ work.key }}
+													</label>
+													<span class="pl-1 text-frisch-grey">({{ work.count }})</span>
 												</div>
-												<div v-if="work.children && work.children.length > 0">
-													<div v-for="subwork in work.children" :key="subwork.id">
-														<div class="grid grid-cols-[auto_1fr] items-center pl-5">
-															<input
-																:id="`workType` + subwork.id"
-																:checked="selectedCheckboxes.includes(subwork.key)"
-																class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
-																name="workType"
-																type="checkbox"
-																:value="subwork.key"
-																@change="toggleSubterm(subwork.key as unknown as string)"
-															/>
-															<div>
-																<label class="pl-2" :for="`workType` + subwork.id">
-																	{{ subwork.key }}
-																</label>
-																<span class="pl-1 text-frisch-grey">({{ subwork.count }})</span>
-															</div>
+											</div>
+											<div v-if="work.children && work.children.length > 0">
+												<div v-for="subwork in work.children" :key="subwork.id">
+													<div class="grid grid-cols-[auto_1fr] items-center pl-5">
+														<input
+															:id="`workType` + subwork.id"
+															:checked="selectedCheckboxes.includes(subwork.key)"
+															class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+															name="workType"
+															type="checkbox"
+															:value="subwork.key"
+															@change="toggleSubterm(subwork.key as unknown as string)"
+														/>
+														<div>
+															<label class="pl-2" :for="`workType` + subwork.id">
+																{{ subwork.key }}
+															</label>
+															<span class="pl-1 text-frisch-grey">({{ subwork.count }})</span>
 														</div>
 													</div>
 												</div>
 											</div>
-										</fieldset>
-									</div>
-
-									<div v-else class="py-3 text-frisch-grey">
-										Keine weiteren Filtermöglichkeiten vorhanden.
-									</div>
-								</AccordionContent>
-							</AccordionItem>
-						</Accordion>
-						<Separator class="bg-frisch-orange"></Separator>
-					</div>
-					<div class="pb-4">
-						<Accordion collapsible default-value="work_type_primary" type="single">
-							<AccordionItem value="work_type_primary">
-								<div
-									:class="
-										secondaryWork != null && secondaryWork.count > 0
-											? `grid grid-cols-[auto_1fr] items-center gap-2`
-											: `grid w-full items-center`
-									"
-								>
-									<div v-if="secondaryWork != null">
-										<input
-											:id="`workType` + secondaryWork.id"
-											:checked="selectedCheckboxes.includes(secondaryWork.key)"
-											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
-											name="workType"
-											type="checkbox"
-											:value="secondaryWork.key"
-											@change="
-												toggleWork(
-													secondaryWork.key as unknown as string,
-													secondaryWork.children ?? [],
-												)
-											"
-										/>
-										<label class="sr-only pl-2 font-medium" :for="`workType` + secondaryWork.id">
-											{{ secondaryWork.key }}
-										</label>
-									</div>
-									<AccordionTrigger>
-										<div class="flex w-full items-center gap-2">
-											<div class="text-lg">
-												Sekundärlitertur / Rezeption
-												<span class="text-sm text-frisch-grey">
-													({{
-														secondaryWork != null && secondaryWork?.count > 0
-															? secondaryWork?.count
-															: 0
-													}})
-												</span>
-											</div>
 										</div>
-									</AccordionTrigger>
+									</fieldset>
 								</div>
-								<AccordionContent>
-									<div
-										v-if="
-											secondaryWork && secondaryWork.children && secondaryWork.children.length > 0
-										"
-										class="flex text-sm font-normal"
-									>
-										<fieldset class="flex w-full flex-col">
-											<legend class="sr-only">Werktyp | Sekundärliteratur / Rezeption</legend>
-											<div v-for="work in secondaryWork.children" :key="work.id" class="pb-1">
-												<div class="grid grid-cols-[auto_1fr] items-center pb-1">
-													<input
-														:id="`workType` + work.id"
-														:checked="selectedCheckboxes.includes(work.key)"
-														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
-														name="workType"
-														type="checkbox"
-														:value="work.key"
-														@change="toggleWork(work.key as unknown as string, work.children ?? [])"
-													/>
-													<div>
-														<label class="pl-2 font-medium" :for="`workType` + work.id">
-															{{ work.key }}
-														</label>
-														<span class="pl-1 text-frisch-grey">({{ work.count }})</span>
-													</div>
-												</div>
-												<div v-if="work.children && work.children.length > 0">
-													<div v-for="subwork in work.children" :key="subwork.id">
-														<div class="grid grid-cols-[auto_1fr] items-center pl-5">
-															<input
-																:id="`workType` + subwork.id"
-																:checked="selectedCheckboxes.includes(subwork.key)"
-																class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
-																name="workType"
-																type="checkbox"
-																:value="subwork.key"
-																@change="toggleSubterm(subwork.key as unknown as string)"
-															/>
-															<div>
-																<div>
-																	<label class="pl-2" :for="`workType` + subwork.id">
-																		{{ subwork.key }}
-																	</label>
-																	<span class="pl-1 text-frisch-grey">({{ subwork.count }})</span>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</fieldset>
-									</div>
+								<div v-else class="py-3 text-frisch-grey">
+									Keine weiteren Filtermöglichkeiten vorhanden.
+								</div>
+							</AccordionContent>
+						</AccordionItem>
+					</Accordion>
+					<Separator class="bg-frisch-orange"></Separator>
+				</div>
 
-									<div v-else class="py-3 text-frisch-grey">
-										Keine weiteren Filtermöglichkeiten vorhanden.
+				<div class="pb-4">
+					<Accordion
+						collapsible
+						type="single"
+						@update:model-value="
+							resetSlider();
+							addCheckbox('year');
+						"
+					>
+						<AccordionItem v-model:open="yearChecked" value="year">
+							<AccordionTrigger
+								class="grid w-full grid-cols-[auto_auto_1fr] place-items-end items-center gap-2"
+							>
+								<div>
+									<input
+										id="year"
+										:checked="yearChecked"
+										class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+										name="year"
+										type="checkbox"
+									/>
+								</div>
+								<div class="text-lg">Erscheinungsjahr</div>
+							</AccordionTrigger>
+							<AccordionContent>
+								<div class="w-full text-sm font-normal">
+									<div class="grid w-full grid-cols-[1fr_auto] pb-4">
+										<div>{{ sliderValue[0] }}</div>
+										<input name="startYear" type="hidden" :value="sliderValue[0]" />
+										<div>{{ sliderValue[1] }}</div>
+										<input name="endYear" type="hidden" :value="sliderValue[1]" />
 									</div>
-								</AccordionContent>
-							</AccordionItem>
-						</Accordion>
-						<Separator class="bg-frisch-orange"></Separator>
-					</div>
-					<div class="pb-4">
-						<Accordion
-							collapsible
-							type="single"
-							@update:model-value="
-								resetSlider();
-								addCheckbox('year');
-							"
-						>
-							<AccordionItem v-model:open="yearChecked" value="year">
-								<AccordionTrigger
-									class="grid w-full grid-cols-[auto_auto_1fr] place-items-end items-center gap-2"
+									<Slider
+										v-model="sliderValue"
+										class="pb-3"
+										:max="slider.max"
+										:min="slider.min"
+										:step="1"
+										@update:model-value="onSliderChange"
+									/>
+								</div>
+							</AccordionContent>
+						</AccordionItem>
+					</Accordion>
+					<Separator class="bg-frisch-orange"></Separator>
+				</div>
+				<div class="pb-4">
+					<Accordion collapsible default-value="language" type="single">
+						<AccordionItem value="language">
+							<AccordionTrigger>
+								<div class="text-lg">Sprache</div>
+							</AccordionTrigger>
+							<AccordionContent>
+								<div
+									v-if="props.facets?.language && props.facets?.language.length > 0"
+									class="text-sm font-normal"
 								>
-									<div>
-										<input
-											id="year"
-											:checked="yearChecked"
-											class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
-											name="year"
-											type="checkbox"
-										/>
-									</div>
-									<div class="text-lg">Erscheinungsjahr</div>
-								</AccordionTrigger>
-								<AccordionContent>
-									<div class="w-full text-sm font-normal">
-										<div class="grid w-full grid-cols-[1fr_auto] pb-4">
-											<div>{{ sliderValue[0] }}</div>
-											<input name="startYear" type="hidden" :value="sliderValue[0]" />
-											<div>{{ sliderValue[1] }}</div>
-											<input name="endYear" type="hidden" :value="sliderValue[1]" />
+									<fieldset class="grid grid-cols-2">
+										<legend class="sr-only">Sprachen</legend>
+										<div
+											v-for="(item, index) in props.facets?.language"
+											:key="item.key"
+											class="grid grid-cols-[auto_1fr]"
+											@value-change="addCheckbox(item.key!)"
+										>
+											<label class="grid cursor-pointer grid-cols-[auto_1fr] items-center gap-2">
+												<input
+													:id="`language${index}`"
+													:checked="
+														checkedFacets.language
+															? checkedFacets.language.includes(item.key!)
+															: false
+													"
+													class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+													name="language"
+													type="checkbox"
+													:value="item.key"
+													@change="addCheckbox(item.key!)"
+												/>
+												<span>{{ item.key }}</span>
+											</label>
+											<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
 										</div>
-										<Slider
-											v-model="sliderValue"
-											class="pb-3"
-											:max="slider.max"
-											:min="slider.min"
-											:step="1"
-											@update:model-value="onSliderChange"
-										/>
-									</div>
-								</AccordionContent>
-							</AccordionItem>
-						</Accordion>
-						<Separator class="bg-frisch-orange"></Separator>
-					</div>
-					<div class="pb-4">
-						<Accordion collapsible default-value="language" type="single">
-							<AccordionItem value="language">
-								<AccordionTrigger>
-									<div class="text-lg">Sprache</div>
-								</AccordionTrigger>
-								<AccordionContent>
-									<div
-										v-if="props.facets?.language && props.facets?.language.length > 0"
-										class="text-sm font-normal"
-									>
-										<fieldset class="grid grid-cols-2">
-											<legend class="sr-only">Sprachen</legend>
-											<div
-												v-for="(item, index) in props.facets?.language"
-												:key="item.key"
-												class="grid grid-cols-[auto_1fr]"
-												@value-change="addCheckbox(item.key!)"
-											>
-												<label class="grid cursor-pointer grid-cols-[auto_1fr] items-center gap-2">
-													<input
-														:id="`language${index}`"
-														:checked="
-															checkedFacets.language
-																? checkedFacets.language.includes(item.key!)
-																: false
-														"
-														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
-														name="language"
-														type="checkbox"
-														:value="item.key"
-														@change="addCheckbox(item.key!)"
-													/>
-													<span>{{ item.key }}</span>
-												</label>
-												<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
-											</div>
-										</fieldset>
-									</div>
+									</fieldset>
+								</div>
 
-									<div v-else class="py-3 text-frisch-grey">
-										Keine weiteren Filtermöglichkeiten vorhanden.
-									</div>
-								</AccordionContent>
-							</AccordionItem>
-						</Accordion>
-						<Separator class="bg-frisch-orange"></Separator>
-					</div>
-					<div class="pb-4">
-						<Accordion collapsible default-value="topic" type="single">
-							<AccordionItem value="topic">
-								<AccordionTrigger>
-									<div class="text-lg">Thema</div>
-								</AccordionTrigger>
-								<AccordionContent>
-									<div v-if="sortedTopics && sortedTopics.length > 0" class="text-sm font-normal">
-										<fieldset class="grid grid-cols-2">
-											<legend class="sr-only">Themen</legend>
-											<div
-												v-for="(item, index) in sortedTopics"
-												:key="item.key"
-												class="grid grid-cols-[auto_1fr]"
-												@value-change="addCheckbox(item.key!)"
-											>
-												<label class="grid cursor-pointer grid-cols-[auto_1fr] items-center gap-2">
-													<input
-														:id="`topic${index}`"
-														:checked="
-															checkedFacets.topic ? checkedFacets.topic.includes(item.key!) : false
-														"
-														class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
-														name="topic"
-														type="checkbox"
-														:value="item.key"
-														@change="addCheckbox(item.key!)"
-													/>
-													<span>{{ item.key }}</span>
-												</label>
-												<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
-											</div>
-										</fieldset>
-									</div>
-									<div v-else class="py-3 text-frisch-grey">
-										Keine weiteren Filtermöglichkeiten vorhanden.
-									</div>
-									<Button
-										v-if="sortedTopics"
-										class="p-0 pb-2 text-sm font-medium"
-										type="button"
-										variant="searchform"
-										@click="toggleShowMore"
-									>
-										{{ showMore ? `Weniger anzeigen` : `Mehr anzeigen ...` }}
-									</Button>
-								</AccordionContent>
-							</AccordionItem>
-						</Accordion>
-					</div>
+								<div v-else class="py-3 text-frisch-grey">
+									Keine weiteren Filtermöglichkeiten vorhanden.
+								</div>
+							</AccordionContent>
+						</AccordionItem>
+					</Accordion>
+					<Separator class="bg-frisch-orange"></Separator>
+				</div>
+				<div class="pb-4">
+					<Accordion collapsible default-value="topic" type="single">
+						<AccordionItem value="topic">
+							<AccordionTrigger>
+								<div class="text-lg">Thema</div>
+							</AccordionTrigger>
+							<AccordionContent>
+								<div v-if="sortedTopics && sortedTopics.length > 0" class="text-sm font-normal">
+									<fieldset class="grid grid-cols-2">
+										<legend class="sr-only">Themen</legend>
+										<div
+											v-for="(item, index) in sortedTopics"
+											:key="item.key"
+											class="grid grid-cols-[auto_1fr]"
+											@value-change="addCheckbox(item.key!)"
+										>
+											<label class="grid cursor-pointer grid-cols-[auto_1fr] items-center gap-2">
+												<input
+													:id="`topic${index}`"
+													:checked="
+														checkedFacets.topic ? checkedFacets.topic.includes(item.key!) : false
+													"
+													class="size-4 appearance-none border border-frisch-orange bg-white checked:appearance-auto checked:accent-frisch-orange"
+													name="topic"
+													type="checkbox"
+													:value="item.key"
+													@change="addCheckbox(item.key!)"
+												/>
+												<span>{{ item.key }}</span>
+											</label>
+											<span class="pl-1 text-frisch-grey">({{ item.count }})</span>
+										</div>
+									</fieldset>
+								</div>
+								<div v-else class="py-3 text-frisch-grey">
+									Keine weiteren Filtermöglichkeiten vorhanden.
+								</div>
+								<Button
+									v-if="sortedTopics"
+									class="p-0 pb-2 text-sm font-medium"
+									type="button"
+									variant="searchform"
+									@click="toggleShowMore"
+								>
+									{{ showMore ? `Weniger anzeigen` : `Mehr anzeigen ...` }}
+								</Button>
+							</AccordionContent>
+						</AccordionItem>
+					</Accordion>
 				</div>
 			</div>
 		</div>
