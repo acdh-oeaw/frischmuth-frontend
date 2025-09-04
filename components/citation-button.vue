@@ -52,7 +52,6 @@ const citation = computed(() => {
 								return { given: author.forename, family: author.surname };
 							}),
 				title: ref?.title ?? "",
-				edition: ref?.edition_type ?? "",
 				language: ref?.language?.join(", ") ?? "",
 				publication_date: ref?.publication_date ?? "",
 				publisher: ref.publisher?.name ?? "",
