@@ -8,12 +8,10 @@ sections:
       Schopper
 
 
-      **Team:** Peter Clar, Matej Durco, Vanessa Hannesschläger, Julia Lingl, Kay Kollmann, Olivia Reichl, Matthias Schmidt
+      **Team:** Anna Babka (Leitung), Peter Clar, Matej Durco, Barbara Krautgartner, Kay Kollmann, Julia Lingl, Olivia Reichl, Matthias Schmidt
 
 
       **Kooperation:** Klaus Kastberger für das Franz-Nabl-Institut der Universität Graz, Österreichische Akademie der Wissenschaften, Austrian Centre for Digital Humanities
-
-
 
 
       ![](/assets/images/img_6bc6b8cd8ab2-1.jpeg)
