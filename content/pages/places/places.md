@@ -1,11 +1,4 @@
 ---
 title: Orte
 ---
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer.
+Was Barbara Frischmuths Oeuvre belangreich durchzieht, ist eine aufs Räumliche gerichtete Schreibweise, in der Städte oder Landstriche, Gegenden und Gebiete, Berge oder Seen als imaginäre Topografien zu markanten Schauplätzen werden. Diese spielen eine größere, oft eigenständige Rolle in ihrer Literatur, stiften Zusammenhänge, zitieren Schichten historischer Bedeutsamkeit oder konstellieren Spannungen. Oft handelt es sich auch um Orte, die für das Leben und Schreiben der Schriftstellerin signifikant scheinen. Ohne diese biografische Nähe für unsere Analysen interpretativ zu nutzen oder die literarischen Texte selbst mit besonderer biografischer Bedeutung aufzuladen, scheinen diese Topografien oft auch Motor und Stimulus der Literatur Barbara Frischmuths zu sein. Mit der ausgeprägten Darlegung der Örtlichkeiten im Analyseraster wollen wir auf deren Potenzial aufmerksam machen und ein spannendes Tool zur Verfügung stellen.
