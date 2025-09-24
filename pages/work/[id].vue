@@ -186,31 +186,32 @@ const icon = computed(() => {
 	return null;
 });
 
-const persons = computed(() => {
+const authors = computed(() => {
 	const authors: Array<string> = [];
-	const editors: Array<string> = [];
 
 	work.value?.persons?.forEach((person) => {
 		const name = `${person.forename} ${person.surname}`;
-
 		if (person.relation_type === "has author") {
 			authors.push(name);
-		} else if (person.relation_type === "has editor") {
-			editors.push(name);
 		}
 	});
 
 	const formattedAuthors = authors.join(", ");
-	const formattedEditors = editors.join(", ");
+	return formattedAuthors ? formattedAuthors : "";
+});
 
-	if (formattedAuthors && formattedEditors) {
-		return `${formattedAuthors} | ${formattedEditors}`;
-	} else if (formattedAuthors) {
-		return formattedAuthors;
-	} else if (formattedEditors) {
-		return formattedEditors;
-	}
-	return "";
+const editors = computed(() => {
+	const editors: Array<string> = [];
+
+	work.value?.persons?.forEach((person) => {
+		const name = `${person.forename} ${person.surname}`;
+		if (person.relation_type === "has editor") {
+			editors.push(name);
+		}
+	});
+
+	const formattedEditors = editors.join(", ");
+	return formattedEditors ? formattedEditors : "";
 });
 
 const interpretatems = computed(() => {
@@ -310,8 +311,18 @@ function openDrawer() {
 								/>
 							</div>
 						</div>
-						<div v-if="persons" class="italic">
-							{{ persons }}
+						<div
+							v-if="authors && work?.work_type != null && work?.work_type[0]?.name != 'Sammelband'"
+							class="italic"
+						>
+							{{ authors }}
+						</div>
+						<div
+							v-if="editors && work?.work_type != null && work?.work_type[0]?.name == 'Sammelband'"
+							class="inline-flex gap-1 italic"
+						>
+							<span>{{ editors }}</span
+							><span>{{ "(Hg.)" }}</span>
 						</div>
 						<div class="pb-2">
 							<h1 class="text-xl font-semibold">
@@ -321,6 +332,11 @@ function openDrawer() {
 								{{ work?.subtitle }}
 							</div>
 						</div>
+						<!-- Can be resolved after api exposes relevant data -->
+						<!-- <div v-if="editors &&  work?.work_type[0].name == 'Sammelband'" class="inline-flex gap-1 italic">
+							<span>{{ "(Hg.):" }}</span>
+							<span>{{ editors }}</span>
+						</div> -->
 						<div v-if="work?.expression_data != null" class="pb-2 text-sm">
 							<div class="pb-1">
 								<span v-for="(entry, index) in work.expression_data" :key="index">
