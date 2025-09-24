@@ -9,6 +9,6 @@ images:
     copyright: by Testperson
 links: []
 ---
-Das ehemalige Jagdhaus der Familie Hohenlohe Schillingsfürst ist der ideale 
-Ort für eine Einkehr nach einer Wanderung um den malerischen Altausseer 
-See im Salzkammergut.
+
+Das ehemalige Jagdhaus der Familie Hohenlohe Schillingsfürst ist der ideale Ort für eine Einkehr
+nach einer Wanderung um den malerischen Altausseer See im Salzkammergut.

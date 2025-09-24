@@ -61,11 +61,10 @@ onScopeDispose(() => {
 				<div v-if="props.place.metadata.images != null" class="relative py-4">
 					<ImageCarousel :images="props.place.metadata.images" />
 				</div>
-				<div v-if="props.place.metadata.description != null">
+				<div v-if="props.place.body != ''">
 					<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-					<div>
-						{{ props.place.metadata.description }}
-					</div>
+					<!-- eslint-disable-next-line vue/no-v-html -->
+					<section v-html="props.place.body" />
 				</div>
 				<div
 					v-if="place != null && place.metadata.links != null && place.metadata.links.length > 0"
@@ -100,11 +99,10 @@ onScopeDispose(() => {
 				<div v-if="props.place.metadata.images != null" class="relative py-4">
 					<ImageCarousel :images="props.place.metadata.images" />
 				</div>
-				<div v-if="props.place.body != null">
+				<div v-if="props.place.body != ''">
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
-					<div class="prose prose-p:m-0">
-						<ContentRenderer :value="props.place.body" />
-					</div>
+					<!-- eslint-disable-next-line vue/no-v-html -->
+					<section v-html="props.place.body" />
 				</div>
 				<div
 					v-if="place != null && place.metadata.links != null && place.metadata.links.length > 0"
