@@ -115,6 +115,35 @@ watch(
 							Keine weiteren Informationen vorhanden.
 						</div>
 					</div>
+					<div v-if="characterDetail.metacharacter != null">
+						<Separator class="my-5 h-0.5 bg-frisch-marine" />
+						<div class="grid grid-cols-[auto_1fr] items-center gap-1 text-sm font-normal">
+							<UsersRoundIcon :size="16" />
+							{{ "Metacharakter" }}
+						</div>
+						<h1 class="pb-2 text-lg font-semibold">{{ characterDetail.metacharacter.name }}</h1>
+						<div v-if="characterDetail.metacharacter.description !== ''">
+							<div class="pt-2 text-base font-semibold text-black">Beschreibung</div>
+							<div>
+								{{ characterDetail.metacharacter.description }}
+							</div>
+						</div>
+						<div
+							v-if="
+								characterDetail.metacharacter != null &&
+								characterDetail.metacharacter.related_works != null &&
+								characterDetail.metacharacter.related_works.length > 0
+							"
+						>
+							<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
+							<div v-for="link in characterDetail.metacharacter.related_works" :key="link.id">
+								<RelatedWorkDisplay :related-work="[link]" />
+							</div>
+						</div>
+						<div v-else class="flex h-full pt-2 align-middle text-sm text-neutral-500">
+							Keine weiteren Informationen vorhanden.
+						</div>
+					</div>
 				</div>
 				<div v-else>
 					<LoadingSpinner />
@@ -206,12 +235,7 @@ watch(
 						>
 							<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
 							<div v-for="link in characterDetail.metacharacter.related_works" :key="link.id">
-								<NavLink
-									class="flex cursor-pointer items-center gap-1 underline decoration-dotted hover:no-underline"
-									:href="`/work/${link.id}`"
-								>
-									{{ link.title }}
-								</NavLink>
+								<RelatedWorkDisplay :related-work="[link]" />
 							</div>
 						</div>
 						<div v-else class="flex h-full pt-2 align-middle text-sm text-neutral-500">

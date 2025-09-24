@@ -407,10 +407,27 @@ collections:
         widget: list
         allow_add: true
         fields:
-          - name: workTitle
+          - name: title
             label: Work Title
             widget: string
             required: true
+          - name: authors
+            label: Authors
+            widget: list
+            allow_add: true
+            fields:
+              - name: surname
+                label: Surname
+                widget: string
+                required: true
+              - name: forename
+                label: Forename
+                widget: string
+                required: false
+              - name: fallback_name
+                label: Fallback Name
+                widget: string
+                required: false
           - name: url
             label: URL
             widget: string

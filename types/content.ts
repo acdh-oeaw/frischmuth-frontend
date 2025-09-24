@@ -37,7 +37,8 @@ export type AltausseePlace = ParsedMarkdown<{
 		copyright?: string;
 	}>;
 	links?: Array<{
-		workTitle: string;
+		authors: [{ surname: string; forename?: string; fallback_name?: string }];
+		title: string;
 		url: string;
 	}>;
 }>;

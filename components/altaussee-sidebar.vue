@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <script lang="ts" setup>
 import { MapPinIcon, XIcon } from "lucide-vue-next";
 
@@ -71,12 +72,7 @@ onScopeDispose(() => {
 				>
 					<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
 					<div v-for="link in place.metadata.links" :key="link.url">
-						<NavLink
-							class="flex cursor-pointer items-center gap-1 underline decoration-dotted hover:no-underline"
-							:href="link.url"
-						>
-							{{ link.workTitle }}
-						</NavLink>
+						<RelatedWorkDisplay :related-work="[link]" />
 					</div>
 				</div>
 			</DrawerContent>
@@ -104,10 +100,10 @@ onScopeDispose(() => {
 				<div v-if="props.place.metadata.images != null" class="relative py-4">
 					<ImageCarousel :images="props.place.metadata.images" />
 				</div>
-				<div v-if="props.place.metadata.description != null">
+				<div v-if="props.place.body != null">
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
-					<div>
-						{{ props.place.metadata.description }}
+					<div class="prose prose-p:m-0">
+						<ContentRenderer :value="props.place.body" />
 					</div>
 				</div>
 				<div
@@ -115,12 +111,7 @@ onScopeDispose(() => {
 				>
 					<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
 					<div v-for="link in place.metadata.links" :key="link.url">
-						<NavLink
-							class="flex cursor-pointer items-center gap-1 pb-1 underline decoration-dotted hover:no-underline"
-							:href="link.url"
-						>
-							{{ link.workTitle }}
-						</NavLink>
+						<RelatedWorkDisplay :related-work="[link]" />
 					</div>
 				</div>
 				<div

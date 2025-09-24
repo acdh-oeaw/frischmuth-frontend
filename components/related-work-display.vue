@@ -3,7 +3,7 @@ import type { Author, RelatedWorkItem } from "~/types/work";
 
 const props = defineProps<{
 	relatedWork: Array<RelatedWorkItem> | undefined;
-	relation: string;
+	relation?: string;
 }>();
 
 const relationType: Record<string, string> = {
@@ -24,7 +24,7 @@ function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
 
 <template>
 	<div>
-		<div class="pb-2 font-semibold">{{ relationType[props.relation] }}</div>
+		<div v-if="props.relation" class="pb-2 font-semibold">{{ relationType[props.relation] }}</div>
 		<div v-if="props.relatedWork && props.relatedWork.length > 0">
 			<div v-for="work in props.relatedWork" :key="work.id">
 				<div class="pb-2">

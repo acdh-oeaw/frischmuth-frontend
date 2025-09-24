@@ -101,12 +101,7 @@ watch(
 							>
 								<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
 								<div v-for="link in perspectiveDetail.related_works" :key="link.id">
-									<NavLink
-										class="flex cursor-pointer items-center gap-1 underline decoration-dotted hover:no-underline"
-										:href="`/work/${link.id}`"
-									>
-										{{ link.title }}
-									</NavLink>
+									<RelatedWorkDisplay :related-work="[link]" />
 								</div>
 							</div>
 						</div>
@@ -163,12 +158,7 @@ watch(
 						>
 							<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
 							<div v-for="link in perspectiveDetail.related_works" :key="link.id">
-								<NavLink
-									class="flex cursor-pointer items-center gap-1 pb-2 underline decoration-dotted hover:no-underline"
-									:href="`/work/${link.id}`"
-								>
-									{{ link.title }}
-								</NavLink>
+								<RelatedWorkDisplay :related-work="[link]" />
 							</div>
 						</div>
 					</div>
