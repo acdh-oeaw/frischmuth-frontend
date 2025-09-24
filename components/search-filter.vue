@@ -95,7 +95,7 @@ const sortedTopics = computed(() => {
 	if (props.facets?.topic == null) return null;
 
 	const sorted = props.facets.topic.slice().sort((a, b) => {
-		return Number(b.count) - Number(a.count);
+		return (a.key ?? "").localeCompare(b.key ?? "");
 	});
 
 	if (showMore.value) {
