@@ -11,7 +11,7 @@ defineProps<{
 	<div v-for="(interpretatemGroup, groupIndex) in interpretatems" :key="groupIndex" class="pb-3">
 		<div v-if="interpretatemGroup">
 			<div v-for="(item, itemIndex) in interpretatemGroup.sources" :key="itemIndex" class="pb-1">
-				<div v-if="item" class="flex flex-row gap-1 font-medium">
+				<div v-if="item" class="flex flex-wrap gap-1 font-medium">
 					<div v-if="item.authors && item.authors.length > 0">
 						{{
 							item.authors
