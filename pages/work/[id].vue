@@ -244,7 +244,7 @@ function setQueryAndRelation(dataType: string, id: number | undefined, relation:
 		currentRelation.value = relation;
 	}
 }
-const metadataPersons = computed(() => {
+const metaDataAuthors = computed(() => {
 	const authors: Array<{ forename: string; surname: string }> = [];
 
 	work.value?.persons?.forEach((person) => {
@@ -253,6 +253,18 @@ const metadataPersons = computed(() => {
 		}
 	});
 	return authors;
+});
+
+const metadataEditors = computed(() => {
+	const editors: Array<{ forename: string; surname: string }> = [];
+
+	work.value?.persons?.forEach((person) => {
+		if (person.relation_type === "has editor") {
+			editors.push({ forename: person.forename ?? "", surname: person.surname ?? "" });
+		}
+	});
+
+	return editors;
 });
 
 function setMetaId(id: number | null) {
@@ -287,8 +299,9 @@ function openDrawer() {
 							</div>
 							<div class="flex flex-row gap-2 place-self-end">
 								<CitationButton
+									:authors="metaDataAuthors ?? []"
+									:editors="metadataEditors ?? []"
 									:metadata="[work?.expression_data]"
-									:persons="metadataPersons ?? []"
 								/>
 								<PrintingHandler
 									:characters="characters"

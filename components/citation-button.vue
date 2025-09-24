@@ -10,7 +10,8 @@ import type { ExpressionData } from "@/types/api";
 
 const props = defineProps<{
 	metadata: ExpressionData;
-	persons: Array<{ forename: string; surname: string }>;
+	authors: Array<{ forename: string; surname: string }>;
+	editors: Array<{ forename: string; surname: string }>;
 }>();
 
 const bibtex = ref("");
@@ -44,13 +45,17 @@ const citation = computed(() => {
 		return refs?.map((ref) => {
 			return {
 				author:
-					ref?.persons && ref?.persons.length <= 0
-						? props.persons.map((author) => {
+					props.authors.length > 0
+						? props.authors.map((author) => {
 								return { given: author.forename, family: author.surname };
 							})
-						: ref?.persons?.map((author) => {
-								return { given: author.forename, family: author.surname };
-							}),
+						: "",
+				editor:
+					props.editors.length > 0
+						? props.editors.map((editor) => {
+								return { given: editor.forename, family: editor.surname };
+							})
+						: "",
 				title: ref?.title ?? "",
 				language: ref?.language?.join(", ") ?? "",
 				publication_date: ref?.publication_date ?? "",
@@ -172,7 +177,7 @@ onScopeDispose(() => {
 						<Tabs class="w-full" default-value="apa">
 							<TabsList class="mb-4 w-full">
 								<TabsTrigger class="w-full" value="apa" @click="currentTab = 'apa'">
-									APA (modifiziert)
+									ZfPh
 								</TabsTrigger>
 								<TabsTrigger class="w-full" value="bibtex" @click="currentTab = 'bibtex'">
 									BibTeX
