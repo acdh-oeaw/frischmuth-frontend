@@ -1,5 +1,5 @@
 ---
 title: Die Frau im Mond
-link: ""
+link: https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/apis_ontology.work/update/19417
 ---
 »Werde ich nicht wieder und wieder auf die Gefühle Zorn, Sympathie, Wohlwollen und Ablehnung zurückgeworfen? Werde ich je freier sein als meine Gefühle?«
