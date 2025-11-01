@@ -3,45 +3,18 @@ title: Altaussee
 sections:
   - title: Altaussee
     content: >-
-      Elit anim cillum labore tempor Lorem irure voluptate qui nisi. Nostrud ut incididunt sint
-      laborum ad est enim do qui. Occaecat labore ea adipisicing est esse enim amet irure non. Non
-      ex et magna elit consequat cupidatat. Officia velit aute voluptate velit minim ullamco. Enim
-      laboris irure sunt
-
-      aliquip reprehenderit consequat cillum labore eiusmod ad cupidatat aliqua consectetur magna.
-
-
-      Eiusmod excepteur amet id aliqua nostrud fugiat excepteur laboris elit nulla sunt adipisicing.
-      Magna officia eu voluptate ad amet enim laboris laborum. Ut occaecat exercitation cillum
-      ullamco veniam consequat ea Lorem veniam. Tempor officia pariatur est tempor aliquip
-      exercitation reprehenderit aliquip cillum in enim pariatur amet. Duis anim cupidatat nulla
-      tempor commodo magna pariatur laboris irure.
+      Altaussee im steirischen Salzkammergut gelegen, am Fuße des bizarr
+      aufragenden Losers und direkt am Altausseer See … in einer Region, die
+      nicht nur reich ist an landschaftlicher Schönheit, wie der imposanten
+      Gebirgslandschaft, den Bergwäldern und Wasserfällen, den Almen, Mooren und
+      üppigen Blumenwiesen, sondern auch an Zeugen einer dunkler Vergangenheit,
+      wie dem berühmt berüchtigten Toplitzsee, in dem Schätze aus der Nazizeit
+      vermutet werden oder dem Salzbergwerk Altaussee, in dem von 1943 bis 1945
+      wesentliche Teile der von nationalsozialistischen Organisationen geraubten
+      Beutekunst aus ganz Europa gelagert wurden. 
 
 
-      Velit irure eu voluptate ipsum nulla incididunt. Consectetur veniam irure minim ea sint
-      proident
+      Altaussee ist Barbara Frischmuths Geburtsort, Ort ihrer Kindheit, ihrer frühen Jugend und seit den 80er Jahren auch wieder der Ort, an dem sie gelebt hat, geschrieben hat und einen unwiderstehlichen Garten zum Erblühen gebracht hat. Für ihr Oeuvre erweist sich der Ort als besonderer topographischer Marker insofern, als Frischmuths biographische Topographie, lose zusammenhängend, mit Schauplätzen im Rahmen ihres Oeuvres korrelierbar ist. Biographisch gefärbte Orte sind immer auch Motor und Stimulus
 
-      minim nisi commodo culpa dolore ex. Cillum nostrud voluptate commodo tempor ut consectetur.
-      Dolor cillum esse nostrud eu veniam pariatur eiusmod eiusmod enim aliquip Lorem aliqua nulla
-      exercitation. Exercitation non fugiat ea dolore nulla. Sunt esse eiusmod qui ea. Ipsum dolore
-      non cupidatat velit commodo et pariatur.
-
-
-      Ea reprehenderit Lorem cillum exercitation id est officia culpa irure ipsum fugiat tempor
-      ullamco.
-
-      Elit tempor labore occaecat culpa do tempor tempor. Eiusmod anim esse tempor deserunt deserunt
-      aute aliquip eu cupidatat ad qui incididunt mollit est. Nisi ad nisi pariatur voluptate irure
-      minim culpa voluptate aliqua et. Velit magna consequat incididunt dolor nulla consectetur sunt
-      pariatur enim laborum culpa deserunt.\
-
-      \
-
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-      invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-      justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-      ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-      et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-      sanctus est Lorem ipsum dolor sit amet.
+      eines an den Marginalien und Peripherien orientierten Geschichtenerzählens, nicht der „Weltgeschichte“ verpflichtet, sondern einzig über die ‚mémoire (in-)volontaire‘ der sich Erinnernden verbürgt.
 ---
