@@ -13,7 +13,7 @@ sections:
       gesellschaftsbezogene Kontextualisierungen sowie die Konstruktion des
       Autorinnenimages. Überdies
 
-      werden die jeweiligen journalistische Textsorten (u.a. Rezensionen, Besprechungen, Essays, Analysen, Portraits), kommunikativen Strategien und Zielgruppenorientierungen in den Blick genommen. Auf Grundlage eines standardisierten Analyserasters entsteht so ein differenziert erschlossenes, durchsuchbares Korpus, das eine fundierte Grundlage für weiterführende wissenschaftliche Analysen der journalistischen Frischmuth-Rezeption bietet.
+      werden die jeweiligen journalistischen Textsorten (u.a. Rezensionen, Besprechungen, Essays, Analysen, Portraits), kommunikativen Strategien und Zielgruppenorientierungen in den Blick genommen. Auf Grundlage eines standardisierten Analyserasters entsteht so ein differenziert erschlossenes, durchsuchbares Korpus, das eine fundierte Grundlage für weiterführende wissenschaftliche Analysen der journalistischen Frischmuth-Rezeption bietet.
 
 
       ![](/assets/images/zeitungsauschnittsammlung1.gif)
