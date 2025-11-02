@@ -45,10 +45,20 @@ sections:
       Anliegen, die in Frischmuths Texten lesbar werden, tendenziell durch einen
       hohen Grad an Fiktionalisierung gekennzeichnet und aus den zugeschriebenen
       (biographischen) Verankerungen gelöst oder in neue Erfahrungsräume
-      übertragen (vgl. Gürtler 1983, S. 96). 
+      übertragen (vgl. Gürtler 1983, S. 96). Nicht nur die ethische Dimension,
+      die mutigen und oft wegweisenden Denkmuster, die Vielfalt und die
+      „intertextuelle Potenz“ (Lützeler 1994, S. 303) ihrer Arbeiten zeichnen
+      das Schreiben der Autorin aus, gleichzeitig ist es die
+      sprachlich-rhetorische Verfasstheit, die besondere ‚écriture‘ (vgl. Babka
+      2019, S. 168), der es gelingt, neben „kühnen Metamorphosen, Umdeutungen
+      des vermeintlich ewig Fixierten, Etüden und Repetitionen, ironischen
+      Kommentaren“ (Horstkotte/Herrmann 2013 mit Terézia Mora, S. 1), zugleich
+      eine „Diskursivierung bereitgestellter Ordnungsmuster der je eigenen
+      Gegenwart“ vorzunehmen, „als Umschrift derselben und als das Bereitstellen
+      von Gegenentwürfen“ (Horstkotte/Herrmann 2013, S. 4). 
 
 
-      Nicht nur die ethische Dimension, die mutigen und oft wegweisenden Denkmuster, die Vielfalt und die „intertextuelle Potenz“ (Lützeler 1994, S. 303) ihrer Arbeiten zeichnen das Schreiben der Autorin aus, gleichzeitig ist es die sprachlich-rhetorische Verfasstheit, die besondere ‚écriture‘ (vgl. Babka 2019, S. 168), der es gelingt, neben „kühnen Metamorphosen, Umdeutungen des vermeintlich ewig Fixierten, Etüden und Repetitionen, ironischen Kommentaren“ (Horstkotte/Herrmann 2013 mit Terézia Mora, S. 1), zugleich eine „Diskursivierung bereitgestellter Ordnungsmuster der je eigenen Gegenwart“ vorzunehmen, „als Umschrift derselben und als das Bereitstellen von Gegenentwürfen“ (Horstkotte/Herrmann 2013, S. 4). 
+      Literatur: 
 
 
       * Babka, Anna / Clar, Peter (Hg., 2016): „Im Liegen ist der Horizont immer so weit weg.“ Grenzüberschreitungen bei Barbara Frischmuth. Unter Mitarbeit von Flora Petrik. Wien: Sonderzahl. 
