@@ -18,7 +18,7 @@ sections:
   - title: Über das Projekt
     content: >-
       Barbara Frischmuths Nachlass befindet sich in großen Teilen im
-      Franz-Nabl-Institut für Literatur-forschung in Graz und, in geringem
+      Franz-Nabl-Institut für Literaturforschung in Graz und, in geringem
       Ausmaß, in der Adolf-Haslinger-Literaturstiftung, Literaturarchiv
       Salzburg. Ziel des multiperspektivisch angelegten und auf vollständige
       Abbildung des Gesamtwerks abzielenden Projekts Digitales Archiv Barbara
@@ -28,7 +28,7 @@ sections:
       Öffentlichkeit zu liefern. 
 
 
-      Das Spektrum des Unternehmens umfasst die Zusammenführung und Konsolidierung der Nachlass-bestände, die Dokumentation und umfassende philologische Beschreibung sowohl der Primärquellen als auch ihrer akademischen und journalistischen Rezeption. Die Analyse und Kommentierung des Projekts erfolgten entlang spezifischer Fragestellungen und Parameter, wie etwa Sujets und Themen, gattungsspezifische Zuordnungen, relevante kulturelle, ästhetische oder gesellschaftspolitische Bezüge oder kennzeichnende Tendenzen der Rezeption. Die wissenschaftliche und journalistische Rezeption wird sowohl quantitativ als auch qualitativ in den Blick genommen. Die Ergebnisse der Rezeptions- und Primärtextanalyse werden verknüpft und im digitalen Setting systematisch miteinander in Beziehung gesetzt. Der digitale Workflow sieht ein Online-Repository mit einer intuitiven und datengesteuerten Oberfläche vor. Die gesamte Erschließung basiert auf bewährten Methoden der Digital Humanities, die es erlauben, die vielfältigen Informationen zu Frischmuths Werk strukturiert und standardkonform zu erfassen. Sowohl der Workflow der Datenerfassung als auch die Analyse und die Darstellung der Daten wurde gemeinsam mit dem Austrian Center for Digital Humanities, Wien, entwickelt und durchgeführt. 
+      Das Spektrum des Unternehmens umfasst die Zusammenführung und Konsolidierung der Nachlassbestände, die Dokumentation und umfassende philologische Beschreibung sowohl der Primärquellen als auch ihrer akademischen und journalistischen Rezeption. Die Analyse und Kommentierung des Projekts erfolgten entlang spezifischer Fragestellungen und Parameter, wie etwa Sujets und Themen, gattungsspezifische Zuordnungen, relevante kulturelle, ästhetische oder gesellschaftspolitische Bezüge oder kennzeichnende Tendenzen der Rezeption. Die wissenschaftliche und journalistische Rezeption wird sowohl quantitativ als auch qualitativ in den Blick genommen. Die Ergebnisse der Rezeptions- und Primärtextanalyse werden verknüpft und im digitalen Setting systematisch miteinander in Beziehung gesetzt. Der digitale Workflow sieht ein Online-Repository mit einer intuitiven und datengesteuerten Oberfläche vor. Die gesamte Erschließung basiert auf bewährten Methoden der Digital Humanities, die es erlauben, die vielfältigen Informationen zu Frischmuths Werk strukturiert und standardkonform zu erfassen. Sowohl der Workflow der Datenerfassung als auch die Analyse und die Darstellung der Daten wurde gemeinsam mit dem Austrian Center for Digital Humanities, Wien, entwickelt und durchgeführt. 
 
 
       An der Schnittstelle von Archiv und Germanistik angesiedelt, leistet das Projekt mit seinem vielschichtigen Ansatz nicht nur einen signifikanten Beitrag zur wissenschaftlichen Erforschung von Frischmuths Werk, sondern etabliert auch ein beispielhaftes, innovatives und originelles Open-Access-System zur Erfassung, Strukturierung und Erschließung literarischer Texte und ihrer Rezeption.
