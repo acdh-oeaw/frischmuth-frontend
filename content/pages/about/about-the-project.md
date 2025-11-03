@@ -28,14 +28,14 @@ sections:
       Öffentlichkeit zu liefern. 
 
 
-      Das Spektrum des Unternehmens umfasst die Zusammenführung und Konsolidierung der Archiv-bestände, die Dokumentation und umfassende philologische Beschreibung sowohl der Primärquellen als auch ihrer akademischen und journalistischen Rezeption. Die Analyse und Kommentierung des Projekts erfolgten entlang spezifischer Fragestellungen und Parameter, wie etwa Sujets und Themen, gattungs-spezifische Zuordnungen, relevante kulturelle, ästhetische oder gesellschaftspolitische Bezüge oder kennzeichnende Tendenzen der Rezeption. Die wissenschaftliche und journalistische Rezeption wird sowohl quantitativ als auch qualitativ in den Blick genommen. Die Ergebnisse der Rezeptions- und Primärtextanalyse werden verknüpft und im digitalen Setting systematisch miteinander in Beziehung gesetzt. Der digitale Workflow sieht ein Online-Repository mit einer intuitiven und datengesteuerten Oberfläche vor. Die gesamte Erschließung basiert auf bewährten Methoden der Digital Humanities, die es erlauben, die vielfältigen Informationen zu Frischmuths Werk strukturiert und standardkonform zu erfassen. Sowohl der Workflow der Datenerfassung als auch die Analyse und die Darstellung der Daten wurde gemeinsam mit dem Austrian Center for Digital Humanities, Wien, entwickelt und durchgeführt. 
+      Das Spektrum des Unternehmens umfasst die Zusammenführung und Konsolidierung der Nachlass-bestände, die Dokumentation und umfassende philologische Beschreibung sowohl der Primärquellen als auch ihrer akademischen und journalistischen Rezeption. Die Analyse und Kommentierung des Projekts erfolgten entlang spezifischer Fragestellungen und Parameter, wie etwa Sujets und Themen, gattungs-spezifische Zuordnungen, relevante kulturelle, ästhetische oder gesellschaftspolitische Bezüge oder kennzeichnende Tendenzen der Rezeption. Die wissenschaftliche und journalistische Rezeption wird sowohl quantitativ als auch qualitativ in den Blick genommen. Die Ergebnisse der Rezeptions- und Primärtextanalyse werden verknüpft und im digitalen Setting systematisch miteinander in Beziehung gesetzt. Der digitale Workflow sieht ein Online-Repository mit einer intuitiven und datengesteuerten Oberfläche vor. Die gesamte Erschließung basiert auf bewährten Methoden der Digital Humanities, die es erlauben, die vielfältigen Informationen zu Frischmuths Werk strukturiert und standardkonform zu erfassen. Sowohl der Workflow der Datenerfassung als auch die Analyse und die Darstellung der Daten wurde gemeinsam mit dem Austrian Center for Digital Humanities, Wien, entwickelt und durchgeführt. 
 
 
       An der Schnittstelle von Archiv und Germanistik angesiedelt, leistet das Projekt mit seinem viel-schichtigen Ansatz nicht nur einen signifikanten Beitrag zur wissenschaftlichen Erforschung von Frischmuths Werk, sondern etabliert auch ein beispielhaftes, innovatives und originelles Open-Access-System zur Erfassung, Strukturierung und Erschließung literarischer Texte und ihrer Rezeption.
   - content: >-
       Die mit zahlreichen Preisen und dem österreichischen Ehrenkreuz für
       Wissenschaft und Kunst ausgezeichnete Autorin Barbara Frischmuth
-      (5.7.1941-30.3.2025) zählt zu den bedeutendsten Schriftsteller_innen
+      (5.7.1941-30.3.2025) zählt zu den bedeutendsten Schriftsteller:innen
       Österreichs der zweiten Hälfte des 20. Jahrhunderts bis in die Gegenwart
       und wird, nicht zuletzt bedingt durch die kulturübergreifende,
       kritisch-ethische Dimension ihrer Texte, international rezipiert.
@@ -56,10 +56,10 @@ sections:
       sprachlich-rhetorische Verfasstheit, die besondere ‚écriture‘ (vgl. Babka
       2019, S. 168), der es gelingt, neben „kühnen Metamorphosen, Umdeutungen
       des vermeintlich ewig Fixierten, Etüden und Repetitionen, ironischen
-      Kommentaren“ (Horstkotte/Herrmann 2013 mit Terézia Mora, S. 1), zugleich
-      eine „Diskursivierung bereitgestellter Ordnungsmuster der je eigenen
-      Gegenwart“ vorzunehmen, „als Umschrift derselben und als das Bereitstellen
-      von Gegenentwürfen“ (Horstkotte/Herrmann 2013, S. 4). 
+      Kommentaren“ zugleich eine „Diskursivierung bereitgestellter
+      Ordnungsmuster der je eigenen Gegenwart“ vorzunehmen, „als Umschrift
+      derselben und als das Bereitstellen von Gegenentwürfen“
+      (Horstkotte/Herrmann 2013, S. 1-4). 
 
 
       Literatur: 
