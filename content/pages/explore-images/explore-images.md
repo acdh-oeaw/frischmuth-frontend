@@ -17,18 +17,22 @@ images:
     titel: Der Garten
     copyright: © Anna Babka
   - image: /assets/images/pedro-sw.jpg
-    titel: Privatbibliothek Barbara Frischmuth
+    titel: Privatbibliothek Barbara Frischmuth 1
     copyright: © 2024 Matthias Schmidt
-  - titel: Privatbibliothek Barbara Frischmuth
+  - titel: Privatbibliothek Barbara Frischmuth 2
     copyright: © 2022 Anna Babka
     image: /assets/images/2023-04-01-15.13.22.jpg
-  - titel: Privatbibliothek Barbara Frischmuth
+  - titel: Privatbibliothek Barbara Frischmuth 3
     copyright: © 2024 Matthias Schmidt
     image: /assets/images/2023-04-02-23.14.58-5.jpg
   - image: /assets/images/20230708_191215.jpg
-    titel: Der See
+    titel: Der See 1
     copyright: © 2024 Anna Babka
   - image: /assets/images/2023-04-02-23.14.58.jpg
-    titel: Der See
+    titel: Der See 2
     copyright: © 2023 Matthias Schmidt
+  - image: /assets/images/20241018_094024.jpg
+    titel: Gartenfrosch
+  - image: /assets/images/2023-04-02-22.02.14.jpg
+    titel: Zusammen!
 ---
