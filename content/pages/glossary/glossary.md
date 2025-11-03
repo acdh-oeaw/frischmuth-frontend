@@ -1,11 +1,34 @@
 ---
 title: Glossar
 ---
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+**A**
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer.
+**B**
+
+**C**
+
+**D**
+
+**E**
+
+**F**
+
+**G**
+
+**H**
+
+**I**
+
+**J**
+
+**K**
+
+**L**
+
+**M**
+
+**N:** 
+
+*Das N-Wort*
+
+* Die Verwendung des N-Wortes im Gedicht „Negertage“ von Barbara Frischmuth aus 196? erfordert eine kritische literaturwissenschaftliche Kommentierung und Kontextualisierung. In der sprachlichen und gesellschaftlichen Realität der Nachkriegszeit war der Begriff häufig unreflektierter Bestandteil eines kolonial geprägten Diskurses, der rassistische Hierarchien sprachlich reproduzierte. Innerhalb des Gedichts fungiert das N-Wort somit als Marker eines hegemonialen Sprechens über „das Andere“, das die rassistische Blickordnung der damaligen Mehrheitsgesellschaft spiegelt. Eine gegenwärtige Lektüre muss diese historische Situiertheit berücksichtigen, zugleich aber den problematischen Fortbestand solcher Sprachformen als Teil eines strukturellen Rassismus und fortwährender epistemischen Verletzungen benennen. Kolonialismus prägt bis heute Weltbilder und insbesondere Bilder von nicht-europäischen Anderen. Stabilisiert werden diese Bilder durch Bezeichnungen, Benennungen und die Art und Weise, wie über die Welt gesprochen wird. Im Falle des hier relevanten Gedichts haben uns dafür entschieden, das N-Wort im literarischen Werk, nicht zuletzt zum Zweck von rassismuskritischen Analysen, hier in nichtdiskriminierender Absicht, zu zitieren.
