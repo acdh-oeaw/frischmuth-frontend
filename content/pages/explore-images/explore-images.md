@@ -20,9 +20,15 @@ images:
     titel: Privatbibliothek Barbara Frischmuth
     copyright: © 2024 Matthias Schmidt
   - titel: Privatbibliothek Barbara Frischmuth
-    copyright: © 2024 Anna Babka
+    copyright: © 2022 Anna Babka
     image: /assets/images/2023-04-01-15.13.22.jpg
   - titel: Privatbibliothek Barbara Frischmuth
     copyright: © 2024 Matthias Schmidt
     image: /assets/images/2023-04-02-23.14.58-5.jpg
+  - image: /assets/images/20230708_191215.jpg
+    titel: Der See
+    copyright: © 2024 Anna Babka
+  - image: /assets/images/2023-04-02-23.14.58.jpg
+    titel: Der See
+    copyright: © 2023 Matthias Schmidt
 ---
