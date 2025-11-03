@@ -11,9 +11,13 @@ sections:
       inhaltlich und formal analysiert. Untersucht werden Themenwahl,
       stilistische und sprachliche Bewertung, literatur- und
       gesellschaftsbezogene Kontextualisierungen sowie die Konstruktion des
-      Autorinnenimages. Überdies
-
-      werden die jeweiligen journalistischen Textsorten (u.a. Rezensionen, Besprechungen, Essays, Analysen, Portraits), kommunikativen Strategien und Zielgruppenorientierungen in den Blick genommen. Auf Grundlage eines standardisierten Analyserasters entsteht so ein differenziert erschlossenes, durchsuchbares Korpus, das eine fundierte Grundlage für weiterführende wissenschaftliche Analysen der journalistischen Frischmuth-Rezeption bietet.
+      Autorinnenimages. Ferner werden die jeweiligen journalistischen Textsorten
+      (u.a. Rezensionen, Besprechungen, Essays, Analysen, Portraits), die
+      kommunikativen Strategien und die Zielgruppenorientierungen in den Blick
+      genommen. Auf Grundlage eines standardisierten Analyserasters entsteht so
+      ein differenziert erschlossenes, durchsuchbares Korpus, das eine fundierte
+      Grundlage für weiterführende wissenschaftliche Analysen der
+      journalistischen Frischmuth-Rezeption bietet.
 
 
       ![](/assets/images/zeitungsauschnittsammlung1.gif)
