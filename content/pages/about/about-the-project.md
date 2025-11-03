@@ -35,7 +35,7 @@ sections:
   - content: >-
       Die mit zahlreichen Preisen und dem österreichischen Ehrenkreuz für
       Wissenschaft und Kunst ausgezeichnete Autorin Barbara Frischmuth
-      (*5.7.1941-30.3.2025) zählt zu den bedeutendsten Schriftsteller_innen
+      (5.7.1941-30.3.2025) zählt zu den bedeutendsten Schriftsteller_innen
       Österreichs der zweiten Hälfte des 20. Jahrhunderts bis in die Gegenwart
       und wird, nicht zuletzt bedingt durch die kulturübergreifende,
       kritisch-ethische Dimension ihrer Texte, international rezipiert.
