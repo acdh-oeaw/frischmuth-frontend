@@ -65,7 +65,9 @@ sections:
       Literatur: 
 
 
-      * Babka, Anna / Clar, Peter (Hg., 2016): „Im Liegen ist der Horizont immer so weit weg.“ Grenzüberschreitungen bei Barbara Frischmuth. Unter Mitarbeit von Flora Petrik. Wien: Sonderzahl. 
+      * Babka, Anna (2016): Limes, Lamis, Ibis & Abbas. Postkoloniale Bruchstücke in Vergiß Ägypten von Barbara Frischmuth. In: Babka, Anna / Clar, Peter (Hg., 2016): „Im Liegen ist der Horizont immer so weit weg.“ Grenzüberschreitungen bei Barbara Frischmuth. Unter Mitarbeit von Flora Petrik. Wien: Sonderzahl, S. 51–69.  
+
+      * Babka, Anna (2019): Mit Medusa lachen. Schreibweisen kultureller und sexueller Differenz bei Barbara Frischmuth. In: Babka, Anna / Cimenti, Silvana / Clar, Peter (Hg., 2019): »Ich schreibe, also bin ich«. Schreibweisen bei Barbara Frischmuth. Wien: Sonderzahl, S.155-169.
 
       * Gürtler, Christa (1983): Schreiben Frauen anders? Untersuchungen zu Ingeborg Bachmann und Barbara Frischmuth. Stuttgart: Akademischer Verlag Hans-Dieter Heinz. (=Stuttgarter Arbeiten zur Germanistik) 
 
