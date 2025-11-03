@@ -17,4 +17,7 @@ sections:
       Altaussee ist Barbara Frischmuths Geburtsort, Ort ihrer Kindheit, ihrer frühen Jugend und seit den 80er Jahren auch wieder der Ort, an dem sie gelebt hat, geschrieben hat und einen unwiderstehlichen Garten zum Erblühen gebracht hat. Für ihr Oeuvre erweist sich der Ort als besonderer topographischer Marker insofern, als Frischmuths biographische Topographie, lose zusammenhängend, mit Schauplätzen im Rahmen ihres Oeuvres korrelierbar ist. Biographisch gefärbte Orte sind immer auch Motor und Stimulus
 
       eines an den Marginalien und Peripherien orientierten Geschichtenerzählens, nicht der „Weltgeschichte“ verpflichtet, sondern einzig über die ‚mémoire (in-)volontaire‘ der sich Erinnernden verbürgt.
+
+
+      ![](/assets/images/2023-07-08-14.32.23.jpg)
 ---
