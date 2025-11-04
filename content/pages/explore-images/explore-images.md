@@ -35,4 +35,8 @@ images:
     titel: Gartenfrosch
   - image: /assets/images/2023-04-02-22.02.14.jpg
     titel: Zusammen!
+  - image: /assets/images/ganzes-team.jpg
+    titel: Das Team
+  - image: /assets/images/2023-07-10-10.48.32.jpg
+    titel: Mit Loser
 ---
