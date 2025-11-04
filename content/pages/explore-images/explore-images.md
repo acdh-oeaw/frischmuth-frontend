@@ -28,7 +28,7 @@ images:
   - image: /assets/images/20230708_191215.jpg
     titel: Der See 1
     copyright: © 2024 Anna Babka
-  - image: /assets/images/2023-04-02-23.14.58.jpg
+  - image: /assets/images/532495a4-2e9d-4852-8291-8593f125c8ff.jpg
     titel: Der See 2
     copyright: © 2023 Matthias Schmidt
   - image: /assets/images/20241018_094024.jpg
