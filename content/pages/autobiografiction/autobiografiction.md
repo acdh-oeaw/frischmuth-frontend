@@ -1,29 +1,31 @@
 ---
 title: Autobiografiktion
 sections:
-  - title: Lorem ipsum
+  - title: Von der Fiktionalisierung des Lebens durch das Werk
     content: >-
-      Elit anim cillum labore tempor Lorem irure voluptate qui nisi. Nostrud ut
-      incididunt sint laborum ad est enim do qui. Occaecat labore ea adipisicing
-      est esse enim amet irure non. Non ex et magna elit consequat cupidatat.
-      Officia velit aute voluptate velit minim ullamco. Enim laboris irure sunt
+      Die literarische Welt, die sich aus den Texten von Barbara Frischmuth
+      erlesen lässt, weist auf den ersten Blick zahlreiche Parallelen zur
+      Biografie der Person Barbara Frischmuth auf. Sowohl in den dezidiert
+      literarischen Werken wie auch in den Interviews, Artikeln und Essays
+      lassen sich viele Schauplätze, Personen und Themen ausmachen, die auch für
+      die Autorin zweifellos eine große Rolle gespielt haben. Dieser Eindruck
+      wird noch verstärkt durch die Tatsache, dass viele kürzere Texte in der
+      ersten Person verfasst sind und so scheinbar eine Engführung der Autorin
+      mit der Stimme des Textes nahegelegt wird. Eine stark vereinfachende
+      Lesart des Frischmuth’schen Oeuvres bestünde entsprechend darin, von einer
+      eindeutigen Zuordenbarkeit von literarischer Sprache und der empirischen
+      Welt der Autorin auszugehen. Für das Verständnis der Texte wäre dadurch
+      nicht viel gewonnen, gilt doch die lesende Aufmerksamkeit vielmehr der
+      genannten *literarischen Welt*, die erst durch eine *Fiktionalisierung*,
+      also eine Überformung und Transformation aller in ihr referenzierten
+      Bezüge zustande kommt. 
 
-      aliquip reprehenderit consequat cillum labore eiusmod ad cupidatat aliqua consectetur magna.
+
+      Literaturtheoretisch begründen lässt sich diese wichtige Grundannahme dadurch, dass die unterschiedlichen Funktionsweisen von Sprache gerade in und von literarischen Texten thematisiert werden: »Wenn sich die literarische Sprache von der Sprache der Wissenschaft und von der Alltagssprache unterscheidet, dann am markantesten dadurch, daß sie die Spannung zwischen den beiden Möglichkeiten der Sprache, referentiell oder figurativ zu sein, exponiert. Diese Exposition indessen schlichtet ihren Widerstreit nicht, sondern verschärft ihn.« (Hamacher: Lectio, 155) Dies bedeutet, dass literarische Sprache immer zugleich mehr und anderes bedeutet, als sie benennt, und durch ihre Erschaffung dieses Mehr darauf hinweist, dass sie sich über eine eindeutige Referenz hinausbewegt. 
 
 
-      Eiusmod excepteur amet id aliqua nostrud fugiat excepteur laboris elit nulla sunt adipisicing. Magna officia eu voluptate ad amet enim laboris laborum. Ut occaecat exercitation cillum ullamco veniam consequat ea Lorem veniam. Tempor officia pariatur est tempor aliquip exercitation reprehenderit aliquip cillum in enim pariatur amet. Duis anim cupidatat nulla tempor commodo magna pariatur laboris irure.
+      Im Werk von Barbara Frischmuth wird diesem Umstand von Anbeginn an Rechnung getragen: Seit den frühesten Texten existiert ein entsprechender »Zweifel an der Sprache«, der zunächst im Sinne der Avantgarde über die Mittel nachdenken lässt, wie Sprache Wirklichkeit erzeugt und wie diese Mittel reflektiert und durchaus auch hinsichtlich ihrer politischen Implikationen lesbar gemacht werden können. Dieser Blick auf die Wirkmächtigkeit sprachlicher Routinen und die inhärenten Machtstrukturen von Sprechweisen ist eines der zentralen Themen der *Klosterschule*. Die darauffolgende Texte jedoch zeugen davon, dass ein solch ostentativer Hinweis keine vollständige Poetik trägt, sodass die Reflexion auf die genannten Zusammenhänge tiefer in die erzählten Geschichten eingesenkt oder etwa durch die Verwendung ausdrücklich fantastischer Motive thematisiert werden. 
 
 
-      Velit irure eu voluptate ipsum nulla incididunt. Consectetur veniam irure minim ea sint proident
-
-      minim nisi commodo culpa dolore ex. Cillum nostrud voluptate commodo tempor ut consectetur. Dolor cillum esse nostrud eu veniam pariatur eiusmod eiusmod enim aliquip Lorem aliqua nulla exercitation. Exercitation non fugiat ea dolore nulla. Sunt esse eiusmod qui ea. Ipsum dolore non cupidatat velit commodo et pariatur.
-
-
-      Ea reprehenderit Lorem cillum exercitation id est officia culpa irure ipsum fugiat tempor ullamco.
-
-      Elit tempor labore occaecat culpa do tempor tempor. Eiusmod anim esse tempor deserunt deserunt aute aliquip eu cupidatat ad qui incididunt mollit est. Nisi ad nisi pariatur voluptate irure minim culpa voluptate aliqua et. Velit magna consequat incididunt dolor nulla consectetur sunt pariatur enim laborum culpa deserunt.\
-
-      \
-
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+      Die unentscheidbare Distanz zwischen »Bedeutung und Zeichen, Gemeintem und Gesagtem, Sache und Symbol« (Hamacher, ebd.) gilt, wie ein weiterer Text Frischmuths explizit thematisiert, auch für Interviews und vermeintlich nicht-literarische Selbstauskünfte. Denn *überall*, wo Erinnerung eine Rolle spielt oder ein Bezug zur empirischen Person hergestellt wird, wird diese Referenz zuerst »erzählbar« gemacht – ein Prozess, der alle genannten Orte, Themen und auch Namen erst vor dem Hintergrund ihrer grundsätzliche Fiktionalisierung auftreten lässt.
 ---
