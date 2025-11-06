@@ -33,23 +33,25 @@ sections:
       Dieser Zusammenhang wird im Rahmen des *Digitalen Archivs Barbara Frischmuth* unter dem Begriff der *Autobiografiktion* thematisiert. Damit wird einerseits über die durchsuchbaren Themen markiert, in welchen Texten eine ausdrückliche Bezugnahme auf die Biografie der Autorin in ein Spannungsverhältnis mit deren Literarisierung tritt. Andererseits stellt die Berücksichtigung der grundsätzlichen Fiktionalisierung durch Literatur eine Datenbank, die gegen literaturtheoretische Grundannahmen von der Eindeutigkeit der Referenz ausgehen muss, vor eine Reihe von Dilemmata: Denn alle in den Texten erfassten Bezüge – auf Orte, Namen, Texte und sonstigen Werke – müssen sowohl diese Bezüge dokumentieren, wie auch auf die zwangsläufig erfolgte Fiktionalisierung im literarischen Kosmos von Barbara Frischmuth hinweisen. Konkret bedeutet dies, dass wir dort, wo es möglich ist, bestehende Identifikationsnormen (aus Datenbanken wie Geonames, GND oder Wikipedia) verknüpfen, zugleich aber auf deren konkreten Vorkommen in den literarischen Texten verweisen, um die jeweiligen Koordinaten im literarischen Werk zu dokumentieren. Zudem werden Bezüge auf Personen des unmittelbaren Umfelds der Autorin (»mein Sohn«, »mein Mann«) oder auch auf die Autor:in selbst nicht mit den natürlichen Personen identifiziert, um den Abstand zu markieren, der zwischen der Ich-Erzählerin und dem im Text auftretenden »Sohn« oder »Mann« zu markieren.  
 
 
-      Cave: Es fehlen noch die Links zu den Texten:
 
 
-      – Hamacher: Lectio
+      **Cave:** Es fehlen noch die Links zu den Texten:
 
 
-      – BF: Wenn Erinnerung erzählbar wird
+      Hamacher: Lectio
 
 
-      – BF: Die Klosterschule
+      BF: Wenn Erinnerung erzählbar wird
 
 
-      – BF: Avantgarde
+      BF: Die Klosterschule
 
 
-      – BF: Der Zweifel an der Sprache
+      BF: Avantgarde
 
 
-      – BF: Gespräch mit Barbara Frischmuth (GBFX)
+      BF: Der Zweifel an der Sprache
+
+
+      BF: Gespräch mit Barbara Frischmuth (GBFX)
 ---
