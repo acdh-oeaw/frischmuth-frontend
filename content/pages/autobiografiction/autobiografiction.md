@@ -12,7 +12,7 @@ sections:
       wird noch verstärkt durch die Tatsache, dass viele kürzere Texte in der
       ersten Person verfasst sind und so scheinbar eine Engführung der Autorin
       mit der Stimme des Textes nahegelegt wird. Eine stark vereinfachende
-      Lesart des Frischmuth’schen Oeuvres bestünde entsprechend darin, von einer
+      Lesart des Frischmuth’schen Œuvres bestünde entsprechend darin, von einer
       eindeutigen Zuordenbarkeit von literarischer Sprache und der empirischen
       Welt der Autorin auszugehen. Für das Verständnis der Texte wäre dadurch
       nicht viel gewonnen, gilt doch die lesende Aufmerksamkeit vielmehr der
