@@ -39,4 +39,13 @@ images:
     titel: Das Team
   - image: /assets/images/2023-07-10-10.48.32.jpg
     titel: Mit Loser
+  - image: /assets/images/unspecified.jpg
+    titel: Babara im Garten 2016
+    copyright: Aleksandra Pawloff
+  - image: /assets/images/befunky-collage-by-anna.jpg
+    titel: "collage first visit "
+    copyright: Aleksandra Pawloff
+  - image: /assets/images/dsc_7786barbara-frischmuth.jpg
+    titel: anna und barbara
+    copyright: Alexandra Pawoloff
 ---
