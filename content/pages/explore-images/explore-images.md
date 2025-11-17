@@ -37,7 +37,7 @@ images:
     titel: Zusammen!
   - image: /assets/images/ganzes-team.jpg
     titel: Das Team
-  - image: /assets/images/2023-07-10-10.48.32.jpg
+  - image: /assets/images/b.frischmuth-revised-by-anna.jpg
     titel: Mit Loser
   - image: /assets/images/unspecified.jpg
     titel: Babara im Garten 2016
