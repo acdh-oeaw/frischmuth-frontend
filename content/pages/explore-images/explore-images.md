@@ -56,4 +56,6 @@ images:
     titel: All together
   - image: /assets/images/4_24-zocki.jpg
     titel: Julia und Caro
+  - image: /assets/images/4_24-lesebalkon2.jpg
+    titel: Lesebalkon
 ---
