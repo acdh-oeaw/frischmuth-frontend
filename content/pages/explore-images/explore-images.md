@@ -52,4 +52,8 @@ images:
     titel: Matthias und Barbara in der Bibliothek
   - image: /assets/images/frische-aura.jpg
     titel: Anna und Peter in der Bibliothek
+  - image: /assets/images/4_24-arbeitszimmer1.jpg
+    titel: All together
+  - image: /assets/images/4_24-zocki.jpg
+    titel: Julia und Caro
 ---
