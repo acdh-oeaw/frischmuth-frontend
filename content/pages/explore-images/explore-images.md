@@ -48,4 +48,8 @@ images:
   - image: /assets/images/dsc_7786barbara-frischmuth.jpg
     titel: anna und barbara
     copyright: Alexandra Pawoloff
+  - image: /assets/images/2023-04-01-14.51.39.jpg
+    titel: Matthias und Barbara in der Bibliothek
+  - image: /assets/images/frische-aura.jpg
+    titel: Anna und Peter in der Bibliothek
 ---
