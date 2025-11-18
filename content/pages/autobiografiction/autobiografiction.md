@@ -33,7 +33,7 @@ sections:
       Dieser Zusammenhang wird im Rahmen des *Digitalen Archivs Barbara Frischmuth* über den Begriff der *Autobiografiktion* thematisiert. Damit wird einerseits anhand der durchsuchbaren Themen markiert, in welchen Texten eine ausdrückliche Bezugnahme auf die Biografie der Autorin in ein Spannungsverhältnis mit deren Literarisierung tritt. Andererseits stellt die Berücksichtigung der grundsätzlichen Fiktionalisierung durch Literatur eine Datenbank, die gegen literaturtheoretische Grundannahmen von der Eindeutigkeit der Referenz ausgehen muss, vor eine Reihe von Dilemmata: Denn alle in den Texten erfassten Bezüge – auf Orte, Namen, Texte und sonstigen Werke – müssen sowohl diese Bezüge dokumentieren, wie auch auf die zwangsläufig erfolgte Fiktionalisierung im literarischen Kosmos von Barbara Frischmuth hinweisen. Konkret bedeutet dies, dass wir dort, wo es möglich ist, bestehende Identifikationsnormen (aus Datenbanken wie Geonames, GND oder Wikipedia) verknüpfen, zugleich aber auf deren konkretes Vorkommen in den literarischen Texten verweisen, um die jeweiligen Koordinaten im literarischen Werk zu auszuweisen. Zudem werden Bezüge auf Personen des unmittelbaren Umfelds der Autorin (»mein Sohn«, »mein Mann«) oder auch auf die Autor:in selbst nicht mit den natürlichen Personen identifiziert, um den Abstand zu markieren, der zwischen der Ich-Erzählerin und dem im Text auftretenden »Sohn« oder »Mann« bestehen bleibt.  
 
 
-      **Cave:** Es fehlen noch die Links zu den Texten:
+      **Cave:** Es fehlen noch die [Links](https://frischmuth-frontend-dev.acdh-ch-dev.oeaw.ac.at/explore) zu den Texten:
 
 
       Hamacher: Lectio
