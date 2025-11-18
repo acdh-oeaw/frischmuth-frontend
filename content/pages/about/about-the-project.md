@@ -77,5 +77,7 @@ sections:
       * Horstkotte, Silke / Herrmann, Leonhard (2013): Poetiken der Gegenwart. Deutschsprachige Romane nach 2000. Berlin: de Gruyter. 
 
       * Lützeler, Paul Michael (1994): Ethik, Traum und Lust: Barbara Frischmuth, Traum der Literatur - Literatur des Traums (1991). In: Lützeler, Paul Michael (Hg., 1994): Poetik der Autoren. Beiträge zur deutschsprachigen Gegenwartsliteratur. Frankfurt/Main: Fischer, S. 295–310.
+
+        ![](/assets/images/b.frischmuth-revised-by-anna.jpg "Barbara Frischmuth by Aleksandra Pawloff, 2016")
     title: Über Barbara Frischmuth
 ---
