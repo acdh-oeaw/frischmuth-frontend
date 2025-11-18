@@ -1,5 +1,5 @@
 ---
-title: "Letztlich geht es bei der "
+title: Letztlich geht es bei der Mystik
 link: https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/apis_ontology.work/update/30255
 ---
 »Letztlich geht es bei der Mystik um eine ähnliche Erfahrung wie beim Schreiben.«
