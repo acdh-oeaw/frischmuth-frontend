@@ -31,7 +31,16 @@ const sortedBiographies = computed(() => {
 		return Number(a.metadata.year) - Number(b.metadata.year);
 	});
 
-	return sorted.slice(0, 10);
+	return sorted;
+});
+
+const imagesToDisplay = computed(() => {
+	if (sortedBiographies.value == null) return;
+	const images = sortedBiographies.value.filter((entry) => {
+		return entry.metadata.image !== "";
+	});
+
+	return images.length > 0;
 });
 </script>
 
@@ -51,43 +60,60 @@ const sortedBiographies = computed(() => {
 			<div v-if="biograpies && !isMobile" class="relative w-full max-w-5xl">
 				<div>
 					<div v-for="(biography, index) in sortedBiographies" :key="index" class="pb-4">
-						<div class="grid w-full grid-cols-[1fr_auto_1fr] items-start justify-end gap-4 pb-2">
-							<div
-								v-if="biography.metadata.image"
-								class="grid grid-cols-[auto_1fr] items-end gap-4"
-							>
+						<div
+							:class="
+								imagesToDisplay
+									? `grid w-full grid-cols-[1fr_auto_1fr] items-start justify-end gap-4 pb-2`
+									: `grid w-full grid-cols-[auto_1fr] items-start justify-end gap-4 pb-2`
+							"
+						>
+							<div v-if="imagesToDisplay">
 								<div
-									v-if="biography.metadata.imageTitle || biography.metadata.copyright"
-									class="prose m-0 text-sm"
+									v-if="biography.metadata.image"
+									class="grid grid-cols-[auto_1fr] items-end gap-4"
 								>
 									<div
-										v-if="biography.metadata.imageTitle"
-										class="font-semibold text-frisch-indigo"
+										v-if="biography.metadata.imageTitle || biography.metadata.copyright"
+										class="prose m-0 text-sm"
 									>
-										{{ biography.metadata.imageTitle }}
+										<div
+											v-if="biography.metadata.imageTitle"
+											class="font-semibold text-frisch-indigo"
+										>
+											{{ biography.metadata.imageTitle }}
+										</div>
+										<div v-if="biography.metadata.copyright">
+											© {{ biography.metadata.copyright }}
+										</div>
 									</div>
-									<div v-if="biography.metadata.copyright">
-										© {{ biography.metadata.copyright }}
+									<div v-else></div>
+									<div class="relative block size-full self-end object-contain align-top">
+										<NuxtImg
+											:alt="biography.metadata.imageTitle ?? ''"
+											class="size-full object-contain"
+											preload
+											:src="biography.metadata.image"
+										/>
 									</div>
 								</div>
 								<div v-else></div>
-								<div class="relative block size-full self-end object-contain align-top">
-									<NuxtImg
-										:alt="biography.metadata.imageTitle ?? ''"
-										class="size-full object-contain"
-										preload
-										:src="biography.metadata.image"
-									/>
-								</div>
 							</div>
-							<div v-else></div>
-							<div class="relative grid grid-cols-[1fr_1fr_auto] items-center gap-2">
-								<div v-if="biography.metadata.image">
-									<svg class="relative h-0.5 w-10 bg-frisch-indigo">
-										<line stroke-width="1" x1="0" x2="100%" y1="0" y2="0" />
-									</svg>
+
+							<div
+								:class="
+									imagesToDisplay
+										? `relative grid grid-cols-[1fr_1fr_auto] items-center gap-2`
+										: `relative grid grid-cols-[1fr_auto] items-center gap-2`
+								"
+							>
+								<div v-if="imagesToDisplay">
+									<div v-if="biography.metadata.image">
+										<svg class="relative h-0.5 w-10 bg-frisch-indigo">
+											<line stroke-width="1" x1="0" x2="100%" y1="0" y2="0" />
+										</svg>
+									</div>
+									<div v-else></div>
 								</div>
-								<div v-else></div>
 								<div
 									:class="
 										biography.metadata.image
@@ -117,7 +143,13 @@ const sortedBiographies = computed(() => {
 					</div>
 				</div>
 				<div>
-					<svg class="absolute left-1/2 top-0 h-full w-1 translate-x-[-200%] bg-frisch-indigo">
+					<svg
+						v-if="imagesToDisplay"
+						class="absolute left-1/2 top-0 h-full w-1 translate-x-[-200%] bg-frisch-indigo"
+					>
+						<line stroke-width="4" x1="0" x2="0" y1="0" y2="100%" />
+					</svg>
+					<svg v-else class="absolute left-[130px] top-0 h-full w-1 bg-frisch-indigo">
 						<line stroke-width="4" x1="0" x2="0" y1="0" y2="100%" />
 					</svg>
 				</div>
