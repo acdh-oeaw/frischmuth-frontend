@@ -14,7 +14,7 @@ export function useGetPlaces() {
 			const limit = 500;
 
 			do {
-				const response = await $api["apis_api_apis_ontology.place_list"]({
+				const response = await $api.api_place_preview_list({
 					queries: { limit, offset },
 				});
 

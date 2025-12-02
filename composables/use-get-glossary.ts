@@ -14,7 +14,7 @@ export function useGetGlossary() {
 			const limit = 500;
 
 			do {
-				const response = await $api["apis_api_apis_ontology.glossar_list"]({
+				const response = await $api.api_glossar_preview_list({
 					queries: { limit, offset },
 				});
 
