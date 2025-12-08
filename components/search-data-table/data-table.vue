@@ -98,7 +98,7 @@ const columns: Array<CustomColumnDef<SearchResults["results"][number]>> = [
 	},
 	{
 		accessorKey: "authors",
-		header: () => h("div", "Autor"),
+		header: () => h("div", "Autor:in"),
 		cell: ({ row }) => {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const authors = row.getValue("authors") as Array<any> | undefined;
