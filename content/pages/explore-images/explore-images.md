@@ -58,4 +58,7 @@ images:
     titel: Julia und Caro
   - image: /assets/images/4_24-lesebalkon2.jpg
     titel: Lesebalkon
+  - titel: Test
+    image: /assets/images/unspecified.jpg
+    alt: test
 ---
