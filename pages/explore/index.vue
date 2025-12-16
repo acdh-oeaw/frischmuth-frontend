@@ -84,7 +84,7 @@ const randomImages = computed(() => {
 				<span>{{ t("JournalisticReceptionPage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
-				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
+				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105 max-lg:text-2xl max-sm:text-xs"
 				rel="noopener noreferrer"
 				:to="randomQuotes[0]?.metadata.link || ''"
 			>
@@ -94,7 +94,7 @@ const randomImages = computed(() => {
 
 				<template v-if="randomQuotes[0] != null">
 					<!-- eslint-disable-next-line vue/no-v-html -->
-					<div class="text-frisch-orange" v-html="randomQuotes[0].body" />
+					<div v-html="randomQuotes[0].body" />
 				</template>
 				<template v-else>
 					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">
@@ -142,7 +142,7 @@ const randomImages = computed(() => {
 				<span class="uppercase">{{ t("AltausseePage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
-				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
+				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105 max-lg:text-2xl max-sm:text-xs"
 				rel="noopener noreferrer"
 				:to="randomQuotes[1]?.metadata.link || ''"
 			>
@@ -152,7 +152,7 @@ const randomImages = computed(() => {
 
 				<template v-if="randomQuotes[1] != null">
 					<!-- eslint-disable-next-line vue/no-v-html -->
-					<div class="text-frisch-orange" v-html="randomQuotes[1].body" />
+					<div v-html="randomQuotes[1].body" />
 				</template>
 				<template v-else>
 					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">
@@ -174,7 +174,7 @@ const randomImages = computed(() => {
 				<span class="uppercase">{{ t("BiographyPage.title") }}</span>
 			</NuxtLink>
 			<NuxtLink
-				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105"
+				class="relative aspect-square overflow-hidden bg-frisch-orange-light p-4 text-frisch-orange transition hover:scale-105 max-lg:text-2xl max-sm:text-xs"
 				rel="noopener noreferrer"
 				:to="randomQuotes[2]?.metadata.link || ''"
 			>
@@ -184,7 +184,7 @@ const randomImages = computed(() => {
 
 				<template v-if="randomQuotes[2] != null">
 					<!-- eslint-disable-next-line vue/no-v-html -->
-					<div class="text-frisch-orange" v-html="randomQuotes[2].body" />
+					<div v-html="randomQuotes[2].body" />
 				</template>
 				<template v-else>
 					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">
