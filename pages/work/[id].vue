@@ -47,42 +47,42 @@ const characters: ComputedRef<Characters> = computed(() => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
 					id: character.id,
-					name:
-						character.fallback_name !== ""
-							? character.fallback_name
-							: `${character.forename} ${character.surname}`,
+					name: character.fallback_name
+						? character.fallback_name
+						: `${character.forename} ${character.surname}`,
 					fictionality: fictionality,
 					metacharacterId: character.metacharacter ? character.metacharacter.id : null,
 				};
-			}),
+			})
+			.sort((a, b) => a.name.localeCompare(b.name)),
 		secondary: work.value?.characters
 			?.filter((character) => character.relevancy === "Nebenfigur")
 			.map((character) => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
 					id: character.id,
-					name:
-						character.fallback_name !== ""
-							? character.fallback_name
-							: `${character.forename} ${character.surname}`,
+					name: character.fallback_name
+						? character.fallback_name
+						: `${character.forename} ${character.surname}`,
 					fictionality: fictionality,
 					metacharacterId: character.metacharacter ? character.metacharacter.id : null,
 				};
-			}),
+			})
+			.sort((a, b) => a.name.localeCompare(b.name)),
 		spokenOf: work.value?.characters
 			?.filter((character) => character.relevancy === "erwähnte Figur")
 			.map((character) => {
 				const fictionality = character.fictionality ? character.fictionality[0] : "";
 				return {
 					id: character.id,
-					name:
-						character.fallback_name !== ""
-							? character.fallback_name
-							: `${character.forename} ${character.surname}`,
+					name: character.fallback_name
+						? character.fallback_name
+						: `${character.forename} ${character.surname}`,
 					fictionality: fictionality,
 					metacharacterId: character.metacharacter ? character.metacharacter.id : null,
 				};
-			}),
+			})
+			.sort((a, b) => a.name.localeCompare(b.name)),
 	};
 });
 
@@ -92,29 +92,32 @@ const places: ComputedRef<Places> = computed(() => {
 			?.filter((place) => place.relation_type === "mentions")
 			.map((place) => ({
 				id: place.id,
-				name: place.name,
+				name: place.name ? place.name : "",
 				longitude: place.longitude,
 				latitude: place.latitude,
 				description: place.description,
-			})),
+			}))
+			.sort((a, b) => a.name.localeCompare(b.name)),
 		discussed: work.value?.places
 			?.filter((place) => place.relation_type === "discusses")
 			.map((place) => ({
 				id: place.id,
-				name: place.name,
+				name: place.name ? place.name : "",
 				longitude: place.longitude,
 				latitude: place.latitude,
 				description: place.description,
-			})),
+			}))
+			.sort((a, b) => a.name.localeCompare(b.name)),
 		takesPlaceIn: work.value?.places
 			?.filter((place) => place.relation_type === "takes place in")
 			.map((place) => ({
 				id: place.id,
-				name: place.name,
+				name: place.name ? place.name : "",
 				longitude: place.longitude,
 				latitude: place.latitude,
 				description: place.description,
-			})),
+			}))
+			.sort((a, b) => a.name.localeCompare(b.name)),
 	};
 });
 
@@ -368,7 +371,7 @@ function openDrawer() {
 								<div v-else>Deutsch</div>
 							</div>
 						</div>
-						<span v-for="topic in work?.topics" :key="topic.id" class="mb-2 mr-1">
+						<div v-for="topic in work?.topics" :key="topic.id" class="mb-2 mr-1">
 							<div
 								class="mb-1 inline-block bg-frisch-indigo px-2 py-1 text-xs text-white opacity-85"
 							>
@@ -383,7 +386,7 @@ function openDrawer() {
 									{{ topic.name }}
 								</NuxtLink>
 							</div>
-						</span>
+						</div>
 						<div id="mobile-drawer" class="block md:hidden">
 							<Drawer v-model:open="isOpen">
 								<Button class="items-center p-0" variant="transparent" @click="openDrawer()">
