@@ -376,8 +376,8 @@ function openDrawer() {
 								class="mb-1 inline-block bg-frisch-indigo px-2 py-1 text-xs text-white opacity-85"
 							>
 								<NuxtLink
-									:href="{
-										path: `/search`,
+									:to="{
+										path: '/search',
 										query: {
 											topic: topic.name,
 										},
@@ -444,7 +444,7 @@ function openDrawer() {
 					</div>
 					<DetailAccordion
 						id="accordion-context"
-						:disabled="work?.context || work?.historical_events ? false : true"
+						:disabled="!(work?.context || work?.historical_events)"
 						:key-value="work?.id ?? 0"
 						title="Kontexte"
 					>
@@ -462,11 +462,11 @@ function openDrawer() {
 					<DetailAccordion
 						id="accordion-characters"
 						:disabled="
-							(characters.main && characters.main?.length > 0) ||
-							(characters.secondary && characters.secondary?.length > 0) ||
-							(characters.spokenOf && characters.spokenOf?.length > 0)
-								? false
-								: true
+							!(
+								(characters.main && characters.main?.length > 0) ||
+								(characters.secondary && characters.secondary?.length > 0) ||
+								(characters.spokenOf && characters.spokenOf?.length > 0)
+							)
 						"
 						:key-value="work?.id ?? 0"
 						title="Charaktere"
@@ -591,11 +591,11 @@ function openDrawer() {
 					<DetailAccordion
 						id="accordion-places"
 						:disabled="
-							(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
-							(places.discussed && places.discussed.length > 0) ||
-							(places.mentioned && places.mentioned.length > 0)
-								? false
-								: true
+							!(
+								(places.takesPlaceIn && places.takesPlaceIn?.length > 0) ||
+								(places.discussed && places.discussed.length > 0) ||
+								(places.mentioned && places.mentioned.length > 0)
+							)
 						"
 						:key-value="work?.id ?? 0"
 						title="Orte"
@@ -671,14 +671,14 @@ function openDrawer() {
 					<DetailAccordion
 						id="accordion-related-works"
 						:disabled="
-							(relatedWork.discusses && relatedWork.discusses?.length > 0) ||
-							(relatedWork.mentions && relatedWork.mentions.length > 0) ||
-							(relatedWork.references && relatedWork.references?.length > 0) ||
-							(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
-							(relatedWork.referencedIn && relatedWork.referencedIn.length > 0) ||
-							(relatedWork.mentionedIn && relatedWork.mentionedIn.length > 0)
-								? false
-								: true
+							!(
+								(relatedWork.discusses && relatedWork.discusses?.length > 0) ||
+								(relatedWork.mentions && relatedWork.mentions.length > 0) ||
+								(relatedWork.references && relatedWork.references?.length > 0) ||
+								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
+								(relatedWork.referencedIn && relatedWork.referencedIn.length > 0) ||
+								(relatedWork.mentionedIn && relatedWork.mentionedIn.length > 0)
+							)
 						"
 						:key-value="work?.id ?? 0"
 						title="Bezüge"
@@ -698,7 +698,7 @@ function openDrawer() {
 					</DetailAccordion>
 					<DetailAccordion
 						id="accordion-physical-objects"
-						:disabled="work?.physical_objects && work?.physical_objects.length > 0 ? false : true"
+						:disabled="!(work?.physical_objects && work?.physical_objects.length > 0)"
 						:key-value="work?.id ?? 0"
 						title="Physische Objekte"
 					>
