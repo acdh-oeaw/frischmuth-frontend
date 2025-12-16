@@ -24,6 +24,7 @@ async function generate() {
 			"/api/work-preview",
 			"/api/place-detail/{id}",
 			"/api/place-preview",
+			"/api/glossar-detail/{id}",
 			"/api/glossar-preview",
 			"/api/research-perspective-detail/{id}",
 			"/api/topic-detail/{id}",

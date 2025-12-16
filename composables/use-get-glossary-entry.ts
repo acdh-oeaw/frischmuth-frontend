@@ -11,7 +11,7 @@ export function useGetGlossaryEntry(params: GlossaryEntryParams) {
 		queryKey: ["glossary-entry", params.id] as const,
 		async queryFn({ queryKey }) {
 			const [, id] = queryKey;
-			const response = await $api["apis_api_apis_ontology.glossar_retrieve"]({
+			const response = await $api.api_glossar_detail_retrieve({
 				params: { id: id ?? 0 },
 			});
 			return response;
