@@ -12,27 +12,21 @@ usePageMetadata({
 });
 
 const isMobile = ref(false);
+const sortedBiographies = ref<Array<BiographyEntry>>([]);
 
 onMounted(() => {
 	isMobile.value = window.innerWidth < 1024;
 });
 
-const { data: biograpies } = await useAsyncData("biography-page", async () => {
+const { data: biographies } = await useAsyncData("biography-page", async () => {
 	return $fetch<Array<BiographyEntry>>("/api/markdown-folder", {
 		body: JSON.stringify({ path: "pages/biography" }),
 		method: "POST",
 	});
 });
-
-const sortedBiographies = computed(() => {
-	if (biograpies.value == null) return null;
-
-	const sorted = biograpies.value.slice().sort((a, b) => {
-		return Number(a.metadata.year) - Number(b.metadata.year);
-	});
-
-	return sorted.slice(0, 10);
-});
+sortedBiographies.value = biographies.value
+	? [...biographies.value].sort((a, b) => Number(a.metadata.year) - Number(b.metadata.year))
+	: [];
 </script>
 
 <template>
@@ -48,7 +42,7 @@ const sortedBiographies = computed(() => {
 		</div>
 
 		<div>
-			<div v-if="biograpies && !isMobile" class="relative w-full max-w-5xl">
+			<div v-if="biographies && !isMobile" class="relative w-full max-w-5xl">
 				<div>
 					<div v-for="(biography, index) in sortedBiographies" :key="index" class="pb-4">
 						<div class="grid w-full grid-cols-[1fr_auto_1fr] items-start justify-end gap-4 pb-2">
@@ -122,7 +116,7 @@ const sortedBiographies = computed(() => {
 					</svg>
 				</div>
 			</div>
-			<div v-if="biograpies && isMobile" class="relative">
+			<div v-if="biographies && isMobile" class="relative">
 				<div class="grid auto-rows-max items-start gap-2">
 					<div
 						v-for="(biography, index) in sortedBiographies"
