@@ -105,9 +105,7 @@ watch(
 						>
 							<div v-if="characterDetail.description !== ''">
 								<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-								<div>
-									{{ characterDetail.description }}
-								</div>
+								<div v-html="characterDetail.description" />
 							</div>
 							<div>Weitere Informationen finden Sie hier: {{ characterDetail.uris }}</div>
 						</div>
@@ -124,13 +122,10 @@ watch(
 						<h1 class="pb-2 text-lg font-semibold">{{ characterDetail.metacharacter.name }}</h1>
 						<div v-if="characterDetail.metacharacter.description !== ''">
 							<div class="pt-2 text-base font-semibold text-black">Beschreibung</div>
-							<div>
-								{{ characterDetail.metacharacter.description }}
-							</div>
+							<div v-html="characterDetail.metacharacter.description" />
 						</div>
 						<div
 							v-if="
-								characterDetail.metacharacter != null &&
 								characterDetail.metacharacter.related_works != null &&
 								characterDetail.metacharacter.related_works.length > 0
 							"
@@ -190,9 +185,7 @@ watch(
 					>
 						<div v-if="characterDetail.description !== ''">
 							<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-							<div>
-								{{ characterDetail.description }}
-							</div>
+							<div v-html="characterDetail.description" />
 						</div>
 						<div
 							v-if="characterDetail.uris != null && characterDetail.uris.length > 0"
@@ -222,13 +215,10 @@ watch(
 						<h1 class="pb-2 text-lg font-semibold">{{ characterDetail.metacharacter.name }}</h1>
 						<div v-if="characterDetail.metacharacter.description !== ''">
 							<div class="pt-2 text-base font-semibold text-black">Beschreibung</div>
-							<div>
-								{{ characterDetail.metacharacter.description }}
-							</div>
+							<div v-html="characterDetail.metacharacter.description" />
 						</div>
 						<div
 							v-if="
-								characterDetail.metacharacter != null &&
 								characterDetail.metacharacter.related_works != null &&
 								characterDetail.metacharacter.related_works.length > 0
 							"
