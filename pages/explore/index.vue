@@ -206,7 +206,7 @@ const randomImages = computed(() => {
 						class="absolute inset-0 size-full object-cover"
 						preload
 						:src="randomImages ? randomImages[1]?.image : '/assets/images/writing_placeholder.png'"
-						:title="randomImages ? randomImages[1]?.copyright || '' : ''"
+						:title="randomImages ? randomImages[1]?.copyright : ''"
 					/>
 				</template>
 				<template v-else>
