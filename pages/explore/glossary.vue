@@ -65,6 +65,7 @@ const isMobile = ref(false);
 
 onMounted(() => {
 	isMobile.value = window.innerWidth < 1024;
+	if (route.query.entry) setGlossaryQuery(Number(route.query.entry));
 });
 
 watch(
