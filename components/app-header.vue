@@ -32,6 +32,7 @@ function close() {
 							<br aria-hidden="true" />
 							Barbara Frischmuth
 						</NavLink>
+						<Badge class="relative left-[-20px] top-[-50px] bg-frisch-orange">BETA</Badge>
 					</div>
 					<div class="hidden lg:flex">
 						<ul
