@@ -55,7 +55,8 @@ images:
   - image: /assets/images/4_24-arbeitszimmer1.jpg
     titel: All together
   - image: /assets/images/4_24-zocki.jpg
-    titel: Julia und Caro
+    titel: Julia und Caro mit Socki, der Hauskatze
+    copyright: "© Anna Babka: Julia und Caro mit Socki, der Hauskatze"
   - image: /assets/images/4_24-lesebalkon2.jpg
     titel: Lesebalkon
 ---
