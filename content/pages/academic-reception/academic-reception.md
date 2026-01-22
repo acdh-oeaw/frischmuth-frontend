@@ -1,29 +1,27 @@
 ---
 title: Akademische Rezeption
 sections:
-  - title: Lorem ipsum
+  - title: Vorgehensweise und Zielsetzung
     content: >-
-      Elit anim cillum labore tempor Lorem irure voluptate qui nisi. Nostrud ut
-      incididunt sint laborum ad est enim do qui. Occaecat labore ea adipisicing
-      est esse enim amet irure non. Non ex et magna elit consequat cupidatat.
-      Officia velit aute voluptate velit minim ullamco. Enim laboris irure sunt
-
-      aliquip reprehenderit consequat cillum labore eiusmod ad cupidatat aliqua consectetur magna.
-
-
-      Eiusmod excepteur amet id aliqua nostrud fugiat excepteur laboris elit nulla sunt adipisicing. Magna officia eu voluptate ad amet enim laboris laborum. Ut occaecat exercitation cillum ullamco veniam consequat ea Lorem veniam. Tempor officia pariatur est tempor aliquip exercitation reprehenderit aliquip cillum in enim pariatur amet. Duis anim cupidatat nulla tempor commodo magna pariatur laboris irure.
+      Im Digitalen Archiv Barbara Frischmuth werden die zum Werk Frischmuths
+      vorliegenden Forschungsbeiträge nach folgendem Schema erfasst: Jeder
+      Eintrag zur akademischen Rezeption umfasst bibliographische Angaben,
+      Erläuterungen, Querverweise und Verschlagwortung. Ziel der Erläuterungen
+      ist es, überblicksartig Ansatzpunkte zur Entschlüsselung der Texte und
+      mögliche Interpretationen zu liefern (*Interpretateme*). 
 
 
-      Velit irure eu voluptate ipsum nulla incididunt. Consectetur veniam irure minim ea sint proident
-
-      minim nisi commodo culpa dolore ex. Cillum nostrud voluptate commodo tempor ut consectetur. Dolor cillum esse nostrud eu veniam pariatur eiusmod eiusmod enim aliquip Lorem aliqua nulla exercitation. Exercitation non fugiat ea dolore nulla. Sunt esse eiusmod qui ea. Ipsum dolore non cupidatat velit commodo et pariatur.
+      *Querverweise*
 
 
-      Ea reprehenderit Lorem cillum exercitation id est officia culpa irure ipsum fugiat tempor ullamco.
+      Die Verknüpfung der unterschiedlichen Textcorpora ist ein zentrales Anliegen des Digitalen Archivs: Sowohl die Texte der akademischen wie der journalistischen Rezeption werden mit den Primärtexten und bestehenden Nachlassmaterialien verknüpft als auch über eine thematische Verschlagwortung verbunden.
 
-      Elit tempor labore occaecat culpa do tempor tempor. Eiusmod anim esse tempor deserunt deserunt aute aliquip eu cupidatat ad qui incididunt mollit est. Nisi ad nisi pariatur voluptate irure minim culpa voluptate aliqua et. Velit magna consequat incididunt dolor nulla consectetur sunt pariatur enim laborum culpa deserunt.\
 
-      \
+      *Verschlagwortung*
 
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+      Die thematische Einordnung der akademischen Rezeption erfolgt auf zwei Ebenen: Zunächst werden inhaltlich behandelten Themen der Analysen bzw. der interpretierten Primärtexte erfasst. Diese Themen benennen etwa größere thematische Zusammenhänge, Gegenstände, wichtige Bezugspersonen oder auch Perspektiven der Primärtexte (z.B. Autobiografiktion). Daneben wird zudem auf einer zweiten Ebene vermerkt, anhand welcher Forschungsperspektiven sich die Rezeption den Primärtexten annähert: Dabei wird via Begriffe (Anrufung, Performanz), theoretischen Positionen (Gendertheorie, Posthumanismus) oder Namen von Theoretiker:innen (Barad, Foucault etc.) auf theoretische Positionen verwiesen, mit denen Barbara Frischmuths Texte les- und analysierbar werden. Den Nutzer:innen wird damit ermöglicht, die akademische Rezeption thematisch und auch methodisch zu ordnen und somit gezielt zu einem theoretischen Themenkomplex zu suchen.
+
+
+      *Interpretateme*
 ---
