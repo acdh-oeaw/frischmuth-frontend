@@ -1,22 +1,16 @@
 ---
 title: Altaussee
 sections:
-  - title: Altaussee
+  - title: Altaussee und seine historischen wie literarischen Schichten
     content: >-
-      Altaussee im steirischen Salzkammergut gelegen, am Fuße des bizarr
-      aufragenden Losers und direkt am Altausseer See … in einer Region, die
-      nicht nur reich ist an landschaftlicher Schönheit, wie der imposanten
-      Gebirgslandschaft, den Bergwäldern und Wasserfällen, den Almen, Mooren und
-      üppigen Blumenwiesen, sondern auch an Zeugen einer dunkler Vergangenheit,
-      wie dem berühmt berüchtigten Toplitzsee, in dem Schätze aus der Nazizeit
-      vermutet werden oder dem Salzbergwerk Altaussee, in dem von 1943 bis 1945
-      wesentliche Teile der von nationalsozialistischen Organisationen geraubten
-      Beutekunst aus ganz Europa gelagert wurden. 
+      
+
+      Altaussee ist Barbara Frischmuths Geburtsort, Ort ihrer Kindheit, ihrer frühen Jugend und seit den 1980er Jahren auch wieder der Ort, an dem sie gelebt, geschrieben und einen unwiderstehlichen Garten zum Erblühen gebracht hat. Für ihr Oeuvre erweist sich der Ort als besonderer topografischer Marker insofern, als Frischmuths biografische Topografie, lose zusammenhängend, mit Schauplätzen im Rahmen ihres Oeuvres korrelierbar ist. Biografisch gefärbte Orte sind immer auch Motor und Stimulus eines an den Marginalien und Peripherien orientierten Geschichtenerzählens, nicht der »Weltgeschichte« verpflichtet, sondern einzig über die »mémoire (in-)volontaire« der sich Erinnernden verbürgt.
 
 
-      Altaussee ist Barbara Frischmuths Geburtsort, Ort ihrer Kindheit, ihrer frühen Jugend und seit den 80er Jahren auch wieder der Ort, an dem sie gelebt hat, geschrieben hat und einen unwiderstehlichen Garten zum Erblühen gebracht hat. Für ihr Oeuvre erweist sich der Ort als besonderer topographischer Marker insofern, als Frischmuths biographische Topographie, lose zusammenhängend, mit Schauplätzen im Rahmen ihres Oeuvres korrelierbar ist. Biographisch gefärbte Orte sind immer auch Motor und Stimulus
+      Um einen Eindruck von den vielschichtigen Bezugnahmen auf diesen Ort und seine Geschichte zu geben, versammelt die interaktive Karte einige direkte Zitate aus Frischmuths literarischem Werk, in dem die markanten Eigenheiten der Region Altaussee oftmals eine (überformte) Rolle spielen – der See, die Bootshäuser, die Felswände und Moorwiesen rundum ebenso wie die Fabelwesen, historischen Tiefendimensionen und genuin literarischen Bearbeitungen wie u.a. von Adalbert Stifter, Jakob Wassermann, Hugo von Hofmannsthal oder Hermann Broch. 
 
-      eines an den Marginalien und Peripherien orientierten Geschichtenerzählens, nicht der „Weltgeschichte“ verpflichtet, sondern einzig über die ‚mémoire (in-)volontaire‘ der sich Erinnernden verbürgt.
+
 
 
       ![](/assets/images/2023-07-08-14.32.23.jpg)
