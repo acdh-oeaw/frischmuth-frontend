@@ -24,4 +24,7 @@ sections:
 
 
       *Interpretateme*
+
+
+      Mit dem Neologismus Interpretatem bezeichnen wir zentrale Interpretationsansätze innerhalb der akademischen Rezeption, die theoriegeleitet entwickelt wurden: Solche Kernaussagen oder Kernthesen werden mittels Originalzitaten aus der Forschungsliteratur herausgearbeitet und katalogisiert, d.h. nach der zur Anwendung gebrachten Forschungshinsicht benannt. Beispiele für Interpretateme sind u.a. die Identifizierung von Ansätzen, die auf Fragen von Migration, Eurozentrismus, Orientalisierung oder den interkulturellen Dialog abzielen (Postcolonial Studies, Interkulturelle Germanistik), auf die Stellung der Frau und die Konstruktion von Geschlecht in den Texten (Feminismus, Gender Studies) oder auf »weibliche« Ästhetik und avantgardistische Schreibpraxis (*écriture feminine*, Grazer Gruppe). Ziel ist, die bisherige Forschung zu Frischmuth systematisch aufzuarbeiten und die als maßgeblich erkannten Ankerpunkte der jeweiligen Interpretationen festzuhalten.
 ---
