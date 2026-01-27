@@ -1,31 +1,31 @@
 ---
-title: Aus dem Archiv
+title: Aus den Archiven
 sections:
-  - title: Lorem ipsum
-    content: >-
-      Elit anim cillum labore tempor Lorem irure voluptate qui nisi. Nostrud ut
-      incididunt sint laborum ad est enim do qui. Occaecat labore ea adipisicing
-      est esse enim amet irure non. Non ex et magna elit consequat cupidatat.
-      Officia velit aute voluptate velit minim ullamco. Enim laboris irure sunt
-
-      aliquip reprehenderit consequat cillum labore eiusmod ad cupidatat aliqua consectetur magna.
-
-
-      Eiusmod excepteur amet id aliqua nostrud fugiat excepteur laboris elit nulla sunt adipisicing. Magna officia eu voluptate ad amet enim laboris laborum. Ut occaecat exercitation cillum ullamco veniam consequat ea Lorem veniam. Tempor officia pariatur est tempor aliquip exercitation reprehenderit aliquip cillum in enim pariatur amet. Duis anim cupidatat nulla tempor commodo magna pariatur laboris irure.
-
-
-      Velit irure eu voluptate ipsum nulla incididunt. Consectetur veniam irure minim ea sint proident
-
-      minim nisi commodo culpa dolore ex. Cillum nostrud voluptate commodo tempor ut consectetur. Dolor cillum esse nostrud eu veniam pariatur eiusmod eiusmod enim aliquip Lorem aliqua nulla exercitation. Exercitation non fugiat ea dolore nulla. Sunt esse eiusmod qui ea. Ipsum dolore non cupidatat velit commodo et pariatur.
-
-
-      Ea reprehenderit Lorem cillum exercitation id est officia culpa irure ipsum fugiat tempor ullamco.
-
-      Elit tempor labore occaecat culpa do tempor tempor. Eiusmod anim esse tempor deserunt deserunt aute aliquip eu cupidatat ad qui incididunt mollit est. Nisi ad nisi pariatur voluptate irure minim culpa voluptate aliqua et. Velit magna consequat incididunt dolor nulla consectetur sunt pariatur enim laborum culpa deserunt.\
-
-      \
-
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+  - title: Franz-Nabl-Institut für Literaturforschung, Österreichische
+      Nationalbibliothek, Literaturarchiv Salzburg und Forschungsinstitution
+      Brenner-Archiv
+    content: Die am Franz-Nabl-Institut für Literaturforschung in Graz gesammelten
+      Vorlassbestände, die 195 Archivboxen umfassen, sind für die Erschließung
+      und Kommentierung von Frischmuths Texten im Zeitraum von 1965 bis 1984 in
+      mehrfacher Hinsicht von Interesse. Die Manuskripte, die unter anderem zu
+      den Texten *Amoralische Kinderklapper* (1969), *Der Pluderich* (1969),
+      *Bindungen* (1980) und *Kopftänzer* (1984) vorliegen und verschiedene
+      Typoskriptversionen der Werke – u.a. *Tage und Jahre* (1971), *Rückkehr
+      zum vorläufigen Ausgangspunkt* (1973), *Haschen nach Wind* (1974), *Die
+      Mystifikationen der Sophie Silber* (1976), *Amy oder Die Metamorphose*
+      (1978), *Kai und die Liebe zu den Modellen* (1979), *Die Ferienfamilie*
+      (1981), *Die Frau im Mond* (1982) und *Traumgrenze* (1983) – vermitteln
+      substanzielle Einblicke in die Entstehungsprozesse und Entwicklungen der
+      unterschiedlichen Textfassungen. Um eine möglichst umfangreiche
+      Aufarbeitung der relevanten Materialien zu gewährleisten, ist die
+      virtuelle und wissenschaftliche Zusammenführung der Grazer
+      Vorlassbestände mit den Beständen an der Österreichischen
+      Nationalbibliothek und der Adolf Haslinger Literaturstiftung im
+      Literaturarchiv Salzburg sowie dem Brenner Archiv in Innsbruck wichtiger
+      Bestandteil des Projekts. Die Bestände der Archive wurden mit den Werken
+      Barbara Frischmuths verknüpft und sind als solche über die Detailansicht
+      mit dem Verweis auf die Textvorstufen und Materialien, die sich in den
+      Archiven befinden, einsehbar.
   - content: |-
       
 
