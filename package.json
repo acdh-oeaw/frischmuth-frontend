@@ -75,7 +75,7 @@
 		"tailwind-merge": "^2.6.0",
 		"to-vfile": "^8.0.0",
 		"unified": "^11.0.5",
-		"valibot": "1.0.0-beta.15",
+		"valibot": "1.2.0",
 		"vaul-vue": "^0.2.1",
 		"vfile-matter": "^5.0.0",
 		"vue": "^3.5.13",
