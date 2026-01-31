@@ -16,13 +16,10 @@ sections:
       ermöglicht.
 
 
-      Zentrales Ziel ist, einerseits, die detaillierte Erschließung der Nachlassbestände sowie deren wechselseitige Verknüpfung mit den Einträgen des Digitalen Archivs. Während in der ersten Projektphase ausschließlich die bis einschließlich 2017 dokumentierten Teile des Nachlasses berücksichtigt werden konnten, erfolgt nun die vollständige Erfassung sämtlicher Bestände einschließlich ihrer präzisen Lokalisierung im physischen Archiv.
+      Zentrales Ziel ist zum Einen die detaillierte Erschließung der Nachlassbestände sowie deren wechselseitige Verknüpfung mit den Einträgen des Digitalen Archivs. Zum Anderen widmet sich das Projekt der systematischen Dokumentation und Analyse der deutsch- und englischsprachigen wissenschaftlichen sowie der deutschsprachigen journalistischen Rezeption des Werks Barbara Frischmuths. Diese Materialien liefern kontextualisierende und erläuternde Informationen zu den Beständen des Franz-Nabl-Instituts.
 
 
-      Andererseits widmet sich das Projekt der systematischen Dokumentation und Analyse der deutsch- und englischsprachigen wissenschaftlichen sowie der deutschsprachigen journalistischen Rezeption des Werks Barbara Frischmuths. Diese Materialien liefern kontextualisierende und erläuternde Informationen zu den Beständen des Franz-Nabl-Instituts.
-
-
-      Die Erschließungsarbeit ist als fortlaufender Prozess angelegt: Noch sind nicht alle Nachlassbestände vollständig erfasst, zudem werden weitere Zeitschriftenarchive derzeit recherchiert und sukzessive in das Digitale Archiv integriert.
+      Die Erschließungsarbeit ist als fortlaufender Prozess angelegt. Während in der ersten Projektphase ausschließlich die bis einschließlich 2017 dokumentierten Teile des Nachlasses berücksichtigt werden konnten, erfolgt nun die vollständige Erfassung sämtlicher Bestände einschließlich ihrer präzisen Lokalisierung im physischen Archiv.
   - content: |-
       
 
