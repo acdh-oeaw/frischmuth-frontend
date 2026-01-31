@@ -1,7 +1,8 @@
 ---
 title: Aus den Archiven
 sections:
-  - title: Das Digitale Archiv * das Franz-Nabl-Institut Graz * und andere Archivalien
+  - title: Das Digitale Archiv * das Franz-Nabl-Institut Graz * und andere
+      Archiv(alien)
     content: >-
       Das Digitale Archiv Barbara Frischmuth bietet einen systematischen
       Überblick über die Nachlassbestände der Autorin, die überwiegend im
