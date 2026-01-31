@@ -17,7 +17,7 @@ sections:
 
       Ziel des Projekts Digitales Archiv Barbara Frischmuth ist sowohl die detaillierte Erschließung der Nachlassbestände und ihre wechselseitige Verknüpfung mit den Einträgen des Digitalen Archivs zum
 
-      Primärwerk als auch die systematische Dokumentation und Analyse der deutschund englischsprachigen akademischen sowie der deutschsprachigen journalistischen Rezeption.  Damit leistet es einen zentralen Beitrag zur wissenschaftlichen Aufarbeitung des Gesamtwerks an der Schnittstelle von Germanistik und Archiv.
+      Primärwerk als auch die systematische Dokumentation und Analyse der deutsch- und englischsprachigen akademischen sowie der deutschsprachigen journalistischen Rezeption.  Damit leistet es einen zentralen Beitrag zur wissenschaftlichen Aufarbeitung des Gesamtwerks an der Schnittstelle von Germanistik und Archiv.
 
 
       Die Erschließungsarbeit ist als fortlaufender Prozess angelegt: Während in der ersten Projektphase ausschließlich die bis einschließlich 2017 dokumentierten Teile des Nachlasses berücksichtigt werden
