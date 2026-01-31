@@ -39,7 +39,8 @@ images:
     copyright: '"Zusammen"'
   - image: /assets/images/ganzes-team.jpg
     titel: Das Team
-    alt: '"Das Team"'
+    alt: ""
+    copyright: '"Das Team"'
   - image: /assets/images/b.frischmuth-revised-by-anna.jpg
     titel: Barbara Frischmuth Portrait
     copyright: © Aleksandra Pawloff / "Portrait"
@@ -60,7 +61,7 @@ images:
     copyright: '@ Matthias Schmidt / "Anna und Peter in der Bibliothek"'
   - image: /assets/images/4_24-arbeitszimmer1.jpg
     titel: All together
-    copyright: '"Working"'
+    copyright: ' © Matthias Schmidt / "Working"'
   - image: /assets/images/4_24-zocki.jpg
     titel: Julia und Caro mit Socki, der Hauskatze
     copyright: "© Anna Babka: Julia und Caro mit Socki, der Hauskatze"
