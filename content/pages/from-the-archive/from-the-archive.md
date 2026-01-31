@@ -4,28 +4,20 @@ sections:
   - title: Franz-Nabl-Institut für Literaturforschung, Österreichische
       Nationalbibliothek, Literaturarchiv Salzburg und Forschungsinstitution
       Brenner-Archiv
-    content: Das Digitale Archiv Barbara Frischmuth erfasst die Vorlassbestände, die
-      bereits in mehreren Archiven sortiert und archiviert wurden und weist auf
-      das Vorhandensein physischer Bestände und deren Verknüpfung mit den Werken
-      Barbara Frischmuths hin. Es werden keine Digitalisate zugänglich gemacht
-      und es handelt sich in diesem Sinne um kein übliches Archiv, sondern um
-      einen umfassenden Blick auf das Werk Barbara Frischmuths und die
-      jeweiligen Vorstufen, die sich als physische Objekte in den Archiven
-      befinden. Die am Franz-Nabl-Institut für Literaturforschung zu Lebzeiten
-      Frischmuths in Graz gesammelten Vorlassbestände, die 195 Archivboxen
-      (Stand 2017) umfassen, wurden vom Team des Franz-Nabl-Archivs erfasst und
-      sortiert. Die Manuskripte vermitteln substanzielle Einblicke in die
-      Entstehungsprozesse und Entwicklungen der unterschiedlichen Textfassungen.
-      Um eine möglichst umfangreiche Aufarbeitung der relevanten Materialien zu
-      gewährleisten, ist die virtuelle und wissenschaftliche Zusammenführung
-      der  Vorlassbestände im **Franz-Nabl-Archiv** mit den Beständen an der
-      **Österreichischen Nationalbibliothek** und der **Adolf Haslinger
-      Literaturstiftung** im **Literaturarchiv Salzburg** sowie dem **Brenner
-      Archiv in Innsbruck** wichtiger Bestandteil des Projekts. Die Bestände der
-      Archive wurden mit den Werken Barbara Frischmuths verknüpft und sind als
-      solche über die Detailansicht mit dem Verweis auf die Textvorstufen und
-      Materialien, die sich in den Archiven befinden, einsehbar. Noch nicht
-      erfasst sind alle Nachlassbestände.
+    content: >-
+      
+
+
+      Das Digitale Archiv Barbara Frischmuth bietet einen systematischen Überblick über die Nachlassbestände der Autorin, die überwiegend im Franz-Nabl-Institut in Graz und in geringem Umfang im Literaturarchiv Salzburg verwahrt werden. Es versteht sich ausdrücklich nicht als digitales Archiv im engeren Sinne, da keine Digitalisate der Materialien bereitgestellt werden. Stattdessen verfolgt das Projekt einen dokumentarisch-analytischen Ansatz, der einen wissenschaftlich fundierten Gesamtblick auf das literarische Werk und seine Entstehungszusammenhänge ermöglicht.
+
+
+      Zentrales Ziel ist die detaillierte Erschließung der Nachlassbestände sowie deren wechselseitige Verknüpfung mit den Einträgen des Digitalen Archivs. Während in der ersten Projektphase ausschließlich die bis einschließlich 2017 dokumentierten Teile des Nachlasses berücksichtigt werden konnten, erfolgt nun die vollständige Erfassung sämtlicher Bestände einschließlich ihrer präzisen Lokalisierung im physischen Archiv.
+
+
+      Ergänzend zur Nachlasserschließung widmet sich das Projekt der systematischen Dokumentation und Analyse der deutsch- und englischsprachigen wissenschaftlichen sowie der deutschsprachigen journalistischen Rezeption des Werks Barbara Frischmuths. Diese Materialien liefern kontextualisierende und erläuternde Informationen zu den Beständen des Franz-Nabl-Instituts.
+
+
+      Die Erschließungsarbeit ist als fortlaufender Prozess angelegt: Noch sind nicht alle Nachlassbestände vollständig erfasst, zudem werden weitere Zeitschriftenarchive derzeit recherchiert und sukzessive in das Digitale Archiv integriert.
   - content: |-
       
 
