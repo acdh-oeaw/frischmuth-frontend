@@ -1,9 +1,7 @@
 ---
 title: Aus den Archiven
 sections:
-  - title: Franz-Nabl-Institut für Literaturforschung, Österreichische
-      Nationalbibliothek, Literaturarchiv Salzburg und Forschungsinstitution
-      Brenner-Archiv
+  - title: Das Digitale Archiv * das Franz-Nabl-Institut Graz * und andere Archivalien
     content: >-
       Das Digitale Archiv Barbara Frischmuth bietet einen systematischen
       Überblick über die Nachlassbestände der Autorin, die überwiegend im
