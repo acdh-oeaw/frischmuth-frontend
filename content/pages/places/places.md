@@ -48,7 +48,8 @@ Migrationsgesellschaft. Orte werden hier zu Schauplätzen gesellschaftlicher
 Konflikte und Erinnerungskämpfe, aber auch zu Räumen der Begegnung und
 Neuverhandlung. 
 
-Mit der systematischen Erfassung und detaillierten Beschreibung von Örtlichkeiten
+Mit
+der systematischen Erfassung und detaillierten Beschreibung von Örtlichkeiten
 im Analyseraster möchten wir auf dieses Potenzial aufmerksam machen und ein
 Instrument bereitstellen, das literarische Räume sichtbar, vergleichbar und
 durchsuchbar macht. So entsteht ein differenzierter Zugang zu einem zentralen
