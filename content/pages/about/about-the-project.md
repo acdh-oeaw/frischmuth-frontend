@@ -1,20 +1,21 @@
 ---
 title: Über das Projekt
 sections:
-  - title: Das Team
+  - title: Der Grant und das Team
     content: >-
-      **Team:** Anna Babka (Leitung), Peter Clar, Matej Durco, Carolin Guckler,
-      Barbara Krautgartner, Kay Kollmann, Julia Lingl, Olivia Reichl, Matthias
-      Schmidt
+      **Der Grant**: *Digital Archive Barbara Frischmuth* / Anna Babka (ORCID:
+      [0000-0001-5397-4878](https://orcid.org/0000-0001-5397-4878))
+
+      Grant-DOI 10.55776/P34491 / Förderprogramm Einzelprojekte / 01.11.2021 - 31.10.2026 Bewilligungssumme 595.239 € 
 
 
-      **Kooperation:** Klaus Kastberger für das Franz-Nabl-Institut der Universität Graz & Österreichische Akademie der Wissenschaften/acdh-Austrian Center for Digital Humanities
+      **Team:** Anna Babka (Leitung), Peter Clar, Matej Durco, Carolin Guckler, Barbara Krautgartner, Kay Kollmann, Julia Lingl, Olivia Reichl, Matthias Schmidt
 
+
+      **Kooperationen/Forschungspartner*innen:** Klaus Kastberger für das Franz-Nabl-Institut der Universität Graz & Österreichische Akademie der Wissenschaften/acdh-Austrian Center for Digital Humanities
 
 
       **Verfasser*innen des Antrags**: Anna Babka unter Mitarbeit von Silvana Cimenti, Peter Clar, Matej Durco, Vanessa Hannesschläger und Daniel Schopper
-
-
 
 
       ![](/assets/images/img_6bc6b8cd8ab2-1.jpeg)
