@@ -18,7 +18,7 @@ sections:
       Ziel des Projekts ist einerseits die detaillierte Erschließung der Nachlassbestände und ihre wechselseitige Verknüpfung mit den Einträgen zum Primärwerk im Digitalen Archiv. Andererseits soll die deutsch- und englischsprachige akademische sowie die deutschsprachige journalistische Rezeption systematisch dokumentiert, analysiert und miteinander in Beziehung gesetzt werden. Auf diese Weise leistet das Digitale Archiv einen zentralen Beitrag zur wissenschaftlichen Aufarbeitung des Gesamtwerks an der Schnittstelle von Germanistik und Archiv.
 
 
-      Die Erschließungsarbeit ist als fortlaufender Prozess angelegt: Während in der ersten Projektphase ausschließlich jene Teile des Nachlasses berücksichtigt werden konnten, die bis einschließlich 2017 dokumentiert waren, ist nun die vollständige Erfassung, analytische Bearbeitung und Verknüpfung sämtlicher Bestände vorgesehen.
+      Die Erschließungsarbeit ist als fortlaufender Prozess angelegt: Während in der ersten Projektphase ausschließlich jene Teile des Nachlasses berücksichtigt werden konnten, die bis einschließlich 2017 dokumentiert waren, ist nun die vollständige Erfassung, analytische Bearbeitung und Verknüpfung sämtlicher Bestände, die mit dem Primärwerk im Zusammenhang stehen, vorgesehen. Die Bearbeitung der Korrespondenzen oder der Bildmaterialien könnte, seitens des Digitalen Archivs, erst in einem weiteren Schritt erfolgen.
   - content: |-
       
 
