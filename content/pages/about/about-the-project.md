@@ -6,7 +6,7 @@ sections:
       **Der Grant**: *Digital Archive Barbara Frischmuth* / Anna Babka (ORCID:
       [0000-0001-5397-4878](https://orcid.org/0000-0001-5397-4878))
 
-      Grant-DOI 10.55776/P34491 / Förderprogramm Einzelprojekte / 01.11.2021 - 31.10.2026 Bewilligungssumme 595.239 € 
+      Grant-DOI 10.55776/P34491 / Förderprogramm Einzelprojekte / 01.11.2021 - 31.10.2026 
 
 
       **Das Team:** [Anna Babka](https://www.annababka.at/) (Leitung), [Peter Clar](https://www.peterclar.at/), [Matej Durco](https://www.oeaw.ac.at/de/acdh/institut/team/mitarbeitende/matej-durco), Carolin Guckler, Barbara Krautgartner, Kay Kollmann, Julia Lingl, Olivia Reichl, [Matthias Schmidt](https://www.matthiasschmidt.at/#)
