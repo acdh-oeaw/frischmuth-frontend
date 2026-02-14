@@ -5,8 +5,10 @@ sections:
     content: >-
       Das Digitale Archiv Barbara Frischmuth bietet einen systematischen
       Überblick über die Nachlassbestände der Autorin, die in analoger Form
-      überwiegend im Franz-Nabl-Institut für Literaturforschung der Universität
-      Graz sowie in geringerem Umfang in der Adolf Haslinger Literaturstiftung
+      überwiegend im [Franz-Nabl-Institut für
+      Literaturforschung](https://franz-nabl-institut.uni-graz.at/de/) der
+      Universität Graz sowie in geringerem Umfang in der [Adolf Haslinger
+      Literaturstiftung](https://www.plus.ac.at/literaturarchiv-salzburg/das-literaturarchiv/adolf-haslinger-literaturstiftung/)
       in Salzburg verwahrt werden. Es versteht sich ausdrücklich nicht als
       digitale archivarische Einrichtung im engeren Sinn, da keine Digitalisate
       bereitgestellt werden. Vielmehr verfolgt das Projekt einen
