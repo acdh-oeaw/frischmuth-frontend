@@ -9,13 +9,13 @@ sections:
       Grant-DOI 10.55776/P34491 / Förderprogramm Einzelprojekte / 01.11.2021 - 31.10.2026 Bewilligungssumme 595.239 € 
 
 
-      **Team:** [Anna Babka](https://www.annababka.at/) (Leitung), [Peter Clar](https://www.peterclar.at/), [Matej Durco](https://www.oeaw.ac.at/de/acdh/institut/team/mitarbeitende/matej-durco), Carolin Guckler, Barbara Krautgartner, Kay Kollmann, Julia Lingl, Olivia Reichl, [Matthias Schmidt](https://www.matthiasschmidt.at/#)
+      **Das Team:** [Anna Babka](https://www.annababka.at/) (Leitung), [Peter Clar](https://www.peterclar.at/), [Matej Durco](https://www.oeaw.ac.at/de/acdh/institut/team/mitarbeitende/matej-durco), Carolin Guckler, Barbara Krautgartner, Kay Kollmann, Julia Lingl, Olivia Reichl, [Matthias Schmidt](https://www.matthiasschmidt.at/#)
 
 
-      **Kooperationen/Forschungspartner*innen:** [Klaus Kastberger](https://de.wikipedia.org/wiki/Klaus_Kastberger) für das [Franz-Nabl-Institut der Universität Graz ](https://franz-nabl-institut.uni-graz.at/de/)& Österreichische Akademie der Wissenschaften/[acdh-Austrian Center for Digital Humanities](https://www.oeaw.ac.at/acdh/acdh-home)
+      **Die Kooperationen & Forschungspartner*innen:** [Klaus Kastberger](https://de.wikipedia.org/wiki/Klaus_Kastberger) für das [Franz-Nabl-Institut der Universität Graz ](https://franz-nabl-institut.uni-graz.at/de/)& Österreichische Akademie der Wissenschaften/[acdh-Austrian Center for Digital Humanities](https://www.oeaw.ac.at/acdh/acdh-home)
 
 
-      **Verfasser*innen des Antrags**: Anna Babka unter Mitarbeit von Silvana Cimenti, Peter Clar, Matej Durco, Vanessa Hannesschläger und Daniel Schopper
+      **Die Verfasser*innen des Antrags**: Anna Babka unter Mitarbeit von Silvana Cimenti, Peter Clar, Matej Durco, Vanessa Hannesschläger und Daniel Schopper
 
 
       ![](/assets/images/img_6bc6b8cd8ab2-1.jpeg)
