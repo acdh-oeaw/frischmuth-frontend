@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "22.x",
+		"node": "24.x",
 		"pnpm": "10.x"
 	},
 	"packageManager": "pnpm@10.2.1",
