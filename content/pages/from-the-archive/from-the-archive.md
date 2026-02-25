@@ -1,31 +1,26 @@
 ---
-title: Aus den Archiven
+title: Zu den Archiven
 sections:
-  - title: Franz-Nabl-Institut für Literaturforschung, Österreichische
-      Nationalbibliothek, Literaturarchiv Salzburg und Forschungsinstitution
-      Brenner-Archiv
-    content: Das Digitale Archiv Barbara Frischmuth erfasst die Vorlassbestände, die
-      bereits in mehreren Archiven sortiert und archiviert wurden und weist auf
-      das Vorhandensein physischer Bestände und deren Verknüpfung mit den Werken
-      Barbara Frischmuths hin. Es werden keine Digitalisate zugänglich gemacht
-      und es handelt sich in diesem Sinne um kein übliches Archiv, sondern um
-      einen umfassenden Blick auf das Werk Barbara Frischmuths und die
-      jeweiligen Vorstufen, die sich als physische Objekte in den Archiven
-      befinden. Die am Franz-Nabl-Institut für Literaturforschung zu Lebzeiten
-      Frischmuths in Graz gesammelten Vorlassbestände, die 195 Archivboxen
-      (Stand 2017) umfassen, wurden vom Team des Franz-Nabl-Archivs erfasst und
-      sortiert. Die Manuskripte vermitteln substanzielle Einblicke in die
-      Entstehungsprozesse und Entwicklungen der unterschiedlichen Textfassungen.
-      Um eine möglichst umfangreiche Aufarbeitung der relevanten Materialien zu
-      gewährleisten, ist die virtuelle und wissenschaftliche Zusammenführung
-      der  Vorlassbestände im **Franz-Nabl-Archiv** mit den Beständen an der
-      **Österreichischen Nationalbibliothek** und der **Adolf Haslinger
-      Literaturstiftung** im **Literaturarchiv Salzburg** sowie dem **Brenner
-      Archiv in Innsbruck** wichtiger Bestandteil des Projekts. Die Bestände der
-      Archive wurden mit den Werken Barbara Frischmuths verknüpft und sind als
-      solche über die Detailansicht mit dem Verweis auf die Textvorstufen und
-      Materialien, die sich in den Archiven befinden, einsehbar. Noch nicht
-      erfasst sind alle Nachlassbestände.
+  - title: Digitales und analoges Archiv Barbara Frischmuth
+    content: >-
+      Das Digitale Archiv Barbara Frischmuth bietet einen systematischen
+      Überblick über die Nachlassbestände der Autorin, die in analoger Form
+      überwiegend im [Franz-Nabl-Institut für
+      Literaturforschung](https://franz-nabl-institut.uni-graz.at/de/) der
+      Universität Graz sowie in geringerem Umfang in der [Adolf Haslinger
+      Literaturstiftung](https://www.plus.ac.at/literaturarchiv-salzburg/das-literaturarchiv/adolf-haslinger-literaturstiftung/)
+      in Salzburg verwahrt werden. Es versteht sich ausdrücklich nicht als
+      digitale archivarische Einrichtung im engeren Sinn, da keine Digitalisate
+      bereitgestellt werden. Vielmehr verfolgt das Projekt einen
+      dokumentarisch-analytischen Ansatz, der einen wissenschaftlich fundierten
+      Gesamtblick auf das Werk sowie auf dessen Entstehungszusammenhänge
+      ermöglicht.
+
+
+      Ziel des Projekts ist einerseits die detaillierte Erschließung der Nachlassbestände und ihre wechselseitige Verknüpfung mit den Einträgen zum Primärwerk im Digitalen Archiv. Andererseits soll die deutsch- und englischsprachige akademische sowie die deutschsprachige journalistische Rezeption systematisch dokumentiert, analysiert und miteinander in Beziehung gesetzt werden. Auf diese Weise leistet das Digitale Archiv einen zentralen Beitrag zur wissenschaftlichen Aufarbeitung des Gesamtwerks an der Schnittstelle von Germanistik und Archiv.
+
+
+      Die Erschließungsarbeit ist als fortlaufender Prozess angelegt: Während in der ersten Projektphase ausschließlich jene Teile des Nachlasses berücksichtigt werden konnten, die bis einschließlich 2017 dokumentiert waren, ist nun die vollständige Erfassung, analytische Bearbeitung und Verknüpfung sämtlicher Bestände, die mit dem Primärwerk im Zusammenhang stehen, vorgesehen. Die Integration und Bearbeitung der Korrespondenzen, die ebenfalls Rückschlüsse auf Entstehungsprozesse des Primärweks geben könnten oder auch die Bildmaterialien können aufgrund der Fülle des Materials seitens des Digitalen Archivs erst in einem weiteren Schritt erfolgen.
   - content: |-
       
 
