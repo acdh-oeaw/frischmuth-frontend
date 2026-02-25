@@ -1,14 +1,14 @@
 # frischmuth frontend
 
 the frontend for the frischmuth project. deployed at
-<https://frischmuth-frontend.acdh-ch-dev.oeaw.ac.at/>. development version deployed at
+<https://barbarafrischmuth.com/>. development version deployed at
 <https://frischmuth-frontend-dev.acdh-ch-dev.oeaw.ac.at/>.
 
 ## how to run
 
 prerequisites:
 
-- [node.js 22.x](https://nodejs.org/en/download)
+- [node.js 24.x](https://nodejs.org/en/download)
 - [pnpm 10.x](https://pnpm.io/installation)
 
 > [!TIP]
