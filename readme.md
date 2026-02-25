@@ -1,8 +1,7 @@
 # frischmuth frontend
 
-the frontend for the frischmuth project. deployed at
-<https://barbarafrischmuth.com/>. development version deployed at
-<https://frischmuth-frontend-dev.acdh-ch-dev.oeaw.ac.at/>.
+the frontend for the frischmuth project. deployed at <https://barbarafrischmuth.com/>. development
+version deployed at <https://frischmuth-frontend-dev.acdh-ch-dev.oeaw.ac.at/>.
 
 ## how to run
 
