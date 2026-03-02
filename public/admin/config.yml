@@ -109,11 +109,11 @@ collections:
             modes:
               # - raw
               - rich_text
-  - name: autobiografiction
-    label: Autobiografiktion
+  - name: barbarafrischmuthgesellschaft
+    label: Barbara Frischmuth Gesellschaft
     label_singular: Autobiografiktion
     # description: Pages
-    folder: content/pages/autobiografiction
+    folder: content/pages/barbarafrischmuthgesellschaft
     create: false
     delete: false
     # nested:

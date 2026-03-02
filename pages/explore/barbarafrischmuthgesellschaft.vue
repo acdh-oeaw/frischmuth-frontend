@@ -11,9 +11,11 @@ usePageMetadata({
 	title: t("AutobiografictionPage.meta.title"),
 });
 
-const { data: page } = await useAsyncData("autobiografiction-page", async () => {
+const { data: page } = await useAsyncData("barbarafrischmuthgesellschaft-page", async () => {
 	return $fetch<StaticPage>("/api/markdown-file", {
-		body: JSON.stringify({ path: "pages/autobiografiction/autobiografiction.md" }),
+		body: JSON.stringify({
+			path: "pages/barbarafrischmuthgesellschaft/barbarafrischmuthgesellschaft.md",
+		}),
 		method: "POST",
 	});
 });
