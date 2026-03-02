@@ -371,9 +371,11 @@ function openDrawer() {
 								<div v-else>Deutsch</div>
 							</div>
 						</div>
-						<div v-for="topic in work?.topics" :key="topic.id" class="mb-2 mr-1">
+						<div class="mb-2 flex flex-wrap gap-1">
 							<div
-								class="mb-1 inline-block bg-frisch-indigo px-2 py-1 text-xs text-white opacity-85"
+								v-for="topic in work?.topics"
+								:key="topic.id"
+								class="inline-block bg-frisch-indigo px-2 py-1 text-xs text-white opacity-85"
 							>
 								<NuxtLink
 									:to="{
