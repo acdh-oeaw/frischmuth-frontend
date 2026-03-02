@@ -18,6 +18,8 @@ export type BiographyEntry = ParsedMarkdown<{
 	copyright?: string;
 }>;
 
+export type BiographyIntro = ParsedMarkdown<Record<string, never>>;
+
 export type Quote = ParsedMarkdown<{
 	title: string;
 	link: string;

@@ -309,6 +309,20 @@ collections:
         modes:
           # - raw
           - rich_text
+  - name: biography-intro
+    label: Biografie-Intro
+    label_singular: Biografie-Intro
+    folder: content/pages/biography-intro
+    create: false
+    delete: false
+    fields:
+      - name: body
+        label: Content
+        hint: The short biography
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
   - name: altaussee-page
     label: Altaussee-Text
     label_singular: Altaussee-sText
