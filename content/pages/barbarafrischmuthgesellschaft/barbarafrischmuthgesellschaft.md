@@ -10,7 +10,10 @@ sections:
       Frischmuth. Zu den Zielsetzungen der Gesellschaft zählen u.a. die Förderung der Rezeption ihres Werks durch Publikationen und Veranstaltungen, die Unterstützung der Forschung oder die Vernetzung von Frischmuth-Interessierten. 
 
 
-      Die Barbara-Frischmuth-Gesellschaft ist aus dem Projekt Digitales Archiv Barbara Frischmuth hervorgegangen, einem seit 2021 durch den Österreichischen Forschungsförderungsfonds (FWF) geförderten Projekts, das darauf abzielt, eine breite, zugleich profunde wissenschaftliche Auseinandersetzung mit Frischmuths Oeuvre zu ermöglichen und damit zentrale Impulse sowohl für die Fachwelt als auch für eine größere Öffentlichkeit zu liefern. Siehe für weitere Informationen: https://www.fwf.ac.at/forschungsradar/10.55776/P34491
+      Die Barbara-Frischmuth-Gesellschaft ist aus dem Projekt Digitales Archiv Barbara Frischmuth hervorgegangen, einem seit 2021 durch den Österreichischen Forschungsförderungsfonds (FWF) geförderten Projekts, das darauf abzielt, eine breite, zugleich profunde wissenschaftliche Auseinandersetzung mit Frischmuths Oeuvre zu ermöglichen und damit zentrale Impulse sowohl für die Fachwelt als auch für eine größere Öffentlichkeit zu liefern. 
+
+
+      (https://www.fwf.ac.at/forschungsradar/10.55776/P34491)
 
 
       Der Vorstand der Barbara-Frischmuth-Gesellschaft besteht aus Anna Babka, Peter Clar, Carolin
