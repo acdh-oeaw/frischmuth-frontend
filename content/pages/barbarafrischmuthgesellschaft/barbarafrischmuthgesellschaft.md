@@ -24,7 +24,7 @@ sections:
       Impressum & Kontakt: Barbara-Frischmuth-Gesellschaft \* Zieglergasse 47/1/10 \* 1070 Wien
 
 
-      ![](/assets/images/ganzes-team.jpg "Der Vorstand der Barbara-Frischmuth-Gesellschaft in Altaussee")
+      ![Der Vorstand der Barbara-Frischmuth-Gesellschaft in Altaussee](/assets/images/ganzes-team.jpg "Der Vorstand der Barbara-Frischmuth-Gesellschaft in Altaussee")
   - title: Publikationen von Vorstandsmitgliedern zu Barbara Frischmuth
     content: '![](https://sonderzahl.at/wp-content/uploads/asolmerce/image-9783854495291.jpg
       "»Ich schreibe, also bin ich« Schreibweisen bei Barbara
