@@ -30,4 +30,11 @@ sections:
       "»Ich schreibe, also bin ich« Schreibweisen bei Barbara
       Frischmuth.  Herausgegeben von Anna Babka, Silvana Cimenti und Peter Clar.
       Wien: Sonderzahl 2019")'
+  - content: >-
+      
+
+      ![](https://sonderzahl.at/wp-content/uploads/asolmerce/image-9783854494652.jpg)
+    title: "Anna Babka / Peter Clar (Hg.): »Im Liegen ist der Horizont immer so weit
+      weg«. Grenzüberschreitungen bei Barbara Frischmuth. Unter Mitarbeit von
+      Flora Petrik. Wien: Sonderzahl 2017."
 ---
