@@ -37,4 +37,11 @@ sections:
     title: "Anna Babka / Peter Clar (Hg.): »Im Liegen ist der Horizont immer so weit
       weg«. Grenzüberschreitungen bei Barbara Frischmuth. Unter Mitarbeit von
       Flora Petrik. Wien: Sonderzahl 2017."
+  - content: >-
+      
+
+      ![](https://sonderzahl.at/wp-content/uploads/asolmerce/image-u1_bfs_kinderliteratur.jpg)
+    title: "»Und die Wolken fallen fast aus den Wolken«. | Kindheit in der Literatur
+      bei Barbara Frischmuth. Hrsg. von Anna Babka, Silvana Cimenti, Peter Clar,
+      Heidi Lexe und Johanna Öttl. Wien: Sonderzahl 2024."
 ---
