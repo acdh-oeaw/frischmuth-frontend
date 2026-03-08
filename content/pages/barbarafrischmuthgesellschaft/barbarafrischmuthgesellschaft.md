@@ -3,14 +3,14 @@ title: Barbara Frischmuth Gesellschaft
 sections:
   - title: Barbara Frischmuth Gesellschaft
     content: >-
-      [Die Barbara-Frischmuth-Gesellschaft ](<>)ist ein Forum für Leser:innen
-      und Forscher:innen. Sie wurde 2024 als Verein gegründet und widmet sich
-      der Pflege des literarischen und ideellen Werks von Barbara
+      Die Barbara-Frischmuth-Gesellschaft ist ein Forum für Leser:innen und
+      Forscher:innen. Sie wurde 2024 als Verein gegründet und widmet sich der
+      Pflege des literarischen und ideellen Werks von Barbara
 
       Frischmuth. Zu den Zielsetzungen der Gesellschaft zählen u.a. die Förderung der Rezeption ihres Werks durch Publikationen und Veranstaltungen, die Unterstützung der Forschung oder die Vernetzung von Frischmuth-Interessierten. 
 
 
-      Die Barbara-Frischmuth-Gesellschaft ist aus dem Projekt Digitales Archiv Barbara Frischmuth hervorgegangen, einem seit 2021 durch den Österreichischen Forschungsförderungsfonds (FWF) geförderten Projekts, das darauf abzielt, eine breite, zugleich profunde wissenschaftliche Auseinandersetzung mit Frischmuths Oeuvre zu ermöglichen und damit zentrale Impulse sowohl für die Fachwelt als auch für eine größere Öffentlichkeit zu liefern. 
+      Die Barbara-Frischmuth-Gesellschaft ist aus dem Projekt Digitales Archiv Barbara Frischmuth hervorgegangen, einem seit 2021 durch den Österreichischen Forschungsförderungsfonds (FWF) geförderten Projekts, das darauf abzielt, eine breite, zugleich profunde wissenschaftliche Auseinandersetzung mit Frischmuths Oeuvre zu ermöglichen und damit zentrale Impulse sowohl für die Fachwelt als auch für eine größere Öffentlichkeit zu liefern. Siehe für weitere Informationen: https://www.fwf.ac.at/forschungsradar/10.55776/P34491
 
 
       Der Vorstand der Barbara-Frischmuth-Gesellschaft besteht aus Anna Babka, Peter Clar, Carolin
@@ -18,17 +18,8 @@ sections:
       Guckler, Julia Lingl und Matthias Schmidt. Wenn Sie Mitglied werden wollen, um über Aktivitäten zu Barbara Frischmuths Werk auf dem Laufenden zu bleiben, richten Sie Ihr informelles Ansuchen bitte an gesellschaft@barbarafrischmuth.com.
 
 
-       
+      Impressum & Kontakt: Barbara-Frischmuth-Gesellschaft \* Zieglergasse 47/1/10 \* 1070 Wien
 
 
-      Impressum & Kontakt
-
-
-      Barbara-Frischmuth-Gesellschaft
-
-
-      Zieglergasse 47/1/10
-
-
-      1070 Wien
+      ![](/assets/images/ganzes-team.jpg "Der Vorstand der Barbara-Frischmuth-Gesellschaft in Altaussee")
 ---
