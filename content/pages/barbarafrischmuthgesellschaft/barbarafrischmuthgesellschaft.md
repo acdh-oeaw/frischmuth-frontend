@@ -25,4 +25,9 @@ sections:
 
 
       ![](/assets/images/ganzes-team.jpg "Der Vorstand der Barbara-Frischmuth-Gesellschaft in Altaussee")
+  - title: Publikationen von Vorstandsmitgliedern zu Barbara Frischmuth
+    content: >-
+      
+
+      ![](https://sonderzahl.at/product/ich-schreibe-also-bin-ich/ "»Ich schreibe, also bin ich« Schreibweisen bei Barbara Frischmuth.  Herausgegeben von Anna Babka, Silvana Cimenti und Peter Clar. Wien: Sonderzahl 2019")
 ---
