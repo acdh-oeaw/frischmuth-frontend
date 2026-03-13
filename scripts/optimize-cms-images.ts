@@ -7,31 +7,6 @@ const CONVERTIBLE_EXTENSIONS = new Set([".heic", ".jpeg", ".jpg", ".png", ".tif"
 const MAX_DIMENSION = 2560;
 const WEBP_QUALITY = 82;
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-type SharpModule = typeof import("sharp");
-interface SharpLoader {
-	default: SharpModule;
-}
-
-async function loadSharp(): Promise<SharpModule> {
-	try {
-		return ((await import("sharp")) as unknown as SharpLoader).default;
-	} catch {
-		const fallbackPath = join(
-			process.cwd(),
-			"node_modules",
-			".pnpm",
-			"sharp@0.32.6",
-			"node_modules",
-			"sharp",
-			"lib",
-			"index.js",
-		);
-
-		return ((await import(fallbackPath)) as unknown as SharpLoader).default;
-	}
-}
-
 async function getFiles(directory: string): Promise<Array<string>> {
 	const entries = await readdir(directory, { withFileTypes: true });
 	const files = await Promise.all(
@@ -89,7 +64,8 @@ async function updateReferences(replacements: Map<string, string>): Promise<numb
 }
 
 async function main(): Promise<void> {
-	const sharp = await loadSharp();
+	const sharpModule = await import("sharp");
+	const sharp = "default" in sharpModule ? sharpModule.default : sharpModule;
 
 	try {
 		const info = await stat(IMAGE_DIRECTORY);
