@@ -195,9 +195,9 @@ const randomImages = computed(() => {
 			</NuxtLink>
 			<NuxtLink
 				class="relative aspect-square overflow-hidden bg-frisch-grey p-4 text-frisch-indigo transition hover:scale-105"
-				to="/explore/autobiografiction"
+				to="/explore/barbarafrischmuthgesellschaft"
 			>
-				<span>{{ t("AutobiografictionPage.title") }}</span>
+				<span>Barbara Frischmuth Gesellschaft</span>
 			</NuxtLink>
 			<Card class="relative aspect-square overflow-hidden p-4 transition hover:scale-105">
 				<template v-if="randomImages != null && randomImages.length > 1">

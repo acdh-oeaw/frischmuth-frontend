@@ -1,12 +1,12 @@
-site_url: https://frischmuth-frontend-dev.acdh-ch-dev.oeaw.ac.at/
+site_url: https://barbarafrischmuth.com/
 logo_url: /icon.svg
 load_config_file: true
 local_backend: true
 backend:
   name: github
   repo: acdh-oeaw/frischmuth-frontend
-  branch: dev
-  base_url: https://frischmuth-frontend-dev.acdh-ch-dev.oeaw.ac.at/
+  branch: main
+  base_url: https://barbarafrischmuth.com/
   auth_endpoint: /api/oauth/authorize
   auth_scope: repo
   squash_merges: true
@@ -109,11 +109,11 @@ collections:
             modes:
               # - raw
               - rich_text
-  - name: autobiografiction
-    label: Autobiografiktion
+  - name: barbarafrischmuthgesellschaft
+    label: Barbara Frischmuth Gesellschaft
     label_singular: Autobiografiktion
     # description: Pages
-    folder: content/pages/autobiografiction
+    folder: content/pages/barbarafrischmuthgesellschaft
     create: false
     delete: false
     # nested:
@@ -302,6 +302,20 @@ collections:
         hint: The copyright if provided will be displayed under the title
         required: false
 
+      - name: body
+        label: Content
+        hint: The short biography
+        widget: markdown
+        modes:
+          # - raw
+          - rich_text
+  - name: biography-intro
+    label: Biografie-Intro
+    label_singular: Biografie-Intro
+    folder: content/pages/biography-intro
+    create: false
+    delete: false
+    fields:
       - name: body
         label: Content
         hint: The short biography

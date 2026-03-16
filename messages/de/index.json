@@ -41,15 +41,15 @@
 		},
 		"navigation-main": "Hauptnavigation"
 	},
-	"AutobiografictionPage": {
+	"BFGPage": {
 		"errors": {
 			"404": "Seite nicht gefunden",
 			"500": "Interner Fehler"
 		},
 		"meta": {
-			"title": "Autobiografiktion"
+			"title": "Barbara Frischmuth Gesellschaft"
 		},
-		"title": "Autobiografiktion"
+		"title": "Barbara Frischmuth Gesellschaft"
 	},
 	"BiographyPage": {
 		"errors": {

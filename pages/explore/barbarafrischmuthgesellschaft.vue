@@ -8,12 +8,14 @@ defineRouteRules({
 const t = useTranslations();
 
 usePageMetadata({
-	title: t("AutobiografictionPage.meta.title"),
+	title: t("BFGPage.meta.title"),
 });
 
-const { data: page } = await useAsyncData("autobiografiction-page", async () => {
+const { data: page } = await useAsyncData("barbarafrischmuthgesellschaft-page", async () => {
 	return $fetch<StaticPage>("/api/markdown-file", {
-		body: JSON.stringify({ path: "pages/autobiografiction/autobiografiction.md" }),
+		body: JSON.stringify({
+			path: "pages/barbarafrischmuthgesellschaft/barbarafrischmuthgesellschaft.md",
+		}),
 		method: "POST",
 	});
 });
@@ -26,7 +28,7 @@ const { data: page } = await useAsyncData("autobiografiction-page", async () => 
 		<div class="flex md:justify-end">
 			<Card class="aspect-square size-full bg-frisch-grey md:size-72">
 				<CardContent class="flex size-full py-4 text-2xl font-bold text-frisch-indigo">
-					<h1>{{ t("AutobiografictionPage.title") }}</h1>
+					<h1>{{ t("BFGPage.title") }}</h1>
 				</CardContent>
 			</Card>
 		</div>

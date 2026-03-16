@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { BiographyEntry } from "@/types/content";
+import type { BiographyEntry, BiographyIntro } from "@/types/content";
 
 defineRouteRules({
 	prerender: true,
@@ -24,6 +24,14 @@ const { data: biographies } = await useAsyncData("biography-page", async () => {
 		method: "POST",
 	});
 });
+
+const { data: biographyIntro } = await useAsyncData("biography-intro", async () => {
+	return $fetch<BiographyIntro>("/api/markdown-file", {
+		body: JSON.stringify({ path: "pages/biography-intro/biography-intro.md" }),
+		method: "POST",
+	});
+});
+
 sortedBiographies.value = biographies.value
 	? [...biographies.value].sort((a, b) => Number(a.metadata.year) - Number(b.metadata.year))
 	: [];
@@ -42,6 +50,13 @@ sortedBiographies.value = biographies.value
 		</div>
 
 		<div>
+			<!-- eslint-disable-next-line vue/no-v-html -->
+			<section
+				v-if="biographyIntro?.body"
+				class="prose max-w-3xl pb-6 lg:pb-8"
+				v-html="biographyIntro.body"
+			/>
+
 			<div v-if="biographies && !isMobile" class="relative w-full max-w-5xl">
 				<div>
 					<div v-for="(biography, index) in sortedBiographies" :key="index" class="pb-4">
