@@ -17,6 +17,7 @@
 		"format:fix": "pnpm run format:check --write",
 		"generate": "nuxt generate --dotenv ./.env.local",
 		"generate:api-client": "dotenv -c -- tsx ./scripts/generate-api-client.ts",
+		"images:optimize": "node --import tsx ./scripts/optimize-cms-images.ts",
 		"lint:check": "run-p --continue-on-error \"lint:*:check\"",
 		"lint:fix": "run-p --continue-on-error \"lint:*:fix\"",
 		"lint:code:check": "eslint . --cache",
@@ -24,6 +25,7 @@
 		"lint:styles:check": "stylelint \"./**/*.@(css|vue)\" --cache --ignore-path ./.gitignore",
 		"lint:styles:fix": "pnpm run lint:styles:check --fix",
 		"postinstall": "nuxt prepare",
+		"prebuild": "node --import tsx ./scripts/optimize-cms-images.ts",
 		"preinstall": "npx only-allow pnpm",
 		"prepare": "run-s setup generate:api-client",
 		"setup": "is-ci || simple-git-hooks",
@@ -83,7 +85,8 @@
 		"vue-i18n-routing": "^1.2.0",
 		"vue-router": "^4.5.0",
 		"vue-to-print": "^1.4.0",
-		"zod": "^3.24.1"
+		"zod": "^3.24.1",
+		"sharp": "^0.32.6"
 	},
 	"devDependencies": {
 		"@acdh-oeaw/eslint-config": "^2.0.6",
