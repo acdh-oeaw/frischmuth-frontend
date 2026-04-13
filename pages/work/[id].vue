@@ -355,7 +355,6 @@ function openDrawer() {
 									{{ entry?.publisher?.name || "" }}
 									<span>{{ entry?.publication_date?.split("-")?.[0] || "" }}</span>
 									<span v-if="entry?.publication_date && !Array.isArray(entry.included_in)">.</span>
-									<span v-if="index !== work?.expression_data.length - 1">{{ " | " }}</span>
 									<span v-if="Array.isArray(entry.included_in) && entry.included_in.length > 0">
 										in
 										<NuxtLink
@@ -366,6 +365,7 @@ function openDrawer() {
 											<span>{{ entry.included_in[0]?.title }}</span>
 										</NuxtLink>
 									</span>
+									<span v-if="index !== work?.expression_data.length - 1">{{ " | " }}</span>
 								</span>
 							</div>
 
