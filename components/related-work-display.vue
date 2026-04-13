@@ -10,7 +10,7 @@ const relationType: Record<string, string> = {
 	references: "Referenzierte Werke",
 	discusses: "Diskutierte Werke",
 	mentions: "Erwähnte Werke",
-	includes: "Enthaltende Werke",
+	includes: "Enthaltene Werke",
 	referencedIn: "Wurde referenziert in",
 	discussedIn: "Wurde diskutiert in",
 	mentionedIn: "Wurde erwähnt in",
