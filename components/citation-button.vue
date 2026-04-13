@@ -62,6 +62,7 @@ const citation = computed(() => {
 				publisher: ref.publisher?.name ?? "",
 				"publisher-place": ref?.place_of_publication?.[0]?.name ?? "",
 				issued: ref?.publication_date ? { "date-parts": [[ref.publication_date]] } : undefined,
+				"collection-title": ref.included_in?.[0]?.title,
 			};
 		});
 	});
