@@ -165,6 +165,10 @@ const relatedWork: ComputedRef<RelatedWork> = computed(() => {
 				title: relation.title,
 				authors: relation.authors,
 			})),
+		includes: work.value?.expression_data?.[0]?.included_works?.map((expression) => ({
+			id: expression.work_id,
+			title: expression.title,
+		})),
 	};
 });
 
@@ -349,8 +353,18 @@ function openDrawer() {
 									<span v-if="entry?.place_of_publication?.[0]?.name">{{ ": " }}</span>
 									{{ entry?.publisher?.name || "" }}
 									<span>{{ entry?.publication_date?.split("-")?.[0] || "" }}</span>
-									<span v-if="entry?.publication_date">.</span>
+									<span v-if="entry?.publication_date && !Array.isArray(entry.included_in)">.</span>
 									<span v-if="index !== work?.expression_data.length - 1">{{ " | " }}</span>
+									<span v-if="Array.isArray(entry.included_in) && entry.included_in.length > 0">
+										in
+										<NuxtLink
+											id="includedin-references"
+											class="italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
+											:href="`/work/${entry.included_in[0]?.work_id}`"
+										>
+											<span>{{ entry.included_in[0]?.title }}</span>
+										</NuxtLink>
+									</span>
 								</span>
 							</div>
 
@@ -679,7 +693,8 @@ function openDrawer() {
 								(relatedWork.references && relatedWork.references?.length > 0) ||
 								(relatedWork.discussedIn && relatedWork.discussedIn.length > 0) ||
 								(relatedWork.referencedIn && relatedWork.referencedIn.length > 0) ||
-								(relatedWork.mentionedIn && relatedWork.mentionedIn.length > 0)
+								(relatedWork.mentionedIn && relatedWork.mentionedIn.length > 0) ||
+								(relatedWork.includes && relatedWork.includes.length > 0)
 							)
 						"
 						:key-value="work?.id ?? 0"
@@ -689,6 +704,7 @@ function openDrawer() {
 							<RelatedWorkDisplay :related-work="relatedWork.discusses" relation="discusses" />
 							<RelatedWorkDisplay :related-work="relatedWork.mentions" relation="mentions" />
 							<RelatedWorkDisplay :related-work="relatedWork.references" relation="references" />
+							<RelatedWorkDisplay :related-work="relatedWork.includes" relation="includes" />
 							<Separator class="h-[3px] bg-frisch-marine" />
 							<RelatedWorkDisplay :related-work="relatedWork.discussedIn" relation="discussedIn" />
 							<RelatedWorkDisplay :related-work="relatedWork.mentionedIn" relation="mentionedIn" />
