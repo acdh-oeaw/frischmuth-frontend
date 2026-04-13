@@ -6,9 +6,10 @@ import "@citation-js/plugin-csl";
 import Cite, { plugins } from "citation-js";
 import { ArrowDownToLine, CopyIcon, MessageSquareQuote, XIcon } from "lucide-vue-next";
 
-import type { ExpressionData } from "@/types/api";
+import type { ExpressionData, WorkTypeData } from "@/types/api";
 
 const props = defineProps<{
+	workType?: WorkTypeData;
 	metadata: ExpressionData;
 	authors: Array<{ forename: string; surname: string }>;
 	editors: Array<{ forename: string; surname: string }>;
@@ -30,9 +31,8 @@ onMounted(async () => {
 	try {
 		const response = await fetch("/styles/citation-stylesheet.csl");
 		if (!response.ok) throw new Error("Failed to fetch CSL");
-		const cslText = await response.text();
 
-		customCSL.value = cslText;
+		customCSL.value = await response.text();
 		const template = plugins.config.get("@csl");
 		template.templates.add(templateName, customCSL.value);
 	} catch (error) {
@@ -40,10 +40,23 @@ onMounted(async () => {
 	}
 });
 
+const getType = function (type: WorkTypeData = []) {
+	const types = type
+		.map((entry) => entry.name)
+		.filter((name): name is string => name != null && name.length > 0)
+		.join(",");
+	if (/Essay|Artikel|Besprechung|journalistische Rezeption/i.test(types)) {
+		return "article";
+	}
+
+	return "monography";
+};
+
 const citation = computed(() => {
 	const citations = (props.metadata || []).flatMap((refs) => {
 		return refs?.map((ref) => {
 			return {
+				type: getType(props.workType),
 				author:
 					props.authors.length > 0
 						? props.authors.map((author) => {
@@ -58,7 +71,6 @@ const citation = computed(() => {
 						: "",
 				title: ref?.title ?? "",
 				language: ref?.language?.join(", ") ?? "",
-				publication_date: ref?.publication_date ?? "",
 				publisher: ref.publisher?.name ?? "",
 				"publisher-place": ref?.place_of_publication?.[0]?.name ?? "",
 				issued: ref?.publication_date ? { "date-parts": [[ref.publication_date]] } : undefined,
@@ -79,13 +91,13 @@ watchEffect(() => {
 	ris.value = citation.value.format("ris");
 
 	if (customCSL.value) {
-		apa.value = citation.value.format("bibliography", {
+		apa.value = citation.value.format("citation", {
 			format: "html",
 			template: templateName,
 			lang: "de-DE",
 		});
 	} else {
-		apa.value = citation.value.format("bibliography", {
+		apa.value = citation.value.format("citation", {
 			format: "html",
 			template: "apa",
 			lang: "de-DE",

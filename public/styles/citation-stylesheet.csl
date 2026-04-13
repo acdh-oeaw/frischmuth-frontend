@@ -165,6 +165,7 @@
                 <date variable="issued">
                   <date-part name="year"/>
                 </date>
+                <text macro="serie-with-number" prefix="(" suffix=")"/>
               </if>
               <else>
                 <text macro="editor"/>

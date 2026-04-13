@@ -310,6 +310,7 @@ function openDrawer() {
 									:authors="metaDataAuthors ?? []"
 									:editors="metadataEditors ?? []"
 									:metadata="[work?.expression_data]"
+									:work_type="work.work_type"
 								/>
 								<PrintingHandler
 									:characters="characters"
