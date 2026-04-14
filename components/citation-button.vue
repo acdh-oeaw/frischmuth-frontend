@@ -79,7 +79,6 @@ const citation = computed(() => {
 			};
 		});
 	});
-	console.log("citation", citations);
 	return new Cite(citations);
 });
 
