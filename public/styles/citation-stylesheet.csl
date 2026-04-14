@@ -165,21 +165,22 @@
                 <date variable="issued">
                   <date-part name="year"/>
                 </date>
-                <text macro="serie-with-number" prefix="(" suffix=")"/>
+                <text macro="serie-with-number"/>
               </if>
               <else>
                 <text macro="editor"/>
                 <text macro="volume-for-books"/>
                 <text macro="edition-if-not-unveraendert"/>
                 <group delimiter=" ">
-                  <text variable="publisher-place"/>
+                  <text variable="publisher-place" suffix=":"/>
+                  <text variable="publisher"/>
                   <group>
                     <text macro="edition-if-unveraendert" vertical-align="sup"/>
                     <date variable="issued">
-                      <date-part name="year"/>
+                      <date-part name="year" suffix=","/>
                     </date>
                   </group>
-                  <text macro="serie-with-number" prefix="(" suffix=")"/>
+                  <text macro="serie-with-number"/>
                 </group>
               </else>
             </choose>
@@ -233,6 +234,7 @@
               <text macro="edition-if-not-unveraendert"/>
               <group delimiter=" ">
                 <text variable="publisher-place"/>
+                <text variable="publisher"/>
                 <group>
                   <text macro="edition-if-unveraendert" vertical-align="sup"/>
                   <date variable="issued">
