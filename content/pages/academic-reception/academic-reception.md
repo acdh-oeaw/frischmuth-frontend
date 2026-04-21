@@ -17,4 +17,9 @@ sections:
 
 
       Die erläuternde Komponente soll die Durchführbarkeit und wissenschaftliche Transparenz gewährleisten: Prägnante Zusammenfassungen identifizieren zentrale Forschungsfragen, interpretative Prämissen und methodische Orientierungen und ermöglichen so eine schnelle Orientierung innerhalb des Forschungsfeldes. Querverweise verknüpfen einzelne Beiträge systematisch über thematische, theoretische und textuelle Dimensionen hinweg und machen so die interne Struktur des akademischen Diskurses sichtbar und analytisch zugänglich.
+
+
+
+
+      ![](/assets/images/sekundärliteratur.jpg)
 ---
