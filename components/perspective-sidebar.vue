@@ -88,13 +88,10 @@ watch(
 						>
 							<div v-if="perspectiveDetail.description !== ''">
 								<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-								<div>
-									{{ perspectiveDetail.description }}
-								</div>
+								<section v-html="perspectiveDetail.description" />
 							</div>
 							<div
 								v-if="
-									perspectiveDetail != null &&
 									perspectiveDetail.related_works != null &&
 									perspectiveDetail.related_works.length > 0
 								"
@@ -145,13 +142,10 @@ watch(
 					>
 						<div v-if="perspectiveDetail.description !== ''">
 							<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
-							<div>
-								{{ perspectiveDetail.description }}
-							</div>
+							<section v-html="perspectiveDetail.description" />
 						</div>
 						<div
 							v-if="
-								perspectiveDetail != null &&
 								perspectiveDetail.related_works != null &&
 								perspectiveDetail.related_works.length > 0
 							"

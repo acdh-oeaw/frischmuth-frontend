@@ -66,3 +66,4 @@ export interface CharacterResponse {
 }
 
 export type Interpretatem = WorkDetail["interpretatems"];
+export type WorkTypeData = WorkDetail["work_type"];
