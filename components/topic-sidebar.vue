@@ -87,17 +87,9 @@ watch(
 						>
 							<div v-if="topicDetail.description !== ''">
 								<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-								<div>
-									{{ topicDetail.description }}
-								</div>
+								<section v-html="topicDetail.description" />
 							</div>
-							<div
-								v-if="
-									topicDetail != null &&
-									topicDetail.related_works != null &&
-									topicDetail.related_works.length > 0
-								"
-							>
+							<div v-if="topicDetail.related_works != null && topicDetail.related_works.length > 0">
 								<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
 								<div v-for="link in topicDetail.related_works" :key="link.id">
 									<RelatedWorkDisplay :related-work="[link]" />
@@ -143,17 +135,9 @@ watch(
 					>
 						<div v-if="topicDetail.description !== ''">
 							<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
-							<div>
-								{{ topicDetail.description }}
-							</div>
+							<section v-html="topicDetail.description" />
 						</div>
-						<div
-							v-if="
-								topicDetail != null &&
-								topicDetail.related_works != null &&
-								topicDetail.related_works.length > 0
-							"
-						>
+						<div v-if="topicDetail.related_works != null && topicDetail.related_works.length > 0">
 							<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
 							<div v-for="link in topicDetail.related_works" :key="link.id">
 								<RelatedWorkDisplay :related-work="[link]" />
