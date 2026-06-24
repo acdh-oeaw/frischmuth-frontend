@@ -340,11 +340,6 @@ function openDrawer() {
 								{{ work?.subtitle }}
 							</div>
 						</div>
-						<!-- Can be resolved after api exposes relevant data -->
-						<!-- <div v-if="editors &&  work?.work_type[0].name == 'Sammelband'" class="inline-flex gap-1 italic">
-							<span>{{ "(Hg.):" }}</span>
-							<span>{{ editors }}</span>
-						</div> -->
 						<div v-if="work?.expression_data != null" class="pb-2 text-sm">
 							<div class="pb-1">
 								<span v-for="(entry, index) in work.expression_data" :key="index">
@@ -402,6 +397,15 @@ function openDrawer() {
 								>
 									{{ topic.name }}
 								</NuxtLink>
+							</div>
+						</div>
+						<div class="mb-2 flex flex-wrap gap-1">
+							<div
+								v-for="research_perspective in work?.research_perspectives"
+								:key="research_perspective.id"
+								class="inline-block bg-frisch-orange px-2 py-1 text-xs text-white opacity-85"
+							>
+								{{ research_perspective.name }}
 							</div>
 						</div>
 						<div id="mobile-drawer" class="block md:hidden">
