@@ -359,6 +359,9 @@ function openDrawer() {
 										>
 											<span>{{ entry.included_in[0]?.title }}</span>
 										</NuxtLink>
+										<span v-if="entry.included_in[0]?.publication_date">
+											{{ " " }}({{ entry.included_in[0].publication_date.split("-")[0] }})
+										</span>
 									</span>
 									<span v-if="index !== work?.expression_data.length - 1">{{ " | " }}</span>
 								</span>
