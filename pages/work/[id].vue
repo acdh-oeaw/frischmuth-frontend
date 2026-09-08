@@ -427,9 +427,11 @@ function openDrawer() {
 											<div class="py-2 text-lg font-semibold">Analyse</div>
 										</div>
 										<div class="block hyphens-auto px-8 text-justify lg:px-16">
-											<div v-if="work?.text_analysis">
-												{{ work?.text_analysis }}
-											</div>
+											<div
+												v-if="work?.text_analysis"
+												class="prose min-w-full hyphens-auto text-black"
+												v-html="work?.text_analysis"
+											/>
 											<div v-else class="text-sm text-muted-foreground">
 												Keine Analyse vorhanden.
 											</div>
@@ -448,6 +450,9 @@ function openDrawer() {
 														</PopoverContent>
 													</Popover>
 												</span>
+											</div>
+											<div v-if="interpretatems && interpretatems.length > 0">
+												<InterpretatemDisplay :interpretatems="interpretatems ?? []" />
 											</div>
 										</div>
 									</div>
