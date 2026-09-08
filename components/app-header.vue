@@ -26,14 +26,14 @@ function close() {
 		<div class="w-full pb-4 pt-8 lg:pt-12">
 			<nav>
 				<div class="grid grid-cols-[1fr_auto] items-center gap-4 lg:items-end">
-					<div class="text-2xl font-semibold text-frisch-orange lg:text-4xl">
+					<div class="relative w-fit min-w-0 text-2xl font-semibold text-frisch-orange lg:text-4xl">
 						<NavLink :href="homeLink.href">
 							Digitales Archiv
 							<br aria-hidden="true" />
 							Barbara Frischmuth
 						</NavLink>
 						<Badge
-							class="text-bold relative left-[-20px] top-[-50px] bg-frisch-orange-light text-frisch-indigo"
+							class="absolute right-0 top-0 -translate-y-full bg-frisch-orange-light font-bold text-frisch-indigo"
 							>BETA</Badge
 						>
 					</div>
