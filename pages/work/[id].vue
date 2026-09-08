@@ -356,9 +356,10 @@ function openDrawer() {
 											id="includedin-references"
 											class="italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
 											:href="`/work/${entry.included_in[0]?.work_id}`"
-										>
-											<span>{{ entry.included_in[0]?.title }}</span>
-										</NuxtLink>
+											>{{ entry.included_in[0]?.title }}</NuxtLink
+										><span v-if="entry.included_in[0]?.publication_date"
+											>, {{ entry.included_in[0].publication_date.split("-")[0] }}</span
+										><span v-if="entry.relevant_pages">, S. {{ entry.relevant_pages }}</span>
 									</span>
 									<span v-if="index !== work?.expression_data.length - 1">{{ " | " }}</span>
 								</span>
@@ -427,9 +428,11 @@ function openDrawer() {
 											<div class="py-2 text-lg font-semibold">Analyse</div>
 										</div>
 										<div class="block hyphens-auto px-8 text-justify lg:px-16">
-											<div v-if="work?.text_analysis">
-												{{ work?.text_analysis }}
-											</div>
+											<div
+												v-if="work?.text_analysis"
+												class="prose min-w-full hyphens-auto text-black"
+												v-html="work?.text_analysis"
+											/>
 											<div v-else class="text-sm text-muted-foreground">
 												Keine Analyse vorhanden.
 											</div>
@@ -448,6 +451,9 @@ function openDrawer() {
 														</PopoverContent>
 													</Popover>
 												</span>
+											</div>
+											<div v-if="interpretatems && interpretatems.length > 0">
+												<InterpretatemDisplay :interpretatems="interpretatems ?? []" />
 											</div>
 										</div>
 									</div>

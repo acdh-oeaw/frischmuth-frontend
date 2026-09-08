@@ -55,6 +55,9 @@ const getType = function (type: WorkTypeData = []) {
 const citation = computed(() => {
 	const citations = (props.metadata || []).flatMap((refs) => {
 		return refs?.map((ref) => {
+			const includedIn = ref.included_in?.[0];
+			const publicationDate = includedIn?.publication_date || ref.publication_date;
+
 			return {
 				type: getType(props.workType),
 				author:
@@ -73,8 +76,10 @@ const citation = computed(() => {
 				language: ref?.language?.join(", ") ?? "",
 				publisher: ref.publisher?.name ?? "",
 				"publisher-place": ref?.place_of_publication?.[0]?.name ?? "",
-				issued: ref?.publication_date ? { "date-parts": [[ref.publication_date]] } : undefined,
-				"collection-title": ref.included_in?.[0]?.title,
+				issued: publicationDate
+					? { "date-parts": [publicationDate.split("-").map(Number)] }
+					: undefined,
+				"collection-title": includedIn?.title,
 				page: ref.relevant_pages,
 			};
 		});
