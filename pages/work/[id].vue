@@ -356,12 +356,10 @@ function openDrawer() {
 											id="includedin-references"
 											class="italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
 											:href="`/work/${entry.included_in[0]?.work_id}`"
-										>
-											<span>{{ entry.included_in[0]?.title }}</span>
-										</NuxtLink>
-										<span v-if="entry.included_in[0]?.publication_date">
-											{{ " " }}({{ entry.included_in[0].publication_date.split("-")[0] }})
-										</span>
+											>{{ entry.included_in[0]?.title }}</NuxtLink
+										><span v-if="entry.included_in[0]?.publication_date"
+											>, {{ entry.included_in[0].publication_date.split("-")[0] }}</span
+										><span v-if="entry.relevant_pages">, S. {{ entry.relevant_pages }}</span>
 									</span>
 									<span v-if="index !== work?.expression_data.length - 1">{{ " | " }}</span>
 								</span>
