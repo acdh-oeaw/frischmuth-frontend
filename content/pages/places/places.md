@@ -12,7 +12,7 @@ eröffnen spezifische Raumsemantiken.
 Anknüpfend an raumtheoretische Überlegungen – etwa an
 Henri Lefebvres Verständnis von Raum als sozial produziertem Gefüge – lassen
 sich diese literarischen Orte als Verdichtungen historischer,
-gesellschaftlicher und symbolischer Schichten lesen. Räume „sprechen“ bei
+gesellschaftlicher und symbolischer Schichten lesen. Räume ›sprechen‹ bei
 Frischmuth: Sie stiften Zusammenhänge, evozieren Erinnerungen, zitieren
 historische Bedeutungen oder konstellieren Spannungen zwischen Individuum und
 Gesellschaft. In diesem Sinne entstehen literarische Topografien, die nicht
@@ -31,11 +31,11 @@ verabsolutieren oder die Texte biografisch zu überfrachten, lässt sich dennoch
 beobachten, dass diese Topografien oft als Motor und Stimulus ihres
 literarischen Schreibens fungieren. Sie bilden Resonanzräume, in denen sich
 persönliche Erfahrung, kulturelles Gedächtnis und gesellschaftliche Reflexion
-überlagern. 
+überlagern.
 
 Im Sinne kulturwissenschaftlicher Raumkonzepte – etwa
 bei Edward Soja oder Michel Foucault – können Frischmuths literarische Räume
-als „Dritträume“ oder Heterotopien gelesen werden: als Orte, an denen dominante
+als »Dritträume« oder Heterotopien gelesen werden: als Orte, an denen dominante
 Ordnungen infrage gestellt, alternative Perspektiven eröffnet und
 gesellschaftliche Machtverhältnisse sichtbar gemacht werden. Topografien
 erscheinen dabei als Spiegel innerer Zustände der Figuren, als Ausdruck von
@@ -48,8 +48,7 @@ Migrationsgesellschaft. Orte werden hier zu Schauplätzen gesellschaftlicher
 Konflikte und Erinnerungskämpfe, aber auch zu Räumen der Begegnung und
 Neuverhandlung. 
 
-Mit
-der systematischen Erfassung und detaillierten Beschreibung von Örtlichkeiten
+Mit der systematischen Erfassung und detaillierten Beschreibung von Örtlichkeiten
 im Analyseraster möchten wir auf dieses Potenzial aufmerksam machen und ein
 Instrument bereitstellen, das literarische Räume sichtbar, vergleichbar und
 durchsuchbar macht. So entsteht ein differenzierter Zugang zu einem zentralen
