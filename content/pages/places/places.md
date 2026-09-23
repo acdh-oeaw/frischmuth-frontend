@@ -55,4 +55,4 @@ durchsuchbar macht. So entsteht ein differenzierter Zugang zu einem zentralen
 Strukturprinzip im Werk Barbara Frischmuths und ein vielseitiges Tool für
 weiterführende literatur- und kulturwissenschaftliche Fragestellungen.
 
-Siehe zur Komplexität und Funktion der Orte auch: https://barbarafrischmuth.com/explore/glossary?entry=32998
+Siehe zur Komplexität und Funktion der Orte auch: <https://barbarafrischmuth.com/explore/glossary?entry=32998>
