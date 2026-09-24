@@ -69,4 +69,7 @@ images:
   - image: /assets/images/4_24-lesebalkon2.jpg
     titel: Lesebalkon
     copyright: © Matthias Schmidt / "Lesebalkon"
+  - image: /assets/images/2016-12-15-14.34.04.jpg
+    titel: Geburtstagsfeier Barbara Frischmuth in der ÖGL 2016
+    copyright: Anna Babka
 ---
