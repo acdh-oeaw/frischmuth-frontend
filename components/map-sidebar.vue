@@ -100,9 +100,8 @@ watch(
 
 							<div v-if="placeDetail.description !== ''">
 								<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-								<div>
-									{{ placeDetail.description }}
-								</div>
+								<!-- eslint-disable-next-line vue/no-v-html -->
+								<div v-html="placeDetail.description" />
 							</div>
 							<div
 								v-if="
@@ -173,9 +172,8 @@ watch(
 
 						<div v-if="placeDetail.description !== ''">
 							<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
-							<div>
-								{{ placeDetail.description }}
-							</div>
+							<!-- eslint-disable-next-line vue/no-v-html -->
+							<div v-html="placeDetail.description" />
 						</div>
 						<div
 							v-if="
