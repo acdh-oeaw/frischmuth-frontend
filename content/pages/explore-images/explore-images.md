@@ -72,4 +72,13 @@ images:
   - titel: Gartenimage
     image: /assets/images/2016-07-06-10.53.04-5.jpg
     copyright: Aleksandra Pawloff 2016
+  - image: /assets/images/4_24-bf.jpg
+    copyright: Matthias Schmidt
+    titel: Barbara im Arbeitszimmer / Privatbibliothek
+  - image: /assets/images/2016-07-06-10.53.02-2.jpg
+    titel: Barbara und Anna, 2016
+    copyright: Aleksandra Pawloff, 2016
+  - image: /assets/images/2016-07-06-10.53.04-4.jpg
+    titel: Blick auf den Loser vom Haus Barbara Frischmuths
+    copyright: Aleksandra Pawloff, 2016
 ---
