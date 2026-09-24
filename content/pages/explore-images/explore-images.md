@@ -72,4 +72,7 @@ images:
   - image: /assets/images/2016-12-15-14.34.04.jpg
     titel: Geburtstagsfeier Barbara Frischmuth in der ÖGL 2016
     copyright: Anna Babka
+  - image: /assets/images/anna-peter-und-barbara-2016-in-danzig.jpg
+    titel: Anna, Peter und Barbara bei der Barbara Frischmuth Tagung 2016 in Danzig
+    copyright: privat
 ---
