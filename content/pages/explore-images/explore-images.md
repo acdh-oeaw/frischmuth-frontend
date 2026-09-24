@@ -81,4 +81,10 @@ images:
   - image: /assets/images/2016-07-06-10.53.04-4.jpg
     titel: Blick auf den Loser vom Haus Barbara Frischmuths
     copyright: Aleksandra Pawloff, 2016
+  - image: /assets/images/garten-mit-dem-blick-auf-den-loser.jpg
+    titel: Garten mit Blick auf den Loser
+    copyright: Anna Babka
+  - image: /assets/images/2017-09-27-11.56.21.jpg
+    titel: Spaziergang am Altausseersee mit Barbara
+    copyright: Anna Babka
 ---
