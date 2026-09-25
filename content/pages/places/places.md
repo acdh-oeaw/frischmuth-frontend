@@ -9,6 +9,8 @@ als Hintergrund des Geschehens, sondern übernehmen häufig eine eigenständige,
 strukturierende Rolle: Sie prägen die Erzählweise, organisieren Bedeutungen und
 eröffnen spezifische Raumsemantiken. 
 
+
+
 Anknüpfend an raumtheoretische Überlegungen – etwa an
 Henri Lefebvres Verständnis von Raum als sozial produziertem Gefüge – lassen
 sich diese literarischen Orte als Verdichtungen historischer,
@@ -18,6 +20,8 @@ historische Bedeutungen oder konstellieren Spannungen zwischen Individuum und
 Gesellschaft. In diesem Sinne entstehen literarische Topografien, die nicht
 statisch sind, sondern durch Wahrnehmung, Bewegung und Erzählung immer wieder
 neu hervorgebracht werden. 
+
+
 
 Auch Michail Bachtins Konzept des Chronotopos, das die
 enge Verschränkung von Raum und Zeit betont, bietet einen produktiven Zugang:
@@ -32,6 +36,8 @@ beobachten, dass diese Topografien oft als Motor und Stimulus ihres
 literarischen Schreibens fungieren. Sie bilden Resonanzräume, in denen sich
 persönliche Erfahrung, kulturelles Gedächtnis und gesellschaftliche Reflexion
 überlagern.
+
+
 
 Im Sinne kulturwissenschaftlicher Raumkonzepte – etwa
 bei Edward Soja oder Michel Foucault – können Frischmuths literarische Räume
@@ -48,11 +54,15 @@ Migrationsgesellschaft. Orte werden hier zu Schauplätzen gesellschaftlicher
 Konflikte und Erinnerungskämpfe, aber auch zu Räumen der Begegnung und
 Neuverhandlung. 
 
+
+
 Mit der systematischen Erfassung und detaillierten Beschreibung von Örtlichkeiten
 im Analyseraster möchten wir auf dieses Potenzial aufmerksam machen und ein
 Instrument bereitstellen, das literarische Räume sichtbar, vergleichbar und
 durchsuchbar macht. So entsteht ein differenzierter Zugang zu einem zentralen
 Strukturprinzip im Werk Barbara Frischmuths und ein vielseitiges Tool für
 weiterführende literatur- und kulturwissenschaftliche Fragestellungen.
+
+
 
 Siehe zur Komplexität und Funktion der Orte auch: [Glossar - Orte](https://barbarafrischmuth.com/explore/glossary?entry=32998)
