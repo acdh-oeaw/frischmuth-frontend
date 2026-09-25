@@ -75,15 +75,12 @@ images:
   - image: /assets/images/4_24-bf.jpg
     copyright: Matthias Schmidt
     titel: Barbara im Arbeitszimmer / Privatbibliothek
-  - image: /assets/images/2016-07-06-10.53.02-2.jpg
-    titel: Barbara und Anna, 2016
-    copyright: Aleksandra Pawloff, 2016
   - image: /assets/images/2016-07-06-10.53.04-4.jpg
     titel: Blick auf den Loser vom Haus Barbara Frischmuths
     copyright: Aleksandra Pawloff, 2016
   - image: /assets/images/garten-mit-dem-blick-auf-den-loser.jpg
     titel: Garten mit Blick auf den Loser
-    copyright: Anna Babka
+    copyright: Aleksandra Pawloff
   - image: /assets/images/2017-09-27-11.56.21.jpg
     titel: Spaziergang am Altausseersee mit Barbara
     copyright: Anna Babka
