@@ -57,32 +57,33 @@ images:
     titel: Matthias und Barbara in der Bibliothek
     copyright: © Anna Babka / "Matthias und Barbara"
   - image: /assets/images/frische-aura.jpg
-    titel: Anna und Peter in der Bibliothek
+    titel: © Matthias Schmidt / "Anna und Peter in der Bibliothek"
     copyright: '@ Matthias Schmidt / "Anna und Peter in der Bibliothek"'
   - image: /assets/images/4_24-arbeitszimmer1.jpg
     titel: All together
     copyright: ' © Matthias Schmidt / "Working"'
   - image: /assets/images/4_24-zocki.jpg
     titel: Julia und Caro mit Socki, der Hauskatze
-    copyright: "© Anna Babka: Julia und Caro mit Socki, der Hauskatze"
+    copyright: '© Anna Babka: "Julia und Caro mit Socki, der Hauskatze"'
     alt: © Anna Babka / "Julia und Caro mit Socki, der Hauskatze"
   - image: /assets/images/4_24-lesebalkon2.jpg
     titel: Lesebalkon
     copyright: © Matthias Schmidt / "Lesebalkon"
   - titel: Gartenimage
     image: /assets/images/2016-07-06-10.53.04-5.jpg
-    copyright: Aleksandra Pawloff 2016
+    copyright: © Aleksandra Pawloff 2016
   - image: /assets/images/4_24-bf.jpg
-    copyright: Matthias Schmidt
+    copyright: © Matthias Schmidt / "Barbara im Arbeitszimmer"
     titel: Barbara im Arbeitszimmer / Privatbibliothek
   - image: /assets/images/2016-07-06-10.53.04-4.jpg
     titel: Blick auf den Loser vom Haus Barbara Frischmuths
-    copyright: Aleksandra Pawloff, 2016
+    copyright: © Aleksandra Pawloff (2016) "Blick auf den Loser vom Haus Barbara
+      Frischmuths"
   - image: /assets/images/garten-mit-dem-blick-auf-den-loser.jpg
     titel: Garten mit Blick auf den Loser
-    copyright: Aleksandra Pawloff
+    copyright: © Aleksandra Pawloff (2016)
   - image: /assets/images/2017-09-27-11.56.21.jpg
     titel: Spaziergang am Altausseersee mit Barbara
-    copyright: Anna Babka
-    alt: Anna Babka "Spaziergang am Altausseersee mit Barbara"
+    copyright: © Anna Babka / "Spaziergang am Altausseersee mit Barbara"
+    alt: Anna Babka / "Spaziergang am Altausseersee mit Barbara"
 ---
