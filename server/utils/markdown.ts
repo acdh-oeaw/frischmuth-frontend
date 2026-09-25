@@ -43,7 +43,7 @@ export async function processMarkdownFile<T extends object>(
 		}
 	}
 
-	const body = String(vfile);
+	const body = String(await processor.process({ value: String(vfile) }));
 
 	return {
 		metadata,
