@@ -81,7 +81,7 @@ images:
       Frischmuths"
   - image: /assets/images/garten-mit-dem-blick-auf-den-loser.jpg
     titel: Garten mit Blick auf den Loser
-    copyright: © Aleksandra Pawloff (2016)
+    copyright: © Anna Babka / "Garten mit Blick auf den Loser"
   - image: /assets/images/2017-09-27-11.56.21.jpg
     titel: Spaziergang am Altausseersee mit Barbara
     copyright: © Anna Babka / "Spaziergang am See mit Barbara"
