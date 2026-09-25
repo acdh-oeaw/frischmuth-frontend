@@ -43,7 +43,7 @@ images:
     copyright: »Das Team«
   - image: /assets/images/b.frischmuth-revised-by-anna.jpg
     titel: Barbara Frischmuth Portrait
-    copyright: © Aleksandra Pawloff / »Portrait«
+    copyright: © Aleksandra Pawloff (2016) / »Portrait«
   - image: /assets/images/unspecified.jpg
     titel: Babara im Garten 2016
     copyright: © Aleksandra Pawloff (2016) / »Im Garten«
