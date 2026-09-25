@@ -5,7 +5,7 @@ coordinates:
   longitude: 13.809837469205734
 links:
   - url: https://frischmuth-dev.acdh-dev.oeaw.ac.at/entity/30627/
-    title: Wenn Erinnerung erzählbar wird
+    title: "Wenn Erinnerung erzählbar wird "
   - title: Amy oder Die Metamorphose
     url: https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/apis_ontology.work/update/19396
   - title: Jahre
