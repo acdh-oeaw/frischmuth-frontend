@@ -84,6 +84,6 @@ images:
     copyright: © Aleksandra Pawloff (2016)
   - image: /assets/images/2017-09-27-11.56.21.jpg
     titel: Spaziergang am Altausseersee mit Barbara
-    copyright: © Anna Babka / "Spaziergang am Altausseersee mit Barbara"
+    copyright: © Anna Babka / "Spaziergang am See mit Barbara"
     alt: Anna Babka / "Spaziergang am Altausseersee mit Barbara"
 ---
