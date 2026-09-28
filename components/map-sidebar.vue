@@ -101,7 +101,7 @@ watch(
 							<div v-if="placeDetail.description !== ''">
 								<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
 								<!-- eslint-disable-next-line vue/no-v-html -->
-								<div v-html="placeDetail.description" />
+								<div class="rich-text" v-html="placeDetail.description" />
 							</div>
 							<div
 								v-if="
@@ -114,7 +114,7 @@ watch(
 								<div v-for="link in placeDetail.related_works" :key="link.id">
 									<RelatedWorkDisplay :related-work="[link]" />
 									<NavLink
-										class="flex cursor-pointer items-center gap-1 underline decoration-dotted hover:no-underline"
+										class="flex cursor-pointer items-center gap-1 italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
 										:href="`/work/${link.id}`"
 									>
 										{{ link.title }}
@@ -173,7 +173,7 @@ watch(
 						<div v-if="placeDetail.description !== ''">
 							<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
 							<!-- eslint-disable-next-line vue/no-v-html -->
-							<div v-html="placeDetail.description" />
+							<div class="rich-text" v-html="placeDetail.description" />
 						</div>
 						<div
 							v-if="

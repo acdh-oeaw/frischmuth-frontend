@@ -32,7 +32,7 @@ const props = defineProps<{
 				<div class="px-4 py-2">
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
 					<!-- eslint-disable-next-line vue/no-v-html -->
-					<div class="text-black" v-html="props.source.description" />
+					<div class="rich-text text-black" v-html="props.source.description" />
 				</div>
 			</DrawerContent>
 		</Drawer>
@@ -58,7 +58,7 @@ const props = defineProps<{
 				<SheetDescription>
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
 					<!-- eslint-disable-next-line vue/no-v-html -->
-					<div class="text-black" v-html="props.source.description" />
+					<div class="rich-text text-black" v-html="props.source.description" />
 				</SheetDescription>
 			</SheetContent>
 		</Sheet>

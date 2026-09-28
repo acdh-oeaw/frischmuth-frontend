@@ -133,7 +133,7 @@ function closeSidebar() {
 					<a
 						v-for="group in perspectives"
 						:key="group.letter"
-						class="text-lg text-frisch-indigo no-underline hover:underline"
+						class="text-lg italic text-frisch-indigo underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
 						:href="`#letter-${group.letter}`"
 					>
 						{{ group.letter }}

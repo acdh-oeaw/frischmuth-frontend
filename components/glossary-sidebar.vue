@@ -86,7 +86,7 @@ watch(
 						>
 							<div v-if="glossaryDetail.description !== ''">
 								<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-								<div v-html="glossaryDetail.description" />
+								<div class="rich-text" v-html="glossaryDetail.description" />
 							</div>
 							<div
 								v-if="
@@ -140,7 +140,7 @@ watch(
 					>
 						<div v-if="glossaryDetail.description !== ''">
 							<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
-							<div v-html="glossaryDetail.description" />
+							<div class="rich-text" v-html="glossaryDetail.description" />
 						</div>
 						<div
 							v-if="

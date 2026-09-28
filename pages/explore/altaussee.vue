@@ -90,7 +90,7 @@ function onChangePlaceDetail(toggleValue: boolean, place: AltausseePlace | null)
 					<article class="grid gap-1 text-xs">
 						<strong class="font-medium">
 							<NavLink
-								class="flex cursor-pointer items-center gap-1 underline decoration-dotted hover:no-underline"
+								class="flex cursor-pointer items-center gap-1 italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
 								href="#"
 								@click="onChangePlaceDetail(true, popover.place)"
 							>

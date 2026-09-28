@@ -389,6 +389,7 @@ function openDrawer() {
 								class="inline-block bg-frisch-indigo px-2 py-1 text-xs text-white opacity-85"
 							>
 								<NuxtLink
+									class="italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
 									:to="{
 										path: '/search',
 										query: {
@@ -845,6 +846,6 @@ function openDrawer() {
 
 <style scoped>
 .prose :deep(a) {
-	@apply underline font-normal decoration-dotted transition hover:no-underline focus-visible:no-underline;
+	@apply italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline;
 }
 </style>

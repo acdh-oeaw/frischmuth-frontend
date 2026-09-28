@@ -87,7 +87,7 @@ watch(
 						>
 							<div v-if="topicDetail.description !== ''">
 								<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-								<section v-html="topicDetail.description" />
+								<section class="rich-text" v-html="topicDetail.description" />
 							</div>
 							<div v-if="topicDetail.related_works != null && topicDetail.related_works.length > 0">
 								<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
@@ -135,7 +135,7 @@ watch(
 					>
 						<div v-if="topicDetail.description !== ''">
 							<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
-							<section v-html="topicDetail.description" />
+							<section class="rich-text" v-html="topicDetail.description" />
 						</div>
 						<div v-if="topicDetail.related_works != null && topicDetail.related_works.length > 0">
 							<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>

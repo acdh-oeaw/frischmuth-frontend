@@ -105,7 +105,7 @@ watch(
 						>
 							<div v-if="characterDetail.description !== ''">
 								<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-								<div v-html="characterDetail.description" />
+								<div class="rich-text" v-html="characterDetail.description" />
 							</div>
 							<div>Weitere Informationen finden Sie hier: {{ characterDetail.uris }}</div>
 						</div>
@@ -122,7 +122,7 @@ watch(
 						<h1 class="pb-2 text-lg font-semibold">{{ characterDetail.metacharacter.name }}</h1>
 						<div v-if="characterDetail.metacharacter.description !== ''">
 							<div class="pt-2 text-base font-semibold text-black">Beschreibung</div>
-							<div v-html="characterDetail.metacharacter.description" />
+							<div class="rich-text" v-html="characterDetail.metacharacter.description" />
 						</div>
 						<div
 							v-if="
@@ -185,7 +185,7 @@ watch(
 					>
 						<div v-if="characterDetail.description !== ''">
 							<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-							<div v-html="characterDetail.description" />
+							<div class="rich-text" v-html="characterDetail.description" />
 						</div>
 						<div
 							v-if="characterDetail.uris != null && characterDetail.uris.length > 0"
@@ -194,7 +194,7 @@ watch(
 							<h2 class="font-semibold">Weitere Informationen finden Sie hier:</h2>
 							<div v-for="(url, index) in characterDetail.uris" :key="index">
 								<NavLink
-									class="flex cursor-pointer items-center gap-1 hyphens-auto pt-1 underline decoration-dotted hover:no-underline"
+									class="flex cursor-pointer items-center gap-1 hyphens-auto pt-1 italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
 									:href="url"
 									target="_blank"
 								>
@@ -215,7 +215,7 @@ watch(
 						<h1 class="pb-2 text-lg font-semibold">{{ characterDetail.metacharacter.name }}</h1>
 						<div v-if="characterDetail.metacharacter.description !== ''">
 							<div class="pt-2 text-base font-semibold text-black">Beschreibung</div>
-							<div v-html="characterDetail.metacharacter.description" />
+							<div class="rich-text" v-html="characterDetail.metacharacter.description" />
 						</div>
 						<div
 							v-if="

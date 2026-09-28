@@ -28,7 +28,7 @@ defineProps<{
 					<div>in</div>
 					<NuxtLink
 						id="interpretatem-work"
-						class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
+						class="italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
 						:href="`/work/${item.id}`"
 					>
 						<span>{{ item.title }}</span>
@@ -46,6 +46,6 @@ defineProps<{
 
 <style scoped>
 .prose :deep(a) {
-	@apply underline font-normal decoration-dotted transition hover:no-underline focus-visible:no-underline;
+	@apply italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline;
 }
 </style>

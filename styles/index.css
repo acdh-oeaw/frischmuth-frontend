@@ -16,6 +16,11 @@ body,
 	text-rendering: optimizeLegibility;
 }
 
+.prose a,
+.rich-text a {
+	@apply italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline;
+}
+
 /* Width and height of the scrollbar */
 ::-webkit-scrollbar {
 	width: 3px; /* Width for vertical scrollbars */

@@ -94,7 +94,7 @@ const randomImages = computed(() => {
 
 				<template v-if="randomQuotes[0] != null">
 					<!-- eslint-disable-next-line vue/no-v-html -->
-					<div v-html="randomQuotes[0].body" />
+					<div class="rich-text" v-html="randomQuotes[0].body" />
 				</template>
 				<template v-else>
 					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">
@@ -153,7 +153,7 @@ const randomImages = computed(() => {
 
 				<template v-if="randomQuotes[1] != null">
 					<!-- eslint-disable-next-line vue/no-v-html -->
-					<div v-html="randomQuotes[1].body" />
+					<div class="rich-text" v-html="randomQuotes[1].body" />
 				</template>
 				<template v-else>
 					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">
@@ -185,7 +185,7 @@ const randomImages = computed(() => {
 
 				<template v-if="randomQuotes[2] != null">
 					<!-- eslint-disable-next-line vue/no-v-html -->
-					<div v-html="randomQuotes[2].body" />
+					<div class="rich-text" v-html="randomQuotes[2].body" />
 				</template>
 				<template v-else>
 					<span class="flex size-full items-center justify-center text-sm text-frisch-orange">

@@ -88,7 +88,7 @@ watch(
 						>
 							<div v-if="perspectiveDetail.description !== ''">
 								<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
-								<section v-html="perspectiveDetail.description" />
+								<section class="rich-text" v-html="perspectiveDetail.description" />
 							</div>
 							<div
 								v-if="
@@ -142,7 +142,7 @@ watch(
 					>
 						<div v-if="perspectiveDetail.description !== ''">
 							<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
-							<section v-html="perspectiveDetail.description" />
+							<section class="rich-text" v-html="perspectiveDetail.description" />
 						</div>
 						<div
 							v-if="

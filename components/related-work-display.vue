@@ -34,7 +34,7 @@ function getValidAuthorNames(authors: Array<Partial<Author>>): Array<string> {
 					</template>
 					<NuxtLink
 						id="relatedWork-references"
-						class="underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
+						class="italic underline decoration-dotted transition hover:no-underline focus-visible:no-underline"
 						:href="`/work/${work.id}`"
 					>
 						<span>{{ work.title }}</span>

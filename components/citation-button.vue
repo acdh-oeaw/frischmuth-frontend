@@ -211,7 +211,7 @@ onScopeDispose(() => {
 								</TabsContent>
 								<TabsContent class="p-2 text-black" value="apa">
 									<!-- eslint-disable-next-line vue/no-v-html -->
-									<span v-html="apa" />
+									<span class="rich-text" v-html="apa" />
 								</TabsContent>
 								<TabsContent class="p-2 text-black" value="ris">
 									<pre>{{ ris }}</pre>

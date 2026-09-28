@@ -64,7 +64,7 @@ onScopeDispose(() => {
 				<div v-if="props.place.body != ''">
 					<h2 class="py-2 text-base font-semibold text-black">Beschreibung</h2>
 					<!-- eslint-disable-next-line vue/no-v-html -->
-					<section v-html="props.place.body" />
+					<section class="rich-text" v-html="props.place.body" />
 				</div>
 				<div
 					v-if="place != null && place.metadata.links != null && place.metadata.links.length > 0"
@@ -102,7 +102,7 @@ onScopeDispose(() => {
 				<div v-if="props.place.body != ''">
 					<div class="py-2 text-base font-semibold text-black">Beschreibung</div>
 					<!-- eslint-disable-next-line vue/no-v-html -->
-					<section v-html="props.place.body" />
+					<section class="rich-text" v-html="props.place.body" />
 				</div>
 				<div
 					v-if="place != null && place.metadata.links != null && place.metadata.links.length > 0"
