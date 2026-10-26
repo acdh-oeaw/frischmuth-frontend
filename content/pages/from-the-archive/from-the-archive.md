@@ -3,24 +3,24 @@ title: Zu den Archiven
 sections:
   - title: Digitales und analoges Archiv Barbara Frischmuth
     content: >-
-      Das Digitale Archiv Barbara Frischmuth bietet einen systematischen
-      Überblick über die Nachlassbestände der Autorin, die in analoger Form
-      überwiegend im [Franz-Nabl-Institut für
-      Literaturforschung](https://franz-nabl-institut.uni-graz.at/de/) der
-      Universität Graz sowie in geringerem Umfang in der [Adolf Haslinger
-      Literaturstiftung](https://www.plus.ac.at/literaturarchiv-salzburg/das-literaturarchiv/adolf-haslinger-literaturstiftung/)
-      in Salzburg verwahrt werden. Es versteht sich ausdrücklich nicht als
-      digitale archivarische Einrichtung im engeren Sinn, da keine Digitalisate
-      bereitgestellt werden. Vielmehr verfolgt das Projekt einen
-      dokumentarisch-analytischen Ansatz, der einen wissenschaftlich fundierten
-      Gesamtblick auf das Werk sowie auf dessen Entstehungszusammenhänge
-      ermöglicht.
+      Das Digitale Archiv Barbara Frischmuth ist eine digitale, wissenschaftlich
+      ausgerichtete Erschließungs- und Forschungsressource, die archivalische
+      Bestandserschließung mit werkbezogener Dokumentation und Rezeptionsanalyse
+      verbindet. Es bietet einen systematischen Überblick über die
+      Nachlassbestände der Autorin, die überwiegend im Franz-Nabl-Institut in
+      Graz und in geringem Umfang im Literaturarchiv Salzburg verwahrt werden.
+      Anders als ein digitales Archiv im engeren Sinne stellt es keine
+      Digitalisate der Originalmaterialien bereit. Sein
+      dokumentarisch-analytischer Ansatz zielt vielmehr darauf ab, die Bestände
+      systematisch zu erschließen, ihre Auffindbarkeit zu gewährleisten und ihre
+      Bedeutung für die wissenschaftliche Erforschung des literarischen Werks
+      und seiner Entstehungszusammenhänge sichtbar zu machen.
 
 
-      Ziel des Projekts ist einerseits die detaillierte Erschließung der Nachlassbestände und ihre wechselseitige Verknüpfung mit den Einträgen zum Primärwerk im Digitalen Archiv. Andererseits soll die deutsch- und englischsprachige akademische sowie die deutschsprachige journalistische Rezeption systematisch dokumentiert, analysiert und miteinander in Beziehung gesetzt werden. Auf diese Weise leistet das Digitale Archiv einen zentralen Beitrag zur wissenschaftlichen Aufarbeitung des Gesamtwerks an der Schnittstelle von Germanistik und Archiv.
+      Das Projekt verfolgt zwei miteinander verbundene Ziele: Zum einen werden die Nachlassbestände detailliert erschlossen, in ihren Überlieferungszusammenhängen dokumentiert und mit den entsprechenden Einträgen des Digitalen Archivs verknüpft. Zum anderen werden die deutsch- und englischsprachige wissenschaftliche sowie die deutschsprachige journalistische Rezeption des Werks systematisch dokumentiert und analysiert. Durch die Verknüpfung von Nachlasserschließung, Werkdokumentation und Rezeptionsgeschichte entsteht eine digitale Forschungsinfrastruktur, die über die Funktion eines klassischen Bestandskatalogs oder Findmittels hinausgeht und einen Beitrag zur wissenschaftlichen Aufarbeitung von Barbara Frischmuths Gesamtwerk an der Schnittstelle von Archivwissenschaft, Germanistik und Digital Humanities leistet.
 
 
-      Die Erschließungsarbeit ist als fortlaufender Prozess angelegt: Während in der ersten Projektphase ausschließlich jene Teile des Nachlasses berücksichtigt werden konnten, die bis einschließlich 2017 dokumentiert waren, ist nun die vollständige Erfassung, analytische Bearbeitung und Verknüpfung sämtlicher Bestände, die mit dem Primärwerk im Zusammenhang stehen, vorgesehen. Die Integration und Bearbeitung der Korrespondenzen, die ebenfalls Rückschlüsse auf Entstehungsprozesse des Primärweks geben könnten oder auch die Bildmaterialien können aufgrund der Fülle des Materials seitens des Digitalen Archivs erst in einem weiteren Schritt erfolgen.
+      Die Erschließung ist als fortlaufender Prozess angelegt. Während in der ersten Projektphase ausschließlich jene Teile des Nachlasses berücksichtigt werden konnten, die bis einschließlich 2017 dokumentiert waren, werden in der zweiten Phase (2027-2030) sämtliche Bestände erfasst und innerhalb der physischen Archivüberlieferung präzise lokalisiert. Parallel dazu wird die Dokumentation der wissenschaftlichen und journalistischen Rezeption erweitert und durch die schrittweise Einbindung weiterer Zeitschriftenarchive ergänzt.
   - content: |-
       
 
