@@ -1,5 +1,5 @@
 ---
-title: Die Technik der Libellen I
+title: Die Technik der Libellen II
 link: /work/30478
 ---
-»Wannimmer Tom und Lula zu den Teichen blickten, um die schönsten Libellen zubetrachten, erzählten sie einander ihre Zukunft, an die sie noch immer glaubten.«
+»Aus Farben Märchen machen und mindestens vier Flügel haben, um in dieser Welt zu existieren. Dazu braucht man keine Ohren.«
