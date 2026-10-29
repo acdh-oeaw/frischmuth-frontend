@@ -735,23 +735,28 @@ function openDrawer() {
 						<div>
 							<div>
 								<div v-if="work?.physical_objects && work?.physical_objects.length > 0">
-									<div
-										class="grid grid-rows-[auto_auto_auto] gap-4 2xl:grid-cols-[auto_1fr] 2xl:gap-10"
-									>
-										<div>
-											<div class="pb-2 font-semibold">Archiv</div>
-											<div v-for="thing in work?.physical_objects" :key="thing.id">
-												<div class="pb-2">
-													{{ thing.archive?.name }}
-												</div>
-											</div>
-										</div>
-										<div>
-											<div class="pb-2 font-semibold">Objekt</div>
-											<div v-for="thing in work?.physical_objects" :key="thing.id">
-												<div class="pb-2">{{ thing.name }}</div>
-											</div>
-										</div>
+									<div class="overflow-x-auto">
+										<table class="w-full table-fixed text-left">
+											<thead>
+												<tr>
+													<th class="w-1/3 pb-2 pr-4 font-semibold">Archiv</th>
+													<th class="pb-2 font-semibold">Objekt</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr v-for="thing in work?.physical_objects" :key="thing.id">
+													<td
+														class="overflow-hidden whitespace-normal break-words pb-2 pr-4 align-top"
+													>
+														{{ thing.archive?.name }}
+													</td>
+													<td class="pb-2 align-top">
+														<!-- eslint-disable-next-line vue/no-v-html -->
+														<div v-html="thing.description" />
+													</td>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
 								<div v-else class="text-sm text-muted-foreground">
