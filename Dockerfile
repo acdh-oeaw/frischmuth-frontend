@@ -42,6 +42,7 @@ WORKDIR /app
 USER node
 
 COPY --from=build --chown=node:node /app/.output ./
+COPY --from=build --chown=node:node /app/content ./content
 
 ENV NODE_ENV=production
 
