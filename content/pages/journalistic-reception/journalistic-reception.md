@@ -6,7 +6,7 @@ sections:
       Aufbauend auf Beständen des Literaturhauses Wien, des Franz-Nabl-Instituts
       in Graz, des Literaturarchivs Innsbruck sowie weiterer Archivquellen wird
       im Digitalen Archiv Barbara Frischmuth eine immaterielle Sammlung der
-      Literaturkritik zu Barbara Frischmuths Werk aufgebaut. Zunächst erfolgt
+      Literaturkritik zu Barbara Frischmuths Werk errichtet. Zunächst erfolgt
       eine bibliografische Erfassung der erschienenen Rezensionen, Kritiken und
       Berichte. In einem weiteren Schritt werden diese Texte im Hinblick auf
       ihre Anschlussfähigkeit an diskurs-, medien- und feldtheoretische
