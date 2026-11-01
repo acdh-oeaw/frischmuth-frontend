@@ -86,4 +86,7 @@ images:
     titel: Spaziergang am Altausseersee mit Barbara
     copyright: © Anna Babka / »Spaziergang am See mit Barbara«
     alt: Anna Babka / "Spaziergang am Altausseersee mit Barbara"
+  - image: /assets/images/20261031_234200.jpg
+    titel: Collage Garten
+    copyright: © 2023 Anna Babka / »Gartenblicke«
 ---
