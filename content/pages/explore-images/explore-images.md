@@ -71,7 +71,7 @@ images:
     copyright: © Matthias Schmidt / »Lesebalkon«
   - titel: Gartenimage
     image: /assets/images/2016-07-06-10.53.04-5.jpg
-    copyright: © Aleksandra Pawloff 2016
+    copyright: © Aleksandra Pawloff 2016 / »When trees and flowers merge ...«
   - image: /assets/images/4_24-bf.jpg
     copyright: © Matthias Schmidt / »Barbara im Arbeitszimmer«
     titel: Barbara im Arbeitszimmer / Privatbibliothek
