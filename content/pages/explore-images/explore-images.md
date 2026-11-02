@@ -86,9 +86,9 @@ images:
     titel: Spaziergang am Altausseersee mit Barbara
     copyright: © Anna Babka / »Spaziergang am See mit Barbara«
     alt: Anna Babka / "Spaziergang am Altausseersee mit Barbara"
-  - image: /assets/images/20261031_234200.jpg
-    titel: Collage Garten
-    copyright: © 2023 Anna Babka / »Gartenblicke«
+  - image: /assets/images/2016-07-06-10.53.04-5.jpg
+    titel: Baum mit Clematis
+    copyright: © 2023 Anna Babka / »Baum mit Clematis«
   - image: /assets/images/20240426_175352.jpg
     titel: Das Haus
     copyright: © Anna Babka / »Das Haus«
