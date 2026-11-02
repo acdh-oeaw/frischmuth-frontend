@@ -25,7 +25,7 @@ sections:
       Anna Babka
 
 
-      ![](/assets/images/2023-04-02-22.02.14.jpg "»gemeinsam«")
+      ![](/assets/images/2023-04-02-22.02.14.jpg "»gemeinsam — Peter, Matthias, Julia, Anna & Barbara«")
   - title: Das Projekt
     content: >-
       Der Nachlass von Barbara Frischmuth (1941–2025) befindet sich überwiegend
