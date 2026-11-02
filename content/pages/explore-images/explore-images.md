@@ -86,9 +86,9 @@ images:
     titel: Spaziergang am Altausseersee mit Barbara
     copyright: © Anna Babka / »Spaziergang am See mit Barbara«
     alt: Anna Babka / "Spaziergang am Altausseersee mit Barbara"
-  - image: /assets/images/unspecified.jpg
-    titel: Baum mit Clematis
-    copyright: © 2016 Aleksandra Pawloff / »Barbara Frischmuth führt durch den Garten«
+  - image: /assets/images/20241018_094015.jpg
+    titel: Herbstzeit
+    copyright: Anna Babka / »Herbstzeit«
   - image: /assets/images/20240426_175352.jpg
     titel: Das Haus
     copyright: © Anna Babka / »Das Haus«
