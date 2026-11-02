@@ -92,4 +92,7 @@ images:
   - image: /assets/images/20240426_175352.jpg
     titel: Das Haus
     copyright: © Anna Babka / »Das Haus«
+  - image: /assets/images/2024-11-30-18.38.13-2.jpg
+    titel: Der Mann im Garten
+    copyright: © Anna Babka / »Der Gartenmann«
 ---
