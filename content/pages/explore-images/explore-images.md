@@ -89,4 +89,7 @@ images:
   - image: /assets/images/20261031_234200.jpg
     titel: Collage Garten
     copyright: © 2023 Anna Babka / »Gartenblicke«
+  - image: /assets/images/20240426_175352.jpg
+    titel: Das Haus
+    copyright: © Anna Babka / »Das Haus«
 ---
