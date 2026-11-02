@@ -29,7 +29,7 @@ sections:
       im Franz-Nabl-Institut für Literaturforschung in Graz und zu einem
       geringeren Teil in der Adolf-Haslinger-Literaturstiftung am
       Literaturarchiv Salzburg. Das Digitale Archiv Barbara Frischmuth ist eine
-      digitale, wissenschaftlich ausgerichtete Forschungsressource, die darauf
+      digitale, wissenschaftlich formierte Forschungsressource, die darauf
       abzielt, das literarische Gesamtwerk der Autorin in seinen vielfältigen
       Entstehungs-, Überlieferungs- und Rezeptionszusammenhängen zu
       dokumentieren, zu erschließen und wissenschaftlich zu analysieren. Es
