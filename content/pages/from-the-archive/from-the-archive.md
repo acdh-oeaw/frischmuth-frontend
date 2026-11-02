@@ -4,7 +4,7 @@ sections:
   - title: Digitales und analoges Archiv Barbara Frischmuth
     content: >-
       Das Digitale Archiv Barbara Frischmuth ist eine digitale, wissenschaftlich
-      ausgerichtete Erschließungs- und Forschungsressource, die archivalische
+      formierte Erschließungs- und Forschungsressource, die archivalische
       Bestandserschließung mit werkbezogener Dokumentation und systematischer
       Rezeptionsanalyse verbindet. Es bietet einen strukturierten Überblick über
       die Nachlassbestände der Autorin, die überwiegend im Franz-Nabl-Institut
