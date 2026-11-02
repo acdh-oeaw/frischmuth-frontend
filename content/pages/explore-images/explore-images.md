@@ -101,4 +101,7 @@ images:
   - copyright: © Anna Babka / »Gartenimpressionen«
     titel: Gartenimpressionen
     image: /assets/images/2024-11-30-18.38.13-1.jpg
+  - image: /assets/images/fundstück-privatbibliothek.heic
+    titel: ein seltsames Tier
+    copyright: © Matthias Schmidt / »Goldenes mit Buch«
 ---
