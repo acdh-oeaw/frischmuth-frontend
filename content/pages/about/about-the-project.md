@@ -18,8 +18,8 @@ sections:
       'Privatbibliothek', dort, wo sie geschrieben, gelesen, gearbeitet hat,
       wird uns allen unvergesslich bleiben. Möge dieses Projekt der Erinnerung
       an sie gerecht werden und die Menschen nicht nur informieren, sondern auch
-      staunen lassen ob der Vielfalt, Tiefe und Leichtigkeit dessen, was sie uns
-      hinterlassen hat.
+      staunen lassen ob der Vielfalt, Tiefe, Schönheit aber auch Leichtigkeit
+      dessen, was sie uns hinterlassen hat.
 
 
       Anna Babka
