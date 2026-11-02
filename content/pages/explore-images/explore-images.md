@@ -44,9 +44,9 @@ images:
   - image: /assets/images/b.frischmuth-revised-by-anna.jpg
     titel: Barbara Frischmuth Portrait
     copyright: © Aleksandra Pawloff (2016) / »Portrait«
-  - image: /assets/images/unspecified.jpg
-    titel: Babara im Garten 2016
-    copyright: © Aleksandra Pawloff (2016) / »Im Garten«
+  - image: /assets/images/20241018_094105.jpg
+    titel: Haus mit Loser
+    copyright: © Anna Babka / »Haus mit Loser«
   - image: /assets/images/befunky-collage-by-anna.jpg
     titel: "collage first visit "
     copyright: © Aleksandra Pawloff (2016) / »erster Besuch in Altaussee«
