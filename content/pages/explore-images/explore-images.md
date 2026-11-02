@@ -88,7 +88,7 @@ images:
     alt: Anna Babka / "Spaziergang am Altausseersee mit Barbara"
   - image: /assets/images/2016-07-06-10.53.04-5.jpg
     titel: Baum mit Clematis
-    copyright: © 2023 Anna Babka / »Baum mit Clematis«
+    copyright: © 2023 Anna Babka / »Der Baum mit Clematis«
   - image: /assets/images/20240426_175352.jpg
     titel: Das Haus
     copyright: © Anna Babka / »Das Haus«
