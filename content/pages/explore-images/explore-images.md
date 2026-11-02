@@ -110,4 +110,7 @@ images:
   - image: /assets/images/schmökern.jpg
     titel: Schmökern in der Bibliothek
     copyright: © Matthias Schmidt / »Schmökern«
+  - image: /assets/images/gold-digger.jpg
+    titel: Analoges und Digitales
+    copyright: © Matthias Schmidt / »Golddigger«
 ---
