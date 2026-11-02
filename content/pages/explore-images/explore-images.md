@@ -97,7 +97,7 @@ images:
     copyright: © Anna Babka / »Der Gartenmann«
   - image: /assets/images/peter-clar-barbara-frischmuth.jpg
     titel: Peter und Barbara
-    copyright: © Anna Babka / »Peter und Barbara«
+    copyright: © Anna Babka / »Peter und Barbara auf der Terrasse«
   - copyright: © Anna Babka / »Gartenimpressionen«
     titel: Gartenimpressionen
     image: /assets/images/2024-11-30-18.38.13-1.jpg
