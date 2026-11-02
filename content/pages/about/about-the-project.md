@@ -9,12 +9,12 @@ sections:
       unzähligen Stationen, der offiziellen wie privaten Zusammenkünfte, der
       vielen Spaziergänge am See, bei denen geredet und gelacht, philosophiert
       und politisiert und, naturgemäß, über Literatur diskutiert wurde, hat sich
-      etwas entwickelt, was, auch nach ihrem Tod, nur schwer fassbar zu zeigen,
-      zu vermitteln ist. Was vielleicht sichtbar wird, nicht zuletzt durch die
-      sehr persönlichen Fotos, die in wechselnder Abfolge auf der
-      "Entdecken"-Seite zu sehen sind, ist die enge Bindung des gesamten Teams
-      an Barbara Frischmuth, an ihr Haus, ihren 'unwiderstehlichen' Garten oder
-      an die Hauskatze 'Socki'. Besonders die gemeinsame Zeit in ihrer
+      etwas entwickelt, das auch nach ihrem Tod nur schwer fassbar zu zeigen, zu
+      vermitteln ist. Was vielleicht sichtbar wird, nicht zuletzt durch die sehr
+      persönlichen Fotos, die in wechselnder Abfolge auf der "Entdecken"-Seite
+      zu sehen sind, ist die enge Bindung des gesamten Teams an Barbara
+      Frischmuth, an ihr Haus, ihren 'unwiderstehlichen' Garten oder an die
+      Hauskatze 'Socki'. Besonders die gemeinsame Zeit in ihrer
       'Privatbibliothek', dort, wo sie geschrieben, gelesen, gearbeitet hat,
       wird uns allen unvergesslich bleiben. Möge dieses Projekt der Erinnerung
       an sie gerecht werden und die Menschen nicht nur informieren, sondern auch
