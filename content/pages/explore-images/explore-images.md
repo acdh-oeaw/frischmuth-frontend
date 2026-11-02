@@ -104,4 +104,7 @@ images:
   - image: /assets/images/fundstück-privatbibliothek.heic
     titel: ein seltsames Tier
     copyright: © Matthias Schmidt / »Goldenes mit Buch«
+  - image: /assets/images/unspecified.jpg
+    titel: first contact im Garten
+    copyright: © Aleksanda Pawloff (2016) / »Barbara Frischmuth führt durch den Garten«
 ---
