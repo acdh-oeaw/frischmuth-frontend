@@ -107,4 +107,7 @@ images:
   - image: /assets/images/unspecified.jpg
     titel: first contact im Garten
     copyright: © Aleksanda Pawloff (2016) / »Barbara Frischmuth führt durch den Garten«
+  - image: /assets/images/schmökern.jpg
+    titel: Schmökern in der Bibliothek
+    copyright: © Matthias Schmidt / »Schmökern«
 ---
