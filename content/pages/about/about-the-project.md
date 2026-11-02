@@ -48,4 +48,21 @@ sections:
 
 
       An der Schnittstelle von Archivwissenschaft, Germanistik und Digital Humanities angesiedelt, leistet das Digitale Archiv einen Beitrag zur umfassenden wissenschaftlichen Erforschung von Barbara Frischmuths Werk. Es verbindet archivalische Überlieferungsnachweise mit literaturwissenschaftlicher Analyse und Rezeptionsgeschichte und schafft damit eine offene, vernetzte und erweiterbare digitale Forschungsumgebung, die sowohl der spezialisierten wissenschaftlichen Arbeit als auch der interessierten Öffentlichkeit neue Zugänge zu Leben und Werk der Autorin eröffnet.
+  - content: >-
+      **Der Grant**: *Digital Archive Barbara Frischmuth* / Anna Babka (ORCID:
+      [0000-0001-5397-4878](https://orcid.org/0000-0001-5397-4878)) Grant-DOI
+      10.55776/P34491 / Förderprogramm Einzelprojekte / 01.11.2021 - 31.10.2026
+
+
+      **Das Team:** [Anna Babka](https://www.annababka.at/) (Leitung), [Peter Clar](https://www.peterclar.at/), [Matej Durco](https://www.oeaw.ac.at/de/acdh/institut/team/mitarbeitende/matej-durco), Carolin Guckler, Christoph Hoffmann, Barbara Krautgartner, Kay Kollmann, Julia Lingl, Olivia Reichl, Matthias Schlögl, [Matthias Schmidt](https://www.matthiasschmidt.at/#)
+
+
+      **Die Kooperationen & Forschungspartner*innen:** [Klaus Kastberger](https://de.wikipedia.org/wiki/Klaus_Kastberger) für das [Franz-Nabl-Institut der Universität Graz ](https://franz-nabl-institut.uni-graz.at/de/)& Österreichische Akademie der Wissenschaften/[acdh-Austrian Center for Digital Humanities](https://www.oeaw.ac.at/acdh/acdh-home)
+
+
+      **Die Verfasser*innen des Antrags**: Anna Babka unter Mitarbeit von Silvana Cimenti, Peter Clar, Matej Durco, Vanessa Hannesschläger und Daniel Schopper
+
+
+      ![](https://barbarafrischmuth.com/assets/images/img_6bc6b8cd8ab2-1.webp)
+    title: Der Grant und das Team
 ---
