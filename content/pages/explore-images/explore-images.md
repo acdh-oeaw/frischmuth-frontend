@@ -101,9 +101,9 @@ images:
   - copyright: © Anna Babka / »Gartenimpressionen«
     titel: Gartenimpressionen
     image: /assets/images/2024-11-30-18.38.13-1.jpg
-  - image: /assets/images/fundstück-privatbibliothek.heic
-    titel: ein seltsames Tier
-    copyright: © Matthias Schmidt / »Goldenes mit Buch«
+  - image: /assets/images/4_24-it-consultant.jpg
+    titel: Consultant
+    copyright: © Matthias Schmidt / »Consultant«
   - image: /assets/images/unspecified.jpg
     titel: first contact im Garten
     copyright: © Aleksanda Pawloff (2016) / »Barbara Frischmuth führt durch den Garten«
