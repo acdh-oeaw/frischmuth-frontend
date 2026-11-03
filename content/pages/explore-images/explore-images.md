@@ -43,7 +43,7 @@ images:
     copyright: »Das Team«
   - image: /assets/images/b.frischmuth-revised-by-anna.jpg
     titel: Barbara Frischmuth Portrait
-    copyright: © Aleksandra Pawloff (2016) / »Portrait«
+    copyright: © Aleksandra Pawloff (2016) / »Portrait auf der Terrasse«
   - image: /assets/images/20241018_094105.jpg
     titel: Haus mit Loser
     copyright: © Anna Babka / »Haus mit Loser«
