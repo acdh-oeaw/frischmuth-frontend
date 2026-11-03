@@ -3,8 +3,8 @@ title: Über das Projekt
 sections:
   - title: Persönliches zum Projekt
     content: >-
-      Das Projekt, wie es sich in dieser stets wachsenden und immer auch
-      verändernden Form darstellt, ist die Konsequenz einer jahrelangen
+      Das Projekt, wie es sich in dieser stets wachsenden, also als dynamisch zu
+      beschreibenden Form darstellt, ist die Konsequenz einer jahrelangen
       Zusammenarbeit und Freundschaft mit Barbara Frischmuth. Im Laufe der
       unzähligen Stationen, der offiziellen wie privaten Zusammenkünfte, der
       vielen Spaziergänge am See, bei denen geredet und gelacht, philosophiert
