@@ -112,7 +112,7 @@ images:
     copyright: © Matthias Schmidt / »Schmökern«
   - image: /assets/images/gold-digger.jpg
     titel: Analoges und Digitales
-    copyright: © Matthias Schmidt / »Golddigger«
+    copyright: © Matthias Schmidt / »Analoges und Digitales«
   - image: /assets/images/fundstück-privatbibliothek.jpg
     titel: das goldenen Tier
     copyright: © Matthias Schmidt / »Fundstück Privatbibliothek«
