@@ -1,5 +1,5 @@
 ---
-title: " Toplitzsee"
+title: Toplitzsee
 coordinates:
   latitude: 47.64167
   longitude: 13.92778
@@ -11,4 +11,4 @@ links:
   - title: Woher wir kommen
     url: /work/19695
 ---
-Unumgang, seine Frau Liesl und ich waren schon öfter gemeinsam zum Toplitzsee gegangen, um in der Fischerhütte eine Forelle zu essen, aber bei aller natürlichen Schönheit der Landschaft, die zugleich was Bizzares an sich hat, war es uns nie gelungen, die Taten unerwähnt zu lassen, die dazu geführt hatten, daß überhaupt so etwas wie ein Schatz, was auchg immer der Senn noch als solchen ausspucken würde, in ihn versenkt werden mußte. (Die Entschlüsselung, S. 44)
+»Wir waren nun wieder auf jener Schotterstraße, die auch doe meisten anderen herbstlichen Wanderer benutzten, und näherten uns dem Toplitzsee, der wahrhaftig dem Auge jenes Fisches der Unterwelt gleicht, das nur ungern preisgibt, was sich in ihm alles gespiegelt hat.« (Die Entschlüsselung, S. 43)
