@@ -35,4 +35,4 @@ links:
   - title: Radio Days
     url: https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/apis_ontology.work/update/30358
 ---
-Altaussee ist eine Gemeinde mit 1872 Einwohnern (Stand: 1. Jänner 2026) im steirischen Salzkammergut in Österreich. Die Gemeinde liegt im Bezirk Liezen (Gerichtsbezirk Liezen) und umfasst mit 92,57 km² große Teile des Ausseerlandes und des Toten Gebirges. Der Ort am Fuße des Losers ist besonders als Kurort bekannt und liegt direkt am Altausseer See.
+»Wenn man schon das Wort Fuß benutzen muß, läßt sich sagen, daß Altaussee sich nicht nur am Fuß, sondern auch auf der Wade, ja sogar bis ans Knie der Berge hinaus ausbreitet, jener Berge, die Ort und See so dicht umschlossen halten, daß man auf derselben Straße wieder aus dem Ort hinaus muß, auf der man in ihn hineingefahren ist, es sei denn, man flüchtet über die Gipfel.« (Dünger für mein Augenfeld, S. 17)
