@@ -1,8 +1,8 @@
 ---
-title: Puchen
+title: Fischerndorf
 coordinates:
-  latitude: 47.6345
-  longitude: 13.76142
+  latitude: 47.63333
+  longitude: 13.76667
 links:
   - title: Jahre
     url: /work/26442
