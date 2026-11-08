@@ -9,4 +9,4 @@ links:
     authors:
       - surname: Frischmuth
 ---
-Der **Seepromenaden-Rundweg** in Altaussee führt über einen markanten Holzsteg am steilen Seeufer, der lokal oft als **Semmerlsteg** (auch bekannt als Teil des Promenadenwegs am Nord-/Ostufer beim Loser-Fuß) bezeichnet wird.
+Der Seepromenaden-Rundweg in Altaussee führt über einen markanten Holzsteg am steilen Seeufer, der lokal oft als Semmerlsteg (auch bekannt als Teil des Promenadenwegs am Nord-/Ostufer beim Loser-Fuß) bezeichnet wird.
