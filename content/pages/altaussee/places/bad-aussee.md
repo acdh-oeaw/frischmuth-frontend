@@ -4,6 +4,8 @@ coordinates:
   latitude: 47.60998
   longitude: 13.78243
 links:
+  - title: Ferdinand Raimund zum 175. Todestag
+    url: /work/30389
   - title: Herbst in Worten
     url: /work/30376
   - url: /work/19770
