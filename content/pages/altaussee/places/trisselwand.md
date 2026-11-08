@@ -1,5 +1,5 @@
 ---
-title: Trisselwand
+title: Trisselwand / Trisselbergerloch (Trisselberger Loch)
 coordinates:
   latitude: 47.645744322392524
   longitude: 13.809837469205734
@@ -8,6 +8,8 @@ links:
     url: https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/apis_ontology.work/update/19396
   - title: Der unwiderstehliche Garten
     url: https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/apis_ontology.work/update/19709
+  - title: Die Mystifikationen der Sophie Silber
+    url: /work/19393
   - title: Dünger für mein Augenfeld
     url: https://frischmuth-dev.acdh-dev.oeaw.ac.at/apis/apis_ontology.work/update/30383
   - title: Jahre
