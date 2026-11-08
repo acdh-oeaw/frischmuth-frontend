@@ -11,4 +11,4 @@ links:
   - title: Woher wir kommen
     url: /work/19695
 ---
-»Wir waren nun wieder auf jener Schotterstraße, die auch doe meisten anderen herbstlichen Wanderer benutzten, und näherten uns dem Toplitzsee, der wahrhaftig dem Auge jenes Fisches der Unterwelt gleicht, das nur ungern preisgibt, was sich in ihm alles gespiegelt hat.« (Die Entschlüsselung, S. 43)
+»Wir waren nun wieder auf jener Schotterstraße, die auch die meisten anderen herbstlichen Wanderer benutzten, und näherten uns dem Toplitzsee, der wahrhaftig dem Auge jenes Fisches der Unterwelt gleicht, das nur ungern preisgibt, was sich in ihm alles gespiegelt hat.« (Die Entschlüsselung, S. 43)
