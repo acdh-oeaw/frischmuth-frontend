@@ -1,5 +1,5 @@
 ---
-title: Hoher Sarstein
+title: Sarstein
 coordinates:
   latitude: 47.6
   longitude: 13.7
