@@ -10,4 +10,4 @@ links:
         forename: "Barbara "
     url: /work/19695
 ---
-»Die Kunstschätze, die sie im Berg versteckt haben, sollten auch nur den höherwertigen Menschen zugänglich sein. Wenn wir schon zugrunde gehen, soll auch kein anderer was davon haben.« (Woher wir kommen, S. 326) Im Salzbergwerk von Altaussee wurden Ende des Zweiten Weltkriegs zahlreiche Kunstschätze vom NS-Regime versteckt.
+»Die Kunstschätze, die sie im Berg versteckt haben, sollten auch nur den höherwertigen Menschen zugänglich sein. Wenn wir schon zugrunde gehen, soll auch kein anderer was davon haben.« (Woher wir kommen, S. 326)
