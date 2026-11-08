@@ -5,7 +5,7 @@ coordinates:
   longitude: 13.76667
 links:
   - title: Der unwiderstehliche Garten
-    url: /work/19709
+    url: https://barbarafrischmuth.com/work/19709
   - title: Jahre
     url: /work/26442
 ---
