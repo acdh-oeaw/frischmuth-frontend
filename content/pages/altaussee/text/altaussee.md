@@ -1,7 +1,7 @@
 ---
 title: Das Ausseer Land
 sections:
-  - title: Das Ausseer Land und seine historischen wie literarischen Schichten
+  - title: Literarische und biografische Topografien
     content: >-
       Das Ausseer Land hat für Barabara Frischmuths Schreiben eine besondere
       Bedeutung. Altaussee ist Barbara Frischmuths Geburtsort, Ort ihrer
