@@ -5,7 +5,7 @@ coordinates:
   longitude: 13.78243
 links:
   - title: Ferdinand Raimund zum 175. Todestag
-    url: /work/30389
+    url: https://barbarafrischmuth.com/work/30389
   - title: Herbst in Worten
     url: /work/30376
   - url: /work/19770
