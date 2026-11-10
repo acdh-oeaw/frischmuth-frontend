@@ -1,8 +1,8 @@
 ---
 title: Fischerndorf
 coordinates:
-  latitude: 47.722697
-  longitude: 14.40033
+  latitude: 47.64157
+  longitude: 13.767952
 links:
   - title: Jahre
     url: /work/26442
