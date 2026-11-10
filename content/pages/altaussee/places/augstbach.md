@@ -1,8 +1,8 @@
 ---
 title: Augstbach
 coordinates:
-  latitude: 47.63333
-  longitude: 13.76667
+  latitude: 47.663689
+  longitude: 13.786345
 links:
   - title: Der unwiderstehliche Garten
     url: https://barbarafrischmuth.com/work/19709
