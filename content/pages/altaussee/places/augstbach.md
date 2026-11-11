@@ -1,8 +1,8 @@
 ---
 title: Augstbach
 coordinates:
-  latitude: 47.663689
-  longitude: 13.786345
+  latitude: 47.652103
+  longitude: 13.75254
 links:
   - title: Jahre
     url: /work/26442
