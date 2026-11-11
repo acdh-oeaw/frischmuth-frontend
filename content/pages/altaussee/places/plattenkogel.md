@@ -1,8 +1,8 @@
 ---
 title: Plattenkogel
 coordinates:
-  latitude: 47.63333
-  longitude: 13.76667
+  latitude: 47.634141
+  longitude: 13.770701
 links:
   - title: Der unwiderstehliche Garten
     url: https://barbarafrischmuth.com/work/19709
