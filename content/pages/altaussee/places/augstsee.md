@@ -1,8 +1,8 @@
 ---
 title: Augstsee
 coordinates:
-  latitude: 47.66667
-  longitude: 13.78333
+  latitude: 47.663748
+  longitude: 13.786351
 links:
   - title: Jahre
     url: /work/26442
