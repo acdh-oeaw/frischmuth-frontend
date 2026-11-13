@@ -5,6 +5,7 @@ import { defaultLocale, localesMap } from "./config/i18n.config";
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 export default defineNuxtConfig({
+	srcDir: ".",
 	alias: {
 		"@": fileURLToPath(new URL("./", import.meta.url)),
 	},
@@ -48,7 +49,7 @@ export default defineNuxtConfig({
 	eslint: {
 		config: {
 			autoInit: false,
-			standalone: true,
+			standalone: false,
 		},
 	},
 
@@ -102,10 +103,9 @@ export default defineNuxtConfig({
 		// 	typedOptionsAndMessages: "default",
 		// },
 		langDir: "../messages",
-		lazy: true,
 		locales: Object.values(localesMap),
 		strategy: "prefix_except_default",
-		vueI18n: "./i18n.config.ts",
+		vueI18n: fileURLToPath(new URL("./i18n.config.ts", import.meta.url)),
 	},
 
 	imports: {
