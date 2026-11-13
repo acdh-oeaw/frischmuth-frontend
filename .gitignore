@@ -28,6 +28,7 @@ dist
 .nuxt/
 .nitro/
 .output/
+/server/tsconfig.json
 
 # playwright
 /blob-report/
