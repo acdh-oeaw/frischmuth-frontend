@@ -124,10 +124,7 @@ async function main(): Promise<void> {
 			replacements.set(from, to);
 			optimizedCount += 1;
 
-			const dimensions =
-				metadata.width != null && metadata.height != null
-					? `${metadata.width.toString()}x${metadata.height.toString()}`
-					: "unknown";
+			const dimensions = `${metadata.width.toString()}x${metadata.height.toString()}`;
 
 			console.log(`optimized ${relative(process.cwd(), file)} (${dimensions}) -> ${to}`);
 		} catch (error: unknown) {
