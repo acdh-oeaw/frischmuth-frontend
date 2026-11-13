@@ -12,6 +12,13 @@ const props = defineProps<{
 
 const emit = defineEmits(["closeSideBar"]);
 
+const relatedWorks = computed(() => {
+	return (props.place?.metadata.links ?? []).map((link) => ({
+		...link,
+		id: getWorkIdFromUrl(link.url),
+	}));
+});
+
 const isOpen = ref(false);
 const isClosed = ref(false);
 
@@ -66,12 +73,11 @@ onScopeDispose(() => {
 					<!-- eslint-disable-next-line vue/no-v-html -->
 					<section class="rich-text" v-html="props.place.body" />
 				</div>
-				<div
-					v-if="place != null && place.metadata.links != null && place.metadata.links.length > 0"
-				>
+				<div v-if="relatedWorks.length > 0">
 					<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
-					<div v-for="link in place.metadata.links" :key="link.url">
-						<RelatedWorkDisplay :related-work="[link]" />
+					<div v-for="link in relatedWorks" :key="link.url">
+						<RelatedWorkDisplay v-if="link.id != null" :related-work="[link]" />
+						<span v-else>{{ link.title }}</span>
 					</div>
 				</div>
 			</DrawerContent>
@@ -80,7 +86,7 @@ onScopeDispose(() => {
 	<div v-else>
 		<div
 			v-if="props.renderDetail && props.place != null"
-			class="3xl:w-1/6 fixed inset-y-0 right-0 z-50 h-full w-3/4 gap-4 overflow-y-auto border-l bg-background p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5"
+			class="fixed inset-y-0 right-0 z-50 h-full w-3/4 gap-4 overflow-y-auto border-l bg-background p-6 shadow-lg transition ease-in-out 3xl:w-1/6 sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5 data-[state=closed]:duration-300 data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=open]:slide-in-from-right"
 			:data-state="isClosed ? 'closed' : 'open'"
 		>
 			<Button
@@ -104,12 +110,11 @@ onScopeDispose(() => {
 					<!-- eslint-disable-next-line vue/no-v-html -->
 					<section class="rich-text" v-html="props.place.body" />
 				</div>
-				<div
-					v-if="place != null && place.metadata.links != null && place.metadata.links.length > 0"
-				>
+				<div v-if="relatedWorks.length > 0">
 					<h2 class="py-2 text-base font-semibold text-black">Werkverweise</h2>
-					<div v-for="link in place.metadata.links" :key="link.url">
-						<RelatedWorkDisplay :related-work="[link]" />
+					<div v-for="link in relatedWorks" :key="link.url">
+						<RelatedWorkDisplay v-if="link.id != null" :related-work="[link]" />
+						<span v-else>{{ link.title }}</span>
 					</div>
 				</div>
 				<div
