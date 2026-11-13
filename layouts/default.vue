@@ -10,7 +10,7 @@ const t = useTranslations();
 
 const router = useRouter();
 
-const i18nHead = useLocaleHead({ key: "id" });
+const i18nHead = useLocaleHead();
 
 useHead({
 	htmlAttrs: {
@@ -30,7 +30,7 @@ useHead({
 			{ href: "/icon.svg", rel: "icon", type: "image/svg+xml", sizes: "any" },
 			{ href: "/apple-icon.png", rel: "apple-touch-icon" },
 			{ href: "/manifest.webmanifest", rel: "manifest" },
-			{ href: inter, rel: "preload", as: "font", type: "font/woff2", crossorigin: true },
+			{ href: inter, rel: "preload", as: "font", type: "font/woff2", crossorigin: "anonymous" },
 			...(i18nHead.value.link ?? []),
 		];
 	}),
@@ -71,19 +71,24 @@ useHead({
 		};
 
 		const scripts = [
-			{ type: "application/ld+json", innerHTML: JSON.stringify(jsonLd, safeJsonLdReplacer) },
+			{
+				type: "application/ld+json" as const,
+				innerHTML: JSON.stringify(jsonLd, safeJsonLdReplacer),
+			},
 		];
 
 		if (isNonEmptyString(env.public.matomoBaseUrl) && isNonEmptyString(env.public.matomoId)) {
 			const baseUrl = env.public.matomoBaseUrl;
 
-			scripts.push({
-				type: "",
-				innerHTML: createAnalyticsScript(
-					baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`,
-					env.public.matomoId,
-				),
-			});
+			return [
+				...scripts,
+				{
+					innerHTML: createAnalyticsScript(
+						baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`,
+						env.public.matomoId,
+					),
+				},
+			];
 		}
 
 		return scripts;

@@ -1,4 +1,4 @@
-import type { LocaleObject } from "vue-i18n-routing";
+import type { LocaleObject } from "@nuxtjs/i18n";
 
 import type de from "@/messages/de/index.json";
 import type metadata from "@/messages/de/metadata.json";
