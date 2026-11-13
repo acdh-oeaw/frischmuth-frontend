@@ -114,6 +114,10 @@ export default defineNuxtConfig({
 
 	modules: ["@nuxt/eslint", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
 
+	routeRules: {
+		"/explore/altaussee": { redirect: { to: "/explore/ausseerland", statusCode: 301 } },
+	},
+
 	nitro: {
 		compressPublicAssets: true,
 		prerender: {

@@ -43,7 +43,7 @@ test.describe("app", () => {
 			].join("\n"),
 		);
 
-		for (const pathname of ["", "/imprint"]) {
+		for (const pathname of ["", "/imprint", "/explore/ausseerland"]) {
 			const loc = String(
 				createUrl({
 					baseUrl,
@@ -53,6 +53,15 @@ test.describe("app", () => {
 
 			expect(body.toString()).toContain(`<loc>${loc}</loc>`);
 		}
+
+		expect(body.toString()).not.toContain(`<loc>${baseUrl}/explore/altaussee</loc>`);
+	});
+
+	test("should redirect the old Altaussee route to Ausseerland", async ({ request }) => {
+		const response = await request.get("/explore/altaussee", { maxRedirects: 0 });
+
+		expect(response.status()).toBe(301);
+		expect(response.headers().location).toBe("/explore/ausseerland");
 	});
 
 	test("should serve a webmanifest", async ({ createI18n, request }) => {
