@@ -24,6 +24,13 @@ const config = defineConfig(
 	{
 		files: ["server/**/*.ts"],
 		extends: [nodeConfig],
+		languageOptions: {
+			parserOptions: {
+				project: "./.nuxt/tsconfig.server.json",
+				projectService: false,
+				tsconfigRootDir: import.meta.dirname,
+			},
+		},
 	},
 );
 
