@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "24.x",
+		"node": "26.x",
 		"pnpm": "10.x"
 	},
 	"packageManager": "pnpm@10.2.1",
@@ -86,7 +86,7 @@
 		"vue-router": "^4.5.0",
 		"vue-to-print": "^1.4.0",
 		"zod": "^3.24.1",
-		"sharp": "^0.32.6"
+		"sharp": "^0.35.5"
 	},
 	"devDependencies": {
 		"@acdh-oeaw/eslint-config": "^2.0.6",
@@ -103,7 +103,7 @@
 		"@playwright/test": "^1.61.0",
 		"@tailwindcss/typography": "^0.5.16",
 		"@types/geojson": "^7946.0.16",
-		"@types/node": "^22.13.1",
+		"@types/node": "^26.6.6",
 		"axe-core": "^4.10.2",
 		"axe-playwright": "^2.1.0",
 		"ci-info": "^4.1.0",

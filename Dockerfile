@@ -4,9 +4,9 @@
 # @see https://sharp.pixelplumbing.com/install#linux-memory-allocator
 
 # build
-FROM node:24-alpine AS build
+FROM node:26-alpine AS build
 
-RUN corepack enable
+RUN npm install --global pnpm@10.2.1
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
@@ -34,7 +34,7 @@ ENV NODE_ENV=production
 RUN pnpm run build
 
 # serve
-FROM node:22-alpine AS serve
+FROM node:26-alpine AS serve
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app

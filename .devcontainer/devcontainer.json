@@ -1,6 +1,7 @@
 {
 	"name": "Nuxt",
-	"image": "ghcr.io/acdh-oeaw/devcontainer-frontend:22",
+	"image": "node:26-bookworm",
+	"postCreateCommand": "npm install --global pnpm@10.2.1",
 	"customizations": {
 		"vscode": {
 			"extensions": [
