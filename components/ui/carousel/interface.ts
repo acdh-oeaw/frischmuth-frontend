@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-named-default
 import type { default as useEmblaCarousel, EmblaCarouselVueType } from "embla-carousel-vue";
 import type { HTMLAttributes, UnwrapRef } from "vue";
 

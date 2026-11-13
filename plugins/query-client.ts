@@ -21,9 +21,10 @@ export default defineNuxtPlugin((nuxt) => {
 			},
 		},
 		queryCache: new QueryCache({
-			async onError(error) {
-				const message = await getErrorMessage(error);
-				log.error(message);
+			onError(error) {
+				void getErrorMessage(error).then((message) => {
+					log.error(message);
+				});
 			},
 		}),
 	});
@@ -40,7 +41,7 @@ export default defineNuxtPlugin((nuxt) => {
 
 	if (import.meta.client) {
 		nuxt.hooks.hook("app:created", () => {
-			hydrate(queryClient, state.value);
+			if (state.value != null) hydrate(queryClient, state.value);
 		});
 	}
 });
