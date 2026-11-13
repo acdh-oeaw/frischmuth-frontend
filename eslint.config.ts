@@ -4,30 +4,27 @@ import nuxtConfig from "@acdh-oeaw/eslint-config-nuxt";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
 import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
 import vueConfig from "@acdh-oeaw/eslint-config-vue";
+import { defineConfig } from "eslint/config";
 import gitignore from "eslint-config-flat-gitignore";
-import type { Config } from "typescript-eslint";
 
 import { withNuxt } from "./.nuxt/eslint.config.mjs";
 
-const config: Config = [
+const config = defineConfig(
 	gitignore({ strict: false }),
-	...baseConfig,
-	...vueConfig,
-	...nuxtConfig,
-	...tailwindcssConfig,
-	...playwrightConfig,
+	{
+		extends: [baseConfig, vueConfig, nuxtConfig, tailwindcssConfig, playwrightConfig],
+	},
 	{
 		rules: {
+			"better-tailwindcss/enforce-consistent-class-order": "warn",
+			"better-tailwindcss/no-unknown-classes": "warn",
 			"vue/attributes-order": ["warn", { alphabetical: true }],
 		},
 	},
-	...nodeConfig.map((config) => {
-		return {
-			files: ["server/**/*.ts"],
-			...config,
-		};
-	}),
-];
+	{
+		files: ["server/**/*.ts"],
+		extends: [nodeConfig],
+	},
+);
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
-export default withNuxt(config as any);
+export default withNuxt(config).remove("nuxt/vue/single-root");
