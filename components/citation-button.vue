@@ -41,6 +41,8 @@ onMounted(async () => {
 });
 
 const getType = function (type: WorkTypeData = []) {
+	if (showsFullPublicationDate(type)) return "article-newspaper";
+
 	const types = type
 		.map((entry) => entry.name)
 		.filter((name): name is string => name != null && name.length > 0)
@@ -222,7 +224,7 @@ onScopeDispose(() => {
 				</AlertDialogHeader>
 				<AlertDialogFooter :class="currentTab !== 'apa' ? `grid grid-cols-2 gap-1` : `flex w-full`">
 					<Button
-						:class="currentTab !== 'apa' ? `gap-1 text-sm` : `w-full text-sm gap-1`"
+						:class="currentTab !== 'apa' ? `gap-1 text-sm` : `w-full gap-1 text-sm`"
 						:disabled="copied"
 						variant="pagination"
 						@click="copyToClipboard()"

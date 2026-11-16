@@ -162,9 +162,16 @@
                   <text variable="volume" prefix=" "/>
                   <text variable="issue"/>
                 </group>
-                <date variable="issued">
-                  <date-part name="year"/>
-                </date>
+                <choose>
+                  <if type="article-newspaper">
+                    <date variable="issued" delimiter=".">
+                      <date-part name="day" form="numeric-leading-zeros"/>
+                      <date-part name="month" form="numeric-leading-zeros"/>
+                      <date-part name="year"/>
+                    </date>
+                  </if>
+                  <else><date variable="issued"><date-part name="year"/></date></else>
+                </choose>
                 <text macro="serie-with-number"/>
               </if>
               <else>

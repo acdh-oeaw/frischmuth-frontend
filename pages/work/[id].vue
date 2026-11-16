@@ -310,7 +310,7 @@ function openDrawer() {
 									:authors="metaDataAuthors ?? []"
 									:editors="metadataEditors ?? []"
 									:metadata="[work?.expression_data]"
-									:work_type="work.work_type"
+									:work-type="work.work_type"
 								/>
 								<PrintingHandler
 									:characters="characters"
@@ -348,7 +348,9 @@ function openDrawer() {
 									<span>{{ entry?.place_of_publication?.[0]?.name || "" }}</span>
 									<span v-if="entry?.place_of_publication?.[0]?.name">{{ ": " }}</span>
 									{{ entry?.publisher?.name || "" }}
-									<span>{{ entry?.publication_date?.split("-")?.[0] || "" }}</span>
+									<span>{{
+										formatWorkPublicationDate(entry?.publication_date, work?.work_type)
+									}}</span>
 									<span v-if="entry?.publication_date && !Array.isArray(entry.included_in)">.</span>
 									<span v-if="Array.isArray(entry.included_in) && entry.included_in.length > 0">
 										in
@@ -358,7 +360,13 @@ function openDrawer() {
 											:href="`/work/${entry.included_in[0]?.work_id}`"
 											>{{ entry.included_in[0]?.title }}</NuxtLink
 										><span v-if="entry.included_in[0]?.publication_date"
-											>, {{ entry.included_in[0].publication_date.split("-")[0] }}</span
+											>,
+											{{
+												formatWorkPublicationDate(
+													entry.included_in[0].publication_date,
+													work?.work_type,
+												)
+											}}</span
 										><span v-if="entry.relevant_pages">, S. {{ entry.relevant_pages }}</span>
 									</span>
 									<span v-if="index !== work?.expression_data.length - 1">{{ " | " }}</span>
