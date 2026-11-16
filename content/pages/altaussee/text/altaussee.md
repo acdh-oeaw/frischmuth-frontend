@@ -20,5 +20,5 @@ sections:
       Um einen Eindruck von den vielschichtigen Bezugnahmen auf diese Gegend und ihre Geschichte zu geben, versammelt die interaktive Karte einige direkte Zitate aus Frischmuths literarischem Werk, in dem die markanten Eigenheiten der Region Altaussee oftmals eine (überformte) Rolle spielen – der See, die Bootshäuser, die Felswände und Moorwiesen rundum ebenso wie die Fabelwesen, historischen Tiefendimensionen und genuin literarischen Bearbeitungen wie u.a. von Adalbert Stifter, Jakob Wassermann, Hugo von Hofmannsthal oder Hermann Broch. 
 
 
-      ![](/assets/images/20230708_191215.jpg)
+      ![](/assets/images/20230708_191215.webp)
 ---

@@ -4,7 +4,7 @@ coordinates:
   latitude: 47.639574873966666
   longitude: 13.777900890274944
 images:
-  - image: /assets/images/altausseersee-winter.jpg
+  - image: /assets/images/altausseersee-winter.webp
     copyright: Anna Babka / Peter Clar
     titel: Altausseer See im Winter
 links:

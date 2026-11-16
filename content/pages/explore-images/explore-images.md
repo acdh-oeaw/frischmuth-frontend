@@ -2,118 +2,118 @@
 title: Explore-Kachel-Bilder
 images:
   - titel: Rezitation
-    image: /assets/images/rezitation.jpg
+    image: /assets/images/rezitation.webp
     alt: ""
     copyright: © 2024 Matthias Schmidt / »Rezitation«
   - titel: Barbara Frischmuth
     alt: ""
-    image: /assets/images/2024-04-26-15.29.18-1.jpg
+    image: /assets/images/2024-04-26-15.29.18-1.webp
     copyright: © 2024 Matthias Schmidt / »Barbara Frischmuth im Arbeitszimmer«
   - titel: Privatbibliothek Barbara Frischmuth
     alt: ""
-    image: /assets/images/regal-2.jpg
+    image: /assets/images/regal-2.webp
     copyright: © 2024 Matthias Schmidt / »Privatbibliothek Barbara Frischmuth«
-  - image: /assets/images/20240721_102103.jpg
+  - image: /assets/images/20240721_102103.webp
     titel: Der Garten
     copyright: © Anna Babka / »Lilien ... Ansichten eines Gartens«
-  - image: /assets/images/pedro-sw.jpg
+  - image: /assets/images/pedro-sw.webp
     titel: Privatbibliothek Barbara Frischmuth 1
     copyright: © 2024 Matthias Schmidt / »Privatbibliothek Barbara Frischmuth«
   - titel: Privatbibliothek Barbara Frischmuth 2
     copyright: © 2022 Anna Babka / »Blättern«
-    image: /assets/images/2023-04-01-15.13.22.jpg
+    image: /assets/images/2023-04-01-15.13.22.webp
   - titel: Privatbibliothek Barbara Frischmuth 3
     copyright: © 2024 Matthias Schmidt / »Privatbibliothek Barbara Frischmuth«
-    image: /assets/images/2023-04-02-18.35.55.jpg
-  - image: /assets/images/20230708_191215.jpg
+    image: /assets/images/2023-04-02-18.35.55.webp
+  - image: /assets/images/20230708_191215.webp
     titel: Der See 1
     copyright: © 2024 Anna Babka / »Der See«
-  - image: /assets/images/532495a4-2e9d-4852-8291-8593f125c8ff.jpg
+  - image: /assets/images/532495a4-2e9d-4852-8291-8593f125c8ff.webp
     titel: Der See 2
     copyright: © 2023 Matthias Schmidt / »Der See«
-  - image: /assets/images/20241018_094024.jpg
+  - image: /assets/images/20241018_094024.webp
     titel: Gartenfrosch
     copyright: © Anna Babka / »Ein Frosch im Garten«
-  - image: /assets/images/2023-04-02-22.02.14.jpg
+  - image: /assets/images/2023-04-02-22.02.14.webp
     titel: Zusammen!
     copyright: »Zusammen«
-  - image: /assets/images/ganzes-team.jpg
+  - image: /assets/images/ganzes-team.webp
     titel: Das Team
     alt: ""
     copyright: »Das Team«
-  - image: /assets/images/b.frischmuth-revised-by-anna.jpg
+  - image: /assets/images/b.frischmuth-revised-by-anna.webp
     titel: Barbara Frischmuth Portrait
     copyright: © Aleksandra Pawloff (2016) / »Portrait auf der Terrasse«
-  - image: /assets/images/20241018_094105.jpg
+  - image: /assets/images/20241018_094105.webp
     titel: Haus mit Loser
     copyright: © Anna Babka / »Haus mit Loser«
-  - image: /assets/images/befunky-collage-by-anna.jpg
+  - image: /assets/images/befunky-collage-by-anna.webp
     titel: "collage first visit "
     copyright: © Aleksandra Pawloff (2016) / »erster Besuch in Altaussee«
-  - image: /assets/images/dsc_7786barbara-frischmuth.jpg
+  - image: /assets/images/dsc_7786barbara-frischmuth.webp
     titel: anna und barbara
     copyright: © Alexandra Pawoloff (2016) / »Anna und Barbara«
-  - image: /assets/images/2023-04-01-14.51.39.jpg
+  - image: /assets/images/2023-04-01-14.51.39.webp
     titel: Matthias und Barbara in der Bibliothek
     copyright: © Anna Babka / »Matthias und Barbara«
-  - image: /assets/images/frische-aura.jpg
+  - image: /assets/images/frische-aura.webp
     titel: © Matthias Schmidt / "Anna und Peter in der Bibliothek«
     copyright: "@ Matthias Schmidt / »Anna und Peter in der Bibliothek«"
-  - image: /assets/images/4_24-arbeitszimmer1.jpg
+  - image: /assets/images/4_24-arbeitszimmer1.webp
     titel: All together
     copyright: " © Matthias Schmidt / »Working«"
-  - image: /assets/images/4_24-zocki.jpg
+  - image: /assets/images/4_24-zocki.webp
     titel: Julia und Caro mit Socki, der Hauskatze
     copyright: "© Anna Babka: »Julia und Caro mit Socki, der Hauskatze«"
     alt: © Anna Babka / "Julia und Caro mit Socki, der Hauskatze"
-  - image: /assets/images/4_24-lesebalkon2.jpg
+  - image: /assets/images/4_24-lesebalkon2.webp
     titel: Lesebalkon
     copyright: © Matthias Schmidt / »Lesebalkon«
   - titel: Gartenimage
-    image: /assets/images/2016-07-06-10.53.04-5.jpg
+    image: /assets/images/2016-07-06-10.53.04-5.webp
     copyright: © Aleksandra Pawloff 2016 / »When trees and flowers merge ...«
-  - image: /assets/images/4_24-bf.jpg
+  - image: /assets/images/4_24-bf.webp
     copyright: © Matthias Schmidt / »Barbara im Arbeitszimmer«
     titel: Barbara im Arbeitszimmer / Privatbibliothek
-  - image: /assets/images/2016-07-06-10.53.04-4.jpg
+  - image: /assets/images/2016-07-06-10.53.04-4.webp
     titel: Blick auf den Loser vom Haus Barbara Frischmuths
     copyright: © Aleksandra Pawloff (2016) »Blick auf den Loser vom Haus Barbara
       Frischmuths«
-  - image: /assets/images/garten-mit-dem-blick-auf-den-loser.jpg
+  - image: /assets/images/garten-mit-dem-blick-auf-den-loser.webp
     titel: Garten mit Blick auf den Loser
     copyright: © Anna Babka / »Garten mit Blick auf den Loser«
-  - image: /assets/images/2017-09-27-11.56.21.jpg
+  - image: /assets/images/2017-09-27-11.56.21.webp
     titel: Spaziergang am Altausseersee mit Barbara
     copyright: © Anna Babka / »Spaziergang am See mit Barbara«
     alt: Anna Babka / "Spaziergang am Altausseersee mit Barbara"
-  - image: /assets/images/20241018_094015.jpg
+  - image: /assets/images/20241018_094015.webp
     titel: Herbstzeit
     copyright: Anna Babka / »Herbstzeit«
-  - image: /assets/images/20240426_175352.jpg
+  - image: /assets/images/20240426_175352.webp
     titel: Das Haus
     copyright: © Anna Babka / »Das Haus«
-  - image: /assets/images/2024-11-30-18.38.13-2.jpg
+  - image: /assets/images/2024-11-30-18.38.13-2.webp
     titel: Der Mann im Garten
     copyright: © Anna Babka / »Der Gartenmann«
-  - image: /assets/images/peter-clar-barbara-frischmuth.jpg
+  - image: /assets/images/peter-clar-barbara-frischmuth.webp
     titel: Peter und Barbara
     copyright: © Anna Babka / »Peter und Barbara auf der Terrasse«
   - copyright: © Anna Babka / »Gartenimpressionen«
     titel: Gartenimpressionen
-    image: /assets/images/2024-11-30-18.38.13-1.jpg
-  - image: /assets/images/4_24-it-consultant.jpg
+    image: /assets/images/2024-11-30-18.38.13-1.webp
+  - image: /assets/images/4_24-it-consultant.webp
     titel: Consultant
     copyright: © Matthias Schmidt / »Consultant«
-  - image: /assets/images/unspecified.jpg
+  - image: /assets/images/unspecified.webp
     titel: first contact im Garten
     copyright: © Aleksanda Pawloff (2016) / »Barbara Frischmuth führt durch den Garten«
-  - image: /assets/images/schmökern.jpg
+  - image: /assets/images/schmökern.webp
     titel: Schmökern in der Bibliothek
     copyright: © Matthias Schmidt / »Schmökern«
-  - image: /assets/images/gold-digger.jpg
+  - image: /assets/images/gold-digger.webp
     titel: Analoges und Digitales
     copyright: © Matthias Schmidt / »Analoges und Digitales«
-  - image: /assets/images/fundstück-privatbibliothek.jpg
+  - image: /assets/images/fundstück-privatbibliothek.webp
     titel: das goldenen Tier
     copyright: © Matthias Schmidt / »Fundstück Privatbibliothek«
 ---

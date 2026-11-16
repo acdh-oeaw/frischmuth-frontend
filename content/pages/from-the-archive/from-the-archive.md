@@ -28,6 +28,6 @@ sections:
   - content: |-
       
 
-      ![](/assets/images/signal-2023-08-01-12-22-29-241-13.jpg)
+      ![](/assets/images/signal-2023-08-01-12-22-29-241-13.webp)
     title: Archiv im Franz-Nabl-Institut Graz
 ---
