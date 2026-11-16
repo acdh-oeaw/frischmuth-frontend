@@ -24,8 +24,8 @@
 		"lint:code:fix": "pnpm run lint:code:check --fix",
 		"lint:styles:check": "stylelint \"./**/*.@(css|vue)\" --cache --ignore-path ./.gitignore",
 		"lint:styles:fix": "pnpm run lint:styles:check --fix",
-		"postinstall": "nuxt prepare",
-		"prebuild": "node --import tsx ./scripts/optimize-cms-images.ts",
+		"postinstall": "pnpm run cms:assets && nuxt prepare",
+		"prebuild": "pnpm run cms:assets && node --import tsx ./scripts/optimize-cms-images.ts",
 		"preinstall": "npx only-allow pnpm",
 		"prepare": "run-s setup generate:api-client",
 		"setup": "is-ci || simple-git-hooks",
@@ -37,7 +37,10 @@
 		"test:e2e:ui": "playwright test --ui",
 		"test:e2e:update-snapshots": "playwright test --update-snapshots",
 		"types:check": "nuxt typecheck",
-		"validate": "run-p format:check lint:check types:check test test:e2e"
+		"validate": "run-p format:check lint:check types:check test test:e2e",
+		"cms:assets": "node ./scripts/copy-decap-assets.mjs",
+		"predev": "pnpm run cms:assets",
+		"pregenerate": "pnpm run cms:assets"
 	},
 	"dependencies": {
 		"@acdh-oeaw/lib": "^0.2.0",
@@ -60,6 +63,7 @@
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"cva": "1.0.0-beta.1",
+		"decap-cms": "3.17.3",
 		"embla-carousel-vue": "^8.6.0",
 		"fast-glob": "^3.3.3",
 		"lucide-vue-next": "^0.475.0",
@@ -115,6 +119,7 @@
 		"eslint-plugin-check-file": "^3.0.0",
 		"globals": "^17.14.0",
 		"is-ci": "^4.1.0",
+		"libheif-js": "^1.23.5",
 		"lint-staged": "^15.5.2",
 		"npm-run-all2": "^7.0.2",
 		"openapi-zod-client": "^1.18.2",
