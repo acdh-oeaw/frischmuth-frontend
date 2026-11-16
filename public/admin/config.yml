@@ -19,6 +19,13 @@ backend:
 # publish_mode: editorial_workflow
 media_folder: /public/assets/images
 public_folder: /assets/images
+media_processing:
+  enabled: true
+  format:
+    enabled: true
+    default: webp
+  quality: 82
+  strip_metadata: true
 editor:
   preview: false
 collections:

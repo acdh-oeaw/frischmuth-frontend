@@ -4,6 +4,18 @@ import { join, parse, relative } from "node:path";
 const IMAGE_DIRECTORY = join(process.cwd(), "public", "assets", "images");
 const SEARCH_DIRECTORIES = ["content", "components", "pages", "server", "public"];
 const CONVERTIBLE_EXTENSIONS = new Set([".heic", ".jpeg", ".jpg", ".png", ".tif", ".tiff"]);
+const TEXT_EXTENSIONS = new Set([
+	".md",
+	".mdx",
+	".vue",
+	".ts",
+	".js",
+	".json",
+	".yml",
+	".yaml",
+	".html",
+	".css",
+]);
 const MAX_DIMENSION = 2560;
 const WEBP_QUALITY = 82;
 
@@ -47,6 +59,8 @@ async function updateReferences(replacements: Map<string, string>): Promise<numb
 	let updatedFiles = 0;
 
 	for (const file of files) {
+		if (!TEXT_EXTENSIONS.has(parse(file).ext.toLowerCase())) continue;
+
 		const source = await readFile(file, "utf8");
 		let output = source;
 
@@ -86,19 +100,19 @@ async function main(): Promise<void> {
 		const normalizedExtension = ext.toLowerCase();
 		const publicPath = `/${relative(join(process.cwd(), "public"), file).split("\\").join("/")}`;
 
-		if (normalizedExtension === ".webp") {
-			for (const extension of Array.from(CONVERTIBLE_EXTENSIONS)) {
-				replacements.set(`${publicPath.slice(0, -".webp".length)}${extension}`, publicPath);
-			}
-
-			continue;
-		}
-
 		if (!CONVERTIBLE_EXTENSIONS.has(normalizedExtension)) {
 			continue;
 		}
 
 		const outputFile = join(dir, `${name}.webp`);
+
+		try {
+			await stat(outputFile);
+			console.warn(`skipped ${file}: destination already exists`);
+			continue;
+		} catch (error: unknown) {
+			if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+		}
 
 		try {
 			const image = sharp(file, { animated: false }).rotate();
@@ -113,6 +127,8 @@ async function main(): Promise<void> {
 				})
 				.webp({ quality: WEBP_QUALITY })
 				.toFile(outputFile);
+
+			await sharp(outputFile).metadata();
 
 			if (outputFile !== file) {
 				await rm(file);
