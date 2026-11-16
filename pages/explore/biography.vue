@@ -61,13 +61,16 @@ sortedBiographies.value = biographies.value
 				<div>
 					<div v-for="(biography, index) in sortedBiographies" :key="index" class="pb-4">
 						<div class="grid w-full grid-cols-[1fr_auto_1fr] items-start justify-end gap-4 pb-2">
-							<div
-								v-if="biography.metadata.image"
-								class="grid grid-cols-[auto_1fr] items-end gap-4"
-							>
+							<div v-if="biography.metadata.image" class="ml-auto w-full min-w-0 max-w-96">
+								<NuxtImg
+									:alt="biography.metadata.imageTitle ?? ''"
+									class="h-auto w-full"
+									preload
+									:src="biography.metadata.image"
+								/>
 								<div
 									v-if="biography.metadata.imageTitle || biography.metadata.copyright"
-									class="prose m-0 text-sm"
+									class="prose m-0 mt-2 text-sm"
 								>
 									<div
 										v-if="biography.metadata.imageTitle"
@@ -78,15 +81,6 @@ sortedBiographies.value = biographies.value
 									<div v-if="biography.metadata.copyright">
 										© {{ biography.metadata.copyright }}
 									</div>
-								</div>
-								<div v-else></div>
-								<div class="relative block size-full self-end object-contain align-top">
-									<NuxtImg
-										:alt="biography.metadata.imageTitle ?? ''"
-										class="size-full object-contain"
-										preload
-										:src="biography.metadata.image"
-									/>
 								</div>
 							</div>
 							<div v-else></div>
@@ -100,7 +94,7 @@ sortedBiographies.value = biographies.value
 								<div
 									:class="
 										biography.metadata.image
-											? 'prose pl-1 m-0 justify-center text-sm font-bold text-frisch-orange'
+											? 'prose m-0 justify-center pl-1 text-sm font-bold text-frisch-orange'
 											: 'prose m-0 justify-center text-sm font-bold text-frisch-orange'
 									"
 								>
@@ -110,7 +104,7 @@ sortedBiographies.value = biographies.value
 									<svg
 										:class="
 											biography.metadata.image
-												? 'relative h-0.5 w-24 bg-frisch-indigo mr-2'
+												? 'relative mr-2 h-0.5 w-24 bg-frisch-indigo'
 												: 'relative h-0.5 w-24 bg-frisch-indigo'
 										"
 									>
@@ -169,7 +163,7 @@ sortedBiographies.value = biographies.value
 							<div
 								:class="
 									biography.metadata.image
-										? 'prose pl-1 m-0 justify-center text-sm font-bold text-frisch-orange'
+										? 'prose m-0 justify-center pl-1 text-sm font-bold text-frisch-orange'
 										: 'prose m-0 justify-center text-sm font-bold text-frisch-orange'
 								"
 							>
