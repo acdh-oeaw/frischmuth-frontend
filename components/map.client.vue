@@ -10,7 +10,9 @@ import {
 	type MapGeoJSONFeature,
 	NavigationControl,
 	ScaleControl,
+	setWorkerUrl,
 } from "maplibre-gl";
+import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 
 import { type GeoMapContext, geoMapContextKey } from "@/components/map.context";
 
@@ -41,6 +43,7 @@ onScopeDispose(dispose);
 async function create() {
 	await nextTick();
 	assert(elementRef.value != null);
+	setWorkerUrl(mapWorkerUrl);
 
 	if (props.isAltaussee) {
 		map = new GeoMap({
