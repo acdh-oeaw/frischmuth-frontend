@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useMounted, useWindowSize } from "@vueuse/core";
 import { EyeIcon, GlobeIcon } from "lucide-vue-next";
 
 import type { Characters, Places, RelatedWork } from "~/types/work";
@@ -11,13 +12,11 @@ const isOpenCharacter = ref(false);
 const currentRelation = ref("");
 const currentMetaId = ref<number | null>(null);
 
-const isMobile = computed(() => {
-	return window.innerWidth < 820;
-});
+const isMounted = useMounted();
+const { width } = useWindowSize();
 
-const isTablet = computed(() => {
-	return window.innerWidth < 1536;
-});
+const isMobile = computed(() => isMounted.value && width.value < 820);
+const isTablet = computed(() => isMounted.value && width.value < 1536);
 
 const id = computed(() => {
 	return Number(route.params.id as string);
