@@ -3,7 +3,7 @@ title: Über das Projekt
 sections:
   - title: Persönliches zum Projekt
     content: >-
-      Das Projekt, wie es sich in dieser stets wachsenden, also als dynamisch zu
+      Das Projekt, wie es sich in dieser stets wachsenden, als dynamisch zu
       beschreibenden Form darstellt, ist die Konsequenz einer jahrelangen
       Zusammenarbeit und Freundschaft mit Barbara Frischmuth. Im Laufe der
       unzähligen Stationen, der offiziellen wie privaten Zusammenkünfte, der
