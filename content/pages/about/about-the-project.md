@@ -52,6 +52,9 @@ sections:
 
 
       An der Schnittstelle von Archivwissenschaft, Germanistik und Digital Humanities angesiedelt, leistet das Digitale Archiv einen Beitrag zur umfassenden wissenschaftlichen Erforschung von Barbara Frischmuths Werk. Es verbindet archivalische Überlieferungsnachweise mit literaturwissenschaftlicher Analyse und Rezeptionsgeschichte und schafft damit eine offene, vernetzte und erweiterbare digitale Forschungsumgebung, die sowohl der spezialisierten wissenschaftlichen Arbeit als auch der interessierten Öffentlichkeit neue Zugänge zu Leben und Werk der Autorin eröffnet.
+
+
+      Ein besonderer Dank gilt an dieser Stelle der leitenden Archivarin im Franz-Nabl-Institut, Daniela Bartens.
   - content: >-
       **Der Grant**: *Digital Archive Barbara Frischmuth* / Anna Babka (ORCID:
       [0000-0001-5397-4878](https://orcid.org/0000-0001-5397-4878)) Grant-DOI
